@@ -35,27 +35,27 @@ For all $n\in\NN$ we may write
     where $N\in\NN$ and $a_i\in\A$.
     
     Set $m:= \max\{|a|\colon a\in\A\}$. We take $n\in\NN$ such that $n>m$. 
-    Since $|a_0|\leq m<n$, there is $i_0 \in \{1,2,\dots,N\}$ such that $a_{i_0}\neq 0$. Thus, $\omega$ is an algebraic number as $a_i\in\A\subset\Zomega$ and $\beta$ can be expressed as an integer combination of powers of $\omega$. Therefore, $\beta$ is also an algebraic integer.
+    Since $|a_0|\leq m<n$, there is $i_0 \in \{1,2,\dots,N\}$ such that $a_{i_0}\neq 0$. Thus, $\omega$ is an algebraic number as $a_i\in\A\subset\Zomega$ and $\beta$ can be expressed as an integer combination of powers of $\omega$. Therefore, $\beta$ is also an algebraic number.
     
-    Let $\beta'$ be a conjugate of $\beta$.  
-    Since $\beta\in\Zomega\subset\QQ(\omega)$, there is an embbeding $\sigma: \QQ(\omega)\rightarrow \CC$ such that $\sigma(\beta)=\beta'$. Now 
+    Let $\beta'$ be an algebraic conjugate of $\beta$.  
+    Since $\beta\in\Zomega\subset\QQ(\omega)$, there is an algebraic conjugate $\omega'$ of $\omega$ and embedding $\sigma: \QQ(\omega)\rightarrow \QQ(\omega')$ such that $\sigma(\beta)=\beta'$. Now 
     $$
     n=\sigma(n)=\sum_{i=0}^{N}\sigma(a_i)\beta'^i\,.
     $$
-    Set $m':= \max\{|\sigma(a)|\colon a\in\A\}$.  Assume that $|\beta'|<1$. For all $n\in\NN$, we have 
+    Set $m':= \max\{|\sigma(a)|\colon a\in\A\}$.  For all $n\in\NN$, we have 
     $$
-    n=|n|\leq\sum_{i=0}^{N}|\sigma(a_i)|\cdot|\beta'|^i \leq \sum_{i=0}^{\infty}|\sigma(a_i)|\cdot|\beta'|^i \leq m'\frac{1}{1-|\beta'|}\,,  
+    n=|n|\leq\sum_{i=0}^{N}|\sigma(a_i)|\cdot|\beta'|^i \leq \sum_{i=0}^{\infty}|\sigma(a_i)|\cdot|\beta'|^i \leq m'\sum_{i=0}^{\infty}|\beta'|^i\,.  
     $$
-    which leads to contradiction. I.e., all conjugates of $\beta$ are at least one in modulus.
+    Hence, the sum on the right hand side diverges which implies that $|\beta'|\geq 1$. I.e., all conjugates of $\beta$ are at least one in modulus.
     
     If the degree of $\beta$ is one, the statement is obvious.  Therefore, we may assume that $\deg \beta \geq 2$. 
     
-    Suppose  for contradiction that $|\beta'|=1$ for the conjugate $\beta'$  of $\beta$ such that $\beta\neq\beta'$. The complex conjugate $\overline{\beta'}$ is also conjugate of $\beta$. Take any conjugate $\gamma$ of $\beta$ and the embbeding $\sigma': \QQ(\beta')\rightarrow \CC$ given by $\sigma'(\beta')=\gamma$.
+    Suppose  for contradiction that $|\beta'|=1$ for an algebraic conjugate $\beta'$  of $\beta$. The complex conjugate $\overline{\beta'}$ is also an algebraic conjugate of $\beta$. Take any algebraic conjugate $\gamma$ of $\beta$ and the embedding $\sigma': \QQ(\beta')\rightarrow \QQ(\gamma)$ given by $\sigma'(\beta')=\gamma$.
     Now
     $$
     \frac{1}{\gamma}=\frac{1}{\sigma'(\beta')}=\sigma'\left(\frac{1}{\beta'}\right)=\sigma'\left(\frac{\overline{\beta'}}{\beta'\overline{\beta'}}\right)=\sigma'\left(\frac{\overline{\beta'}}{|\beta'|^2}\right)=\sigma'(\overline{\beta'})\,.
     $$
-    Hence, $\frac{1}{\gamma}$ is also conjugate of $\beta$. From the previous, $\left|\frac{1}{\gamma}\right|\geq 1$ and $|\gamma|\geq 1$ which implies that $|\gamma|=1$. We may set $\gamma=\beta$ which contradicts $|\beta|>1$. Thus all conjugates of $\beta$ are greater then one in modulus, i.e., $\beta$ is an expanding algebraic number.
+    Hence, $\frac{1}{\gamma}$ is also an algebraic conjugate of $\beta$. From the previous, $\left|\frac{1}{\gamma}\right|\geq 1$ and $|\gamma|\geq 1$ which implies that $|\gamma|=1$. We may set $\gamma=\beta$ which contradicts $|\beta|>1$. Thus all conjugates of $\beta$ are greater then one in modulus, i.e., $\beta$ is an expanding algebraic number.
 \end{proof}
 
 
