@@ -38,7 +38,7 @@ For all $n\in\NN$ we may write
     Since $|a_0|\leq m<n$, there is $i_0 \in \{1,2,\dots,N\}$ such that $a_{i_0}\neq 0$. Thus, $\omega$ is an algebraic number as $a_i\in\A\subset\Zomega$ and $\beta$ can be expressed as an integer combination of powers of $\omega$. Therefore, $\beta$ is also an algebraic number.
     
     Let $\beta'$ be an algebraic conjugate of $\beta$.  
-    Since $\beta\in\Zomega\subset\QQ(\omega)$, there is an algebraic conjugate $\omega'$ of $\omega$ and embedding $\sigma: \QQ(\omega)\rightarrow \QQ(\omega')$ such that $\sigma(\beta)=\beta'$. Now 
+    Since $\beta\in\Zomega\subset\QQ(\omega)$, there is an algebraic conjugate $\omega'$ of $\omega$ and isomorphism $\sigma: \QQ(\omega)\rightarrow \QQ(\omega')$ such that $\sigma(\beta)=\beta'$. Now 
     $$
     n=\sigma(n)=\sum_{i=0}^{N}\sigma(a_i)\beta'^i\,.
     $$
@@ -50,7 +50,7 @@ For all $n\in\NN$ we may write
     
     If the degree of $\beta$ is one, the statement is obvious.  Therefore, we may assume that $\deg \beta \geq 2$. 
     
-    Suppose  for contradiction that $|\beta'|=1$ for an algebraic conjugate $\beta'$  of $\beta$. The complex conjugate $\overline{\beta'}$ is also an algebraic conjugate of $\beta$. Take any algebraic conjugate $\gamma$ of $\beta$ and the embedding $\sigma': \QQ(\beta')\rightarrow \QQ(\gamma)$ given by $\sigma'(\beta')=\gamma$.
+    Suppose  for contradiction that $|\beta'|=1$ for an algebraic conjugate $\beta'$  of $\beta$. The complex conjugate $\overline{\beta'}$ is also an algebraic conjugate of $\beta$. Take any algebraic conjugate $\gamma$ of $\beta$ and the isomorphism $\sigma': \QQ(\beta')\rightarrow \QQ(\gamma)$ given by $\sigma'(\beta')=\gamma$.
     Now
     $$
     \frac{1}{\gamma}=\frac{1}{\sigma'(\beta')}=\sigma'\left(\frac{1}{\beta'}\right)=\sigma'\left(\frac{\overline{\beta'}}{\beta'\overline{\beta'}}\right)=\sigma'\left(\frac{\overline{\beta'}}{|\beta'|^2}\right)=\sigma'(\overline{\beta'})\,.
@@ -61,16 +61,16 @@ For all $n\in\NN$ we may write
 
 
 \begin{theo}
-Let $\A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If the extending window method with the rewriting rule $x-\beta$ converges for the numeration system $(\beta, \A)$, than the base $\beta$ is expanding and the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ in $\Zbeta$. 
+Let $\A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If the extending window method with the rewriting rule $x-\beta$ converges for the numeration system $(\beta, \A)$, then the base $\beta$ is expanding and the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ in $\Zbeta$. 
 \end{theo}
 \begin{proof}
 The existence of an algorithm for addition which is computable in parallel implies that the set $\fin{\A}$ is closed under addition. Moreover, the set $\A[\beta]$ is closed under addition since there is no carry to the right when the rewriting rule $x-\beta$ is used. For any $n\in\NN$, the sum $1+1+\cdots +1=n$ is in $\A[\beta]$ by the assumption $1\in \A[\beta]$. I.e., $\NN\subset \A[\beta]$ and thus the base $\beta$ is expanding by Theorem~\ref{thm:betaExpanding}.
 
-In order to prove the second part, we have to show that for every $x=\sum_{i=0}^N x_i \beta^i \in\Zbeta$ there exists $q\in\Zbeta$ and $a\in\A$ such that $x=a+\beta q$. We can suppose that $x_0> 0$ because $x=x+k\cdot p(\beta)$ where $p$ is minimal polynomial of $\beta$ and  $k\in\ZZ$ is such that $x_0+k\cdot p(0)>0$. Since $\NN\subset \A[\beta]$, we have
+In order to prove the second part, we have to show that for every $x=\sum_{i=0}^N x_i \beta^i \in\Zbeta$ there exists $q\in\Zbeta$ and $a\in\A$ such that $x=a+\beta q$. A representation of $x$ such that $x_0> 0$ can be found be adding integer multiple of the minimal polynomial of $\beta$ evaluated in $\beta$. Since $\NN\subset \A[\beta]$, we have
 $$
-x_0=\sum_{i=0}^{n}a_i\beta^i\,,
+x_0=\sum_{i=0}^{n}a_i\beta^i\,
     $$
-    where $n\in\NN$ and $a_i\in\A$. Now
+    for some $n\in\NN$ and $a_i\in\A$. Now
     $$
     x=\underbrace{\sum_{i=0}^{n}a_i\beta^i}_{=x_0} + \sum_{i=1}^N x_i \beta^i=\underbrace{a_0}_{\in\A} + \beta \underbrace{\left(\sum_{i=0}^{n-1}a_{i+1}\beta^i + \sum_{i=0}^{N-1} x_{i+1} \beta^i\right)}_{=q\in\Zbeta}\,.
     $$
