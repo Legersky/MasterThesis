@@ -27,8 +27,10 @@
 %             {#1}_{d-1} 
 %             \end{pmatrix}}
 
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1\right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+    
 \newcommand{\norm}[2]{\left\lVert#1\right\rVert_{#2}}
-\newcommand{\Mnorm}[2]{\left|\lVert#1\right|\rVert_{#2}}
+\newcommand{\Mnorm}[2]{\vertiii{#1}_{#2}}
 \newcommand{\normBeta}[1]{\norm{#1}{\beta}}
 
 
