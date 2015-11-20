@@ -18,7 +18,7 @@
 
 \newcommand{\fin}[1]{\text{Fin}_{#1}(\beta)}
 
-% \newcommand{\multMat}[1]{\sum_{i=0}^{d-1} {#1}_i S^i}
+\newcommand{\multMat}[1]{\sum_{i=0}^{d-1} {#1}_i S^i}
 
 % \newcommand{\vect}[1]{\begin{pmatrix}
 %             {#1}_0 \\
@@ -28,32 +28,34 @@
 %             \end{pmatrix}}
 
 \newcommand{\norm}[2]{\left\lVert#1\right\rVert_{#2}}
+\newcommand{\Mnorm}[2]{\left|\lVert#1\right|\rVert_{#2}}
+\newcommand{\normBeta}[1]{\norm{#1}{\beta}}
 
 
 % \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 % \let\endchangemargin=\endlist 
 
-\newenvironment{method}[2]{
-\noindent \textbf{#1(}\textit{#2}\textbf{)}
-\vspace{-5pt}
-\begin{changemargin}{3em}{0em}}
-{\end{changemargin}}
+% \newenvironment{method}[2]{
+% \noindent \textbf{#1(}\textit{#2}\textbf{)}
+% \vspace{-5pt}
+% \begin{changemargin}{3em}{0em}}
+% {\end{changemargin}}
 
-\newcommand{\var}[1]{\textit{#1}}
-\newcommand{\fun}[2]{\textbf{#1}(\var{#2})}
+% \newcommand{\var}[1]{\textit{#1}}
+% \newcommand{\fun}[2]{\textbf{#1}(\var{#2})}
 
 
 \usepackage{mathtools, mathdots}
 
-\usepackage{algorithm}
-\usepackage{algorithmic}
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\algsetup{indent=2em}
+% \usepackage{algorithm}
+% \usepackage{algorithmic}
+% \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+% \algsetup{indent=2em}
 
-\usepackage[nomessages]{fp}
-\usepackage{sidecap}
-\usepackage{enumerate}
-\usepackage{pgffor}
+% \usepackage[nomessages]{fp}
+% \usepackage{sidecap}
+% \usepackage{enumerate}
+% \usepackage{pgffor}
 
 
 \renewcommand\Re{\operatorname{Re}}
@@ -87,4 +89,11 @@
 % \hyphenation{Polynomial-Quotient-Ring}
 
 
+
+\newtheorem{theo}{Theorem}[chapter]
+\newtheorem{lem}[theo]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[chapter]
+\newtheorem{exmp}{Example}[chapter]
 

@@ -1,35 +1,35 @@
-\documentclass{article}    
 
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
- 
-\usepackage{amsmath, amsthm,amssymb}
-\newtheorem{theo}{Theorem}
-\newtheorem{lem}[theo]{Lemma}
-
-\input{commands.tex}
-
-\begin{document}
-where $\rho(M)$ is the spectral radius of the matrix $M$.
 
 \begin{lem}
 \label{lem:vectNorm}
-nova norma pomoci matice
+Let $\nu$ be a norm of the vector space $\CC^d$ and $P$ be a nonsingular matrix in $\CC^d$. Then the mapping $\mu:\CC^d\rightarrow \RR^+_0$ defined by $\mu(x)=\nu(Px)$ is also a norm of the vector space $\CC^d$.
 \end{lem}
+\begin{proof}
+Let $x$ and $y$ be vectors in $\CC^d$ and $\alpha\in \CC$.  We use linearity of matrix multiplication, nonsingularity of matrix $P$ and the fact that $\nu$ is a norm to prove the following statements:
+\begin{enumerate}
+    \item $\mu(x)=\nu(Px)\geq 0\,,$
+    \item $\mu(x)=0 \iff \nu(Px)=0 \iff Px=0 \iff x=0\,,$
+    \item $\mu(\alpha x)=\nu(P(\alpha x))=\nu(\alpha Px)=|\alpha|\nu(Px)=|\alpha|\mu(x)\,,$
+    \item $\mu(x+y)=\nu(P(x+y))=\nu(Px+Py)\leq \nu(Px)+\nu(Py)=\mu(Px)+\mu(Py)\,.$
+\end{enumerate}
+This  verifies that $\mu$ is a norm.
+\end{proof}
 
 
 \begin{theo}
-Let $M\in\CC^{n\times n}$ be a diagonalizable matrix. There exists a natural norm $\norm{\cdot}{M}$ such that 
+\label{thm:norm}
+Let $M\in\CC^{n\times n}$ be a diagonalizable matrix. There exists a vector norm $\norm{\cdot}{M}$ such that 
 $$
-\rho(M)=\norm{M}{M}\,.
+\rho(M)=\Mnorm{M}{M}\,,
 $$
+where $\rho(M)$ is the spectral radius of the matrix $M$ and $\Mnorm{\cdot}{M}$ is the natural matrix norm $\Mnorm{\cdot}{M}$ induced by $\norm{\cdot}{M}$.
 \end{theo}
 \begin{proof}
-First, we prove that $\norm{M}{}\geq\rho(M)$ for every natural matrix norm. For all $\lambda\in\sigma(M)$ with eigenvector $u$ such that $\norm{u}{}=1$, we have
+First, we prove that $\Mnorm{M}{}\geq\rho(M)$ for every natural matrix norm. For all eigenvalues $\lambda$ in the spectrum $\sigma(M)$ with a respective eigenvector $u$ such that $\norm{u}{}=1$, we have
 $$
-\norm{M}{}=\max_{\norm{x}{}=1} \norm{Mx}{}\geq \norm{Mu}{}=\norm{\lambda u}{}=|\lambda|\cdot\norm{u}{}=|\lambda|\,.
+\Mnorm{M}{}=\max_{\norm{x}{}=1} \norm{Mx}{}\geq \norm{Mu}{}=\norm{\lambda u}{}=|\lambda|\cdot\norm{u}{}=|\lambda|\,.
 $$
-Now, we construct the natural matrix norm $\norm{\cdot}{M}$ such that $\norm{M}{M}\leq\rho(M)$. Since $M$ is diagonalizable, there exist nonsingular matrix $P\in\CC^{n\times n}$ and diagonal matrix $C\in\CC^{n\times n}$ with the eigenvalues of $M$ on the diagonal such that 
+Now, we construct the natural matrix norm $\norm{\cdot}{M}$ such that $\Mnorm{M}{M}\leq\rho(M)$. Since $M$ is diagonalizable, there exist nonsingular matrix $P\in\CC^{n\times n}$ and diagonal matrix $C\in\CC^{n\times n}$ with the eigenvalues of $M$ on the diagonal such that 
 $$
 PMP^{-1}=C\,.
 $$ 
@@ -40,7 +40,7 @@ Using Lemma \ref{lem:vectNorm} and Euclidean norm $\norm{\cdot}{2}$, we define t
 \end{equation}
 for all $x\in\CC^n$. The natural matrix norm $\norm{\cdot}{M}$ is induced by the vector norm $\norm{\cdot}{M}$, i.e.,
 $$
-\norm{M}{M}=\max_{\norm{y}{M}=1} \norm{My}{M}\,.
+\Mnorm{M}{M}=\max_{\norm{y}{M}=1} \norm{My}{M}\,.
 $$
 Let $y$ be a  vector such that $\norm{y}{M}=1$ and set $z=Py$. Notice that 
 $$
@@ -54,6 +54,8 @@ Consider
 which implies the statement.
 \end{proof}
 
+NEJAKE LEMMA O TOM, ZE SBETA LE DIAGONALIZOVATELNA A O JEJICH VL CISLECH
 
-
-\end {document}
+\begin{defn}
+Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion matrix of its minimal polynomial. Let $\beta=\sum_{i=0}^{d-1} b_i \omega^i$ be a nonzero element of $\Zomega$ and let $S_\beta=\multMat{b}$. The vector norm $\norm{\cdot}{S_\beta}$ given by Theorem~\ref{thm:norm} is called \emph{MRIZKOVA} norm and we denote it briefly $\normBeta{\cdot}$. 
+\end{defn}
