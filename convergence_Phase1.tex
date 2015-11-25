@@ -1,0 +1,38 @@
+\begin{lem}
+\label{lem:suffCondPhase1}
+    Let $\omega$ be an algebraic integer, $\deg \omega=d$, and $\beta$ be an expanding algebraic integer in $\Zomega$. Let $\A$ and $\B$ be finite subsets of $\Zomega$ such that $\A$ contains at least one representative of each congruence class modulo $\beta$ in $\Zomega$. Then there exists a finite set $\Q\subset\Zomega$  such that $ \B + \Q \subset \A + \beta \Q$.
+\end{lem}
+
+\begin{proof}
+We use the isomorphism $\pi:\Zomega \rightarrow \ZZ^{d}$ and $\beta$-norm $\normBeta{\cdot}$ to bound the elements of $\Zomega$.
+Let $\gamma$ be the smallest conjugate of $\beta$ in modulus. 
+ Denote $C:=\max\{\normBeta{b-a}\colon a \in \A, b \in \B\}$. Consequently, set $R:=\frac{C}{|\gamma|-1}$ and $\Q:=\{q\in\Zomega\colon \normBeta{q}\leq R\}$. By Lemma~\ref{lem:propertiesSbeta}, we have 
+ $$
+ \Mnorm{S_\beta^{-1}}{S_\beta}=\max \{\frac{1}{|\beta'|} \colon \beta' \text{ is conjugate of } \beta\}=\frac{1}{|\gamma|}\,.
+ $$ 
+ Also, $|\gamma|>1$ as $\beta$ is an expanding integer.  Since $C>0$, the set $\Q$ is nonempty. Any element $x=b+q \in \Zomega$ with $b\in\B$ and $q\in\Q$ can be written as $x=a+\beta q'$ for some $a\in\A$  and $q'\in\Zomega$ due to existence of a representative of each congruence class in $\A$. Using the isomorphism $\pi$, we may write $\pi(q')=S^{-1}_\beta \cdot \pi(b-a+q)$. We prove that $q'$ is in $Q$:
+\begin{align*}
+    \normBeta{q'}&=\norm{\pi(q')}{S_\beta}=\norm{S^{-1}_\beta \cdot \pi(b-a+q)}{S_\beta}\leq \Mnorm{S^{-1}_\beta}{S_\beta}  \normBeta{b-a+q} \\
+    &\leq  \frac{1}{|\gamma|} (\normBeta{b-a} +\normBeta{q})=\frac{1}{|\gamma|} (C+R)=\frac{C}{|\gamma|} (1+\frac{1}{|\gamma|-1}) =R\,.
+\end{align*}
+ 
+ Hence $q'\in\Q$ and thus  $x=b+q \in \A + \beta \Q$. 
+ 
+ Since there are only finitely many elements of $\ZZ^{d}$ bounded by the constant $R$, the set $Q$ is finite.
+\end{proof}
+
+\begin{theo}
+\label{thm:suffCondPhase1}
+Let $\omega$ be an algebraic integer and $\beta\in\Zomega$. Let the alphabet $\A\subset\Zomega$ be such that $\A$ contains at least one representative of each congruence class modulo $\beta$ in $\Zomega$. Let $\B\subset\Zomega$ be the input alphabet. 
+
+If $\beta$ is expanding, Phase 1 of the extending window method converges.
+\end{theo}
+\begin{proof}
+We have the constant $R$ and finite set $\Q$ from Lemma \ref{lem:suffCondPhase1} for the alphabet $\A$ and input alphabet $\B$. We prove by induction that  all intermediate weight coefficient sets $\Q_k$ in Algorithm \ref{alg:weightCoefSet} are subsets of the finite set $\Q$. 
+
+We start with $\Q_0=\{0\}$ which is bounded by any positive constant. Suppose that the intermediate weight coefficients set $\Q_k$ has elements bounded by the constant $R$. We see from the previous  proof that the candidates obtained by Algorithm \ref{alg:searchCand} for the set $\Q_k$ are also bounded by $R$. Thus, the next intermediate weight coefficients set $\Q_{k+1}$ has elements bounded by the constant $R$, i.e., $\Q_{k+1}\subset\Q$. 
+
+Since $\#\Q$ is finite and $\Q_0\subset\Q_1\subset\Q_2\subset\cdots$,  Phase 1 successfully ends. 
+\end{proof}
+
+
