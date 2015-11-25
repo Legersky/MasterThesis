@@ -7,21 +7,21 @@ For all $n\in\NN$ we may write
     $$
     n=\sum_{i=0}^{N}a_i\beta^i\,,
     $$
-    where $N\in\NN$ and $a_i\in\A$.
+    where $N\in\NN$, $a_i\in\A$ and $a_N\neq 0$.
     
     Set $m:= \max\{|a|\colon a\in\A\}$. We take $n\in\NN$ such that $n>m$. 
-    Since $|a_0|\leq m<n$, there is $i_0 \in \{1,2,\dots,N\}$ such that $a_{i_0}\neq 0$. Thus, $\omega$ is an algebraic number as $a_i\in\A\subset\Zomega$ and $\beta$ can be expressed as an integer combination of powers of $\omega$. Therefore, $\beta$ is also an algebraic number.
+    Since $|a_0|\leq m<n$, we have  $N\geq 1$ and there is $i_0 \in \{1,2,\dots,N\}$ such that $a_{i_0}\neq 0$. Thus, $\omega$ is an algebraic number as $a_i\in\A\subset\Zomega$ and $\beta$ can be expressed as an integer combination of powers of $\omega$. Therefore, $\beta$ is also an algebraic number.
     
     Let $\beta'$ be an algebraic conjugate of $\beta$.  
-    Since $\beta\in\Zomega\subset\QQ(\omega)$, there is an algebraic conjugate $\omega'$ of $\omega$ and isomorphism $\sigma: \QQ(\omega)\rightarrow \QQ(\omega')$ such that $\sigma(\beta)=\beta'$. Now 
+    Since $\beta\in\Zomega\subset\QQ(\omega)$, there is an algebraic conjugate $\omega'$ of $\omega$ and an isomorphism $\sigma: \QQ(\omega)\rightarrow \QQ(\omega')$ such that $\sigma(\beta)=\beta'$. Now 
     $$
-    n=\sigma(n)=\sum_{i=0}^{N}\sigma(a_i)\beta'^i\,.
+    n=\sigma(n)=\sum_{i=0}^{N}\sigma(a_i)(\beta')^i\,.
     $$
-    Set $m':= \max\{|\sigma(a)|\colon a\in\A\}$.  For all $n\in\NN$, we have 
+    Set $\tilde m:= \max\{|\sigma(a)|\colon a\in\A\}$.  For all $n\in\NN$, we have 
     $$
-    n=|n|\leq\sum_{i=0}^{N}|\sigma(a_i)|\cdot|\beta'|^i \leq \sum_{i=0}^{\infty}|\sigma(a_i)|\cdot|\beta'|^i \leq m'\sum_{i=0}^{\infty}|\beta'|^i\,.  
+    n=|n|\leq\sum_{i=0}^{N}|\sigma(a_i)|\cdot|\beta'|^i \leq \sum_{i=0}^{\infty}|\sigma(a_i)|\cdot|\beta'|^i \leq \tilde m\sum_{i=0}^{\infty}|\beta'|^i\,.  
     $$
-    Hence, the sum on the right hand side diverges which implies that $|\beta'|\geq 1$. I.e., all conjugates of $\beta$ are at least one in modulus.
+    Hence, the sum on the right  side diverges which implies that $|\beta'|\geq 1$. Thus, all conjugates of $\beta$ are at least one in modulus.
     
     If the degree of $\beta$ is one, the statement is obvious.  Therefore, we may assume that $\deg \beta \geq 2$. 
     
@@ -30,7 +30,7 @@ For all $n\in\NN$ we may write
     $$
     \frac{1}{\gamma}=\frac{1}{\sigma'(\beta')}=\sigma'\left(\frac{1}{\beta'}\right)=\sigma'\left(\frac{\overline{\beta'}}{\beta'\overline{\beta'}}\right)=\sigma'\left(\frac{\overline{\beta'}}{|\beta'|^2}\right)=\sigma'(\overline{\beta'})\,.
     $$
-    Hence, $\frac{1}{\gamma}$ is also an algebraic conjugate of $\beta$. From the previous, $\left|\frac{1}{\gamma}\right|\geq 1$ and $|\gamma|\geq 1$ which implies that $|\gamma|=1$. We may set $\gamma=\beta$ which contradicts $|\beta|>1$. Thus all conjugates of $\beta$ are greater then one in modulus, i.e., $\beta$ is an expanding algebraic number.
+    Hence, $\frac{1}{\gamma}$ is also an algebraic conjugate of $\beta$. From the previous, $\left|\frac{1}{\gamma}\right|\geq 1$ and $|\gamma|\geq 1$ which implies that $|\gamma|=1$. We may set $\gamma=\beta$ which contradicts $|\beta|>1$. Thus all conjugates of $\beta$ are greater than one in modulus, i.e., $\beta$ is an expanding algebraic number.
 \end{proof}
 
 
@@ -39,9 +39,11 @@ For all $n\in\NN$ we may write
 Let $\A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If the extending window method with the rewriting rule $x-\beta$ converges for the numeration system $(\beta, \A)$, then the base $\beta$ is expanding and the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ in $\Zbeta$. 
 \end{theo}
 \begin{proof}
-The existence of an algorithm for addition which is computable in parallel implies that the set $\fin{\A}$ is closed under addition. Moreover, the set $\A[\beta]$ is closed under addition since there is no carry to the right when the rewriting rule $x-\beta$ is used. For any $n\in\NN$, the sum $1+1+\cdots +1=n$ is in $\A[\beta]$ by the assumption $1\in \A[\beta]$. I.e., $\NN\subset \A[\beta]$ and thus the base $\beta$ is expanding by Theorem~\ref{thm:betaExpanding}.
+The existence of an algorithm for addition which is computable in parallel implies that the set $\fin{\A}$ is closed under addition. Moreover, the set $\A[\beta]$ is closed under addition since there is no carry to the right when the rewriting rule $x-\beta$ is used. For any $n\in\NN$, the sum $1+1+\cdots +1=n$ is in $\A[\beta]$ by the assumption $1\in \A[\beta]$. Therefore, $\NN\subset \A[\beta]$ and thus the base $\beta$ is expanding by Theorem~\ref{thm:betaExpanding}.
 
-In order to prove the second part, we have to show that for every $x=\sum_{i=0}^N x_i \beta^i \in\Zbeta$ there exists $q\in\Zbeta$ and $a\in\A$ such that $x=a+\beta q$. A representation of $x$ such that $x_0> 0$ can be found be adding integer multiple of the minimal polynomial of $\beta$ evaluated in $\beta$. Since $\NN\subset \A[\beta]$, we have
+TOHLE ASI STEJNE NEMA MOC SMYSL TAM DAVAT POKUD TO NEPUJDE ZOBECNIT NA MOD V ZOMEGA (I NA ZBETA SE MUSI PRIDAT, ZE BETA JE ALG INTEGER):
+
+In order to prove the second part, we have to show that for every $x=\sum_{i=0}^N x_i \beta^i \in\Zbeta$ there exists $q\in\Zbeta$ and $a\in\A$ such that $x=a+\beta q$. A representation of $x=\sum_{i=0}^N x'_i \beta^i=\sum_{i=0}^N x_i \beta^i+k\cdot m_\beta(\beta)$ such that $x'_0> 0$ can be found by adding an integer multiple of the minimal polynomial $m_\beta$ evaluated in $\beta$. Since $\NN\subset \A[\beta]$, we have
 $$
 x_0=\sum_{i=0}^{n}a_i\beta^i\,
     $$
