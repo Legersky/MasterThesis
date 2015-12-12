@@ -1,0 +1,30 @@
+\begin{theo}
+Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If the extending window method with the rewriting rule $x-\beta$ converges for the numeration system $(\beta, \A)$, the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$. 
+\end{theo}
+\begin{proof}
+The existence of an algorithm for addition with the rewriting rule $x-\beta$ implies that the set $\A[\beta]$ is closed under addition. By the assumption $1\in \A[\beta]$, the set $\NN$ is subset of  $\A[\beta]$. Since $0\in\A$, we have $\beta \cdot \A[\beta] \subset \A[\beta]$. Hence, $\NN[\beta] \subset \A[\beta]$.
+
+For any element  $x=\sum_{i=0}^N x_i \beta^i\in \Zbeta$ there is an element $x'=\sum_{i=0}^N x'_i \beta^i\in \NN[\beta]$ such that $x\equiv_\beta x'$  since $m_\beta (0)\equiv_\beta 0$ and $\beta^i\equiv_\beta 0$. As $x'\in \NN[\beta] \subset \A[\beta]$, we have
+$$
+x\equiv_\beta x'=\sum_{i=0}^{n}a_i\beta^i \equiv_\beta a_0\,,
+$$
+where $a_i\in \A$. Hence, for any element $x\in\Zomega$, there is a letter $a_0\in\A$ such that $x\equiv_\beta a_0$.
+
+In order to prove that there is at least one representative of each congruence class modulo $\beta-1$ in the alphabet $\A$, we consider again an element $x=\sum_{i=0}^N x_i \beta^i\in \Zbeta$. Similarly, there is an element $x'=\sum_{i=0}^N x'_i \beta^i\in \NN[\beta]$ such that $x\equiv_{\beta-1} x'$  since $m_{\beta-1} (0)\equiv_{\beta-1} 0$ and $(\beta-1)^i\equiv_{\beta-1} 0$.
+
+Since $x'\in \NN\subset \A[\beta]$,
+$$
+x'=\sum_{i=0}^{n}a_i\beta^i\,,
+$$
+where $a_i\in \A$. We prove by induction with respect to $n$ that $x'\equiv_{\beta-1} a$ for some $a\in\A$.
+If $n=0$, $x'=a_0$. Now we use the fact, that if there is an parallel addition algorithm, for each letter $b \in\A+\A$, there is $a\in\A$ such that $b \equiv_{\beta-1} a$. For $n+1$, we have
+\begin{align*}
+x'&=\sum_{i=0}^{n+1}a_i\beta^i =a_0 + \sum_{i=1}^{n+1}a_{i}\beta^i\\
+    &=a_0 + \beta \sum_{i=0}^{n}a_{i+1}\beta^i - \sum_{i=0}^{n}a_{i+1}\beta^i+ \sum_{i=0}^{n}a_{i+1}\beta^i \\
+    &\equiv_{\beta-1} a_0 + (\beta-1)\sum_{i=0}^{n}a_{i+1}\beta^i + a \equiv_{\beta-1}a_0 +a \equiv_{\beta-1}a' \in\A\,,
+\end{align*}
+where we use the induction assumption
+$$
+\sum_{i=0}^{n}a_{i+1}\beta^i\equiv_{\beta-1} a\,.
+$$
+\end{proof}

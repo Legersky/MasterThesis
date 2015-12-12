@@ -40,15 +40,4 @@ Let $\A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If the extendi
 \end{theo}
 \begin{proof}
 The existence of an algorithm for addition which is computable in parallel implies that the set $\fin{\A}$ is closed under addition. Moreover, the set $\A[\beta]$ is closed under addition since there is no carry to the right when the rewriting rule $x-\beta$ is used. For any $n\in\NN$, the sum $1+1+\cdots +1=n$ is in $\A[\beta]$ by the assumption $1\in \A[\beta]$. Therefore, $\NN\subset \A[\beta]$ and thus the base $\beta$ is expanding by Theorem~\ref{thm:betaExpanding}.
-
-TOHLE ASI STEJNE NEMA MOC SMYSL TAM DAVAT POKUD TO NEPUJDE ZOBECNIT NA MOD V ZOMEGA (I NA ZBETA SE MUSI PRIDAT, ZE BETA JE ALG INTEGER):
-
-In order to prove the second part, we have to show that for every $x=\sum_{i=0}^N x_i \beta^i \in\Zbeta$ there exists $q\in\Zbeta$ and $a\in\A$ such that $x=a+\beta q$. A representation of $x=\sum_{i=0}^N x'_i \beta^i=\sum_{i=0}^N x_i \beta^i+k\cdot m_\beta(\beta)$ such that $x'_0> 0$ can be found by adding an integer multiple of the minimal polynomial $m_\beta$ evaluated in $\beta$. Since $\NN\subset \A[\beta]$, we have
-$$
-x_0=\sum_{i=0}^{n}a_i\beta^i\,
-    $$
-    for some $n\in\NN$ and $a_i\in\A$. Now
-    $$
-    x=\underbrace{\sum_{i=0}^{n}a_i\beta^i}_{=x_0} + \sum_{i=1}^N x_i \beta^i=\underbrace{a_0}_{\in\A} + \beta \underbrace{\left(\sum_{i=0}^{n-1}a_{i+1}\beta^i + \sum_{i=0}^{N-1} x_{i+1} \beta^i\right)}_{=q\in\Zbeta}\,.
-    $$
 \end{proof}
