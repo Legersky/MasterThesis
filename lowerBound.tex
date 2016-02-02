@@ -17,7 +17,7 @@ $$
 x'=\sum_{i=0}^{n}a_i\beta^i\,,
 $$
 where $a_i\in \A$. We prove by induction with respect to $n$ that $x'\equiv_{\beta-1} a$ for some $a\in\A$.
-If $n=0$, $x'=a_0$. Now we use the fact, that if there is an parallel addition algorithm, for each letter $b \in\A+\A$, there is $a\in\A$ such that $b \equiv_{\beta-1} a$. For $n+1$, we have
+If $n=0$, $x'=a_0$. Now we use the fact, that if there is a parallel addition algorithm, for each letter $b \in\A+\A$, there is $a\in\A$ such that $b \equiv_{\beta-1} a$ ODKAZ NA PRISLUSNOU VETU. For $n+1$, we have
 \begin{align*}
 x'&=\sum_{i=0}^{n+1}a_i\beta^i =a_0 + \sum_{i=1}^{n+1}a_{i}\beta^i\\
     &=a_0 + \beta \sum_{i=0}^{n}a_{i+1}\beta^i - \sum_{i=0}^{n}a_{i+1}\beta^i+ \sum_{i=0}^{n}a_{i+1}\beta^i \\
@@ -28,3 +28,8 @@ $$
 \sum_{i=0}^{n}a_{i+1}\beta^i\equiv_{\beta-1} a\,.
 $$
 \end{proof}
+
+
+CHYBI VETA, ZE POCET REPREZENTANTU JE DETERMINANT$=>$ DOLNI ODHAD VELIKOSTI ABECEDY
+
+BYLO BY FAJN TO JESTE ZOBECNIT NA Z[OMEGA]

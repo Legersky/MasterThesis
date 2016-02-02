@@ -10,7 +10,7 @@ Let $x$ and $y$ be vectors in $\CC^d$ and $\alpha\in \CC$.  We use linearity of 
     \item $\mu(x)=\nu(Px)\geq 0\,,$
     \item $\mu(x)=0 \iff \nu(Px)=0 \iff Px=0 \iff x=0\,,$
     \item $\mu(\alpha x)=\nu(P(\alpha x))=\nu(\alpha Px)=|\alpha|\nu(Px)=|\alpha|\mu(x)\,,$
-    \item $\mu(x+y)=\nu(P(x+y))=\nu(Px+Py)\leq \nu(Px)+\nu(Py)=\mu(Px)+\mu(Py)\,.$
+    \item $\mu(x+y)=\nu(P(x+y))=\nu(Px+Py)\leq \nu(Px)+\nu(Py)=\mu(x)+\mu(y)\,.$
 \end{enumerate}
 This  verifies that $\mu$ is a norm.
 \end{proof}
@@ -55,7 +55,7 @@ $$
 $$
 Consider
 \begin{align*}
-\norm{My}{M}&=\norm{PMy}{2}=\norm{PMy}{2}=\norm{CPy}{2}=\norm{Cz}{2}=\sqrt{z^*C^*Cz}\\
+\norm{My}{M}&=\norm{PMy}{2}=\norm{CPy}{2}=\norm{Cz}{2}=\sqrt{z^*C^*Cz}\\
     &\leq \sqrt{\max_{\lambda\in\sigma(M)}|\lambda|^2 z^*z}=\max_{\lambda\in\sigma(M)}|\lambda|=\rho(M)\,\,.
 \end{align*}
 which implies the statement.

@@ -1,6 +1,6 @@
 \begin{theo}
 \label{thm:betaExpanding}
-    Let $\omega$ be a complex number and $\beta \in\Zomega$ be such that $|\beta|>1$. Let $\A\subset \Zomega$ be an alphabet. If $\NN\subset \A[\beta]$, number $\beta$ is expanding.
+    Let $\omega$ be a complex number and $\beta \in\Zomega$ be such that $|\beta|>1$. Let $\A\subset \Zomega$ be an alphabet. If $\NN\subset \A[\beta]$, the number $\beta$ is expanding.
 \end{theo}
 \begin{proof}
 For all $n\in\NN$ we may write 
@@ -36,7 +36,7 @@ For all $n\in\NN$ we may write
 
 
 \begin{theo}
-Let $\A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If the extending window method with the rewriting rule $x-\beta$ converges for the numeration system $(\beta, \A)$, then the base $\beta$ is expanding and the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ in $\Zbeta$. 
+Let $\A\subset \Zomega$ be an alphabet such that $1\in \A[\beta]$. If the extending window method with the rewriting rule $x-\beta$ converges for the numeration system $(\beta, \A)$, then the base $\beta$ is expanding. 
 \end{theo}
 \begin{proof}
 The existence of an algorithm for addition which is computable in parallel implies that the set $\fin{\A}$ is closed under addition. Moreover, the set $\A[\beta]$ is closed under addition since there is no carry to the right when the rewriting rule $x-\beta$ is used. For any $n\in\NN$, the sum $1+1+\cdots +1=n$ is in $\A[\beta]$ by the assumption $1\in \A[\beta]$. Therefore, $\NN\subset \A[\beta]$ and thus the base $\beta$ is expanding by Theorem~\ref{thm:betaExpanding}.
