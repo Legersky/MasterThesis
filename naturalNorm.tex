@@ -91,11 +91,18 @@ For the second part of the last statement, we use the part \textit{iv)}, Theorem
 \end{proof}
 
 \begin{defn}
-Using the notation of the previous lemma, we define a \emph{MRIZKOVA, NEBO TREBA $\beta$-NORM ???} $\normBeta{\cdot}:\Zomega \rightarrow \RR^+_0$ by 
+Using the notation of the previous lemma, we define a \emph{$\beta$-norm ???} $\normBeta{\cdot}:\Zomega \rightarrow \RR^+_0$ by 
 $$
 \normBeta{x}=\norm{\pi(x)}{S_\beta}
 $$
 for all $x\in\Zomega$.
 \end{defn}
-ASI TO CHCE NEJAKOU POZNAMKU, ZE TO JE NORMA
+We can easily verify that $\beta$-norm is a norm in $\Zomega$:
+\begin{enumerate}
+    \item $\normBeta{x}=\norm{\pi(x)}{S_\beta}\geq 0\,,$
+    \item $\normBeta{x}=0 \iff \norm{\pi(x)}{S_\beta}=0 \iff \pi(x)=0 \iff x=0\,,$
+    \item $\normBeta{\alpha x}=\norm{\pi(\alpha x)}{S_\beta}=|\alpha|\norm{\pi(x)}{S_\beta}=|\alpha|\normBeta{x}\,,$
+    \item $\normBeta{x+y}=\norm{\pi(x+y)}{S_\beta}=\norm{\pi(x)+\pi(y)}{S_\beta}\leq \norm{\pi(x)}{S_\beta}+\norm{\pi(y)}{S_\beta}=\normBeta{x}+\normBeta{y}\,,$
+\end{enumerate}
+for all $x,y \in \Zomega$ and $\alpha \in \Zomega$.
 
