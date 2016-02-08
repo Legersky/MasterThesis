@@ -1,6 +1,6 @@
-\begin{theo}
-Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If the extending window method with the rewriting rule $x-\beta$ converges for the numeration system $(\beta, \A)$, the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$. 
-\end{theo}
+\begin{thm}
+Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$. 
+\end{thm}
 \begin{proof}
 The existence of an algorithm for addition with the rewriting rule $x-\beta$ implies that the set $\A[\beta]$ is closed under addition. By the assumption $1\in \A[\beta]$, the set $\NN$ is subset of  $\A[\beta]$. Since $0\in\A$, we have $\beta \cdot \A[\beta] \subset \A[\beta]$. Hence, $\NN[\beta] \subset \A[\beta]$.
 
@@ -12,7 +12,7 @@ where $a_i\in \A$. Hence, for any element $x\in\Zomega$, there is a letter $a_0\
 
 In order to prove that there is at least one representative of each congruence class modulo $\beta-1$ in the alphabet $\A$, we consider again an element $x=\sum_{i=0}^N x_i \beta^i\in \Zbeta$. Similarly, there is an element $x'=\sum_{i=0}^N x'_i \beta^i\in \NN[\beta]$ such that $x\equiv_{\beta-1} x'$  since $m_{\beta-1} (0)\equiv_{\beta-1} 0$ and $(\beta-1)^i\equiv_{\beta-1} 0$.
 
-Since $x'\in \NN\subset \A[\beta]$,
+Since $x'\in \NN[\beta]\subset \A[\beta]$,
 $$
 x'=\sum_{i=0}^{n}a_i\beta^i\,,
 $$
@@ -29,6 +29,9 @@ $$
 $$
 \end{proof}
 
+\begin{thm}
+Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel,
+\end{thm}
 
 \komentar{chybi veta ze pocet reprezentantu je determinant$=>$ DOLNI ODHAD VELIKOSTI ABECEDY}
 

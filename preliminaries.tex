@@ -51,22 +51,22 @@ In fact, addition on $\fin{\A}$ can be performed in parallel if there is a digit
 
 
 We recall few results about parallel addition in a numeration system with an integer alphabet. C. Frougny, E. Pelantov\'a and M. Svobodov\'a proved  the following sufficient condition of existence of an algorithm for parallel addition in \cite{parAddNS}.
-  \begin{theo}
+  \begin{thm}
   \label{thm:suffConjugates}
   Let $\beta\in\CC$ be an algebraic number such that $|\beta|>1$ and all its conjugates in modulus differ from 1. There exists an alphabet $\A$ of contiguous integers containing 0 such that addition on $\fin{\A}$ can be performed in parallel.
-  \end{theo}
+  \end{thm}
   The proof of the theorem provides the algorithm for the alphabet of the form $\{-a,-a+1, \dots,0,\dots,a-1,a\}$. But in general, $a$ is not minimal.
     
 The same authors showed in \cite{kBlock} that the condition on the conjugates of the base $\beta$ is also necessary:
-  \begin{theo}
+  \begin{thm}
   Let the base $\beta\in\CC, |\beta|>1,$ be an algebraic number with a conjugate $\beta'$ such that $|\beta'|=1$. Let $\A\subset\ZZ$ be an alphabet of contiguous integers containing 0. Then addition on $\fin{\A}$ cannot be computable in parallel.
-  \end{theo}
+  \end{thm}
   
 The question of minimality of the alphabet is studied in \cite{minAlph}. The following lower bound for the size of the alphabet is provided:
-  \begin{theo}
+  \begin{thm}
   \label{thm:lowerBoundAlphabet}
   Let $\beta\in\CC, |\beta|>1,$  be an algebraic integer with the minimal polynomial $p$. Let $\A\subset\ZZ$ be an alphabet of contiguous integers containing 0 and 1. If addition on $\fin{\A}$ is computable in parallel, then $\#\A \geq |p(1)|$. Moreover, if $\beta$ is a positive real number, $\beta>1$, then $\#\A \geq  |p(1)|+2$.
-  \end{theo}
+  \end{thm}
   
 
 In this thesis, we work in a more general concept as we consider also non-integer alphabets. First, we recall the following definition.
@@ -157,7 +157,7 @@ $$
 
 Now we can prove that there is a correspondence between elements of $\Zomega$ and $\ZZ^d$.
 
-\begin{theo}
+\begin{thm}
 Let  $\omega$ be an algebraic integer of degree $d$. Then 
 $$
 \Zomega =\left\{\sum_{i=0}^{d-1} a_i \omega^i \colon a_i\in\ZZ \right\},
@@ -167,20 +167,20 @@ $$
 \pi(u)=\vect{u} \quad \text{ for every } u=\sum_{i=0}^{d-1} u_i \omega^i \in \Zomega
 $$
 is a ring isomorphism.
-\end{theo}
+\end{thm}
 
 
 Due to this theorem we may work with integer vectors instead of elements of $\Zomega$ and multiplication in $\Zomega$ is replaced by multiplying by an appropriate matrix. 
 
 The last theorem of this section is a practical tool for divisibility in $\Zomega$. To check whether an element of $\Zomega$ is divisible by another element, we look for an integer solution of a linear system. Moreover, this solution provides the result of  division in the positive case. 
-\begin{theo}
+\begin{thm}
 \label{thm:divisibility}
 Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion matrix of its minimal polynomial. Let $\beta=\sum_{i=0}^{d-1} b_i \omega^i$ be a nonzero element of $\Zomega$. Then for every $u\in\Zomega$
 $$
 u\in\beta\Zomega \iff S_\beta^{-1}\cdot \pi(u) \in \ZZ^d\,,
 $$
 where $S_\beta=\multMat{b}$.
-\end{theo}
+\end{thm}
 
 
 
