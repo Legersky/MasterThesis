@@ -1,0 +1,209 @@
+In this chapter, we recall few definitions and results connected to numeration systems and parallelism. We define the set $\Zomega$ for an algebraic integer $\omega$ and we prove that $\Zomega$ is isomorphic to $\ZZ^d$. This property is used in Theorem \ref{thm:divisibility} which is an important tool for divisibility in $\Zomega$. Division in $\Zomega$ is necessary for the extending window method described in Chapter \ref{chap:methodDescription}.
+
+\section{Numeration systems}
+Firstly, we give a general definition of numeration system.
+\begin{defn}
+  Let $\beta \in \CC, |\beta|>1$ and $\A \subset \CC$ be a finite set containing 0. A pair $(\beta, \A)$ is called a \emph{positional numeration system} with \emph{base} $\beta$ and \emph{digit set} $\A$, usually called \emph{alphabet}.
+\end{defn}
+So-called standard numeration systems have an integer base $\beta$ and an alphabet $\A$ which is a set of contiguous integers. We restrict ourselves to the base $\beta$ which is an algebraic integer and possibly non-integer alphabet $\A$. 
+\begin{defn}
+Let $(\beta, \A)$ be a positional numeration system.  We say that a complex number $x$ has a \emph{$(\beta, \A)$-representation} if~ there exist digits $x_n,x_{n-1}, x_{n-2},\dots \in\A, n\geq 0$ such that $x=\sum_{j=-\infty}^n x_j \beta^j$.
+\end{defn}
+ We write briefly a \emph{representation} instead of a $(\beta, \A)$-representation if the base $\beta$ and the alphabet $\A$ follow from context. 
+
+\begin{defn}
+Let $(\beta, \A)$ be a positional numeration system. The set of all complex numbers with a finite $(\beta, \A)$-representation is defined by
+$$
+    \fin{\A}:=\left\{\sum_{j=-m}^n x_j \beta^j\colon n, m \in \NN, x_j \in \A \right\}\,.
+$$
+\end{defn}
+   
+For  $x\in\fin{\A}$, we write 
+$$
+(x)_{\beta,\A}= 0^\omega x_n x_{n-1}\cdots x_1 x_0 \bullet x_{-1} x_{-2} \cdots x_{-m} 0^\omega\,,
+$$ 
+where $0^\omega$ denotes right, respectively left-infinite sequence of zeros. Notice that indices are decreasing from left to right as it is usual to write the most significant digits first. In what follows, we omit the starting and ending $0^\omega$ when we work with numbers in $\fin{\A}$. We remark that existence of an algorithm (standard or parallel) producing a finite $(\beta,\A)$-representation of $x+y$ where $x,y\in\fin{\A}$ implies that the set $\fin{\A}$ is closed under addition, i.e.,
+$$
+\fin{\A} + \fin{\A} \subset \fin{\A}\,.
+$$ 
+
+Designing an algorithm for parallel addition requires some redundancy in numeration system. According to \cite{redundant}, a numeration system $(\beta,\A)$ is called \emph{redundant} if there exists $x \in \fin{\A}$ which has two different $(\beta,\A)$-representations. For instance, the number 1 has $(2,\{-1,0,1\})$-representations $1\bullet$ and $1(-1)\bullet$.
+Redundant numeration system can enable us to avoid carry propagation in addition. On the other hand, there are some disadvantages. For example, comparison is problematic.  
+
+
+\section{Parallel addition}
+A local function, which is also often called a sliding block code, is used to mathematically formalize parallelism. 
+\begin{defn}
+Let $\A$ and $\B$ be alphabets. A function $\varphi:\B^\ZZ \rightarrow \A^\ZZ$ is said to be \emph{$p$-local} if there exist $r,t\in\NN$ satisfying $p=r+t+1$ and a function $\phi: \B^p \rightarrow \A$ such that, for any $w=(w_j)_{j\in\ZZ}\in\B^\ZZ$ and its image $z=\varphi(w)=(z_j)_{j\in\ZZ}\in\A^\ZZ$, we have $z_j=\phi(w_{j+t},\cdots,w_{j-r})$ for every $j\in\ZZ$. The parameter $t$, resp. $r$, is called \emph{anticipation}, resp. \emph{memory}.
+\end{defn}
+This means that each digit of the image $\varphi(w)$ is computed from $p$ digits of $w$ in a sliding window. Suppose that there is a processor on  each position with access to $t$ input digits on the left and $r$ input digits on the right. Then computation of $\varphi(w)$, where $w$ is a finite sequence, can be done in constant time independent on the length of $w$.   
+  
+\begin{defn}
+\label{def:digitSetConversion}
+Let $\beta$ be a base and $\A$ and $\B$ two alphabets containing 0. A function $\varphi:\B^\ZZ\rightarrow \A^\ZZ$ such that
+  \begin{enumerate}
+      \item for any $w=(w_j)_{j\in\ZZ}\in\B^\ZZ$ with finitely many non-zero digits, $z=\varphi(w)=(z_j)_{j\in\ZZ}\in\A^\ZZ$ has only finite number of non-zero digits, and
+      \item $\sum_{j\in\ZZ} w_j \beta^j= \sum_{j\in\ZZ} z_j \beta^j$
+  \end{enumerate}
+  is called \emph{digit set conversion} in base $\beta$ from $\B$ to $\A$. Such a conversion $\varphi$ is said to be \emph{computable in parallel} if $\varphi$ is a $p$-local function for some $p\in\NN$. 
+\end{defn}
+In fact, addition on $\fin{\A}$ can be performed in parallel if there is a digit set conversion from $\A+\A$ to $\A$ computable in  parallel as we can easily output digitwise sum of two $(\beta,\A)$-representations in parallel.   
+
+
+We recall few results about parallel addition in a numeration system with an integer alphabet. C. Frougny, E. Pelantov\'a and M. Svobodov\'a proved  the following sufficient condition of existence of an algorithm for parallel addition in \cite{parAddNS}.
+  \begin{theo}
+  \label{thm:suffConjugates}
+  Let $\beta\in\CC$ be an algebraic number such that $|\beta|>1$ and all its conjugates in modulus differ from 1. There exists an alphabet $\A$ of contiguous integers containing 0 such that addition on $\fin{\A}$ can be performed in parallel.
+  \end{theo}
+  The proof of the theorem provides the algorithm for the alphabet of the form $\{-a,-a+1, \dots,0,\dots,a-1,a\}$. But in general, $a$ is not minimal.
+    
+The same authors showed in \cite{kBlock} that the condition on the conjugates of the base $\beta$ is also necessary:
+  \begin{theo}
+  Let the base $\beta\in\CC, |\beta|>1,$ be an algebraic number with a conjugate $\beta'$ such that $|\beta'|=1$. Let $\A\subset\ZZ$ be an alphabet of contiguous integers containing 0. Then addition on $\fin{\A}$ cannot be computable in parallel.
+  \end{theo}
+  
+The question of minimality of the alphabet is studied in \cite{minAlph}. The following lower bound for the size of the alphabet is provided:
+  \begin{theo}
+  \label{thm:lowerBoundAlphabet}
+  Let $\beta\in\CC, |\beta|>1,$  be an algebraic integer with the minimal polynomial $p$. Let $\A\subset\ZZ$ be an alphabet of contiguous integers containing 0 and 1. If addition on $\fin{\A}$ is computable in parallel, then $\#\A \geq |p(1)|$. Moreover, if $\beta$ is a positive real number, $\beta>1$, then $\#\A \geq  |p(1)|+2$.
+  \end{theo}
+  
+
+In this thesis, we work in a more general concept as we consider also non-integer alphabets. First, we recall the following definition.
+\begin{defn}
+Let $\omega$ be a complex number. The set of values of all polynomials with integer coefficients evaluated in $\omega$ is denoted by
+$$
+    \ZZ[\omega] =\left\{\sum_{i=0}^n a_i \omega^i\colon n\in\NN, a_i\in\ZZ \right\} \subset \QQ(\omega)\,.
+$$
+\end{defn}
+ Notice that $\ZZ[\omega]$ is a commutative ring (for our purposes, a ring is associative under multiplication and there is a multiplicative identity).     
+    
+From now on, let $\omega$ be an algebraic integer  which generates the set $\Zomega$ and let the base $\beta\in\Zomega$ be such that $|\beta|>1$. We remark that $\beta$ is also an algebraic integer as all elements of $\Zomega$ are algebraic integers. Finally, let the alphabet $\A$ be a finite subset of $\Zomega$ such that $0\in\A$.
+
+Few parallel addition algorithms for such numeration system with a non-integer alphabet were found ad hoc. We introduce the method for construction of the parallel addition algorithm for a given numeration system $(\beta,\A)$ in Chapter \ref{chap:methodDescription}. 
+  
+
+
+\section{\texorpdfstring{Isomorphism of $\Zomega$ and $\ZZ^{d}$}{Isomorphism of Z[omega] and Zd}}
+The goal of this section is to show a connection between the ring $\Zomega$ and the set $\ZZ^d$. Using Theorem \ref{thm:divisibility}, division in $\Zomega$ can be replaced by searching for an integer solution of a linear system. This is used for the implementation of the extending window method.
+
+First we recall the notion of companion matrix which we use to define multiplication in $\ZZ^d$. By the minimal polynomial of an algebraic integer, we always mean the monic minimal polynomial.  
+\begin{defn}
+Let $\omega$ be an algebraic integer of degree $d\geq 1$ with the  minimal polynomial $p(x)=x^d +p_{d-1}x^{d-1}+ \cdots + p_1 x+p_0 \in \ZZ[x]$. The matrix 
+$$
+S := \begin{pmatrix}
+            0 & 0 & \cdots & 0 & -p_0 \\
+            1 & 0 & \cdots & 0 & -p_1 \\
+            0 & 1 & \cdots & 0 & -p_2 \\
+            \vdots &   & \ddots & & \vdots \\
+            0 & 0 & \cdots & 1 & -p_{d-1} 
+            \end{pmatrix} \in \ZZ^{d\times d}
+$$
+is called \emph{companion matrix} of the minimal polynomial of $\omega$.
+\end{defn}
+In what follows, the standard basis vectors of $\ZZ^d$  are denoted by 
+$$
+e_0=\begin{pmatrix}
+              1 \\
+              0 \\
+              0 \\
+              \vdots \\
+              0
+              \end{pmatrix}, \\
+e_1=\begin{pmatrix}
+              0 \\
+              1 \\
+              0 \\
+              \vdots \\
+              0
+              \end{pmatrix}, \dots ,\\
+e_{d-1}=\begin{pmatrix}
+              0 \\        
+              \vdots \\
+              0 \\
+              0\\
+              1
+              \end{pmatrix}\,.             
+$$
+% We remark that 1 in $e_i$ is in the $(i+1)$-st row because the index corresponds to the power of a companion matrix in the following definition. 
+
+\begin{defn}
+Let $\omega$ be an algebraic integer of degree $d\geq 1$, let $p$ be its minimal polynomial and let $S$ be its companion matrix. We define the mapping $\odot_\omega: \ZZ^d \times \ZZ^d \rightarrow \ZZ^d$ by 
+$$
+u \odot_\omega v := \left(\multMat{u}\right)\cdot \vect{v} \quad \text{ for all } u=\vect{u}, v=\vect{v} \in \ZZ^d\,.
+$$ 
+and we define powers of $u \in \ZZ^d$ by
+\begin{align*}
+    u^0&=e_0, \\
+    u^{i}&= u^{i-1} \odot_\omega u \text{ for } i\in\NN\,.
+\end{align*}
+\end{defn}
+
+We will see later that $\ZZ^d$ equipped with elementwise addition and multiplication $\odot_\omega$ builds a commutative ring. 
+% It will follow from the isomorphism with $\Zomega$. 
+Let us first recall an important property of a companion matrix  -- it is a root of its defining polynomial.
+\begin{lem}
+\label{lem:compMatrixIsRoot}
+Let $\omega$ be an algebraic integer with a minimal polynomial $p$ and let $S$ be its companion matrix. Then
+$$
+p(S)=0\,.
+$$
+\end{lem}
+
+
+
+
+
+
+Now we can prove that there is a correspondence between elements of $\Zomega$ and $\ZZ^d$.
+
+\begin{theo}
+Let  $\omega$ be an algebraic integer of degree $d$. Then 
+$$
+\Zomega =\left\{\sum_{i=0}^{d-1} a_i \omega^i \colon a_i\in\ZZ \right\},
+$$ 
+$(\ZZ^d,+,\odot_\omega)$ is a commutative ring and the mapping $\pi:\Zomega \rightarrow \ZZ^{d}$ defined by 
+$$
+\pi(u)=\vect{u} \quad \text{ for every } u=\sum_{i=0}^{d-1} u_i \omega^i \in \Zomega
+$$
+is a ring isomorphism.
+\end{theo}
+
+
+Due to this theorem we may work with integer vectors instead of elements of $\Zomega$ and multiplication in $\Zomega$ is replaced by multiplying by an appropriate matrix. 
+
+The last theorem of this section is a practical tool for divisibility in $\Zomega$. To check whether an element of $\Zomega$ is divisible by another element, we look for an integer solution of a linear system. Moreover, this solution provides the result of  division in the positive case. 
+\begin{theo}
+\label{thm:divisibility}
+Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion matrix of its minimal polynomial. Let $\beta=\sum_{i=0}^{d-1} b_i \omega^i$ be a nonzero element of $\Zomega$. Then for every $u\in\Zomega$
+$$
+u\in\beta\Zomega \iff S_\beta^{-1}\cdot \pi(u) \in \ZZ^d\,,
+$$
+where $S_\beta=\multMat{b}$.
+\end{theo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   

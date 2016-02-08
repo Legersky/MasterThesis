@@ -6,7 +6,7 @@
 % \usepackage[IL2]{fontenc}  
 % \usepackage{amsmath,amsthm} 
 % \usepackage{amsfonts}
-\usepackage{amsmath, amsthm, amssymb, units, dsfont}
+
 
 \usepackage[fixlanguage]{babelbib}
 \selectbiblanguage{english}
@@ -16,20 +16,42 @@
 
 \begin{document}
 
-
 \input{symbols.tex}
-\newpage
+
+%\chapter*{Introduction}
+
+\chapter{Preliminaries}
+\komentar{vlozeno z vyzkumaku, potrEBA UPRAVIT}
+\input{preliminaries.tex}
+\komentar{konec vlozeni z vyzkumaku}
+\komentar{mrizkova norma - tady nebo az v kapitole o konvergenci?}
 \section{MRIZKOVA NORMA}
 \input{naturalNorm.tex}
 
+\chapter{Design of extending window method}
+\komentar{vlozeno z vyzkumaku, potrEBA UPRAVIT}
+\input{method_description.tex}
+\komentar{konec vlozeni z vyzkumaku}
+
+\chapter{Convergence}
 \section{FAZE 1 IFF BETA EXPANDING}
 \input{betaExpanding.tex}
 \input{convergence_Phase1.tex}
 
+\section{Convergence Phase 2}
+\komentar{vstupy bbb -- odkaz na vyzkumak}
+\komentar{tady je potreba zabrat!!!!}
+
 \section{NUTNOST REPREZENTANTU + DOLNI ODHAD VELIKOSTI ABECEDY}
 \input{lowerBound.tex}
 
+\chapter{Design and implementation}
+\komentar{castecne vyuzit z vyzkumaku}
+\komentar{pridat poznamku o google tabulce, hromadne testovani}
 
+\chapter{Testing}
+
+%\chapter*{Summary}
 \newpage
 \bibliography{literatura}
 \addcontentsline{toc}{chapter}{References}

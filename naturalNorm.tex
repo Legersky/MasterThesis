@@ -73,7 +73,7 @@ Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion 
 \end{enumerate}  
 \end{lem}
 \begin{proof}
-The characteristic polynomial of the companion matrix $S$ is the same as minimal polynomial of $\omega$ which has no multiple roots. Hence, $S$ is diagonalizable, i.e., $S=P^{-1}DP$ where $D$ is diagonal matrix with the conjugates of $\omega$ on the diagonal and $P$ is a nonsingular complex matrix. The matrix $S_\beta$ is also diagonalized by $P$:
+The characteristic polynomial of the companion matrix $S$ is the same as minimal polynomial of $\omega$ which has no multiple roots. \komentar{je to zrejme??} Hence, $S$ is diagonalizable, i.e., $S=P^{-1}DP$ where $D$ is diagonal matrix with the conjugates of $\omega$ on the diagonal and $P$ is a nonsingular complex matrix. The matrix $S_\beta$ is also diagonalized by $P$:
 $$
 S_\beta=\sum_{i=0}^{d-1} b_i S^i= \sum_{i=0}^{d-1} b_i \left(P^{-1}DP\right)^i=P^{-1}\underbrace{\left(\sum_{i=0}^{d-1} b_i D^i\right)}_{D_\beta}P\,.
 $$
@@ -91,11 +91,11 @@ For the second part of the last statement, we use the part \textit{iv)}, Theorem
 \end{proof}
 
 \begin{defn}
-Using the notation of the previous lemma, we define a \emph{$\beta$-norm ???} $\normBeta{\cdot}:\Zomega \rightarrow \RR^+_0$ by 
+Using the notation of the previous lemma, we define a \emph{$\beta$-norm}  $\normBeta{\cdot}:\Zomega \rightarrow \RR^+_0$ by 
 $$
 \normBeta{x}=\norm{\pi(x)}{S_\beta}
 $$
-for all $x\in\Zomega$.
+for all $x\in\Zomega$.\komentar{budeme tomu rikat takhle???}
 \end{defn}
 We can easily verify that $\beta$-norm is a norm in $\Zomega$:
 \begin{enumerate}
