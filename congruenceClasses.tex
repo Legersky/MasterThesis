@@ -6,6 +6,7 @@ Let $M\in\ZZ^{d\times d}$ be a nonsingular integer matrix. Vectors $x,y \in \ZZ^
 
 \begin{lem}
 Let $M\in\ZZ^{d\times d}$ be a nonsingular integer matrix. The number of congruence classes modulo $M$ in $\ZZ^d$ is $|\det M|$.
+\label{lem:numCongruenceClasses}
 \end{lem}
 \begin{proof}
 Set $y_i:=M e_i$ for $i\in\{0, \dots, d-1 \}$ and 
@@ -22,16 +23,21 @@ To show that there are representatives of all classes, assume $x\in\ZZ^d$. Since
 \begin{align*}
  x=\sum_{i=0}^{d-1} (\gamma_i+t_i) y_i=\sum_{i=0}^{d-1}t_i y_i +\sum_{i=0}^{d-1} (\gamma_i-\alpha_i)y_i + \sum_{i=0}^{d-1} \alpha_i y_i=\underbrace{\sum_{i=0}^{d-1} (\alpha_i+t_i)y_i}_{\in B_{\enum{\alpha}} } +M\underbrace{(\gamma-\alpha)}_{\in\ZZ^d}\,,
 \end{align*}
-where
-$$
-\alpha=\enum{\alpha}^T \quad \text{ and }\quad \gamma=\enum{\gamma}^T\,.
-$$
+where $\alpha=\enum{\alpha}^T \quad \text{ and }\quad \gamma=\enum{\gamma}^T$.
+
 Let $x=\sum_{i=0}^{d-1} s_i y_i \in \ZZ^d$ and $x'=\sum_{i=0}^{d-1}s'_i y_i \in \ZZ^d$ be distinct elements of $B_{\enum{\alpha}}$ which are congruent modulo $M$, i.e., there exists $z=\enum{z}^T\in\ZZ^d$ such that $x=x'+M z$. There is $i_0\in\{0, \dots , d-1\}$ such that $|z_{i_0}|\geq 1$ as $x\neq x'$. Thus, $|s_{i_0}-s'_{i_0}|=|z_{i_0}|\geq 1$ which contradicts that  $x, x'\in B_{\enum{\alpha}}$.
 \end{proof}
 
 \begin{thm}
 Let $\omega$ be an algebraic integer of degree $d$ and  $\beta$ be an element of $\Zomega$ such that $\deg \omega = \deg\beta$. The number of congruence classes modulo $\beta$ in $\Zomega$ is $|m_\beta(0)|$.
+\label{thm:numbCongruenceClasses}
 \end{thm}
 \begin{proof}
-\komentar{dopsat dukaz}
+Let $x, y\in\Zomega$ and let $S$ be the companion matrix of its minimal polynomial. Set $S_\beta=\multMat{b}$. Then
+\begin{align*}
+x&\equiv y \mod \beta \exists z \in \Zomega \colon x-y= \beta z \\
+&\iff \exists z \in \Zomega \colon \pi(x-y)= S_\beta \pi(z) \\
+&\iff \pi(x) \equiv \pi(y) \mod S_\beta\,.
+\end{align*}
+Thus, the number or congruence classes modulo $\beta$ is $|\det S_\beta|$ by Lemma~\ref{lem:numCongruenceClasses}. The statement follows from Lemma~\ref{lem:propertiesSbeta}. 
 \end{proof}

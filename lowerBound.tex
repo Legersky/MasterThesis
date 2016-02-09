@@ -2,6 +2,7 @@
 
 \begin{thm}
 Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$. 
+\label{thm:representativesInAlphabet}
 \end{thm}
 \begin{proof}
 The existence of an algorithm for addition with the rewriting rule $x-\beta$ implies that the set $\A[\beta]$ is closed under addition. By the assumption $1\in \A[\beta]$, the set $\NN$ is subset of  $\A[\beta]$. Since $0\in\A$, we have $\beta \cdot \A[\beta] \subset \A[\beta]$. Hence, $\NN[\beta] \subset \A[\beta]$.
@@ -38,9 +39,11 @@ $$
 $$
 \end{thm}
 \begin{proof}
-	\komentar{dopsat dukaz}
+By Theorem~\ref{thm:representativesInAlphabet}, there are all representatives modulo $\beta$ and modulo $\beta-1$ in the alphabet $\A$. The numbers of congruence classes are $|m_\beta(0)|$ and $|m_{\beta-1}(0)|$ by Theorem~\ref{thm:numbCongruenceClasses}. Also,
+$$
+asd
+$$
 \end{proof}
 
-\komentar{chybi veta ze pocet reprezentantu je determinant$=>$ DOLNI ODHAD VELIKOSTI ABECEDY}
 
-\komentar{BYLO BY FAJN TO JESTE ZOBECNIT NA Z[OMEGA]}
+\komentar{BYLO BY FAJN TO JESTE ZOBECNIT NA abecedu ze Z[OMEGA]}
