@@ -1,0 +1,27 @@
+\section{Number of congruence classes}
+
+\begin{defn}
+Let $M\in\ZZ^{d\times d}$ be a nonsingular integer matrix. Vectors $x,y \in \ZZ^d$ are \emph{congruent modulo $M$ in $\ZZ^d$}, if $x-y \in M\cdot\ZZ^d$.
+\end{defn}
+
+\begin{lem}
+Let $M\in\ZZ^{d\times d}$ be a nonsingular integer matrix. The number of congruence classes modulo $M$ in $\ZZ^d$ is $|\det M|$.
+\end{lem}
+\begin{proof}
+Set $y_i:=M\cdot e_i$ for $i\in\{0, \dots, d-1 \}$ and 
+$$
+B_{(\alpha_0, \dots, \alpha_{d-1})}:=\left\{\sum_{i=0}^{d-1} (\alpha_i + t_i\cdot y_i) \colon t_i \in [0,1)\right\}
+$$
+for $(\alpha_0, \dots, \alpha_{d-1}) \in \ZZ^d$. Obviously,
+$$
+\RR^d=\bigcup_{(\alpha_0, \dots, \alpha_{d-1}) \in \ZZ^d} B_{(\alpha_0, \dots, \alpha_{d-1})}\,.
+$$
+For fixed $(\alpha_0, \dots, \alpha_{d-1}) \in \ZZ^d$, the number of points of $\ZZ^d$ in $B_{(\alpha_0, \dots, \alpha_{d-1})}$  is volume of $B_{(\alpha_0, \dots, \alpha_{d-1})}$  which is $|det M|$. Hence, it is enough to prove that there is exactly one representative of each congruence class in $B_{(\alpha_0, \dots, \alpha_{d-1})}$. To show that there are represenatives of all classes, assume $x\in\ZZ^d$.
+\end{proof}
+
+\begin{thm}
+Let $\omega$ be an algebraic integer of degree $d$ and  $\beta$ be an element of $\Zomega$ such that $\deg \omega = \deg\beta$. The number of congruence classes modulo $\beta$ in $\Zomega$ is $|m_\beta(0)|$.
+\end{thm}
+\begin{proof}
+\komentar{dopsat dukaz}
+\end{proof}
