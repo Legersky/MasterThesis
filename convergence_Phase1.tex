@@ -32,7 +32,10 @@ We have the constant $R$ and finite set $\Q$ from Lemma \ref{lem:suffCondPhase1}
 
 We start with $\Q_0=\{0\}$ which is bounded by any positive constant. Suppose that the intermediate weight coefficients set $\Q_k$ has elements bounded by the constant $R$. We see from the previous  proof that the candidates obtained by Algorithm \ref{alg:searchCand} for the set $\Q_k$ are also bounded by $R$. Thus, the next intermediate weight coefficients set $\Q_{k+1}$ has elements bounded by the constant $R$, i.e., $\Q_{k+1}\subset\Q$. 
 
-Since $\#\Q$ is finite and $\Q_0\subset\Q_1\subset\Q_2\subset\cdots\Q$,  Phase 1 successfully ends. 
+Since $\#\Q$ is finite and $\Q_0\subset\Q_1\subset\Q_2\subset\cdots\subset\Q$,  Phase 1 successfully ends. 
 \end{proof}
 
-\komentar{shrnujici ekvivalence}
+\komentar{shrnuti takhle???: (pouziva vety z dalsi sekce!!)}
+\begin{thm}
+Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If the extending window method finds an algorithm for parallel addition in the numeration system $(\beta, \A)$, the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$, and the base $\beta$ is expanding. Moreover, if the  alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and the base $\beta$ is expanding, Phase 1 of the extending window method converges.
+\end{thm}
