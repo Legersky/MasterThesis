@@ -19,7 +19,7 @@ This  verifies that $\mu$ is a norm.
 Lemma \ref{lem:vectNorm} enables us to define a new norm.
 \begin{defn}
 \label{def:newNorm}
-Let $M\in\CC^{n\times n}$ be a diagonalizable matrix and $P\in\CC^{n\times n}$ be a nonsingular matrix which diagonalizes $M$, i.e., $M=P^{-1}DP$ for some diagonal matrix $D\in\CC^{n\times n}$. Then we define a vector norm $\norm{\cdot}{M}$ by  
+Let $M\in\CC^{n\times n}$ be a diagonalizable matrix and $P\in\CC^{n\times n}$ be a nonsingular matrix which diagonalizes $M$, i.e., $M=P^{-1}DP$ for some diagonal matrix $D\in\CC^{n\times n}$. We define a vector norm $\norm{\cdot}{M}$ by  
 \begin{equation}
 \norm{x}{M}:=\norm{Px}{2}
 \end{equation}
@@ -37,25 +37,19 @@ $$
 where $\rho(M)$ is the spectral radius of the matrix $M$. % and $\Mnorm{\cdot}{M}$ is the natural matrix norm induced by $\norm{\cdot}{M}$.
 \end{thm}
 \begin{proof}
-First, we prove that $\Mnorm{M}{}\geq\rho(M)$ for every natural matrix norm induced by $\norm{\cdot}{}$. For all eigenvalues $\lambda$ in the spectrum $\sigma(M)$ with a respective eigenvector $u$ such that $\norm{u}{}=1$, we have
+First, we prove that $\Mnorm{M}{M}\geq\rho(M)$. For all eigenvalues $\lambda$ in the spectrum $\sigma(M)$ with a respective eigenvector $u$ such that $\norm{u}{M}=1$, we have
 $$
-\Mnorm{M}{}=\max_{\norm{x}{}=1} \norm{Mx}{}\geq \norm{Mu}{}=\norm{\lambda u}{}=|\lambda|\cdot\norm{u}{}=|\lambda|\,.
+\Mnorm{M}{M}=\sup_{\norm{x}{M}=1} \norm{Mx}{M}\geq \norm{Mu}{M}=\norm{\lambda u}{M}=|\lambda|\cdot\norm{u}{M}=|\lambda|\,.
 $$
-Now, we construct the natural matrix norm $\norm{\cdot}{M}$ such that $\Mnorm{M}{M}\leq\rho(M)$. Since $M$ is diagonalizable, there exist nonsingular matrix $P\in\CC^{n\times n}$ and diagonal matrix $C\in\CC^{n\times n}$ with the eigenvalues of $M$ on the diagonal such that 
-$$
-PMP^{-1}=C\,.
-$$ 
-Now, the natural matrix norm $\norm{\cdot}{M}$ is induced by the vector norm $\norm{\cdot}{M}$, i.e.,
-$$
-\Mnorm{M}{M}=\max_{\norm{y}{M}=1} \norm{My}{M}\,.
-$$
+Secondly, we show that $\Mnorm{M}{M}\leq\rho(M)$. Following Definition~\ref{def:newNorm}, let $P\in\CC^{n\times n}$ be a  nonsingular matrix  and $D\in\CC^{n\times n}$ a diagonal matrix  with the eigenvalues of $M$ on the diagonal such that $PMP^{-1}=D$.
+
 Let $y$ be a  vector such that $\norm{y}{M}=1$ and set $z=Py$. Notice that 
 $$
 \sqrt{z^*z}=\norm{z}{2}=\norm{Py}{2}=\norm{y}{M}=1\,.
 $$
 Consider
 \begin{align*}
-\norm{My}{M}&=\norm{PMy}{2}=\norm{CPy}{2}=\norm{Cz}{2}=\sqrt{z^*C^*Cz}\\
+\norm{My}{M}&=\norm{PMy}{2}=\norm{DPy}{2}=\norm{Dz}{2}=\sqrt{z^*D^*Dz}\\
     &\leq \sqrt{\max_{\lambda\in\sigma(M)}|\lambda|^2 z^*z}=\max_{\lambda\in\sigma(M)}|\lambda|=\rho(M)\,\,.
 \end{align*}
 which implies the statement.
@@ -63,7 +57,7 @@ which implies the statement.
 
 \begin{lem}
 \label{lem:propertiesSbeta}
-Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion matrix of its minimal polynomial. Let $\beta=\sum_{i=0}^{d-1} b_i \omega^i$ be a nonzero element of $\Zomega$. Set $S_\beta=\multMat{b}$. Then
+Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion matrix of its minimal polynomial $m_\omega$. Let $\beta=\sum_{i=0}^{d-1} b_i \omega^i$, where $b_i \in \ZZ$, be a nonzero element of $\Zomega$. Set $S_\beta=\multMat{b}$. Then
 \begin{enumerate}[i)]
    \item The matrix $S_\beta$ is diagonalizable.
    \item The characteristic polynomial of $S_\beta$ is $m_\beta^k$ with $k=d / \deg \beta$.
@@ -73,29 +67,29 @@ Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion 
 \end{enumerate}  
 \end{lem}
 \begin{proof}
-The characteristic polynomial of the companion matrix $S$ is the same as minimal polynomial of $\omega$ which has no multiple roots. \komentar{je to zrejme??} Hence, $S$ is diagonalizable, i.e., $S=P^{-1}DP$ where $D$ is diagonal matrix with the conjugates of $\omega$ on the diagonal and $P$ is a nonsingular complex matrix. The matrix $S_\beta$ is also diagonalized by $P$:
+The characteristic polynomial of the companion matrix $S$ is the same as minimal polynomial of $\omega$ which has no multiple roots. Hence, $S$ is diagonalizable, i.e., $S=P^{-1}DP$ where $D$ is diagonal matrix with the conjugates of $\omega$ on the diagonal and $P$ is a nonsingular complex matrix. The matrix $S_\beta$ is also diagonalized by $P$:
 $$
 S_\beta=\sum_{i=0}^{d-1} b_i S^i= \sum_{i=0}^{d-1} b_i \left(P^{-1}DP\right)^i=P^{-1}\underbrace{\left(\sum_{i=0}^{d-1} b_i D^i\right)}_{D_\beta}P\,.
 $$
-By Theorem CONJUGATES SE ZOBRAZUJI NA CONJUGATES, the diagonal elements of the diagonal matrix $D_\beta$ are conjugates of $\beta$. Since $S_\beta\in\ZZ^{d\times d}$, its characteristic polynomial has integer coefficients. Thus it is $k$-th power of the minimal polynomial $m_\beta$. The value $k$ follows from the equality $d=\deg(m_\beta^k)=k \deg m_\beta$. 
+By Theorem CONJUGATES SE ZOBRAZUJI NA CONJUGATES, the diagonal elements of the diagonal matrix $D_\beta$ are conjugates of $\beta$. Since $S_\beta\in\ZZ^{d\times d}$, its characteristic polynomial $p_{S_\beta}$ has integer coefficients. There exits $k\in\NN, k\geq 1$ such that $p_{S_\beta}=m^k_\beta$ as all roots of $p_{S_\beta}$ must be conjugates of $\beta$. The value $k$ follows from the equality $d=\deg(m_\beta^k)=k \deg m_\beta$. 
 
-The modulus of the determinant of $S_\beta$ equals the modulus of the absolute coefficient of the characteristic polynomial which is $|m_\beta(0)|^k$.
+The modulus of the determinant of $S_\beta$ equals the modulus of the absolute coefficient of the characteristic polynomial $p_{S_\beta}$ which is $|m_\beta(0)|^k$.
 
-The matrix $S_\beta^{-1}$ is also diagonalized by $P$ since $S_\beta^{-1}=(P^{-1}D_\beta P)^{-1}=P^{-1}D_\beta^{-1}P$. Thus, the norms $\norm{\cdot}{S_\beta}$ and $\norm{\cdot}{S_\beta^{-1}}$ are same and so the induced matrix norms $\Mnorm{\cdot}{S_\beta}$ and $\Mnorm{\cdot}{S_\beta^{-1}}$ are.
+The matrix $S_\beta^{-1}$ is also diagonalized by $P$ since $S_\beta^{-1}=(P^{-1}D_\beta P)^{-1}=P^{-1}D_\beta^{-1}P$. Thus, the norms $\norm{\cdot}{S_\beta}$ and $\norm{\cdot}{S_\beta^{-1}}$ are the same and so are the induced matrix norms $\Mnorm{\cdot}{S_\beta}$ and $\Mnorm{\cdot}{S_\beta^{-1}}$.
 
 The matrix $S_\beta$ is diagonalizable and its eigenvalues are the conjugates of $\beta$. Theorem~\ref{thm:norm} implies that 
 $$
 \Mnorm{S_\beta}{S_\beta}=\rho(S_\beta)= \max \{|\beta'| \colon \beta' \text{ is conjugate of } \beta\}\,. 
 $$
-For the second part of the last statement, we use the part \textit{iv)}, Theorem~\ref{thm:norm} and the fact that the eigenvalues of $S_\beta^{-1}$ are  reciprocal for the conjugates of $\beta$.
+For the second part of the last statement, we use the part \textit{iv)}, Theorem~\ref{thm:norm} and the fact that the eigenvalues of $S_\beta^{-1}$ are  reciprocal of the conjugates of $\beta$.
 \end{proof}
 
 \begin{defn}
-Using the notation of the previous lemma, we define a \emph{$\beta$-norm}  $\normBeta{\cdot}:\Zomega \rightarrow \RR^+_0$ by 
+Let $\pi$ be the isomorphism between $\Zomega$ and $(\ZZ^d,+,\odot_\omega)$. Using the notation of the previous lemma, we define \emph{$\beta$-norm}  $\normBeta{\cdot}:\Zomega \rightarrow \RR^+_0$ by 
 $$
 \normBeta{x}=\norm{\pi(x)}{S_\beta}
 $$
-for all $x\in\Zomega$.\komentar{budeme tomu rikat takhle???}
+for all $x\in\Zomega$.
 \end{defn}
 We can easily verify that $\beta$-norm is a norm in $\Zomega$:
 \begin{enumerate}

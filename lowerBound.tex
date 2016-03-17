@@ -1,7 +1,7 @@
 \section{NUTNOST REPREZENTANTU + DOLNI ODHAD VELIKOSTI ABECEDY}
 
 \begin{thm}
-Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$. 
+Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, then the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$. 
 \label{thm:representativesInAlphabet}
 \end{thm}
 \begin{proof}
@@ -20,7 +20,7 @@ $$
 x'=\sum_{i=0}^{n}a_i\beta^i\,,
 $$
 where $a_i\in \A$. We prove by induction with respect to $n$ that $x'\equiv_{\beta-1} a$ for some $a\in\A$.
-If $n=0$, $x'=a_0$. Now we use the fact, that if there is a parallel addition algorithm, for each letter $b \in\A+\A$, there is $a\in\A$ such that $b \equiv_{\beta-1} a$ ODKAZ NA PRISLUSNOU VETU. For $n+1$, we have
+If $n=0$, $x'=a_0$. Now we use the fact that if there is a parallel addition algorithm, for each letter $b \in\A+\A$, there is $a\in\A$ such that $b \equiv_{\beta-1} a$ ODKAZ NA PRISLUSNOU VETU. For $n+1$, we have
 \begin{align*}
 x'&=\sum_{i=0}^{n+1}a_i\beta^i =a_0 + \sum_{i=1}^{n+1}a_{i}\beta^i\\
     &=a_0 + \beta \sum_{i=0}^{n}a_{i+1}\beta^i - \sum_{i=0}^{n}a_{i+1}\beta^i+ \sum_{i=0}^{n}a_{i+1}\beta^i \\
