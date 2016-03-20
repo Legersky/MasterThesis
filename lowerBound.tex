@@ -48,7 +48,7 @@ $$
 0^\omega \underbrace{w_{r}\dots w_{1}}_{\beta^n W}\underbrace{a\dots a}_{n}\bullet \underbrace{\widetilde{w_1}\dots \widetilde{w_r}}_{\beta^{-r}\widetilde{W}}0^\omega\,,
 $$
 where 
-$$W=\sum_{j=1}^r w_j \beta^{j-1} \qquad \text{and} \qquad \widetilde{W}=\beta^{-r}\sum_{j=1}^r\widetilde{w_j} \beta^{r-j}\,.$$
+$$W=\sum_{j=1}^r w_j \beta^{j-1} \qquad \text{and} \qquad \widetilde{W}=\sum_{j=1}^r\widetilde{w_j} \beta^{r-j}\,.$$
 Since both representations have same value, we have
 \begin{align}
 \label{eq:reprBetaMinusOne}
@@ -71,8 +71,8 @@ The following lemma is a modification of lemma in \cite{minAlph}.
 \begin{lem}
 Let $\omega$ be a real algebraic integer and the base $\beta\in\Zomega$ be such that $\beta>1$. Let the alphabet $\A\subset\Zomega$ be such that $0\in\A$ and denote $\lambda=\min \A$ and $\Lambda=\max \A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then:
 \begin{enumerate}[i)]
-	\item $\phi(b,\dots,b)\neq \lambda$ for all $b\in\A+\A$ such $b>\lambda$.
-	\item $\phi(b,\dots,b)\neq \Lambda$ for all $b\in\A+\A$ such $b<\Lambda$.
+	\item $\phi(b,\dots,b)\neq \lambda$ for all $b\in\A+\A$ such that $b>\lambda$.
+	\item $\phi(b,\dots,b)\neq \Lambda$ for all $b\in\A+\A$ such that $b<\Lambda$.
 	\item If $\Lambda\neq 0$, then $\phi(\Lambda,\dots,\Lambda)\neq \Lambda$.
 	\item If $\lambda\neq 0$, then $\phi(\lambda,\dots,\lambda)\neq \lambda$.
 \end{enumerate}
@@ -84,8 +84,14 @@ b \sum_{j=-r}^{-1} \beta^j +b\frac{\beta^n-1}{\beta-1} =  \beta^n W + \lambda \f
 $$
 We apply also the equation \eqref{eq:reprBetaMinusOneFinal} to obtain
 \begin{align*}
-b \sum_{j=-r}^{-1} \beta^j +b\frac{\beta^n-1}{\beta-1} &=  \beta^n \frac{b-a}{\beta-1} + \lambda \frac{\beta^n-1}{\beta-1} + \beta^{-r}\widetilde{W}
+b \sum_{j=-r}^{-1} \beta^j +b\frac{\beta^n-1}{\beta-1} &=  \beta^n \frac{b-\lambda}{\beta-1} + \lambda \frac{\beta^n-1}{\beta-1} + \beta^{-r}\widetilde{W}\,.
 \end{align*}
+Now we may simplify and estimate
+\begin{align*}
+b \sum_{j=-r}^{-1} \beta^j +\frac{-b}{\beta-1} &=  \frac{-\lambda}{\beta-1} + \beta^{-r}\sum_{j=1}^r\widetilde{w_j} \beta^{r-j} \\
+b \underbrace{\left(\sum_{j=1}^{r} \frac{1}{\beta^j} -\frac{1}{\beta-1}\right)}_{-\sum_{j=r+1}^{\infty} \frac{1}{\beta^j}} &=  -\lambda\frac{1}{\beta-1} + \sum_{j=1}^r\widetilde{w_j} \beta^{-j}\geq  \lambda\underbrace{\left(-\frac{1}{\beta-1}+\sum_{j=1}^{r} \frac{1}{\beta^j} \right)}_{-\sum_{j=r+1}^{\infty}\frac{1}{\beta^j}}\,.
+\end{align*}
+Hence $b\leq\lambda$ which is a contradiction.
 \end{proof}
 
 
