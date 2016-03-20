@@ -1,5 +1,5 @@
-\section{NUTNOST REPREZENTANTU + DOLNI ODHAD VELIKOSTI ABECEDY}
 
+\section{NUTNOST REPREZENTANTU + DOLNI ODHAD VELIKOSTI ABECEDY}
 \begin{thm}
 Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, then the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$. 
 \label{thm:representativesInAlphabet}
@@ -32,6 +32,71 @@ $$
 $$
 \end{proof}
 
+
+For our purposes, we recall the proof of the following theorem for a parallel digit set conversion without anticipation. The full version can be found in \cite{minAlph}.
+\begin{thm}
+\label{thm:reprBetaMinusOne}
+Let $\omega$ be an algebraic integer. Let the base $\beta\in\Zomega$ be such that $|\beta|>1$ and the alphabet $\A\subset\Zomega$ be such that $0\in\A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then the number $\phi(b,\dots,b)-b$ belongs to the set $(\beta-1)\Zomega$ for any $b\in\A+\A$. 
+\end{thm}
+\begin{proof}
+Let $b\in\A+\A$ and $a=\phi(b, \dots,b)$. For $n\in\NN, n\geq 1$, we denote $S_n$ the number represented by
+$$
+0^\omega \underbrace{b\dots b}_{n}\bullet \underbrace{b\dots b}_{r}0^\omega\,.
+$$
+The representation of $S_n$ after the digit set conversion is of the form
+$$
+0^\omega \underbrace{w_{r}\dots w_{1}}_{\beta^n W}\underbrace{a\dots a}_{n}\bullet \underbrace{\widetilde{w_1}\dots \widetilde{w_r}}_{\beta^{-r}\widetilde{W}}0^\omega\,,
+$$
+where 
+$$W=\sum_{j=1}^r w_j \beta^{j-1} \qquad \text{and} \qquad \widetilde{W}=\beta^{-r}\sum_{j=1}^r\widetilde{w_j} \beta^{r-j}\,.$$
+Since both representations have same value, we have
+\begin{align}
+\label{eq:reprBetaMinusOne}
+b \sum_{j=-r}^{n-1} \beta^j &= W \beta^n + a \sum_{j=0}^{n-1} \beta^j + \beta^{-r}\widetilde{W} \notag \\
+b \sum_{j=-r}^{-1} \beta^j +b\frac{\beta^n-1}{\beta-1} &= W \beta^n + a \frac{\beta^n-1}{\beta-1} + \beta^{-r}\widetilde{W}\,,
+\end{align}
+for all $n\geq 1$. We substract this equation for $n$ and $n-1$ to obtain
+$$
+b\frac{\beta^n-\beta^{n-1}}{\beta-1}=W(\beta^n-\beta^{n-1}) + a\frac{\beta^n-\beta^{n-1}}{\beta-1}\,.
+$$
+We simplify it to
+\begin{equation}
+\label{eq:reprBetaMinusOneFinal}
+b=W(\beta-1) + a\,.
+\end{equation}
+Hence, $a=\phi(b, \dots,b)\equiv b$ modulo $\beta-1$.
+\end{proof}
+
+The following lemma is a modification of lemma in \cite{minAlph}.
+\begin{lem}
+Let $\omega$ be a real algebraic integer and the base $\beta\in\Zomega$ be such that $\beta>1$. Let the alphabet $\A\subset\Zomega$ be such that $0\in\A$ and denote $\lambda=\min \A$ and $\Lambda=\max \A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then:
+\begin{enumerate}[i)]
+	\item $\phi(b,\dots,b)\neq \lambda$ for all $b\in\A+\A$ such $b>\lambda$.
+	\item $\phi(b,\dots,b)\neq \Lambda$ for all $b\in\A+\A$ such $b<\Lambda$.
+	\item If $\Lambda\neq 0$, then $\phi(\Lambda,\dots,\Lambda)\neq \Lambda$.
+	\item If $\lambda\neq 0$, then $\phi(\lambda,\dots,\lambda)\neq \lambda$.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+To prove \textit{i)}, assume in contradiction that $\phi(b,\dots,b)= \lambda$. We proceed in the same manner as in Theorem \ref{thm:reprBetaMinusOne}, the equation \eqref{eq:reprBetaMinusOne} implies
+$$
+b \sum_{j=-r}^{-1} \beta^j +b\frac{\beta^n-1}{\beta-1} =  \beta^n W + \lambda \frac{\beta^n-1}{\beta-1} + \beta^{-r}\widetilde{W}\,.
+$$
+We apply also the equation \eqref{eq:reprBetaMinusOneFinal} to obtain
+\begin{align*}
+b \sum_{j=-r}^{-1} \beta^j +b\frac{\beta^n-1}{\beta-1} &=  \beta^n \frac{b-a}{\beta-1} + \lambda \frac{\beta^n-1}{\beta-1} + \beta^{-r}\widetilde{W}
+\end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
 \begin{thm}
 Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, then
 $$
@@ -44,45 +109,3 @@ By Theorem~\ref{thm:representativesInAlphabet}, there are all representatives mo
 
 
 \komentar{BYLO BY FAJN TO JESTE ZOBECNIT NA abecedu ze Z[OMEGA]}
-
-For our purposes, we recall the proof of the following theorem for a parallel digit set conversion without anticipation. The full version can be found in \cite{minAlph}.
-\begin{thm}
-Let $\omega$ be an algebraic integer. Let the base $\beta\in\Zomega$ be such that $|\beta|>1$ and the alphabet $\A\subset\Zomega$ be such that $0\in\A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then the number $\phi(b,\dots,b)-b$ belongs to the set $(\beta-1)\Zomega$ for any $b\in\A+\A$. 
-\end{thm}
-\begin{proof}
-Let $x\in\A+\A$ and $y=\phi(x, \dots,x)$. For $n\in\NN, n\geq 1$, we denote $S_n$ the number represented by
-$$
-0^\omega \underbrace{x\dots x}_{n}\bullet \underbrace{x\dots x}_{r}0^\omega\,.
-$$
-The representation of $S_n$ after the digit set conversion is of the form
-$$
-0^\omega \underbrace{w_{r}\dots w_{1}}_{\beta^n W}\underbrace{y\dots y}_{n}\bullet \underbrace{\widetilde{w_1}\dots \widetilde{w_r}}_{\beta^{-r}\widetilde{W}}0^\omega\,,
-$$
-where 
-$$W=\sum_{j=1}^r w_j \beta^{j-1} \qquad \text{and} \qquad \widetilde{W}=\beta^{-r}\sum_{j=1}^r\widetilde{w_j} \beta^{r-j}\,.$$
-Since both representations have same value, we have
-\begin{align*}
-x \sum_{j=-r}^{n-1} \beta^j &= W \beta^n + y \sum_{j=0}^{n-1} \beta^j + \beta^{-r}\widetilde{W} \\
-x \sum_{j=-r}^{-1} \beta^j +x\frac{\beta^n-1}{\beta-1} &= W \beta^n + y \frac{\beta^n-1}{\beta-1} + \beta^{-r}\widetilde{W}\,,
-\end{align*}
-for all $n\geq 1$. We substract this equation for $n$ and $n-1$ to obtain
-$$
-x\frac{\beta^n-\beta^{n-1}}{\beta-1}=W(\beta^n-\beta^{n-1}) + y\frac{\beta^n-\beta^{n-1}}{\beta-1}\,.
-$$
-We simplify it to
-\begin{equation}
-x=W(\beta-1) + y\,.
-\end{equation}
-Hence, $y=\phi(x, \dots,x)\equiv x$ modulo $\beta-1$.
-\end{proof}
-
-The following lemma is a modification of lemma in \cite{minAlph}.
-\begin{lem}
-Let $\omega$ be a real algebraic integer and the base $\beta\in\Zomega$ be such that $\beta>1$. Let the alphabet $\A\subset\Zomega$ be such that $0\in\A$ and denote $\lambda=\min \A$ and $\Lambda=\max \A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then:
-\begin{enumerate}[i)]
-	\item $\phi(x,\dots,x)\neq \lambda$ for all $x\in\A+\A$ such $x>\lambda$.
-	\item $\phi(x,\dots,x)\neq \Lambda$ for all $x\in\A+\A$ such $x<\Lambda$.
-	\item If $\Lambda\neq 0$, then $\phi(\Lambda,\dots,\Lambda)\neq \Lambda$.
-	\item If $\lambda\neq 0$, then $\phi(\lambda,\dots,\lambda)\neq \lambda$.
-\end{enumerate}
-\end{lem}
