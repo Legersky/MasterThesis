@@ -41,11 +41,11 @@ Let $\omega$ be an algebraic integer. Let the base $\beta\in\Zomega$ be such tha
 \begin{proof}
 Let $b\in\A+\A$ and $a=\phi(b, \dots,b)$. For $n\in\NN, n\geq 1$, we denote $S_n$ the number represented by
 $$
-0^\omega \underbrace{b\dots b}_{n}\bullet \underbrace{b\dots b}_{r}0^\omega\,.
+^{\omega}\!0 \underbrace{b\dots b}_{n}\bullet \underbrace{b\dots b}_{r}0^\omega\,.
 $$
 The representation of $S_n$ after the digit set conversion is of the form
 $$
-0^\omega \underbrace{w_{r}\dots w_{1}}_{\beta^n W}\underbrace{a\dots a}_{n}\bullet \underbrace{\widetilde{w_1}\dots \widetilde{w_r}}_{\beta^{-r}\widetilde{W}}0^\omega\,,
+^{\omega}\!0 \underbrace{w_{r}\dots w_{1}}_{\beta^n W}\underbrace{a\dots a}_{n}\bullet \underbrace{\widetilde{w_1}\dots \widetilde{w_r}}_{\beta^{-r}\widetilde{W}}0^\omega\,,
 $$
 where 
 $$W=\sum_{j=1}^r w_j \beta^{j-1} \qquad \text{and} \qquad \widetilde{W}=\sum_{j=1}^r\widetilde{w_j} \beta^{r-j}\,.$$
@@ -82,7 +82,7 @@ To prove \textit{i)}, assume in contradiction that $\phi(b,\dots,b)= \lambda$. W
 $$
 b \sum_{j=-r}^{-1} \beta^j +b\frac{\beta^n-1}{\beta-1} =  \beta^n W + \lambda \frac{\beta^n-1}{\beta-1} + \beta^{-r}\widetilde{W}\,.
 $$
-We apply also the equation \eqref{eq:reprBetaMinusOneFinal} to obtain
+We apply also the equation c to obtain
 \begin{align*}
 b \sum_{j=-r}^{-1} \beta^j +b\frac{\beta^n-1}{\beta-1} &=  \beta^n \frac{b-\lambda}{\beta-1} + \lambda \frac{\beta^n-1}{\beta-1} + \beta^{-r}\widetilde{W}\,.
 \end{align*}
@@ -91,7 +91,26 @@ Now we may simplify and estimate
 b \sum_{j=-r}^{-1} \beta^j +\frac{-b}{\beta-1} &=  \frac{-\lambda}{\beta-1} + \beta^{-r}\sum_{j=1}^r\widetilde{w_j} \beta^{r-j} \\
 b \underbrace{\left(\sum_{j=1}^{r} \frac{1}{\beta^j} -\frac{1}{\beta-1}\right)}_{-\sum_{j=r+1}^{\infty} \frac{1}{\beta^j}} &=  -\lambda\frac{1}{\beta-1} + \sum_{j=1}^r\widetilde{w_j} \beta^{-j}\geq  \lambda\underbrace{\left(-\frac{1}{\beta-1}+\sum_{j=1}^{r} \frac{1}{\beta^j} \right)}_{-\sum_{j=r+1}^{\infty}\frac{1}{\beta^j}}\,.
 \end{align*}
-Hence $b\leq\lambda$ which is a contradiction.
+Hence $b\leq\lambda$ which is a contradiction. The proof of \textit{ii)} can be done in the same way.
+
+For \textit{iii)}, assume that $\phi(\Lambda,\dots,\Lambda)= \Lambda$. Now consider a number $T_q$ represented by
+$$
+^{\omega}\!0 \bullet \underbrace{\Lambda\dots\Lambda}_{r} \underbrace{(2\Lambda)\dots(2\Lambda)}_{q} 0^\omega\,.
+$$
+After the digit set conversion, a representation is
+$$
+^{\omega}\!0  \underbrace{w_r\dots w_1}_{W} \bullet z_1\dots z_{r+q} 0^\omega\,.
+$$
+The value $T_q$  preserves, thus,
+$$
+\Lambda\sum_{j=1}^r \beta^{-j} +2\Lambda \sum_{j=r+1}^{r+q} \beta^{-j}=W+\sum_{j=1}^{r+q}z_j\beta^{-j}\,.
+$$
+But $W=0$ from the equation \eqref{eq:reprBetaMinusOneFinal}. We estimate
+\begin{align*}
+\Lambda\sum_{j=1}^{r+q} \beta^{-j} +\Lambda \sum_{j=r+1}^{r+q} \beta^{-j}&=\sum_{j=1}^{r+q}z_j\beta^{-j}\leq \Lambda\sum_{j=1}^{r+q}\beta^{-j}\\
+\Lambda \sum_{j=r+1}^{r+q} \beta^{-j}&\leq 0\,.
+\end{align*}
+This contradicts that $\Lambda$ positive as it is a nonzero, maximal element of the alphabet $\A$ which contains 0. The proof of \textit{iv)} is analogous.
 \end{proof}
 
 
