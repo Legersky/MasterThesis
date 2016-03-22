@@ -69,6 +69,7 @@ Hence, $a=\phi(b, \dots,b)\equiv b$ modulo $\beta-1$.
 
 The following lemma is a modification of lemma in \cite{minAlph}.
 \begin{lem}
+\label{lem:alphaRestrictions}
 Let $\omega$ be a real algebraic integer and the base $\beta\in\Zomega$ be such that $\beta>1$. Let the alphabet $\A\subset\Zomega$ be such that $0\in\A$ and denote $\lambda=\min \A$ and $\Lambda=\max \A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then:
 \begin{enumerate}[i)]
 	\item $\phi(b,\dots,b)\neq \lambda$ for all $b\in\A+\A$ such that $b>\lambda$.
@@ -116,21 +117,21 @@ This contradicts that $\Lambda$ positive as it is a nonzero, maximal element of 
 
 
 
-
-
-
-
-
-
 \begin{thm}
 Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, then
 $$
 \#\A \geq \max \{|m_\beta(0)|, |m_\beta(1)|\}\,.
 $$
+Moreover, if $\beta$ is such that it has a real conjugate greater than 1, then 
+$$
+\#\A \geq \max \{|m_\beta(0)|, |m_\beta(1)|+2\}\,.
+$$
 \end{thm}
 \begin{proof}
 By Theorem~\ref{thm:representativesInAlphabet}, there are all representatives modulo $\beta$ and modulo $\beta-1$ in the alphabet $\A$. The numbers of congruence classes are $|m_\beta(0)|$ and $|m_{\beta-1}(0)|$ by Theorem~\ref{thm:numbCongruenceClasses}. Obviously, $m_{\beta-1}(x) = m_\beta (x+1)$. Thus $m_{\beta-1}(0) = m_\beta (1)$.
-\end{proof}
 
+According to Lemma \komentar{dopsat}, we may asssume that $\beta$ is real and greater than 1 in the proof of the second part. The assumption $1\in \A[\beta]$ implies that $\Lambda>0$. Thus, there are at least three elements in the alphabet $\A$, because $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$ by Lemma \ref{lem:alphaRestrictions}. It also implies that there are at least two representatives modulo $\beta-1$ in the alphabet in the class which contains $\Lambda$, since $\phi(\Lambda,\dots,\Lambda)\equiv_{\beta-1} \Lambda$. Suppose now that $\lambda\neq 0$. Then $\phi(\lambda,\dots,\lambda)\neq \lambda$ and hence there is one more element in the alphabet in the class containing $\lambda$. If $\lambda\not\equiv_{\beta-1}\Lambda$, there are at least two congruence classes which contain at least two elements of the alphabet $\A$. Therefore, $\#\A\geq |m_\beta(1)|+2$. Otherwise, if $\lambda\equiv_{\beta-1}\Lambda$, there must be one more element of the alphabet $\A$ in this class, since still $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$. Therefore, $\#\A\geq |m_\beta(1)|+2$, again.
+
+\end{proof}
 
 \komentar{BYLO BY FAJN TO JESTE ZOBECNIT NA abecedu ze Z[OMEGA]}
