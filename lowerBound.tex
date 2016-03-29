@@ -117,6 +117,28 @@ $$
 $$
 \end{proof}
 
+\begin{lem}
+\label{lem:parAddAlgForConjugate}
+Let $\omega$ be an algebraic integer with a conjugate $\omega'$. Let $\beta\in\Zomega, |\beta|>1$ and let $\sigma:\QQ(\omega)\rightarrow \QQ(\omega')$ be an isomorphism such that $|\sigma(\beta)|>1$. Let $\varphi$ is a digit set conversion  in the base $\beta$ from $\A+\A$ to $\A$. There exists  is a digit set conversion $\varphi'$ in the base $\beta'$ from $\A'+\A'$ to $\A'$ where $\beta'=\sigma(\beta)$ and $\A'=\{\sigma(a) \colon a\in\A\}$.
+\end{lem}
+\begin{proof}
+Let $\phi:\A^p\rightarrow\A$ be a mapping which defines $\varphi$ with $p=r+t+1$. We define a mapping $\phi':\A^p\rightarrow \A$ by 
+$$
+\phi'(w'_{j+t}, \dots, w'_{j-r})=\sigma\left(\phi\left(\sigma^{-1}(w'_{j+t}), \dots, \sigma^{-1}(w'_{j-r})\right)\right)\,.
+$$
+Next, we define a digit set conversion  $\varphi':(\A'+\A')\rightarrow\A'$ by $\varphi'(w')=(z'_j)_{j\in\ZZ}$ where $w'=(w'_j)_{j\in\ZZ}$ and $z'_j=\phi'(w'_{j+t}, \dots, w'_{j-r})$. Obviously, if $w'$ has only finitely many nonzero entries, then there is only finitely many nonzeros in $(z'_j)_{j\in\ZZ}$   since
+$$
+\phi'(0, \dots, 0)=\sigma\left(\phi\left(\sigma^{-1}(0), \dots, \sigma^{-1}(0)\right)\right)=\sigma\left(\phi\left(0, \dots, 0\right)\right)=\sigma\left(0\right)=0\,.
+$$
+The value of the number represented by $w'$ is also preserved:
+\begin{align*}
+\sum_{j\in\ZZ}w'_j \beta'^j&=\sum_{j\in\ZZ}\sigma(w_j) \sigma(\beta)^j=\sigma(\sum_{j\in\ZZ}w_j\beta^j)\\
+&=\sigma(\sum_{j\in\ZZ}z_j\beta^j)=\sigma(\sum_{j\in\ZZ}\phi\left(w_{j+t}, \dots,w_{j-r}\right)\beta^j)\\
+&=\sum_{j\in\ZZ}\sigma(\phi\left(w_{j+t}, \dots,w_{j-r}\right))\beta'^j=\sum_{j\in\ZZ}z'_j \beta'^j
+\end{align*}
+where $w_j=\sigma^{-1}(w'_j)$ for $j\in\ZZ$ and $\varphi((w_j)_{j\in\ZZ})=(z_j)_{j\in\ZZ}$.
+\end{proof}
+
 \begin{thm}
 Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, then
 $$
@@ -130,7 +152,7 @@ $$
 \begin{proof}
 By Theorem~\ref{thm:representativesInAlphabet}, there are all representatives modulo $\beta$ and modulo $\beta-1$ in the alphabet $\A$. The numbers of congruence classes are $|m_\beta(0)|$ and $|m_{\beta-1}(0)|$ by Theorem~\ref{thm:numbCongruenceClasses}. Obviously, $m_{\beta-1}(x) = m_\beta (x+1)$. Thus $m_{\beta-1}(0) = m_\beta (1)$.
 
-According to Lemma \komentar{dopsat}, we may asssume that $\beta$ is real and greater than 1 in the proof of the second part. The assumption $1\in \A[\beta]$ implies that $\Lambda>0$. Thus, there are at least three elements in the alphabet $\A$, because $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$ by Lemma \ref{lem:alphaRestrictions}. It also implies that there are at least two representatives modulo $\beta-1$ in the alphabet in the class which contains $\Lambda$, since $\phi(\Lambda,\dots,\Lambda)\equiv_{\beta-1} \Lambda$.  
+Let $\phi$ be a mapping which defines the parallel addition. According to Lemma~\ref{lem:parAddAlgForConjugate}, we may asssume that $\beta$ is real and greater than 1 in the proof of the second part. The assumption $1\in \A[\beta]$ implies that $\Lambda>0$. Thus, there are at least three elements in the alphabet $\A$, because $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$ by Lemma \ref{lem:alphaRestrictions}. It also implies that there are at least two representatives modulo $\beta-1$ in the alphabet in the class which contains $\Lambda$, since $\phi(\Lambda,\dots,\Lambda)\equiv_{\beta-1} \Lambda$.  
 
 If $\lambda\equiv_{\beta-1}\Lambda$, there must be one more element of the alphabet $\A$ in this class, since $\lambda \neq \Lambda$. Therefore, $\#\A\geq |m_\beta(1)|+2$. 
 
@@ -146,10 +168,10 @@ The case that $\lambda\not\equiv_{\beta-1}\Lambda$ is divided into two subcases.
 %$$ 
 %also $e\equiv_{\beta-1}f$ and $g\equiv_{\beta-1}h$ which is a contradiction. In the same manner, the assumption that there is no nonzero element of the alphabet $\A$ which is congruent to 0 leads to contradiction for arbitrarily large alphabet.
 
-If $\lambda=0$, then all elements of $\A+\A$ are nonnegative and $\phi(b,\dots,b)\neq 0$ for all $b\in(\A+\A)\setminus 0$. Suppose for contradiction, that there is no nonzero element of the alphabet $\A$ congruent to 0. We know that there is at least one represenative of each congruence class class modulo $\beta-1$ in $\A$ and at least two representatives in the congruence class which contains $\Lambda$. Let $k\in\NN$ denote the number of elements which are in $\A$ extra to one element in each congruence class, i.e., $\#A=|m_\beta(1)|+k$.  For $d\in\Lambda+\A$, the value $\phi(d,\dots,d)\in\A$ is not congruent to 0 as it is nonzero and the class containing zero has only one element by the assumption. Therefore, the values  $\phi(d,\dots,d)\in\A$ for $\#\A$ distinct letters $d\in\Lambda+\A$ belong to only $|m_\beta(1)|-1$ congruence classes. Hence, there exists $e_1,\dots e_k, e_{k+1}\in\A$ pairwise distinct and $f_1,\dots f_k, f_{k+1}\in\A$ such that $e_i\neq f_i$ and $\phi(e_i+\Lambda,\dots, e_i+\Lambda)\equiv_{\beta-1}\phi(f_i+\Lambda,\dots, f_i+\Lambda)$ for all $i, 1\leq i\leq k+1$. Since 
+If $\lambda=0$, then all elements of $\A+\A$ are nonnegative and $\phi(b,\dots,b)\neq 0$ for all $b\in(\A+\A)\setminus 0$. Suppose for contradiction, that there is no nonzero element of the alphabet $\A$ congruent to 0. We know that there is at least one represenative of each congruence class class modulo $\beta-1$ in $\A$ and at least two representatives in the congruence class which contains $\Lambda$. Let $k\in\NN$ denote the number of elements which are in $\A$ extra to one element in each congruence class, i.e., $\#A=|m_\beta(1)|+k$.  For $d\in\Lambda+\A$, the value $\phi(d,\dots,d)\in\A$ is not congruent to 0 as it is nonzero and the class containing zero has only one element by the assumption. Therefore, the values  $\phi(d,\dots,d)\in\A$ for $|m_\beta(1)|+k$ distinct letters $d\in\Lambda+\A$ belong to only $|m_\beta(1)|-1$ congruence classes. Hence, there exists $e_1,\dots e_k, e_{k+1}\in\A$, pairwise distinct, and $f_1,\dots f_k, f_{k+1}\in\A$ such that $e_i\neq f_i$ and $\phi(e_i+\Lambda,\dots, e_i+\Lambda)\equiv_{\beta-1}\phi(f_i+\Lambda,\dots, f_i+\Lambda)$ for all $i, 1\leq i\leq k+1$. Since 
 $$
-e_i+\Lambda\equiv_{\beta-1}\phi(e_i+\Lambda,\dots, e_i+\Lambda)\equiv_{\beta-1}\phi(f_i+\Lambda,\dots, f_i+\Lambda)\equiv_{\beta-1}f_i+\Lambda
+e_i+\Lambda\equiv_{\beta-1}\phi(e_i+\Lambda,\dots, e_i+\Lambda)\equiv_{\beta-1}\phi(f_i+\Lambda,\dots, f_i+\Lambda)\equiv_{\beta-1}f_i+\Lambda\,.
 $$ 
-also $e_i\equiv_{\beta-1}f_i$ for all $i, 1\leq i\leq k+1$. This is a contradiction since it implies that $\#\A=|m_\beta(1)|+k+1$. Hence, classes containing $\lambda$ and $\Lambda$ have both at least one more other element of the alphabet $\A$, i.e., $\#\A\geq |m_\beta(1)|+2$. 
+also $e_i\equiv_{\beta-1}f_i$ for all $i, 1\leq i\leq k+1$. This is a contradiction since it implies that $\#\A=|m_\beta(1)|+k+1$. Hence, classes containing $\lambda$ and $\Lambda$ have both at least one more  element of the alphabet $\A$, i.e., $\#\A\geq |m_\beta(1)|+2$. 
 \end{proof}
 \komentar{BYLO BY FAJN TO JESTE ZOBECNIT NA abecedu ze Z[OMEGA]}
