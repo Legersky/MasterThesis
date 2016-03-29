@@ -1,36 +1,6 @@
 
 \section{NUTNOST REPREZENTANTU + DOLNI ODHAD VELIKOSTI ABECEDY}
-\begin{thm}
-Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, then the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$. 
-\label{thm:representativesInAlphabet}
-\end{thm}
-\begin{proof}
-The existence of an algorithm for addition with the rewriting rule $x-\beta$ implies that the set $\A[\beta]$ is closed under addition. By the assumption $1\in \A[\beta]$, the set $\NN$ is subset of  $\A[\beta]$. Since $0\in\A$, we have $\beta \cdot \A[\beta] \subset \A[\beta]$. Hence, $\NN[\beta] \subset \A[\beta]$.
 
-For any element  $x=\sum_{i=0}^N x_i \beta^i\in \Zbeta$ there is an element $x'=\sum_{i=0}^N x'_i \beta^i\in \NN[\beta]$ such that $x\equiv_\beta x'$  since $m_\beta (0)\equiv_\beta 0$ and $\beta^i\equiv_\beta 0$. As $x'\in \NN[\beta] \subset \A[\beta]$, we have
-$$
-x\equiv_\beta x'=\sum_{i=0}^{n}a_i\beta^i \equiv_\beta a_0\,,
-$$
-where $a_i\in \A$. Hence, for any element $x\in\Zomega$, there is a letter $a_0\in\A$ such that $x\equiv_\beta a_0$.
-
-In order to prove that there is at least one representative of each congruence class modulo $\beta-1$ in the alphabet $\A$, we consider again an element $x=\sum_{i=0}^N x_i \beta^i\in \Zbeta$. Similarly, there is an element $x'=\sum_{i=0}^N x'_i \beta^i\in \NN[\beta]$ such that $x\equiv_{\beta-1} x'$  since $m_{\beta-1} (0)\equiv_{\beta-1} 0$ and $(\beta-1)^i\equiv_{\beta-1} 0$.
-
-Since $x'\in \NN[\beta]\subset \A[\beta]$,
-$$
-x'=\sum_{i=0}^{n}a_i\beta^i\,,
-$$
-where $a_i\in \A$. We prove by induction with respect to $n$ that $x'\equiv_{\beta-1} a$ for some $a\in\A$.
-If $n=0$, $x'=a_0$. Now we use the fact that if there is a parallel addition algorithm, for each letter $b \in\A+\A$, there is $a\in\A$ such that $b \equiv_{\beta-1} a$ ODKAZ NA PRISLUSNOU VETU. For $n+1$, we have
-\begin{align*}
-x'&=\sum_{i=0}^{n+1}a_i\beta^i =a_0 + \sum_{i=1}^{n+1}a_{i}\beta^i\\
-    &=a_0 + \beta \sum_{i=0}^{n}a_{i+1}\beta^i - \sum_{i=0}^{n}a_{i+1}\beta^i+ \sum_{i=0}^{n}a_{i+1}\beta^i \\
-    &\equiv_{\beta-1} a_0 + (\beta-1)\sum_{i=0}^{n}a_{i+1}\beta^i + a \equiv_{\beta-1}a_0 +a \equiv_{\beta-1}a' \in\A\,,
-\end{align*}
-where we use the induction assumption
-$$
-\sum_{i=0}^{n}a_{i+1}\beta^i\equiv_{\beta-1} a\,.
-$$
-\end{proof}
 
 
 For our purposes, we recall the proof of the following theorem for a parallel digit set conversion without anticipation. The full version can be found in \cite{minAlph}.
@@ -115,7 +85,37 @@ This contradicts that $\Lambda$ positive as it is a nonzero, maximal element of 
 \end{proof}
 
 
+\begin{thm}
+Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, then the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$. 
+\label{thm:representativesInAlphabet}
+\end{thm}
+\begin{proof}
+The existence of an algorithm for addition with the rewriting rule $x-\beta$ implies that the set $\A[\beta]$ is closed under addition. By the assumption $1\in \A[\beta]$, the set $\NN$ is subset of  $\A[\beta]$. Since $0\in\A$, we have $\beta \cdot \A[\beta] \subset \A[\beta]$. Hence, $\NN[\beta] \subset \A[\beta]$.
 
+For any element  $x=\sum_{i=0}^N x_i \beta^i\in \Zbeta$ there is an element $x'=\sum_{i=0}^N x'_i \beta^i\in \NN[\beta]$ such that $x\equiv_\beta x'$  since $m_\beta (0)\equiv_\beta 0$ and $\beta^i\equiv_\beta 0$. As $x'\in \NN[\beta] \subset \A[\beta]$, we have
+$$
+x\equiv_\beta x'=\sum_{i=0}^{n}a_i\beta^i \equiv_\beta a_0\,,
+$$
+where $a_i\in \A$. Hence, for any element $x\in\Zomega$, there is a letter $a_0\in\A$ such that $x\equiv_\beta a_0$.
+
+In order to prove that there is at least one representative of each congruence class modulo $\beta-1$ in the alphabet $\A$, we consider again an element $x=\sum_{i=0}^N x_i \beta^i\in \Zbeta$. Similarly, there is an element $x'=\sum_{i=0}^N x'_i \beta^i\in \NN[\beta]$ such that $x\equiv_{\beta-1} x'$  since $m_{\beta-1} (0)\equiv_{\beta-1} 0$ and $(\beta-1)^i\equiv_{\beta-1} 0$.
+
+Since $x'\in \NN[\beta]\subset \A[\beta]$,
+$$
+x'=\sum_{i=0}^{n}a_i\beta^i\,,
+$$
+where $a_i\in \A$. We prove by induction with respect to $n$ that $x'\equiv_{\beta-1} a$ for some $a\in\A$.
+If $n=0$, $x'=a_0$. Now we use the fact that if there is a parallel addition algorithm, for each letter $b \in\A+\A$, there is $a\in\A$ such that $b \equiv_{\beta-1} a$ (Theorem~\ref{thm:reprBetaMinusOne}). For $n+1$, we have
+\begin{align*}
+x'&=\sum_{i=0}^{n+1}a_i\beta^i =a_0 + \sum_{i=1}^{n+1}a_{i}\beta^i\\
+    &=a_0 + \beta \sum_{i=0}^{n}a_{i+1}\beta^i - \sum_{i=0}^{n}a_{i+1}\beta^i+ \sum_{i=0}^{n}a_{i+1}\beta^i \\
+    &\equiv_{\beta-1} a_0 + (\beta-1)\sum_{i=0}^{n}a_{i+1}\beta^i + a \equiv_{\beta-1}a_0 +a \equiv_{\beta-1}a' \in\A\,,
+\end{align*}
+where we use the induction assumption
+$$
+\sum_{i=0}^{n}a_{i+1}\beta^i\equiv_{\beta-1} a\,.
+$$
+\end{proof}
 
 \begin{thm}
 Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, then
@@ -130,8 +130,26 @@ $$
 \begin{proof}
 By Theorem~\ref{thm:representativesInAlphabet}, there are all representatives modulo $\beta$ and modulo $\beta-1$ in the alphabet $\A$. The numbers of congruence classes are $|m_\beta(0)|$ and $|m_{\beta-1}(0)|$ by Theorem~\ref{thm:numbCongruenceClasses}. Obviously, $m_{\beta-1}(x) = m_\beta (x+1)$. Thus $m_{\beta-1}(0) = m_\beta (1)$.
 
-According to Lemma \komentar{dopsat}, we may asssume that $\beta$ is real and greater than 1 in the proof of the second part. The assumption $1\in \A[\beta]$ implies that $\Lambda>0$. Thus, there are at least three elements in the alphabet $\A$, because $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$ by Lemma \ref{lem:alphaRestrictions}. It also implies that there are at least two representatives modulo $\beta-1$ in the alphabet in the class which contains $\Lambda$, since $\phi(\Lambda,\dots,\Lambda)\equiv_{\beta-1} \Lambda$. Suppose now that $\lambda\neq 0$. Then $\phi(\lambda,\dots,\lambda)\neq \lambda$ and hence there is one more element in the alphabet in the class containing $\lambda$. If $\lambda\not\equiv_{\beta-1}\Lambda$, there are at least two congruence classes which contain at least two elements of the alphabet $\A$. Therefore, $\#\A\geq |m_\beta(1)|+2$. Otherwise, if $\lambda\equiv_{\beta-1}\Lambda$, there must be one more element of the alphabet $\A$ in this class, since still $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$. Therefore, $\#\A\geq |m_\beta(1)|+2$, again.
+According to Lemma \komentar{dopsat}, we may asssume that $\beta$ is real and greater than 1 in the proof of the second part. The assumption $1\in \A[\beta]$ implies that $\Lambda>0$. Thus, there are at least three elements in the alphabet $\A$, because $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$ by Lemma \ref{lem:alphaRestrictions}. It also implies that there are at least two representatives modulo $\beta-1$ in the alphabet in the class which contains $\Lambda$, since $\phi(\Lambda,\dots,\Lambda)\equiv_{\beta-1} \Lambda$.  
 
+If $\lambda\equiv_{\beta-1}\Lambda$, there must be one more element of the alphabet $\A$ in this class, since $\lambda \neq \Lambda$. Therefore, $\#\A\geq |m_\beta(1)|+2$. 
+
+The case that $\lambda\not\equiv_{\beta-1}\Lambda$ is divided into two subcases. Suppose now that $\lambda\neq 0$. Then $\phi(\lambda,\dots,\lambda)\neq \lambda$ and hence there is one more element in the alphabet in the class containing $\lambda$. Thus, there are at least two congruence classes which contain at least two elements of the alphabet $\A$. Therefore, $\#\A\geq |m_\beta(1)|+2$.
+
+%If $\lambda=0$, then all elements of $\A+\A$ are nonnegative and $\phi(b,\dots,b)\neq 0$ for all $b\in(\A+\A)\setminus 0$. Suppose for contradiction, that there is only $|m_\beta(1)|+1$ elements in $\A$ -- one in each congruence class modeulo $\beta-1$ and one more in the class which contains $\Lambda$. The set $\mathcal{D}=\{\phi(d,\dots,d)\colon d\in\Lambda+\A\}\subset\A$ has $|m_\beta(1)|+1$ elements, but none of them is congruent to 0 as there are nonzero and the class containing zero has only one element by the assumption. Therefore, the elements of the set $\mathcal{D}$ belong to only $|m_\beta(1)|-1$ congruence classes. Hence, there exists $e,f,g,h\in\A, e\neq f,g\neq h, h\neq f$ such that $\phi(e+\Lambda,\dots, e+\Lambda)\equiv_{\beta-1}\phi(f+\Lambda,\dots, f+\Lambda)$ and $\phi(g+\Lambda,\dots, g+\Lambda)=\phi(h+\Lambda,\dots, h+\Lambda)$. Since 
+%$$
+%e+\Lambda\equiv_{\beta-1}\phi(e+\Lambda,\dots, e+\Lambda)\equiv_{\beta-1}\phi(f+\Lambda,\dots, f+\Lambda)\equiv_{\beta-1}f+\Lambda
+%$$
+%and
+%$$
+%g+\Lambda\equiv_{\beta-1}\phi(g+\Lambda,\dots, g+\Lambda)=\phi(h+\Lambda,\dots, h+\Lambda)\equiv_{\beta-1}h+\Lambda\,,
+%$$ 
+%also $e\equiv_{\beta-1}f$ and $g\equiv_{\beta-1}h$ which is a contradiction. In the same manner, the assumption that there is no nonzero element of the alphabet $\A$ which is congruent to 0 leads to contradiction for arbitrarily large alphabet.
+
+If $\lambda=0$, then all elements of $\A+\A$ are nonnegative and $\phi(b,\dots,b)\neq 0$ for all $b\in(\A+\A)\setminus 0$. Suppose for contradiction, that there is no nonzero element of the alphabet $\A$ congruent to 0. We know that there is at least one represenative of each congruence class class modulo $\beta-1$ in $\A$ and at least two representatives in the congruence class which contains $\Lambda$. Let $k\in\NN$ denote the number of elements which are in $\A$ extra to one element in each congruence class, i.e., $\#A=|m_\beta(1)|+k$.  For $d\in\Lambda+\A$, the value $\phi(d,\dots,d)\in\A$ is not congruent to 0 as it is nonzero and the class containing zero has only one element by the assumption. Therefore, the values  $\phi(d,\dots,d)\in\A$ for $\#\A$ distinct letters $d\in\Lambda+\A$ belong to only $|m_\beta(1)|-1$ congruence classes. Hence, there exists $e_1,\dots e_k, e_{k+1}\in\A$ pairwise distinct and $f_1,\dots f_k, f_{k+1}\in\A$ such that $e_i\neq f_i$ and $\phi(e_i+\Lambda,\dots, e_i+\Lambda)\equiv_{\beta-1}\phi(f_i+\Lambda,\dots, f_i+\Lambda)$ for all $i, 1\leq i\leq k+1$. Since 
+$$
+e_i+\Lambda\equiv_{\beta-1}\phi(e_i+\Lambda,\dots, e_i+\Lambda)\equiv_{\beta-1}\phi(f_i+\Lambda,\dots, f_i+\Lambda)\equiv_{\beta-1}f_i+\Lambda
+$$ 
+also $e_i\equiv_{\beta-1}f_i$ for all $i, 1\leq i\leq k+1$. This is a contradiction since it implies that $\#\A=|m_\beta(1)|+k+1$. Hence, classes containing $\lambda$ and $\Lambda$ have both at least one more other element of the alphabet $\A$, i.e., $\#\A\geq |m_\beta(1)|+2$. 
 \end{proof}
-
 \komentar{BYLO BY FAJN TO JESTE ZOBECNIT NA abecedu ze Z[OMEGA]}
