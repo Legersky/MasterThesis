@@ -11,8 +11,15 @@
 \usepackage[fixlanguage]{babelbib}
 \selectbiblanguage{english}
 
-\input{commands.tex}    
 
+
+\input{commands.tex}    
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[chapter]
+\newtheorem{exmp}{Example}[chapter]
 
 \begin{document}
 
