@@ -1,1 +1,31 @@
-sdv
+\begin{defn}
+Let $\B$ be an alphabet of input digits. We say that Phase 2 is \emph{stable}, if the following conditions on the sets of possible weight coefficients which are produced by the algorithm hold: 
+\begin{enumerate}[i)]
+	\item $\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$,
+	\item $\Qw{1}{k}=\Qw{1}{(k+1)} \implies \Qwo{k}=\Qwo{(k+1)}$
+\end{enumerate}
+for all $k\in\NN$ and for all $w_0, \dots, w_{-k} \in \B$.
+\end{defn}
+
+\komentar{okomentovat, co to znamena}
+
+\begin{defn}
+Let $\B$ be an alphabet of input digits. Let Phase 2 is stable. Let $k\in\NN, k\geq 2$. We set
+$$
+V:=\left\{(w_{-1}, \dots, w_{-k})\in\B^k\} \colon \#\Qw{1}{k}=\#\Qw{1}{(k-1)}\right\}
+$$
+and
+$$
+E:=\left\{(w_{-1}, \dots, w_{-k})\rightarrow(w'_{-1}, \dots, w'_{-k})\in V\times V \colon (w_{-2}, \dots, w_{-k})=(w'_{-1}, \dots, w'_{-(k-1)})\right\}\,.
+$$
+The oriented graph $G_k=(V,E)$ is called \emph{Rauzy graph of Phase 2 (for the window of length~$k$)}.
+\end{defn}
+
+\begin{thm}
+Let Phase 2 is stable. Let there exist $k\in\NN, k\geq 2$ such that:
+\begin{enumerate}[i)]
+	\item $\exists (w_0, \dots, w_{k})\in\B^{k+1}$ such that $\#\Qwo{k}>1$,
+	\item there exist an infinite walk $((w_{-1}^i,\dots, w_{-k}^i))_{i\geq 0}$ in $G_k$ which starts with the edge $$(w_{0}, \dots, w_{-(k-1)})\rightarrow(w_{-1}, \dots, w_{-k})\,,$$ where $G_k$ is the Rauzy graph of Phase 2 for the window of length $k$.
+\end{enumerate}
+Phase 2 does not converge.
+\end{thm}
