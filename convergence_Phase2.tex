@@ -63,9 +63,9 @@ If $\#\Qb{m_0}\geq 2$, then the statement \textit{iii)} in Lemma~\ref{lem:equiva
 Let $\B$ be an alphabet of input digits. We say that Phase~2 is \emph{stable}, if the following conditions on the sets of possible weight coefficients which are produced by the algorithm hold: 
 \begin{enumerate}[i)]
 	\item $\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$,
-	\item $\Qw{1}{k}=\Qw{1}{(k+1)} \implies \Qwo{k}=\Qwo{(k+1)}$
+	\item $\Qw{1}{k}=\Qw{1}{(k-1)} \implies \Qwo{k}=\Qwo{(k-1)}$
 \end{enumerate}
-for all $k\in\NN$ and for all $\tupleo{(k+1)} \in \B^{k+2}$.
+for all $k\in\NN, k\geq 2$ and for all $\tupleo{(k+1)} \in \B^{k+1}$.
 \end{defn}
 
 \komentar{okomentovat, co to znamena}
@@ -83,17 +83,32 @@ The oriented graph $G_k=(V,E)$ is called \emph{Rauzy graph of Phase~2 (for the w
 \end{defn}
 
 \begin{thm}
-Let Phase~2 is stable. Let $k_0\in\NN, k_0\geq 2$ and $G_{k_0}$ be a Rauzy graph of Phase~2 for the window of length $k_0$.  If there exists  $\tupleo{k_0}\in\B^{k_0+1}$ such that
+Let Phase~2 is stable.  If there exists $k_0\in\NN, k_0\geq 2$, and $\tupleo{k_0}\in\B^{k_0+1}$ such that
 \begin{enumerate}[i)]
-	\item $\#\Qwo{(k_0-1)}=\#\Qwo{k_0}>1$ and
+	\item $\#\Qwo{(k_0-1)}>1$ and
 	\item there exist an infinite walk $(\tuple[w^{(i)}]{1}{k_0})_{i\geq 1}$ in $G_{k_0}$ which starts in the vertex  $$\tuple[w^{(1)}]{1}{k_0}=\tuple{1}{k_0}\,,$$ 
 \end{enumerate}
 then Phase~2 does not converge.
 \end{thm}
 \begin{proof}
-We prove that the sequence $(w_k)_{k\geq 0}:=w_0, w_1, \dots , w_{k_0-1}, w_{k_0}, w_{k_0}^{(2)},w_{k_0}^{(3)},w_{k_0}^{(4)},\dots$ satisfies condition \textit{iii)} in Lemma~\ref{lem:equivalentStatementsForNonConvergenePhaseTwo}, i.e., $\#\Qwo{k}$ is constant for $k\geq k_0$.
-\end{proof}
+Set
+$$(w_k)_{k\geq 0}:=w_0, w_1^{(1)}, \dots , w^{(1)}_{k_0-1}, w^{(1)}_{k_0}, w_{k_0}^{(2)},w_{k_0}^{(3)},w_{k_0}^{(4)},\dots$$
+We prove that $\#\Qwo{k}=\#\Qwo{(k_0-1)}>1$ for all $k\geq k_0-1$, i.e., the condition \textit{iii)} in Lemma~\ref{lem:equivalentStatementsForNonConvergenePhaseTwo} is satisfied.
 
+%The general ideas of the proof are following: if $\tuple[w']{1}{k_0}$ is a vertex of $G_{k_0}$, then $$\Qw[w']{1}{(k_0-1)}=\Qw[w']{1}{k_0}\,.$$ And the assumption that Phase~2 is stable implies that $$\Qw[w']{1}{(k_0-1)}=\Qw[w']{1}{k_0}\implies \Qwo[w']{(k_0-1)}=\Qwo[w']{k_0}$$ for all $w'_0\in\B$.
+
+%Now we show that $\Qwo{k}=\Qwo{(k+1)}$ for all $k\geq k_0-1$. 
+Let $l\in\NN$. Since $\tuple{(1+l)}{(k_0+l)}$ is a vertex of $G_{k_0}$, the set $\Qw{l}{(k_0+l)}$ equals $\Qw{l}{(k_0+l-1)}$. As Phase~2 is stable, we have
+\begin{align*}
+\Qw{l}{(k_0+l)}&=\Qw{l}{(k_0+l-1)}\\
+\implies \Qw{(l-1)}{(k_0+l)}&=\Qw{(l-1)}{(k_0+l-1)}\\
+&\vdots \\
+\implies \Qw{1}{(k_0+l)}&=\Qw{1}{(k_0+l-1)}\\
+\implies \Qwo{(k_0+l)}&=\Qwo{(k_0+l-1)}\,.
+\end{align*}
+Hence, $\#\Qwo{k}=\#\Qwo{(k_0-1)}>1$ for all $k\geq k_0-1$.
+\end{proof}
+\komentar{bylo by fajn dokazat i opacny smer, jedine, pres co se neumim dostat je kdyby existovala jen aperiodicka posloupnoust, kvuli ktere to nekonverguje}
 
 
 

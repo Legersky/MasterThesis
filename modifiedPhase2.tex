@@ -10,21 +10,24 @@ Until the set $\Qb{m}$ contains only one element, we increment the length of  wi
 $$
 b + \Qb{m} \subset \A + \beta \Qb{m+1}\,.
 $$
-In addition, we check whether the set $\Qb{m+1}$ is strictly smaller than the set $\Qb{m}$. If not, we know by Theorem \ref{thm:stoppingCondition} that Phase 2 does not converge because of the input digits $bb\dots b$.
+In addition, we check whether the set $\Qb{m+1}$ is strictly smaller than the set $\Qb{m}$. If not, we know by Theorem \ref{thm:bbbCondition} that Phase 2 does not converge because of the input digits $bb\dots b$.
 
 Thus, running of Algorithm \ref{alg:oneletterSets} for each input digit $b\in\B$ can reveal non-finiteness of Phase~2.
 
+\end{upravit}
+
 \begin{algorithm}
-  \caption{Check input $bb\dots b$}
+  \caption{Check the input $bb\dots b$}
     \label{alg:oneletterSets}
   \begin{algorithmic}[1]
     \REQUIRE{Weight coefficient set $\Q$, digit $b\in\B$}
-    \STATE $m:=1$
+    \ENSURE{TRUE if there is a unique weight coefficient for input $bb\dots b$, False otherwise}
     \STATE Find minimal set $\Qb{1} \subset \Q$ such that
       $$
       b + \Q \subset \A + \beta \Qb{1}\,.
       $$
       \vspace{-20pt}
+    \STATE $m:=1$
     \WHILE{$\#\Qb{m} > 1$}
         \STATE $m:= m +1$
         \STATE By Algorithm \ref{alg:minimalSet}, find minimal set $\Qb{m} \subset \Qb{m-1}$ such that
@@ -33,11 +36,47 @@ Thus, running of Algorithm \ref{alg:oneletterSets} for each input digit $b\in\B$
           $$  
           \vspace{-20pt}
         \IF{$\#\Qb{m}=\#\Qb{m-1}$}
-            \RETURN Phase 2 does not converge for input $bb\dots b$.
+            \RETURN FALSE
         \ENDIF
     \ENDWHILE  
-    \RETURN Weight coefficient for input $bb\dots b$ is the only element of $\Qb{m}$.
+    \RETURN TRUE
   \end{algorithmic}
 \end{algorithm}
 
-\end{upravit}
+
+\begin{algorithm}
+  \caption{Modified search for a weight function (Phase 2)}
+    \label{alg:weightFunction_modified}
+  \begin{algorithmic}[1]
+    \REQUIRE{weight coefficients set $\Q$}
+    \FORALL{$b\in\B$}
+    	\IF  {\NOT Check the input $bb\dots b$ by Algorithm \ref{alg:oneletterSets}}
+    		\RETURN Phase 2 does not converge for input $bb\dots b$
+    	\ENDIF
+    \ENDFOR
+    \FORALL{$w_0 \in \B$} 
+        \STATE By Algorithm~\ref{alg:minimalSet}, find set $\Q_{[w_0]} \subset \Q$ such that
+          $$
+          w_0 + \Q \subset \A + \beta \Q_{[w_0]}
+          $$\vspace{-20pt}
+    \ENDFOR
+    \STATE $k:=0$
+    \WHILE{$\max\{\#\Qwo{k}:\tupleo{k} \in \B^{k+1} \} > 1$}
+        \STATE $k:= k +1$
+        \FORALL{$\tupleo{k} \in \B^{k+1}$}
+            \STATE By Algorithm~\ref{alg:minimalSet}, find set $\Qwo{k} \subset \Qwo{(k-1)}$ such that
+              $$
+              w_j + \Qw{1}{k} \subset \A + \beta \Qwo{k}\,,
+              $$\vspace{-20pt}
+              \IF {ygtv0}
+              	\STATE dkfjgn
+              \ENDIF
+        \ENDFOR  
+    \ENDWHILE  
+    \STATE $r:= k$ 
+    \FORALL{$\tupleo{r} \in \B^{r+1}$}  
+        \STATE $q\tupleo{r}:=$ only element of $\Qwo{r}$
+    \ENDFOR
+    \RETURN $q$
+  \end{algorithmic}
+\end{algorithm}
