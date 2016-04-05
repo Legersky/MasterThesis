@@ -51,7 +51,7 @@ Thus, running of Algorithm \ref{alg:oneletterSets} for each input digit $b\in\B$
     \REQUIRE{weight coefficients set $\Q$}
     \FORALL{$b\in\B$}
     	\IF  {\NOT Check the input $bb\dots b$ by Algorithm \ref{alg:oneletterSets}}
-    		\RETURN Phase 2 does not converge for input $bb\dots b$
+    		\RETURN Phase 2 does not converge for input $bb\dots b$.
     	\ENDIF
     \ENDFOR
     \FORALL{$w_0 \in \B$} 
@@ -61,16 +61,21 @@ Thus, running of Algorithm \ref{alg:oneletterSets} for each input digit $b\in\B$
           $$\vspace{-20pt}
     \ENDFOR
     \STATE $k:=0$
+    %\STATE $G_0:=$ empty graph
     \WHILE{$\max\{\#\Qwo{k}:\tupleo{k} \in \B^{k+1} \} > 1$}
         \STATE $k:= k +1$
         \FORALL{$\tupleo{k} \in \B^{k+1}$}
-            \STATE By Algorithm~\ref{alg:minimalSet}, find set $\Qwo{k} \subset \Qwo{(k-1)}$ such that
+            \STATE By Algorithm~\ref{alg:possibleWeightCoefSetStable}, find set $\Qwo{k} \subset \Qwo{(k-1)}$ such that
               $$
-              w_j + \Qw{1}{k} \subset \A + \beta \Qwo{k}\,,
+              w_j + \Qw{1}{k} \subset \A + \beta \Qwo{k}\,.
               $$\vspace{-20pt}
-              \IF {ygtv0}
-              	\STATE dkfjgn
+              \IF {$\Qwo{k} = \Qwo{(k-1)}$ \AND $k\geq 2$}
+              	\STATE Add the vertex $\tupleo{k}$ to the Rauzy graph $G_{k+1}$.
+              	\IF{Check infinite walks in $G_k$ starting in $\tuple{1}{k}$ by Alg.~\ref{alg:checkCycles}}
+              		\RETURN Phase 2 does not converge.
+              	\ENDIF
               \ENDIF
+     %    	\STATE $G_{k}:=G_{k+1}$
         \ENDFOR  
     \ENDWHILE  
     \STATE $r:= k$ 
@@ -78,5 +83,23 @@ Thus, running of Algorithm \ref{alg:oneletterSets} for each input digit $b\in\B$
         \STATE $q\tupleo{r}:=$ only element of $\Qwo{r}$
     \ENDFOR
     \RETURN $q$
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Stable search for possible weight coefficient set $\Qwo{k}$}
+    \label{alg:possibleWeightCoefSetStable}
+  \begin{algorithmic}[1]
+    \REQUIRE{???}
+	\STATE \komentar{nejak popsat podle ruznych metod}
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Check if there is in an infinite walk in $G_k$ starting in $\tuple{1}{k}$}
+    \label{alg:checkCycles}
+  \begin{algorithmic}[1]
+    \REQUIRE{???}
+	\STATE \komentar{popsat}
   \end{algorithmic}
 \end{algorithm}
