@@ -39,7 +39,7 @@ Hence, $a=\phi(b, \dots,b)\equiv b$ modulo $\beta-1$.
 
 The following lemma is a modification of lemma in \cite{minAlph}.
 \begin{lem}
-\label{lem:alphaRestrictions}
+\label{lem:alphabetRestrictions}
 Let $\omega$ be a real algebraic integer and the base $\beta\in\Zomega$ be such that $\beta>1$. Let the alphabet $\A\subset\Zomega$ be such that $0\in\A$ and denote $\lambda=\min \A$ and $\Lambda=\max \A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then:
 \begin{enumerate}[i)]
 	\item $\phi(b,\dots,b)\neq \lambda$ for all $b\in\A+\A$ such that $b>\lambda$.
@@ -152,7 +152,7 @@ $$
 \begin{proof}
 By Theorem~\ref{thm:representativesInAlphabet}, there are all representatives modulo $\beta$ and modulo $\beta-1$ in the alphabet $\A$. The numbers of congruence classes are $|m_\beta(0)|$ and $|m_{\beta-1}(0)|$ by Theorem~\ref{thm:numbCongruenceClasses}. Obviously, $m_{\beta-1}(x) = m_\beta (x+1)$. Thus $m_{\beta-1}(0) = m_\beta (1)$.
 
-Let $\phi$ be a mapping which defines the parallel addition. According to Lemma~\ref{lem:parAddAlgForConjugate}, we may asssume that $\beta$ is real and greater than 1 in the proof of the second part. The assumption $1\in \A[\beta]$ implies that $\Lambda>0$. Thus, there are at least three elements in the alphabet $\A$, because $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$ by Lemma \ref{lem:alphaRestrictions}. It also implies that there are at least two representatives modulo $\beta-1$ in the alphabet in the class which contains $\Lambda$, since $\phi(\Lambda,\dots,\Lambda)\equiv_{\beta-1} \Lambda$.  
+Let $\phi$ be a mapping which defines the parallel addition. According to Lemma~\ref{lem:parAddAlgForConjugate}, we may asssume that $\beta$ is real and greater than 1 in the proof of the second part. The assumption $1\in \A[\beta]$ implies that $\Lambda>0$. Thus, there are at least three elements in the alphabet $\A$, because $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$ by Lemma \ref{lem:alphabetRestrictions}. It also implies that there are at least two representatives modulo $\beta-1$ in the alphabet in the class which contains $\Lambda$, since $\phi(\Lambda,\dots,\Lambda)\equiv_{\beta-1} \Lambda$.  
 
 If $\lambda\equiv_{\beta-1}\Lambda$, there must be one more element of the alphabet $\A$ in this class, since $\lambda \neq \Lambda$. Therefore, $\#\A\geq |m_\beta(1)|+2$. 
 

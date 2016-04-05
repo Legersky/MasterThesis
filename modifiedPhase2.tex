@@ -1,0 +1,43 @@
+
+
+\begin{upravit}
+ Now we describe Algorithm \ref{alg:oneletterSets} which checks whether Phase~2 stops when it processes input digits $bb\dots b$.
+For arbitrary $m$, sets $\Qb{m}$  can be easily constructed separately for each $b\in\B$. We build the set $\Qb{m}$ for input digits $bb\dots b$ in the same way as in Phase 2. This means that we first search for $\Qb{}$ such that 
+$$
+b + \Q \subset \A + \beta \Qb{}\,.
+$$
+Until the set $\Qb{m}$ contains only one element, we increment the length of  window $m$ and, using Algorithm \ref{alg:minimalSet}, we build the subset $\Qb{m+1}$ of the set $\Qb{m}$ such that
+$$
+b + \Qb{m} \subset \A + \beta \Qb{m+1}\,.
+$$
+In addition, we check whether the set $\Qb{m+1}$ is strictly smaller than the set $\Qb{m}$. If not, we know by Theorem \ref{thm:stoppingCondition} that Phase 2 does not converge because of the input digits $bb\dots b$.
+
+Thus, running of Algorithm \ref{alg:oneletterSets} for each input digit $b\in\B$ can reveal non-finiteness of Phase~2.
+
+\begin{algorithm}
+  \caption{Check input $bb\dots b$}
+    \label{alg:oneletterSets}
+  \begin{algorithmic}[1]
+    \REQUIRE{Weight coefficient set $\Q$, digit $b\in\B$}
+    \STATE $m:=1$
+    \STATE Find minimal set $\Qb{1} \subset \Q$ such that
+      $$
+      b + \Q \subset \A + \beta \Qb{1}\,.
+      $$
+      \vspace{-20pt}
+    \WHILE{$\#\Qb{m} > 1$}
+        \STATE $m:= m +1$
+        \STATE By Algorithm \ref{alg:minimalSet}, find minimal set $\Qb{m} \subset \Qb{m-1}$ such that
+          $$
+          b + \Qb{m-1} \subset \A + \beta \Qb{m}\,.
+          $$  
+          \vspace{-20pt}
+        \IF{$\#\Qb{m}=\#\Qb{m-1}$}
+            \RETURN Phase 2 does not converge for input $bb\dots b$.
+        \ENDIF
+    \ENDWHILE  
+    \RETURN Weight coefficient for input $bb\dots b$ is the only element of $\Qb{m}$.
+  \end{algorithmic}
+\end{algorithm}
+
+\end{upravit}

@@ -1,0 +1,109 @@
+\begin{lem}
+\label{lem:equivalentStatementsForNonConvergenePhaseTwo}
+The following statements are equivalent:
+\begin{enumerate}[i)]
+	\item Phase~2 does not converge,
+	\item $\forall \,k\in \NN \,\exists\, \tupleo{k}\in\B^{k+1} \colon \#\Qwo{k}\geq 2$,
+	\item $\exists \,(w_{-k})_{k\geq 0}, w_{-k}\in\B \,\exists\, k_0\forall k\geq k_0 \colon \#\Qwo{k}=\#\Qwo{(k-1)}\geq 2$.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+\textit{i)}$\iff$\textit{ii):} The while loop in Algorithm~\ref{alg:weightFunction} ends if and only if there exist $k\in\NN$ such that $\#\Qwo{k}=1$ for all $\tupleo{k}\in\B^{k+1}$.
+
+\textit{ii)}$\iff$\textit{iii):} There is an infinite sequence $(w_{-k})_{k\geq 0}$ such that $\#\Qwo{k}\geq 2$ for all $k\in\NN$ since $\Qwo{k}\supset\Qwo{(k+1)}$. Hence, the sequence of integers $(\#\Qwo{k})_{k\geq 0}$ is eventually constant. The opposite implication is trivial.
+\end{proof}
+
+\begin{upravit}
+For shorter notation, set 
+$$
+\Qb{m}:=\Q_{[\underbrace{\scriptstyle b,\dots,b}_m]}
+$$ for $m \in \NN$ and $b\in\B$.
+
+Obviously, finiteness of Phase~2 implies that there exists a length of window $M$ such that the set $\Qb{m}$ contains only one element for all $b\in\B$. 
+The following theorem is used for the construction of Algorithm \ref{alg:oneletterSets} which checks this necessary condition. 
+\end{upravit}
+
+
+\begin{thm}
+\label{thm:bbbCondition}
+Let $m_0 \in \NN$ and $b\in\B$ be such that sets $\Qb{m_0}$ and $\Qb{m_0-1}$ produced by deterministic Algorithm \ref{alg:minimalSet} within Phase~2 have the same size. Then
+$$
+    \#\Qb{m} = \#\Qb{m_0} \qquad \forall m\geq m_0-1\,.
+$$ 
+Particularly, if $\#\Qb{m_0}\geq 2$, Phase~2 does not converge.
+\end{thm}
+\begin{proof}
+We prove the base case of induction with respect to $m$. For $m=m_0+1$, the set $\Qb{m_0+1}$ is found by Algorithm \ref{alg:minimalSet} such that 
+$$
+b + \Qb{m_0} \subset \A + \beta \Qb{m_0+1}\,
+$$
+and set $\Qb{m_0}$ is found by the same algorithm such that
+$$
+b + \Qb{m_0-1} \subset \A + \beta \Qb{m_0}\,.
+$$
+As $\Qb{m_0} \subset \Qb{m_0-1}$, the assumption of the same size implies
+$$
+    \Qb{m_0} = \Qb{m_0-1}\,.
+$$
+It means that Algorithm \ref{alg:minimalSet} runs with the same input and hence
+$$
+\Qb{m_0+1}=\Qb{m_0}\,.
+$$
+The inductive step of the proof for $m+1$ is analogous to the base case.
+
+If $\#\Qb{m_0}\geq 2$, then the statement \textit{iii)} in Lemma~\ref{lem:equivalentStatementsForNonConvergenePhaseTwo} holds for the sequence $(b)_{k\geq 0}$.
+%Phase~2 ends when there is only one element in $\Q_{[w_j,\dots, w_{j-m+1}]}$ for all $(w_j,\dots, w_{j-m+1}) \in \B^m$ for some fixed length of window $m$. But if $\#\Qb{m_0}\geq 2$, size of $\Q_{[b,\dots,b]}$ does not decrease despite of extending the length of window.
+\end{proof}
+
+
+
+
+
+\begin{defn}
+Let $\B$ be an alphabet of input digits. We say that Phase~2 is \emph{stable}, if the following conditions on the sets of possible weight coefficients which are produced by the algorithm hold: 
+\begin{enumerate}[i)]
+	\item $\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$,
+	\item $\Qw{1}{k}=\Qw{1}{(k+1)} \implies \Qwo{k}=\Qwo{(k+1)}$
+\end{enumerate}
+for all $k\in\NN$ and for all $\tupleo{(k+1)} \in \B^{k+2}$.
+\end{defn}
+
+\komentar{okomentovat, co to znamena}
+
+\begin{defn}
+Let $\B$ be an alphabet of input digits. Let Phase~2 is stable. Let $k\in\NN, k\geq 2$. We set
+$$
+V:=\left\{\tuple{1}{k}\in\B^k \colon \#\Qw{1}{k}=\#\Qw{1}{(k-1)}\right\}
+$$
+and
+$$
+E:=\left\{\tuple{1}{k}\rightarrow\tuple[w']{1}{k}\in V\times V \colon \tuple{2}{k}=\tuple[w']{1}{(k-1)}\right\}\,.
+$$
+The oriented graph $G_k=(V,E)$ is called \emph{Rauzy graph of Phase~2 (for the window of length~$k$)}.
+\end{defn}
+
+\begin{thm}
+Let Phase~2 is stable. Let $k_0\in\NN, k_0\geq 2$ and $G_{k_0}$ be a Rauzy graph of Phase~2 for the window of length $k_0$.  If there exists  $\tupleo{k_0}\in\B^{k_0+1}$ such that
+\begin{enumerate}[i)]
+	\item $\#\Qwo{(k_0-1)}=\#\Qwo{k_0}>1$ and
+	\item there exist an infinite walk $(\tuple[w^{(i)}]{1}{k_0})_{i\geq 1}$ in $G_{k_0}$ which starts in the vertex  $$\tuple[w^{(1)}]{1}{k_0}=\tuple{1}{k_0}\,,$$ 
+\end{enumerate}
+then Phase~2 does not converge.
+\end{thm}
+\begin{proof}
+We prove that the sequence $(w_k)_{k\geq 0}:=w_0, w_1, \dots , w_{k_0-1}, w_{k_0}, w_{k_0}^{(2)},w_{k_0}^{(3)},w_{k_0}^{(4)},\dots$ satisfies condition \textit{iii)} in Lemma~\ref{lem:equivalentStatementsForNonConvergenePhaseTwo}, i.e., $\#\Qwo{k}$ is constant for $k\geq k_0$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
