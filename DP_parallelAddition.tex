@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{report}
+\documentclass[11pt,a4paper]{report}	%,twoside,openright
 
 \usepackage{a4wide,cite}
 \usepackage[english]{babel}
@@ -13,6 +13,12 @@
 
 
 
+% fix left/right margins
+%\let\tmp\oddsidemargin
+%\let\oddsidemargin\evensidemargin
+%\let\evensidemargin\tmp
+%\reversemarginpar
+
 \input{commands.tex}    
 \newtheorem{thm}{Theorem}[chapter]
 \newtheorem{lem}[thm]{Lemma}
@@ -22,7 +28,7 @@
 \newtheorem{exmp}{Example}[chapter]
 
 \begin{document}
-
+\tableofcontents
 \input{symbols.tex}
 
 %\chapter*{Introduction}
@@ -39,31 +45,32 @@
 \input{method_description.tex}
 \komentar{konec vlozeni z vyzkumaku}
 
-\chapter{Convergence}
-	\input{congruenceClasses.tex}
-	\input{lowerBound.tex}
+%\chapter{Convergence}
+
 	\input{naturalNorm.tex}
 
-\section{FAZE 1 IFF BETA EXPANDING}
+\section{Convergence of Phase 1}
 	\input{betaExpanding.tex}
 	\input{convergence_Phase1.tex}
 
-\section{Convergence Phase 2}
+\section{Convergence of Phase 2}
 	\input{convergence_Phase2.tex}
-
-
+	
 \section{Modified algorithm for Phase 2}
-\komentar{shrnout Phase 2 s kontrolou bbb, stable podminkou a kontrolou zacykleni}
-\input{modifiedPhase2.tex}
+	\komentar{shrnout Phase 2 s kontrolou bbb, stable podminkou a kontrolou zacykleni}
+	\input{modifiedPhase2.tex}
 
-
-
+\chapter{Minimal alphabet $\A$}
+	\input{congruenceClasses.tex}
+	\input{lowerBound.tex}
 
 \chapter{Design and implementation}
 \komentar{castecne vyuzit z vyzkumaku??}
 \komentar{pridat poznamku o google tabulce, hromadne testovani}
-
+\section{Different choices in Phase 1 and 2}
+\komentar{tady popsat ruzne metody vyberu? nebo to dat nekam jinam?}
 \chapter{Testing}
+\input{testing.tex}
 
 %\chapter*{Summary}
 \newpage
