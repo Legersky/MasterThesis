@@ -25,7 +25,7 @@
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[chapter]
-\newtheorem{exmp}{Example}[chapter]
+\newtheorem{exmp}{Example}
 
 \begin{document}
 \tableofcontents
@@ -34,48 +34,77 @@
 %\chapter*{Introduction}
 
 \chapter{Preliminaries}
-\komentar{vlozeno z vyzkumaku, potrEBA UPRAVIT}
-\input{preliminaries.tex}
-\komentar{konec vlozeni z vyzkumaku}
+	\komentar{vlozeno z vyzkumaku, potrEBA UPRAVIT}
+	\input{preliminaries.tex}
+	\komentar{konec vlozeni z vyzkumaku}
 
 
 
 \chapter{Design of extending window method}
-\komentar{vlozeno z vyzkumaku, potrEBA UPRAVIT}
-\input{method_description.tex}
-\komentar{konec vlozeni z vyzkumaku}
+	\komentar{vlozeno z vyzkumaku, potrEBA UPRAVIT}
+	\input{method_description.tex}
+	\komentar{konec vlozeni z vyzkumaku}
 
-%\chapter{Convergence}
-
+\chapter{\texorpdfstring{Properties of $\Zomega$}{Properties of Z[omega]}}
+	\input{isomorphism.tex}
 	\input{naturalNorm.tex}
+	\input{congruenceClasses.tex}	
+	
+\chapter{Convergence}
 
-\section{Convergence of Phase 1}
+
+	\section{Convergence of Phase 1}
 	\input{betaExpanding.tex}
 	\input{convergence_Phase1.tex}
 
-\section{Convergence of Phase 2}
+	\section{Convergence of Phase 2}
 	\input{convergence_Phase2.tex}
 	
-\section{Modified algorithm for Phase 2}
+	\section{Minimal alphabet $\A$}
+	\input{lowerBound.tex}
+	\komentar{nejaky popis generovani?}
+
+
+\chapter{Modifications of the extending window method}
+
+	\section{Different choices in Phase 1}
+	\komentar{tady popsat ruzne metody vyberu? nebo to dat nekam jinam?}
+	\section{Different choices in Phase 2}
+	\komentar{tady popsat ruzne metody vyberu? nebo to dat nekam jinam?}
 	\komentar{shrnout Phase 2 s kontrolou bbb, stable podminkou a kontrolou zacykleni}
 	\input{modifiedPhase2.tex}
+	
+	
 
-\chapter{Minimal alphabet $\A$}
-	\input{congruenceClasses.tex}
-	\input{lowerBound.tex}
 
 \chapter{Design and implementation}
-\komentar{castecne vyuzit z vyzkumaku??}
-\komentar{pridat poznamku o google tabulce, hromadne testovani}
-\section{Different choices in Phase 1 and 2}
-\komentar{tady popsat ruzne metody vyberu? nebo to dat nekam jinam?}
+	\komentar{castecne vyuzit z vyzkumaku??}
+	\komentar{pridat poznamku o google tabulce, hromadne testovani}
+
+
 \chapter{Testing}
-\input{testing.tex}
+	\input{testing.tex}
 
 %\chapter*{Summary}
 \newpage
 \bibliography{literatura}
 \addcontentsline{toc}{chapter}{References}
 \bibliographystyle{amsplain}
+
+\appendix
+\chapter*{Appendices}
+\pagenumbering{Roman}
+\addcontentsline{toc}{chapter}{Appendices}
+\renewcommand{\thesection}{\Alph{section}}
+
+	\section{Illustration of Phase 1}
+	\komentar{stejne jak ve vyzkumaku?}
+	\section{Illustration of Phase 2}
+	\komentar{stejne jak ve vyzkumaku?}
+	
+	\section{GUI}
+	\komentar{cloud, google tabulka?}
+	\section{Tested examples}
+	\input{examples.tex}
 
 \end{document}
