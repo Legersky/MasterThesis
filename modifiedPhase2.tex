@@ -45,6 +45,9 @@ Hence, non-finiteness of Phase~2 can be revealed by running Algorithm \ref{alg:o
 
 
 \subsection*{Stable Phase 2}
+We remind that for checking whether Phase 2 converges we assume that it is stable. An algorithm of choice of possible weight coefficients set can be easily modified to ensure that 
+$$\Qw{1}{k}=\Qw{1}{(k-1)} \implies \Qwo{k}=\Qwo{(k-1)}$$
+for all $\tuple{1}{k}\in\B^k$. If the algorithm is deterministic, then the set $\Qwo{k}$ is determined by the set $\Qw{1}{k}$, $\Qwo{(k-1)}$ and $w_0$. Similarly, the set $\Qwo{(k-1)}$ is determined by  the set $\Qw{1}{(k-1)}$, $\Qwo{(k-2)}$ and $w_0$.
 
 \begin{algorithm}
   \caption{Stable search for possible weight coefficient set $\Qwo{k}$}
