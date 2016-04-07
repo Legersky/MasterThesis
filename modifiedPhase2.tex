@@ -21,7 +21,7 @@ Thus, running of Algorithm \ref{alg:oneletterSets} for each input digit $b\in\B$
     \label{alg:oneletterSets}
   \begin{algorithmic}[1]
     \REQUIRE{Weight coefficient set $\Q$, digit $b\in\B$}
-    \ENSURE{TRUE if there is a unique weight coefficient for input $bb\dots b$, False otherwise}
+    \ENSURE{TRUE if there is a unique weight coefficient for input $bb\dots b$, FALSE otherwise}
     \STATE Find minimal set $\Qb{1} \subset \Q$ such that
       $$
       b + \Q \subset \A + \beta \Qb{1}\,.
@@ -30,7 +30,7 @@ Thus, running of Algorithm \ref{alg:oneletterSets} for each input digit $b\in\B$
     \STATE $m:=1$
     \WHILE{$\#\Qb{m} > 1$}
         \STATE $m:= m +1$
-        \STATE By Algorithm \ref{alg:minimalSet}, find minimal set $\Qb{m} \subset \Qb{m-1}$ such that
+        \STATE By Algorithm \ref{alg:possibleWeightCoefSetStable}, find minimal set $\Qb{m} \subset \Qb{m-1}$ such that
           $$
           b + \Qb{m-1} \subset \A + \beta \Qb{m}\,.
           $$  
@@ -90,8 +90,15 @@ Thus, running of Algorithm \ref{alg:oneletterSets} for each input digit $b\in\B$
   \caption{Stable search for possible weight coefficient set $\Qwo{k}$}
     \label{alg:possibleWeightCoefSetStable}
   \begin{algorithmic}[1]
-    \REQUIRE{???}
-	\STATE \komentar{nejak popsat podle ruznych metod}
+    \REQUIRE{Input digit $w_0$, set of possible carries $\Qw{1}{k}$, previous set of possible weight coefficients $\Qwo{(k-1)}$}
+	\STATE $\Q'_w:=\Qwo{(k-1)}$
+	\WHILE{TRUE}
+		\STATE By Algorithm \ref{alg:minimalSet}, find the set of possible weight coefficients  $\Qwo{k}$ as a subset of $\Q'_w$ instead of the previous set of weight coefficients $\Qwo{(k-1)}$.
+		\IF{$\Qwo{k}=\Q'_w$}
+			\RETURN $\Qwo{k}$
+		\ENDIF
+		\STATE $\Q'_w:=\Qwo{k}$
+	\ENDWHILE
   \end{algorithmic}
 \end{algorithm}
 
@@ -99,7 +106,76 @@ Thus, running of Algorithm \ref{alg:oneletterSets} for each input digit $b\in\B$
   \caption{Check if there is in an infinite walk in $G_k$ starting in $\tuple{1}{k}$}
     \label{alg:checkCycles}
   \begin{algorithmic}[1]
-    \REQUIRE{???}
-	\STATE \komentar{popsat}
+    \REQUIRE{Rauzy graph $G_k$, combination of input digits $\tuple{1}{k}$}
+    \ENSURE{Return TRUE if TRUE is returned in any step of the recursion, that is when a walk $w_1, w_2, \dots$ enters an oriented cycle in $G_k$. Otherwise return FALSE.}
+	\IF {$\tuple{1}{k}\in G_k$}
+		\STATE By Algorithm~\ref{alg:enterVertices}, enter next vertices from $\tuple{1}{k}$ with the traversed walk  $\tuple{1}{k}$.
+	\ELSE
+		\RETURN FALSE
+	\ENDIF
+	\RETURN FALSE
   \end{algorithmic}
 \end{algorithm}
+
+\begin{algorithm}
+  \caption{Enter vertices from $\tuple[w']{1}{k}$}
+    \label{alg:enterVertices}
+  \begin{algorithmic}[1]
+  	\REQUIRE{Rauzy graph $G_k$, vertex $\tuple[w']{1}{k}$, traversed walk $(w_1, \dots, w_l)$.}
+	\FORALL {$w'_{k+1}\in \B$ such that $\tuple[w']{1}{k}\rightarrow \tuple[w']{2}{(k+1)}\in G_k$}
+		\IF {$\tuple[w']{2}{(k+1)}$ is in the traversed walk $(w_1, \dots, w_l)$}
+			\RETURN TRUE
+		\ELSE
+			\STATE By Algorithm~\ref{alg:enterVertices}, enter next vertices from $\tuple[w']{2}{(k+1)}$ with the traversed walk   $(w_1, \dots, w_l, w'_{(k+1)})$.
+		\ENDIF
+	\ENDFOR
+  \end{algorithmic}
+\end{algorithm}
+
+
+
+\begin{upravit}
+For construction of the set $\Q_{[w_j,\dots, w_{j-m+1}]}$ we first choose such elements of $\Q_{[w_j,\dots, w_{j-m+2}]}$ which are the only possible to cover some value $x \in w_0 + \Q_{[w_{j-1},\dots, w_{j-m+1}]}$. Other elements from $\Q_{[w_j,\dots, w_{j-m+2}]}$ which cover an uncovered value are added one by one to $\Q_{[w_j,\dots, w_{j-m+1}]}$ until each $x$ equals $a+\beta q_j$ for some $q_j$ in $\Q_{[w_j,\dots, w_{j-m+1}]}$ and $a\in\A$. The pseudocode is in Algorithm~\ref{alg:minimalSet}. 
+
+\begin{algorithm}
+  \caption{Search for set $\Q_{[w_j,\dots, w_{j-m+1}]}$ }
+    \label{alg:minimalSet}
+  \begin{algorithmic}[1]
+    \REQUIRE{Input digit $w_j$, set of possible carries $\Q_{[w_{j-1},\dots, w_{j-m+1}]}$, previous set of possible weight coefficients $\Q_{[w_j,\dots, w_{j-m+2}]}$}
+    \STATE \verb+list_of_coverings+:=empty list of lists
+    \FORALL{$x \in w_j + \Q_{[w_{j-1},\dots, w_{j-m+1}]}$}
+        \STATE Build a list \verb+x_covered_by+ of weight coefficients $q_j \in \Q_{[w_j,\dots, w_{j-m+2}]}$ such that 
+        $$
+        x=a+ \beta q_j \qquad\text{for some } a\in\A\,.
+        $$ 
+        \vspace{-20pt}
+        \STATE Append \verb+x_covered_by+ to \verb+list_of_coverings+
+    \ENDFOR
+    \STATE $\Q_{[w_j,\dots, w_{j-m+1}]}$:= empty set
+    \WHILE{\texttt{list\_of\_coverings} is nonempty}
+        \STATE Pick an element $q$ of one of the shortest lists of \verb+list_of_coverings+ 
+            \label{line:pickElement}
+        \STATE Add the element $q$ to $\Q_{[w_j,\dots, w_{j-m+1}]}$
+        \STATE Remove lists of \verb+list_of_coverings+ containing the element $q$ from \verb+list_of_coverings+
+    \ENDWHILE
+    \RETURN $\Q_{[w_j,\dots, w_{j-m+1}]}$
+  \end{algorithmic}
+\end{algorithm}
+
+
+Notice that the result of Algorithm~\ref{alg:minimalSet} is influenced by the way how we pick an element on line~\ref{line:pickElement}. It can be done deterministically or non-deterministically. We use the following deterministic choice -- suppose that we want to choose from elements $x_1=\sum_{i=0}^{d-1}x_{1,i}\omega^i, x_2=\sum_{i=0}^{d-1}x_{2,i}\omega^i, \dots,x_n=\sum_{i=0}^{d-1}x_{n,i}\omega^i\in\Zomega$, where $d$ is the degree of $\omega$. Let $a_0,\dots,a_{d-1}\in\ZZ$ be such that 
+$$
+\sum_{i=0}^{d-1}a_i\omega^i=\sum_{j=1}^n x_j\,.
+$$ 
+Set $c:=\sum_{i=0}^{d-1}c_i\omega^i \in\Zomega$ with $c_i=[\frac{a_i}{n}]$ where $[\cdot]$ denotes rounding to the nearest integer. Let the index set $I_0\subset\{1,\dots,n\}$ be such that 
+$$
+|x_{j,0}-c_0|=\min\{|x_{k,0}-c_0|\colon k\in{1,\dots,n}\}
+$$
+for all $j\in I_0$. For all $i\in\{1,\dots,d-1\}$, let the index set $I_i\subset I_{i-1}$ be such that
+$$
+|x_{j,i}-c_i|=\min\{|x_{k,i}-c_i|\colon k\in I_{i-1}\}
+$$
+for all $j\in I_i$. If there is only one element in the index set $I_{d-1}=\{j_0\}$, choose the element~$x_{j_0}$. Otherwise choose $j_0\in I_{d-1}$ such that $x_{j_0,0}$ is the smallest from all $x_{j,0}$ such that $j\in I_{d-1}$. If there are more such elements, then choose from them according to the value $x_{j,1}$ etc. 
+
+In other words, we take the elements which are the ``closest'' ones to the rounded center of gravity~$c$ of the values $x_1,\dots,x_n$ where ``closest'' is measured by absolute value of the first coordinate of $\pi(x_j)-\pi(c)$. In case of equality, according to the second coordinate etc. If there is more than one such element, we choose the element $x_{j_0}$ with the smallest first, resp. second, etc. coordinate of $\pi(x_{j_0})$.  
+\end{upravit}
