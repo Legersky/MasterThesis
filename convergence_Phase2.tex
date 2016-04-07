@@ -13,6 +13,17 @@ The following statements are equivalent:
 \textit{ii)}$\iff$\textit{iii):} There is an infinite sequence $(w_{-k})_{k\geq 0}$ such that $\#\Qwo{k}\geq 2$ for all $k\in\NN$ since $\Qwo{k}\supset\Qwo{(k+1)}$. Hence, the sequence of integers $(\#\Qwo{k})_{k\geq 0}$ is eventually constant. The opposite implication is trivial.
 \end{proof}
 
+\begin{defn}
+Let $\B$ be an alphabet of input digits. We say that Phase~2 is \emph{stable}, if the following conditions on the sets of possible weight coefficients which are produced by the algorithm hold: 
+\begin{enumerate}[i)]
+	\item $\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$,
+	\item $\Qw{1}{k}=\Qw{1}{(k-1)} \implies \Qwo{k}=\Qwo{(k-1)}$
+\end{enumerate}
+for all $k\in\NN, k\geq 2$ and for all $\tupleo{(k+1)} \in \B^{k+1}$.
+\end{defn}
+
+\komentar{okomentovat, co to znamena, i) mozna neni potreba pokud nebude opacna implikace}
+
 \begin{upravit}
 For shorter notation, set 
 $$
@@ -24,6 +35,8 @@ The following theorem is used for the construction of Algorithm \ref{alg:onelett
 \end{upravit}
 
 
+
+
 \begin{thm}
 \label{thm:bbbCondition}
 Let $m_0 \in \NN$ and $b\in\B$ be such that sets $\Qb{m_0}$ and $\Qb{m_0-1}$ produced by deterministic Algorithm \ref{alg:minimalSet} within Phase~2 have the same size. Then
@@ -33,6 +46,7 @@ $$
 Particularly, if $\#\Qb{m_0}\geq 2$, Phase~2 does not converge.
 \end{thm}
 \begin{proof}
+\komentar{plyne snadno pro phase 2 stable}
 We prove the base case of induction with respect to $m$. For $m=m_0+1$, the set $\Qb{m_0+1}$ is found by Algorithm \ref{alg:minimalSet} such that 
 $$
 b + \Qb{m_0} \subset \A + \beta \Qb{m_0+1}\,
@@ -59,16 +73,7 @@ If $\#\Qb{m_0}\geq 2$, then the statement \textit{iii)} in Lemma~\ref{lem:equiva
 
 
 
-\begin{defn}
-Let $\B$ be an alphabet of input digits. We say that Phase~2 is \emph{stable}, if the following conditions on the sets of possible weight coefficients which are produced by the algorithm hold: 
-\begin{enumerate}[i)]
-	\item $\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$,
-	\item $\Qw{1}{k}=\Qw{1}{(k-1)} \implies \Qwo{k}=\Qwo{(k-1)}$
-\end{enumerate}
-for all $k\in\NN, k\geq 2$ and for all $\tupleo{(k+1)} \in \B^{k+1}$.
-\end{defn}
 
-\komentar{okomentovat, co to znamena}
 
 \begin{defn}
 Let $\B$ be an alphabet of input digits. Let Phase~2 is stable. Let $k\in\NN, k\geq 2$. We set
