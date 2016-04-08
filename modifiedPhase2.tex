@@ -106,8 +106,10 @@ Note that saving of the traversed path requires only the label of the first vert
 \end{algorithm}
 
 
-\subsection*{Modified Phase 2}
-Algorithm~\ref{alg:weightFunction_modified} modifies basic proposal of Phase~2 to reveal its possible non-convergence. First, the necessary condition given by Theorem~\ref{thm:bbbCondition} is checked, i.e., the convergence of Phase~2 for inputs $bb\dots b$ is verified by Algorithm~\ref{alg:oneletterSets} for all $b\in\B$. 
+\subsection*{Phase 2 with convergence control}
+Algorithm~\ref{alg:weightFunction_modified} modifies the basic proposal of Phase~2 to reveal its possible non-convergence. First, the necessary condition given by Theorem~\ref{thm:bbbCondition} is checked, i.e., the convergence of Phase~2 for inputs $bb\dots b$ is verified by Algorithm~\ref{alg:oneletterSets} for all $b\in\B$. 
+
+Then we proceed in the same way asi in Algorithm~\ref{alg:weightFunction} with the following control -- according to Theorem~\ref{thm:infinitePathInRauzyGraph}, if $\Qwo{k} = \Qwo{(k-1)}$, then the Rauzy graph $G_k$ is examined by Algorithm~\ref{alg:checkCycles} whether it contains an infinite walk starting in $\tuple{1}{k}$. Note that $\Qwo{k} = \Qwo{(k-1)}$ is a necessary condition for  $\tuple{1}{k}\in G_k$
 
 We remark that the non-convergence because of an input $bb\dots b$ for some $b\in\B$ would be revealed also as a cycle in Rauzy graph. Nevertheless, the number of calls of Algorithm~\ref{alg:minimalSet} during Algorithm~\ref{alg:oneletterSets} is at most $\#Q$ for each $b\in\B$, while it grows exponentially with the length of window in search for a weight function. Thus, we save a lot of computational time in cases which fail already on $bb\dots b$ inputs. At the same time the costs of this check are low in other cases.
 
@@ -131,7 +133,7 @@ We remark that the non-convergence because of an input $bb\dots b$ for some $b\i
     %\STATE $G_0:=$ empty graph
     \WHILE{$\max\{\#\Qwo{k}:\tupleo{k} \in \B^{k+1} \} > 1$}
         \STATE $k:= k +1$
-        \FORALL{$\tupleo{k} \in \B^{k+1}$}
+        \FORALL{$\{\tupleo{k} \in \B^{k+1}\colon \#\Qwo{(k-1)}>1\}$}
             \STATE By Algorithm~\ref{alg:possibleWeightCoefSetStable}, find set $\Qwo{k} \subset \Qwo{(k-1)}$ such that
               $$
               w_j + \Qw{1}{k} \subset \A + \beta \Qwo{k}\,.
@@ -146,9 +148,13 @@ We remark that the non-convergence because of an input $bb\dots b$ for some $b\i
         \ENDFOR  
     \ENDWHILE  
     \STATE $r:= k$ 
-    \FORALL{$\tupleo{r} \in \B^{r+1}$}  
-        \STATE $q\tupleo{r}:=$ only element of $\Qwo{r}$
-    \ENDFOR
+    \FORALL {$l\in\NN, l\leq r$}
+	    \FORALL{$\{\tupleo{l}\in\B^{l+1} \colon \Qwo{l} \text{ was found, } \#\Qwo{l}=1\}$}
+	    	\FORALL{$\tuple{(l+1)}{r}\in\B^{r-l}$}
+	    		\STATE $q\tupleo{r}:=$ only element of $\Qwo{l}$
+	    	\ENDFOR
+	    \ENDFOR
+	\ENDFOR
     \RETURN $q$
   \end{algorithmic}
 \end{algorithm}
