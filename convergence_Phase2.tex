@@ -42,34 +42,26 @@ The following theorem is used for the construction of Algorithm \ref{alg:onelett
 
 \begin{thm}
 \label{thm:bbbCondition}
-Let $m_0 \in \NN$ and $b\in\B$ be such that sets $\Qb{m_0}$ and $\Qb{m_0-1}$ produced by deterministic Algorithm \ref{alg:minimalSet} within Phase~2 have the same size. Then
+Let $m_0 \in \NN$ and $b\in\B$ be such that sets $\Qb{m_0}$ and $\Qb{m_0-1}$ produced by stable Phase~2 have the same size. Then
 $$
     \#\Qb{m} = \#\Qb{m_0} \qquad \forall m\geq m_0-1\,.
 $$ 
 Particularly, if $\#\Qb{m_0}\geq 2$, Phase~2 does not converge.
 \end{thm}
 \begin{proof}
-\komentar{plyne snadno pro phase 2 stable}
-We prove the base case of induction with respect to $m$. For $m=m_0+1$, the set $\Qb{m_0+1}$ is found by Algorithm \ref{alg:minimalSet} such that 
-$$
-b + \Qb{m_0} \subset \A + \beta \Qb{m_0+1}\,
-$$
-and set $\Qb{m_0}$ is found by the same algorithm such that
-$$
-b + \Qb{m_0-1} \subset \A + \beta \Qb{m_0}\,.
-$$
 As $\Qb{m_0} \subset \Qb{m_0-1}$, the assumption of the same size implies
 $$
     \Qb{m_0} = \Qb{m_0-1}\,.
 $$
-It means that Algorithm \ref{alg:minimalSet} runs with the same input and hence
-$$
-\Qb{m_0+1}=\Qb{m_0}\,.
-$$
-The inductive step of the proof for $m+1$ is analogous to the base case.
+By the assumption that Phase~2 is stable, we have
+\begin{align*}
+ \Qb{m_0} = \Qb{m_0-1} &\implies  \Qb{m_0+1} = \Qb{m_0} \\
+ 						&\implies  \Qb{m_0+2} = \Qb{m_0+1} \\
+ 						&\vdots
+\end{align*}
+This implies the statement.
 
 If $\#\Qb{m_0}\geq 2$, then the statement \textit{iii)} in Lemma~\ref{lem:equivalentStatementsForNonConvergenePhaseTwo} holds for the sequence $(b)_{k\geq 0}$.
-%Phase~2 ends when there is only one element in $\Q_{[w_j,\dots, w_{j-m+1}]}$ for all $(w_j,\dots, w_{j-m+1}) \in \B^m$ for some fixed length of window $m$. But if $\#\Qb{m_0}\geq 2$, size of $\Q_{[b,\dots,b]}$ does not decrease despite of extending the length of window.
 \end{proof}
 
 
