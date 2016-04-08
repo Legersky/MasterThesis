@@ -25,7 +25,7 @@
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[chapter]
-\newtheorem{exmp}{Example}
+\newtheorem{exmp}{Example}[chapter]
 
 \begin{document}
 \tableofcontents
@@ -51,7 +51,7 @@
 	\input{congruenceClasses.tex}	
 	
 \chapter{Convergence}
-
+\label{chap:convergence}
 
 	\section{Convergence of Phase 1}
 	\input{betaExpanding.tex}
@@ -98,6 +98,7 @@
 \pagenumbering{Roman}
 \addcontentsline{toc}{chapter}{Appendices}
 \renewcommand{\thesection}{\Alph{section}}
+\counterwithin{exmp}{section}
 
 	\section{Illustration of Phase 1}
 	\komentar{stejne jak ve vyzkumaku?}

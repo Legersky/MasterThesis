@@ -14,14 +14,17 @@ The following statements are equivalent:
 \end{proof}
 
 \begin{defn}
-Let $\B$ be an alphabet of input digits. We say that Phase~2 is \emph{stable}, if the following conditions on the sets of possible weight coefficients which are produced by the algorithm hold: 
-\begin{enumerate}[i)]
-	\item $\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$,
-	\item $\Qw{1}{k}=\Qw{1}{(k-1)} \implies \Qwo{k}=\Qwo{(k-1)}$
-\end{enumerate}
+Let $\B$ be an alphabet of input digits. We say that Phase~2 is \emph{stable}, if the following condition on the sets of possible weight coefficients which are produced by the algorithm holds: 
+$$
+\Qw{1}{k}=\Qw{1}{(k-1)} \implies \Qwo{k}=\Qwo{(k-1)}
+$$
+
 for all $k\in\NN, k\geq 2$ and for all $\tupleo{(k+1)} \in \B^{k+1}$.
 \end{defn}
 
+\begin{enumerate}[i)]
+	\item $\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$,
+\end{enumerate}
 \komentar{okomentovat, co to znamena, i) mozna neni potreba pokud nebude opacna implikace}
 
 \begin{upravit}
