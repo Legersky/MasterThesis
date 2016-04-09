@@ -37,18 +37,11 @@ $$
 $$
 In other word, if $\Qwo{k}\subsetneq\Qwo{(k-1)}$, the set $\Qwo{(k-1)}$ might have been chosen smaller.
 
-\begin{upravit}
-For shorter notation, set 
+Now we use that finiteness of Phase~2 implies that there exists a length of window $m$ such that the set $\Qb{m}$ contains only one element for all $b\in\B$, where $\Qb{m}$ is a shorter notation for
 $$
-\Qb{m}:=\Q_{[\underbrace{\scriptstyle b,\dots,b}_m]}
-$$ for $m \in \NN$ and $b\in\B$.
-
-Obviously, finiteness of Phase~2 implies that there exists a length of window $M$ such that the set $\Qb{m}$ contains only one element for all $b\in\B$. 
-The following theorem is used for the construction of Algorithm \ref{alg:oneletterSets} which checks this necessary condition. 
-\end{upravit}
-
-
-
+\Q_{[\underbrace{\scriptstyle b,\dots,b}_m]}\,.
+$$
+The following theorem was proved in \cite{vu} with the assumption that Phase~2 is deterministic. Briefly, it says that $\#\Qb{m}$ must decrease every time we increase $m$, otherwise Phase~2 does not converge. When we consider only inputs of the form $bb\dots b$ for some $b\in\B$, determinism implies that Phase~2 is stable. The given proof with Phase~2 being stable is slightly shorter.
 
 \begin{thm}
 \label{thm:bbbCondition}
@@ -76,10 +69,7 @@ If $\#\Qb{m_0}\geq 2$, then the statement \textit{iii)} in Lemma~\ref{lem:equiva
 
 
 
-
-
-
-
+The condition of convergence during Phase~2 is formulated as a searching for an infinite path in a so-called Rauzy graph. This term comes from combinatorics on words. The vertices of our graph are combinations of input digits for which the size of their possible weight coefficients sets did not decreased with an increment of lenght of the window. Whereas in combinatorics on words, vertices are given as factors of some language. But the edges are placed identically -- if some combination of digits without the first one equals another one without the last digit.
 \begin{defn}
 Let $\B$ be an alphabet of input digits. Let Phase~2 is stable. Let $k\in\NN, k\geq 2$. We set
 $$
