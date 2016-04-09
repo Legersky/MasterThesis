@@ -1,3 +1,6 @@
+We have no simple sufficient or necessary condition of convergence of Phase~2 in the sense of properties of a base $\beta$ or an alphabet $\A$. Nevertheless, the convergence can be controled during a run of algorithm. An easy check of non-convergence can be done by searching $\Q_{[b, \dots, b]}$ for each $b\in\B$ separately. This was already described in \cite{vu}, but we recall it with a simpler proof. For its purposes, we introduce a notion of stable Phase~2, which is used also in the main result of this section -- the control of convergence during Phase 2 is transformed into searching for a cycle in an oriented graph.
+
+Firstly, we menshion some equivalent conditions of non-convergence of Phase~2. It enables us to handle easier with non-convergence in later  proofs.
 \begin{lem}
 \label{lem:equivalentStatementsForNonConvergenePhaseTwo}
 The following statements are equivalent:
@@ -13,19 +16,26 @@ The following statements are equivalent:
 \textit{ii)}$\iff$\textit{iii):} There is an infinite sequence $(w_{-k})_{k\geq 0}$ such that $\#\Qwo{k}\geq 2$ for all $k\in\NN$ since $\Qwo{k}\supset\Qwo{(k+1)}$. Hence, the sequence of integers $(\#\Qwo{k})_{k\geq 0}$ is eventually constant. The opposite implication is trivial.
 \end{proof}
 
+We need to ensure that choice of a possible weight coefficient set $\Qwo{k}\subset \Qwo{(k-1)}$ is determined by an input digit $w_0$ and a set $\Qw{1}{0}$, while the influence of the set $\Qwo{(k-1)}$ is limited. It is formalized in the following definition.
+
 \begin{defn}
 Let $\B$ be an alphabet of input digits. We say that Phase~2 is \emph{stable}, if the following condition on the sets of possible weight coefficients which are produced by the algorithm holds: 
 $$
 \Qw{1}{k}=\Qw{1}{(k-1)} \implies \Qwo{k}=\Qwo{(k-1)}
 $$
-
 for all $k\in\NN, k\geq 2$ and for all $\tupleo{(k+1)} \in \B^{k+1}$.
-\end{defn}
 
-\begin{enumerate}[i)]
-	\item $\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$,
-\end{enumerate}
-\komentar{okomentovat, co to znamena, i) mozna neni potreba pokud nebude opacna implikace}
+\komentar{ii)$\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$, neni potreba pokud nebude opacna implikace}
+\end{defn}
+The definition may seem too restrictive, but note that $\Qwo{k}$ if fully determined by $\Qw{1}{k}$, $\Qwo{(k-1)}$ and $w_0$ for a fixed deterministic way of choice of possible weight coefficients sets. Therefore, the assumption $\Qw{1}{k}=\Qw{1}{(k-1)}$ implies that the only difference in the choice of $\Qwo{k}$ an $\Qwo{(k-1)}$ is that $\Qwo{k}$ is a subset of  $\Qwo{(k-1)}$, while $\Qwo{(k-1)}$ is chosen as a subset of $\Qwo{(k-2)}$. At the same time, $\Qwo{(k-1)}$ is a subset of $\Qwo{(k-2)}$. Thus, the requirement that Phase~2 is stable means that the same possible weight coefficients set is found even if it is searched as a subset of smaller set. This is natural way how an algorithm of choice should be constructed -- the set $\Qwo{k}$ is searched such that
+$$
+\B+\Qw{1}{k} \subset \A+\beta \Qwo{k}\,,
+$$
+i.e., there is no reason to choose the set $\Qwo{k}\subsetneq\Qwo{(k-1)}$ as we know that
+$$
+\B+\underbrace{\Qw{1}{(k-1)}}_{=\Qw{1}{k}} \subset \A+\beta \Qwo{(k-1)}\,.
+$$
+In other word, if $\Qwo{k}\subsetneq\Qwo{(k-1)}$, the set $\Qwo{(k-1)}$ might have been chosen smaller.
 
 \begin{upravit}
 For shorter notation, set 
