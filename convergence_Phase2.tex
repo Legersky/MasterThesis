@@ -82,6 +82,8 @@ $$
 The oriented graph $G_k=(V,E)$ is called \emph{Rauzy graph of Phase~2 (for the window of length~$k$)}.
 \end{defn}
 
+The structure of Rauzy graph $G_k$ signifies whether the non-decreasing combinations are such that they cause nonconvergence of Phase~2. Existence of an infinite walk in $G_k$ implies that Phase~2 does not converge:
+
 \begin{thm}
 \label{thm:infinitePathInRauzyGraph}
 Let Phase~2 is stable.  If there exists $k_0\in\NN, k_0\geq 2$, and $\tupleo{k_0}\in\B^{k_0+1}$ such that
@@ -113,7 +115,7 @@ Hence, $\#\Qwo{k}=\#\Qwo{(k_0-1)}>1$ for all $k\geq k_0-1$.
 
 
 
-
+We remark that existence of an infinite walk in a finite graph is equivalent to existence of a cycle in the graph. Thus, if there is an infinite walk, we may find another one whose sequence of vertices is eventually periodic. We use this fact in Section~\ref{sec:modifiedPhase2} which describes modified algorithm for Phase~2 which implements the result of Theorem~\ref{thm:infinitePathInRauzyGraph}.
 
 
 

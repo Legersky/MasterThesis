@@ -1,4 +1,4 @@
-For our purposes, we recall the proof of the following theorem for a parallel digit set conversion without anticipation. The full version can be found in \cite{minAlph}.
+Frougny, Pelantov\'a and Svodov\'a \cite{minAlph} proved a lower bound on the size of an alphabet $0\in\A\subset\ZZ$ of consecutive integers which enables parallel addition. In this sextion, we prove the same bound for an arbitrary alphabet $\A\in\Zbeta$. We recall their auxiliary results in Theorem~\ref{thm:reprBetaMinusOne} an Lemma~\ref{lem:alphabetRestrictions}, but only for a parallel digit set conversion without anticipation as our rewriting rule $x-\beta$ does not require memory. The following theorem says that all classes modulo $\beta$ which are contained in $\A+\A$ must have their representatives in $\A$.
 \begin{thm}
 \label{thm:reprBetaMinusOne}
 Let $\omega$ be an algebraic integer. Let the base $\beta\in\Zomega$ be such that $|\beta|>1$ and the alphabet $\A\subset\Zomega$ be such that $0\in\A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then the number $\phi(b,\dots,b)-b$ belongs to the set $(\beta-1)\Zomega$ for any $b\in\A+\A$. 
@@ -32,7 +32,7 @@ b=W(\beta-1) + a\,.
 Hence, $a=\phi(b, \dots,b)\equiv b$ modulo $\beta-1$.
 \end{proof}
 
-The following lemma is a modification of lemma in \cite{minAlph}.
+If a base $\beta$ has a real conjugate greater than one, then there are some extra requirements on the alphabet $\A$. For simplicity, we assume that the base $\beta$ itself is real and greater than one. We show later that this assumption is without loss of generality.
 \begin{lem}
 \label{lem:alphabetRestrictions}
 Let $\omega$ be a real algebraic integer and the base $\beta\in\Zomega$ be such that $\beta>1$. Let the alphabet $\A\subset\Zomega$ be such that $0\in\A$ and denote $\lambda=\min \A$ and $\Lambda=\max \A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then:
@@ -76,10 +76,10 @@ But $W=0$ from the equation \eqref{eq:reprBetaMinusOneFinal}. We estimate
 \Lambda\sum_{j=1}^{r+q} \beta^{-j} +\Lambda \sum_{j=r+1}^{r+q} \beta^{-j}&=\sum_{j=1}^{r+q}z_j\beta^{-j}\leq \Lambda\sum_{j=1}^{r+q}\beta^{-j}\\
 \Lambda \sum_{j=r+1}^{r+q} \beta^{-j}&\leq 0\,.
 \end{align*}
-This contradicts that $\Lambda$ positive as it is a nonzero, maximal element of the alphabet $\A$ which contains 0. The proof of \textit{iv)} is analogous.
+This contradicts that $\Lambda$ is positive as it is a nonzero, maximal element of the alphabet $\A$ which contains 0. The proof of \textit{iv)} is analogous.
 \end{proof}
 
-
+In order to prove the lower bound, we need to show that the alphabet $\A$ must contain all representatives modulo $\beta$ and $\beta-1$. 
 \begin{thm}
 Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, then the alphabet $\A$ contains at least one representative of each congruence class modulo $\beta$ and $\beta-1$ in $\Zbeta$. 
 \label{thm:representativesInAlphabet}
@@ -112,6 +112,7 @@ $$
 $$
 \end{proof}
 
+The following lemma summarizes that if we have a parallel addition algorithm for a base $\beta$, then we easily obtain an algorithm also for conjugates of $\beta$.
 \begin{lem}
 \label{lem:parAddAlgForConjugate}
 Let $\omega$ be an algebraic integer with a conjugate $\omega'$. Let $\beta\in\Zomega, |\beta|>1$ and let $\sigma:\QQ(\omega)\rightarrow \QQ(\omega')$ be an isomorphism such that $|\sigma(\beta)|>1$. Let $\varphi$ is a digit set conversion  in the base $\beta$ from $\A+\A$ to $\A$. There exists  is a digit set conversion $\varphi'$ in the base $\beta'$ from $\A'+\A'$ to $\A'$ where $\beta'=\sigma(\beta)$ and $\A'=\{\sigma(a) \colon a\in\A\}$.
@@ -134,6 +135,7 @@ The value of the number represented by $w'$ is also preserved:
 where $w_j=\sigma^{-1}(w'_j)$ for $j\in\ZZ$ and $\varphi((w_j)_{j\in\ZZ})=(z_j)_{j\in\ZZ}$.
 \end{proof}
 
+Finally, we put together that the alphabet $\A$ contains all representative modulo $\beta$ and $\beta-1$, number of congruence classes and restrictions on the alphabet for a base with a real conjugate greater than one.
 \begin{thm}
 Let $\beta$ be an algebraic integer such that $|\beta|>1$. Let $0\in \A\subset \Zbeta$ be an alphabet such that $1\in \A[\beta]$. If addition in the numeration system $(\beta, \A)$ which uses the rewriting rule $x-\beta$ is computable in parallel, then
 $$
@@ -169,4 +171,7 @@ e_i+\Lambda\equiv_{\beta-1}\phi(e_i+\Lambda,\dots, e_i+\Lambda)\equiv_{\beta-1}\
 $$ 
 also $e_i\equiv_{\beta-1}f_i$ for all $i, 1\leq i\leq k+1$. This is a contradiction since it implies that $\#\A=|m_\beta(1)|+k+1$. Hence, classes containing $\lambda$ and $\Lambda$ have both at least one more  element of the alphabet $\A$, i.e., $\#\A\geq |m_\beta(1)|+2$. 
 \end{proof}
+
+Note that the larger necessary alphabet for a base with a real conjugate greater than one is caused by the fact that minimal and maximal element of $\A$ both require another element in $\A$ which is in the same congruence class. This should be considered when an alphabet for such a base is generated.
+
 \komentar{BYLO BY FAJN TO JESTE ZOBECNIT NA abecedu ze Z[OMEGA]}
