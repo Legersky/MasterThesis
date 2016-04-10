@@ -1,4 +1,7 @@
 \section{$\beta$-norm}
+The goal of this section is to construct a norm in $\Zomega$. We use the isomorphism with $\ZZ^d$ and some results from matrix theory. This norm is used for the proof of convergence of Phase~1 in Chapter~\ref{chap:convergence}.
+
+First, we recall a simple way how a new norm can be constructed from another one.
 
 \begin{lem}
 \label{lem:vectNorm}
@@ -16,17 +19,22 @@ This  verifies that $\mu$ is a norm.
 \end{proof}
 
 
-Lemma \ref{lem:vectNorm} enables us to define a new norm.
+Now we use Lemma \ref{lem:vectNorm} to define a new norm for a given diagonalizable matrix.
 \begin{defn}
 \label{def:newNorm}
 Let $M\in\CC^{n\times n}$ be a diagonalizable matrix and $P\in\CC^{n\times n}$ be a nonsingular matrix which diagonalizes $M$, i.e., $M=P^{-1}DP$ for some diagonal matrix $D\in\CC^{n\times n}$. We define a vector norm $\norm{\cdot}{M}$ by  
 \begin{equation}
 \norm{x}{M}:=\norm{Px}{2}
 \end{equation}
-for all $x\in\CC^n$, where $\norm{\cdot}{2}$ is Euclidean norm. A matrix norm $\Mnorm{\cdot}{M}$ is induced by the norm $\norm{\cdot}{M}$.
+for all $x\in\CC^n$, where $\norm{\cdot}{2}$ is Euclidean norm. A matrix norm $\Mnorm{\cdot}{M}$ is induced by the norm $\norm{\cdot}{M}$, i.e, 
+$$
+\Mnorm{A}{M}=\sup_{\norm{x}{M}=1} \norm{Ax}{M}\,
+$$
+for all $A\in\CC^{n\times n}$.
 \end{defn}
 
- 
+The following theorem is a known result from matrix theory -- for a given diagonalizable matrix, there is a matrix norm such that the norm of the matrix equals its spectral radius.
+\komentar{je potreba nejakou citaci?}
 
 \begin{thm}
 \label{thm:norm}
@@ -55,6 +63,8 @@ Consider
 which implies the statement.
 \end{proof}
 
+
+Before we define a norm in $\Zomega$, we verify that a specific matrix given by an algebraic number $\beta\in\Zomega$ is diagonalizable. Lemma~\ref{lem:propertiesSbeta} summarizes also some other properties of this matrix and the norm which it induces according to Theorem~\ref{thm:norm}.
 \begin{lem}
 \label{lem:propertiesSbeta}
 Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion matrix of its minimal polynomial $m_\omega$. Let $\beta=\sum_{i=0}^{d-1} b_i \omega^i$, where $b_i \in \ZZ$, be a nonzero element of $\Zomega$. Set $S_\beta=\multMat{b}$. Then
@@ -71,7 +81,9 @@ The characteristic polynomial of the companion matrix $S$ is the same as minimal
 $$
 S_\beta=\sum_{i=0}^{d-1} b_i S^i= \sum_{i=0}^{d-1} b_i \left(P^{-1}DP\right)^i=P^{-1}\underbrace{\left(\sum_{i=0}^{d-1} b_i D^i\right)}_{D_\beta}P\,.
 $$
-By Theorem CONJUGATES SE ZOBRAZUJI NA CONJUGATES, the diagonal elements of the diagonal matrix $D_\beta$ are conjugates of $\beta$. Since $S_\beta\in\ZZ^{d\times d}$, its characteristic polynomial $p_{S_\beta}$ has integer coefficients. There exits $k\in\NN, k\geq 1$ such that $p_{S_\beta}=m^k_\beta$ as all roots of $p_{S_\beta}$ must be conjugates of $\beta$. The value $k$ follows from the equality $d=\deg(m_\beta^k)=k \deg m_\beta$. 
+There is a result in theory of algebraic numbers about conjugates under a field isomorphism -- let $\alpha$ be an algebraic number with a conjugate $\alpha'$ and $\sigma:\QQ(\alpha)\rightarrow\QQ(\alpha')$ be a field isomorphism. If $\gamma\in\QQ(\alpha)$, then $\sigma(\gamma)$ is a conjugate of $\gamma$. \komentar{je potreba nejakou citaci?}
+
+Therefore, the diagonal elements of the diagonal matrix $D_\beta$ are conjugates of $\beta$. Since $S_\beta\in\ZZ^{d\times d}$, its characteristic polynomial $p_{S_\beta}$ has integer coefficients. There exists $k\in\NN, k\geq 1$ such that $p_{S_\beta}=m^k_\beta$ as all roots of $p_{S_\beta}$ must be conjugates of $\beta$. The value $k$ follows from the equality $d=\deg(m_\beta^k)=k \deg m_\beta$. 
 
 The modulus of the determinant of $S_\beta$ equals the modulus of the absolute coefficient of the characteristic polynomial $p_{S_\beta}$ which is $|m_\beta(0)|^k$.
 
@@ -84,6 +96,7 @@ $$
 For the second part of the last statement, we use the part \textit{iv)}, Theorem~\ref{thm:norm} and the fact that the eigenvalues of $S_\beta^{-1}$ are  reciprocal of the conjugates of $\beta$.
 \end{proof}
 
+Finally, we may define a norm in $\Zomega$.
 \begin{defn}
 Let $\pi$ be the isomorphism between $\Zomega$ and $(\ZZ^d,+,\odot_\omega)$. Using the notation of the previous lemma, we define \emph{$\beta$-norm}  $\normBeta{\cdot}:\Zomega \rightarrow \RR^+_0$ by 
 $$
@@ -99,4 +112,6 @@ We can easily verify that $\beta$-norm is a norm in $\Zomega$:
     \item $\normBeta{x+y}=\norm{\pi(x+y)}{S_\beta}=\norm{\pi(x)+\pi(y)}{S_\beta}\leq \norm{\pi(x)}{S_\beta}+\norm{\pi(y)}{S_\beta}=\normBeta{x}+\normBeta{y}\,,$
 \end{enumerate}
 for all $x,y \in \Zomega$ and $\alpha \in \Zomega$.
+
+The important property of $\beta$-norm is that there is only finitely many elements of $\Zomega$ which are bounded in this norm by a given constant. The explanation is following -- images of elements of $\Zomega$ under the isomorphism $\pi$ are integer vector and there are only finitely many integer vectors in any finite dimensional vector space bounded by any norm. It follows from equivalence of all norms a finite dimensional vector space.
 
