@@ -1,30 +1,45 @@
 \komentar{tabulka vsech uspesnych plus nejake neuspesne a okomentovat}
 
-%\afterpage{
-%\clearpage   % To flush out all floats, might not be what you want
-%\begin{landscape}
-%	\begin{table}[h]
-%		\begin{center}
-%		\input{results.tex}
-%		\end{center}
-%	\caption{xxx}
-%	\label{tab:results}
-%	\end{table}
-%\end{landscape}
-%}
-\section{Comparing different choices in Phase 1 and 2}
-\komentar{vsechny Mileniny ricne spostene, taky by tady mohly byt i nejake neuspesne}
 
-\section{Quadratic bases with integer alphabet}
+\section{Comparing different choices in Phase 1 and 2}
+\komentar{vsechny Mileniny rucne spoctene, taky by tady mohly byt i nejake neuspesne}
 
 \section{Quadratic bases with non-integer alphabet}
+\begin{table}[h]
+	\begin{center}
+	\input{results_quadr_nonint.tex}
+	\end{center}
+\caption{Quadratic bases with non-integer alphabet}
+\label{tab:resultsQuadrNonint}
+\end{table}
+
+
+\section{Quadratic bases with integer alphabet}
+\begin{table}[h]
+	\begin{center}
+	\input{results_quadr_int.tex}
+	\end{center}
+\caption{Quadratic bases with integer alphabet}
+\label{tab:resultsQuadrInt}
+\end{table}
+
+
 
 \section{Cubic bases}
 
-\begin{table}[h]
-	\begin{center}
-	\input{results.tex}
-	\end{center}
-\caption{xxx}
-\label{tab:results}
-\end{table}
+
+
+
+
+\afterpage{
+\clearpage   % To flush out all floats, might not be what you want
+\begin{landscape}
+	\begin{table}[h]
+		\begin{center}
+		\input{results_quadr_nonint.tex}
+		\end{center}
+	\caption{xxx}
+	\label{tab:results}
+	\end{table}
+\end{landscape}
+}
