@@ -2,27 +2,43 @@
 For construction of the set $\Q_{[w_j,\dots, w_{j-m+1}]}$ we first choose such elements of $\Q_{[w_j,\dots, w_{j-m+2}]}$ which are the only possible to cover some value $x \in w_0 + \Q_{[w_{j-1},\dots, w_{j-m+1}]}$. Other elements from $\Q_{[w_j,\dots, w_{j-m+2}]}$ which cover an uncovered value are added one by one to $\Q_{[w_j,\dots, w_{j-m+1}]}$ until each $x$ equals $a+\beta q_j$ for some $q_j$ in $\Q_{[w_j,\dots, w_{j-m+1}]}$ and $a\in\A$. The pseudocode is in Algorithm~\ref{alg:minimalSet}. 
 
 \begin{algorithm}
-  \caption{Search for set $\Q_{[w_j,\dots, w_{j-m+1}]}$ }
+  \caption{Search for set $\Qwo{k}$ }
     \label{alg:minimalSet}
   \begin{algorithmic}[1]
-    \REQUIRE{Input digit $w_j$, set of possible carries $\Q_{[w_{j-1},\dots, w_{j-m+1}]}$, previous set of possible weight coefficients $\Q_{[w_j,\dots, w_{j-m+2}]}$}
-    \STATE \verb+list_of_coverings+:=empty list of lists
-    \FORALL{$x \in w_j + \Q_{[w_{j-1},\dots, w_{j-m+1}]}$}
-        \STATE Build a list \verb+x_covered_by+ of weight coefficients $q_j \in \Q_{[w_j,\dots, w_{j-m+2}]}$ such that 
-        $$
-        x=a+ \beta q_j \qquad\text{for some } a\in\A\,.
-        $$ 
-        \vspace{-20pt}
-        \STATE Append \verb+x_covered_by+ to \verb+list_of_coverings+
+    \REQUIRE{Input digit $w_0$, set of possible carries $\Qw{1}{k}$, previous set of possible weight coefficients $\Qwo{k}$}
+    \STATE $C:=\emptyset$
+    \FORALL{$x \in w_0 + \Qw{1}{k}$}
+    	\STATE $S_x:= \{q_0\in\Qwo{(k-1)}\colon\, \exists \, a\in\A: x=a+\beta q_0 \}$
+        \STATE Add $C_x$ to $C$
     \ENDFOR
-    \STATE $\Q_{[w_j,\dots, w_{j-m+1}]}$:= empty set
-    \WHILE{\texttt{list\_of\_coverings} is nonempty}
-        \STATE Pick an element $q$ of one of the shortest lists of \verb+list_of_coverings+ 
-            \label{line:pickElement}
-        \STATE Add the element $q$ to $\Q_{[w_j,\dots, w_{j-m+1}]}$
-        \STATE Remove lists of \verb+list_of_coverings+ containing the element $q$ from \verb+list_of_coverings+
+    \STATE $\Qwo{k}:=\emptyset$
+    \FORALL{$C_x\in C$}
+    	\IF {$\#C_x=1$}
+    		\STATE Add the element $q\in C_x$ to $\Qwo{k}$
+	        \STATE Remove sets $C_{x'}$ such that $q \in C_{x'}$  from the set $C$ 
+	    \ENDIF
+	\ENDFOR
+    \WHILE{$C\neq\emptyset$}
+        \STATE By Algorithm~\ref{alg:pickElement},  pick an element $q$ from $\bigcup C$
+        \STATE Add the element $q$ to $\Qwo{k}$
+        \STATE Remove sets $C_x$ such that $q \in C_x$  from the set $C$ 
     \ENDWHILE
-    \RETURN $\Q_{[w_j,\dots, w_{j-m+1}]}$
+    \RETURN $\Qwo{k}$
+  \end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+  \caption{Choose one element from the set of covering $C$ }
+    \label{alg:pickElement}
+  \begin{algorithmic}[1]
+    \REQUIRE{set of covering $C$, method number $M$}
+    \IF {$M=9$}
+    	\STATE $g:=$ point of gravity $\bigcup C$ jernfkjnfk
+    	\STATE 
+    	\RETURN 
+    \ENDIF
+
   \end{algorithmic}
 \end{algorithm}
 
