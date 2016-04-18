@@ -1,0 +1,64 @@
+\documentclass[25pt, a0paper, portrait, margin=0mm, innermargin=15mm, blockverticalspace=15mm, colspace=15mm, subcolspace=8mm]{tikzposter}
+
+\input{../commands.tex}
+
+
+
+\title{Construction of algorithms for parallel addition} 
+\author{Jan Legersk\'y} 
+\institute{Czech Technical University in Prague}
+\usetheme{Autumn}
+%\usecolorstyle[colorPalette=BrownBlueOrange]{Germany}
+
+
+
+\begin{document}
+\maketitle
+
+\begin{columns} 
+\column{0.5}
+	\block{Numeration system}{
+	\begin{itemize}
+		\item Let $\omega$ be an algebraic integer and let $\Zomega$ be the smallest ring containing $\ZZ$ and $\omega$
+		\item Let $\beta\in\Zomega$ be such that $|\beta|>1$ and let $\A\subset\Zomega$ be a finite set containing 0.
+		\item A pair $(\beta, \A)$ is called a \emph{positional numeration system} with \emph{base} $\beta$ and \emph{digit set (alphabet)} $\A$.
+		\item A complex number $x$ has a finite \emph{$(\beta, \A)$-representation} if~ there exist digits $x_n,x_{n-1}, \dots x_{-m}\in\A$ such that $x=\sum_{j=-m}^n x_j \beta^j$:
+		$$
+		(x)_{\beta,\A}= x_n x_{n-1}\cdots x_1 x_0 \bullet x_{-1} x_{-2} \cdots x_{-m}.
+		$$
+	\end{itemize}
+	} 
+	\block{Digit set conversion from $\A+\A$ into $\A$}{
+	\begin{center}
+	\begin{tabular}{rccccccccl}
+	$w_{n'}$ & $w_{{n'}-1}$ & $\cdots$ & $w_{j+1}$ &$w_{j}$ &$w_{j-1}$ & $\cdots$ & $w_1$ &$w_0$ &$\bullet$\\
+	  &   & &   &  &$q_{j-2}$ & $\iddots$ &  &  &$\bullet$\\
+	  &   & &   & $q_{j-1}$  & $-\beta q_{j-1}$ &  &  &  &\\
+	  &   &  $\iddots$&  $q_{j}$ &  $-\beta q_{j}$ & & &  &  &\\ \hline
+	  $z_{n} \cdots z_{n'}$ & $z_{{n'}-1}$ & $\cdots$ & $z_{j+1}$ &$z_{j}$ &$z_{j-1}$ & $\cdots$ & $z_1$ &$z_0$ &$\bullet$\\
+	\end{tabular}	
+	\end{center}
+	}
+	\block{Blocks}{Blocks are...} 
+\column{0.5}
+	\block{Addition}{
+	$(\beta,\A)$-representations of $x$ and $y$ are summed up digitwise:
+	\begin{center}
+	\begin{tabular}{rccccccl}
+	$(x)_{\beta,\A}$& $=$& $x_{n'}$ & $x_{{n'}-1}$ & $\cdots$ & $x_1$ &$x_0$ &$\bullet$ \\%&$x_{-1}$ & $x_{-2}$ & $\cdots$ & $x_{-m'}$ \\
+	$(y)_{\beta,\A}$& $=$& $y_{n'}$ & $y_{{n'}-1}$ & $\cdots$ & $y_1$ &$y_0$ &$\bullet$ \\ \hline % &$y_{-1}$ & $y_{-2}$ & $\cdots$ & $y_{-m'}$ \\ \hline
+	$(x+y)_{\beta,\A+\A}$& $=$& $w_{n'}$ & $w_{{n'}-1}$ & $\cdots$ & $w_1$ &$w_0$ &$\bullet$\,, % &$w_{-1}$ & $w_{-2}$ & $\cdots$ & $w_{-m'}$ \,,
+	\end{tabular}	
+	\end{center}
+	  where
+	  $$
+	    w_j=x_j+y_j \in \A +\A\,.
+	  $$
+	  The $(\beta,\A+\A)$-representation $w_{n'} w_{{n'}-1} \cdots w_1 w_0 \bullet$  is converted into $z_{n} z_{n-1}\cdots z_1 z_0 \bullet=(x+y)_{\beta,\A}$ .
+	}
+	\block{Parallel vs. standard conversion}{By default,...}
+
+\end{columns}
+
+\block[titleoffsety=-1cm,bodyoffsety=-1cm]{Sample document}{This poster...}
+\end{document}
