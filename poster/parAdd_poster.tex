@@ -17,7 +17,7 @@
 
 \begin{columns} 
 \column{0.5}
-	\block{Numeration system}{
+\block{Numeration system}{
 	\begin{itemize}
 		\item Let $\omega$ be an algebraic integer and let $\Zomega$ be the smallest ring containing $\ZZ$ and $\omega$
 		\item Let $\beta\in\Zomega$ be such that $|\beta|>1$ and let $\A\subset\Zomega$ be a finite set containing 0.
@@ -28,7 +28,7 @@
 		$$
 	\end{itemize}
 	} 
-	\block{Digit set conversion from $\A+\A$ into $\A$}{
+\block{Digit set conversion from $\A+\A$ into $\A$}{
 	A rewriting rule $R(x)= x-\beta$ is used, since $0=q_j \beta^j \cdot R(\beta) =q_j\cdot \beta^{j+1} -\beta  q_j \cdot \beta^{j}$:
 	\begin{center}
 	\begin{tabular}{rcccccccclcl}
@@ -39,11 +39,11 @@
 	$z_{n} \cdots z_{n'}$ & $z_{{n'}-1}$ & $\cdots$ & $z_{j+1}$ &\textcolor{red}{$z_{j}$} &$z_{j-1}$ & $\cdots$ & $z_1$ &$z_0$ &$\bullet$  & $=$&$(x+y)_{\beta,\A}$\\
 	\end{tabular}	
 	\end{center}
-	\coloredbox{The weight coefficient $q_j$ must be chosen such that $\textcolor{red}{z_j=w_j + q_{j-1} - q_j \beta} \in \A$.}
+	\coloredbox{The crucial point of any conversion is the choice of the weight coefficient $q_j$ such that $$\textcolor{red}{z_j=w_j + q_{j-1} - q_j \beta} \in \A\,.$$}
 	}
-	\block{Blocks}{Blocks are...} 
+
 \column{0.5}
-	\block{Addition}{
+\block{Addition}{
 	$(\beta,\A)$-representations of $x$ and $y$ are summed up digitwise:
 	\begin{center}
 	\begin{tabular}{ccccclcl}
@@ -58,9 +58,39 @@
 	  $$
 	  The $(\beta,\A+\A)$-representation $w_{n'} w_{{n'}-1} \cdots w_1 w_0 \bullet$  is converted into $$z_{n} z_{n-1}\cdots z_1 z_0 \bullet=(x+y)_{\beta,\A}\,.$$
 	}
-	\block{Parallel vs. standard conversion}{By default,...}
+\block{Standard vs. parallel conversion}{
+	Standard conversion -- \textcolor{red}{$z_j=z_j(w_j, w_{j-1}, \dots, w_0)$}:
+   	\begin{center}
+	\begin{tabular}{rcccccccccl}
+	&$w_{n'}$ & $w_{{n'}-1}$ & $\cdots$ &$w_{j+1}$ &\textcolor{red}{$w_{j}$} &\textcolor{red}{$w_{j-1}$}& \textcolor{red}{$\cdots$}  & \textcolor{red}{$w_1$} &\textcolor{red}{$w_0$} &$\bullet$ \\
+	$\longrightarrow z_{n'+1}$ & $z_{{n'}}$ & $z_{n'+1}$&$\cdots$ & $z_{j+1}$ &\textcolor{red}{$z_{j}$} &$z_{j-1}$ & $\cdots$ & $z_1$ &$z_0$ &$\bullet$ \\
+	\end{tabular}	
+	\end{center}
+
+   Parallel conversion -- \textcolor{red}{$z_j=z_j(w_{j+t}, \dots, w_{j-r})$} for fixed $r,t\in\NN$ (Avizienis, 1961):
+      	\begin{center}
+	\begin{tabular}{rcccccccccl}
+	$\cdots$&$w_{j+t+1}$ & \textcolor{red}{$w_{j+t}$} & \textcolor{red}{$\cdots$} &\textcolor{red}{$w_{j+1}$} &\textcolor{red}{$w_{j}$} &\textcolor{red}{$w_{j-1}$}& \textcolor{red}{$\cdots$}  & \textcolor{red}{$w_{j-r}$} &$w_{j-r-1}$ &$\cdots$ \\
+	$\longrightarrow \cdots$ & $z_{j+t+1}$ & $z_{j+t}$&$\cdots$ & $z_{j+1}$ &\textcolor{red}{$z_{j}$} &$z_{j-1}$ & $\cdots$ & $z_{j-r}$ &$z_{j-r-1}$ &$\cdots$ \\
+	\end{tabular}	
+	\end{center}
+	    
+   Parallel conversion with the rewriting rule $x-\beta$ -- \textcolor{red}{$z_j=z_j(w_{j}, \dots, w_{j-r})$} for fixed $r\in\NN$:
+      	\begin{center}
+	\begin{tabular}{rcccccccccl}
+	$\cdots$ &$w_{j+1}$ &\textcolor{red}{$w_{j}$} &\textcolor{red}{$w_{j-1}$}& \textcolor{red}{$\cdots$}  & \textcolor{red}{$w_{j-r}$} &$w_{j-r-1}$ &$\cdots$ \\
+	$\longrightarrow \cdots$  & $z_{j+1}$ &\textcolor{red}{$z_{j}$} &$z_{j-1}$ & $\cdots$ & $z_{j-r}$ &$z_{j-r-1}$ &$\cdots$ \\
+	\end{tabular}	
+	\end{center}
+	}
 
 \end{columns}
 
-\block[titleoffsety=-1cm,bodyoffsety=-1cm]{Sample document}{This poster...}
+\block{Extending window method}{
+	The length of window $r$ and a weight function $q:(\A+\A)^{r} \rightarrow \Q \subset \Zomega$ such that $q_j=q(w_j, \dots, w_{j-(r-1)})$ are determined in two phases:
+    \begin{enumerate}
+        \item The weight coefficients set $\Q \subset \Zomega$ is constructed.
+        \item The length of window $r$ is extended and a weight coefficient from $\Q$ is tried to be found for all $(w_j,w_{j-1}, \dots , w_{j-(r-1)}) \in (\A+\A)^{r}$ to define the weight function $q$.
+    \end{enumerate}
+}
 \end{document}
