@@ -1,12 +1,11 @@
 \block{Phase 2}{
   \begin{algorithmic}[0]
  %   \FORALL{$w_j \in \A+\A$}
-            \STATE Find set $\Q_{[w_{j}]} \subset \Q$ such that
+            \STATE For all $w_j \in \A+\A$, find set $\Q_{[w_{j}]} \subset \Q$ such that
               $$
-              w_j + \Q \subset \A + \beta \Q_{[w_{j}]}\,.
+              w_j + \underbrace{\Q}_{q_{j-1}\in} \subset \underbrace{\A}_{z_j\in} + \underbrace{\beta \Q_{[w_{j}]}}_{\beta q_j\in}\,.
               $$
-			for all $w_j \in \A+\A$.              
-              %\vspace{-20pt}
+             \vspace{-20pt}
 %    \ENDFOR
     \STATE $k:=0$
     \WHILE{$\max\#\Qwo{k} > 1$}	%$\max\{\#\Qwo{k}:\tupleo{k} \in(\A+\A)^{k+1} \} > 1$

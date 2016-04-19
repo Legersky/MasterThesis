@@ -15,11 +15,13 @@
 %	\end{tabular}	
 %	\end{center}
 	    
-   Parallel conversion with the rewriting rule $x-\beta$ -- \textcolor{red}{$z_j=z_j(w_{j}, \dots, w_{j-r})$} for fixed $r\in\NN$:
+   Parallel conversion -- \textcolor{red}{$z_j=z_j(w_{j}, \dots, w_{j-r})$} for fixed $r\in\NN$:
       	\begin{center}
 	\begin{tabular}{rcccccccccl}
 	$\cdots$ &$w_{j+1}$ &\textcolor{red}{$w_{j}$} &\textcolor{red}{$w_{j-1}$}& \textcolor{red}{$\cdots$}  & \textcolor{red}{$w_{j-r}$} &$w_{j-r-1}$ &$\cdots$ \\
 	$\longrightarrow \cdots$  & $z_{j+1}$ &\textcolor{red}{$z_{j}$} &$z_{j-1}$ & $\cdots$ & $z_{j-r}$ &$z_{j-r-1}$ &$\cdots$ \\
 	\end{tabular}	
 	\end{center}
+	\vspace{1em}
 	}
+	\note[targetoffsetx=0.08\colwidth,targetoffsety=2.5cm,innersep=0.5cm,angle=-90, width=.8\colwidth]{A carry may propagate throught the whole conversion in the standard case, consider for instance $999\dots 9+1$ in the decimal system.}

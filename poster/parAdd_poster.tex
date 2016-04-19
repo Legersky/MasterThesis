@@ -1,5 +1,5 @@
-\documentclass[24pt, a0paper, portrait, margin=0mm, innermargin=15mm, blockverticalspace=15mm, colspace=15mm, subcolspace=0mm]{tikzposter}
-\tikzposterlatexaffectionproofon
+\documentclass[24pt, a0paper, portrait, margin=0mm, innermargin=15mm, blockverticalspace=15mm, colspace=15mm, subcolspace=-5mm]{tikzposter}
+\tikzposterlatexaffectionproofoff
 
 
 \usepackage{booktabs}
@@ -9,8 +9,53 @@
 \title{Construction of algorithms for parallel addition} 
 \author{Jan Legersk\'y} 
 \institute{Czech Technical University in Prague}
-\usetheme{Autumn}
-\usecolorstyle[colorPalette=BlueGrayOrange]{Germany}
+
+
+\definecolorstyle{Czech} {
+\definecolor{colorOne}{HTML}{34888C}%116699
+\definecolor{colorTwo}{HTML}{C1E1DC}
+\definecolor{colorThree}{HTML}{FFF2BE}
+%\definecolor{colorOne}{HTML}{34888C}%116699
+%\definecolor{colorTwo}{HTML}{7CAA2D}
+%\definecolor{colorThree}{HTML}{F5E356}
+%\definecolor{colorOne}{HTML}{4F6457}%116699
+%\definecolor{colorTwo}{HTML}{D9B44A}
+%\definecolor{colorThree}{HTML}{ACD0C0}
+%\definecolor{colorOne}{HTML}{0D5078}%116699
+%\definecolor{colorTwo}{HTML}{A2C4D9}
+%\definecolor{colorThree}{HTML}{FCF0AD}
+}{
+     % Background Colors
+    \colorlet{backgroundcolor}{colorTwo}
+    \colorlet{framecolor}{colorThree}
+    % Title Colors
+    \colorlet{titlebgcolor}{colorOne}
+    \colorlet{titlefgcolor}{white}
+    % Block Colors
+    \colorlet{blocktitlebgcolor}{white}
+    \colorlet{blocktitlefgcolor}{colorOne}
+    \colorlet{blockbodybgcolor}{white}
+    \colorlet{blockbodyfgcolor}{black}
+    % Innerblock Colors
+    \colorlet{innerblocktitlebgcolor}{white}
+    \colorlet{innerblocktitlefgcolor}{black}
+    \colorlet{innerblockbodybgcolor}{colorThree}
+    \colorlet{innerblockbodyfgcolor}{black}
+    % Note colors
+    \colorlet{notefgcolor}{black}
+    \colorlet{notebgcolor}{colorThree}
+    \colorlet{notefrcolor}{colorThree}
+}
+
+
+\usebackgroundstyle{Default} %Rays
+\usetitlestyle{Filled}
+\usecolorstyle{Czech}
+
+\useblockstyle[bodyoffsety=12mm]{Slide}
+\usenotestyle{Default}
+
+
 
 \renewcommand{\Qw}[3][w]{\Q_{[#1_{j-#2}, \dots, #1_{j-#3}]}}
 \renewcommand{\Qwo}[2][w]{\Q_{[#1_{j}, \dots, #1_{j-#2}]}}
@@ -19,14 +64,14 @@
 \renewcommand{\tupleo}[2][w]{(#1_{j}, \dots, #1_{j-#2})}
 
 
-\useblockstyle[bodyoffsety=12mm]{Slide}
+
 
 \begin{document}
 \maketitle
 \begin{columns} 
 \column{0.4}
 \block{Abstract}{
-Parallel addition is used for instance as a part of division algorithm  in computer power units with base 4 and an integer alphabet.  An extending window method, which is due to M. Svobodov\'a, constructs parallel addition algorithms in more general numeration systems. 
+Parallel addition is used for example as a part of division algorithm  in computer power units with base 4 and an integer alphabet.  An extending window method, which is due to M. Svobodov\'a, constructs parallel addition algorithms in more general numeration systems. 
 
 We discuss convergence of the method and we develop tools to reveal possible non-convergence. 
 
