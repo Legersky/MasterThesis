@@ -1,0 +1,29 @@
+\block{Phase 2}{
+  \begin{algorithmic}[0]
+ %   \FORALL{$w_j \in \A+\A$}
+            \STATE Find set $\Q_{[w_{j}]} \subset \Q$ such that
+              $$
+              w_j + \Q \subset \A + \beta \Q_{[w_{j}]}\,.
+              $$
+			for all $w_j \in \A+\A$.              
+              %\vspace{-20pt}
+%    \ENDFOR
+    \STATE $k:=0$
+    \WHILE{$\max\#\Qwo{k} > 1$}	%$\max\{\#\Qwo{k}:\tupleo{k} \in(\A+\A)^{k+1} \} > 1$
+        \STATE $k:= k +1$
+        %\FORALL{$\tupleo{k} \in (\A+\A)^{k+1}$}
+            \STATE Find set $\Qwo{k} \subset \Qwo{(k-1)}$ such that
+              $$
+              w_j + \Qw{1}{k} \subset \A + \beta \Qwo{k}\,.
+              $$%\vspace{-20pt}
+              for all $\tupleo{k} \in (\A+\A)^{k+1}$.
+        %\ENDFOR  
+    \ENDWHILE  
+    %\STATE $r:= k+1$ 
+    %\STATE Define $q\tupleo{(r-1)}$ by only element of $\Qwo{(r-1)}$ for all $\tupleo{(r-1)}\in(\A+\A)^{r}$.
+    \STATE Define $q\tupleo{k}$ by the only element of $\Qwo{k}$ for all $\tupleo{k}\in(\A+\A)^{k+1}$.
+%    \FORALL{$\tupleo{(r-1)}\in(\A+\A)^{r}$}
+%	    \STATE $q\tupleo{(r-1)}:=$ only element of $\Qwo{(r-1)}$
+%	\ENDFOR
+  \end{algorithmic}
+}

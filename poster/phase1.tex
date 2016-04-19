@@ -1,0 +1,16 @@
+\block{Phase 1}{
+We construct the set $\Q$ such that
+            $$
+    		\underbrace{(\A+\A)}_{w_j \in}+ \underbrace{\Q}_{q_{j-1} \in} \subset \underbrace{\A}_{z_j \in} + \underbrace{\beta \Q}_{\beta q_j \in}
+    		$$
+    		iteratively:
+  \begin{algorithmic}[0]
+    \STATE $k:=0$; $Q_0:=\{0\}$
+    \REPEAT
+     \STATE  Extend $\Q_k$ to $\Q_{k+1}$ so that $$\A+\A+ \Q_k \subset \A + \beta \Q_{k+1}$$
+     \vspace{-30pt}
+      \STATE  $k:=k+1$
+      \UNTIL{$\Q_k = \Q_{k+1}$}      
+      \STATE $\Q:=\Q_k$
+  \end{algorithmic}
+}

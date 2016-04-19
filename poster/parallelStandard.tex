@@ -1,0 +1,25 @@
+\block{Standard vs. parallel conversion}{
+	Standard conversion -- \textcolor{red}{$z_j=z_j(w_j, w_{j-1}, \dots, w_0)$}:
+   	\begin{center}
+	\begin{tabular}{rcccccccccl}
+	&$w_{n'}$ & $w_{{n'}-1}$ & $\cdots$ &$w_{j+1}$ &\textcolor{red}{$w_{j}$} &\textcolor{red}{$w_{j-1}$}& \textcolor{red}{$\cdots$}  & \textcolor{red}{$w_1$} &\textcolor{red}{$w_0$} &$\bullet$ \\
+	$\longrightarrow z_{n'+1}$ & $z_{{n'}}$ & $z_{n'+1}$&$\cdots$ & $z_{j+1}$ &\textcolor{red}{$z_{j}$} &$z_{j-1}$ & $\cdots$ & $z_1$ &$z_0$ &$\bullet$ \\
+	\end{tabular}	
+	\end{center}
+
+%   Parallel conversion -- \textcolor{red}{$z_j=z_j(w_{j+t}, \dots, w_{j-r})$} for fixed $r,t\in\NN$ (Avizienis, 1961):
+%      	\begin{center}
+%	\begin{tabular}{rcccccccccl}
+%	$\cdots$&$w_{j+t+1}$ & \textcolor{red}{$w_{j+t}$} & \textcolor{red}{$\cdots$} &\textcolor{red}{$w_{j+1}$} &\textcolor{red}{$w_{j}$} &\textcolor{red}{$w_{j-1}$}& \textcolor{red}{$\cdots$}  & \textcolor{red}{$w_{j-r}$} &$w_{j-r-1}$ &$\cdots$ \\
+%	$\longrightarrow \cdots$ & $z_{j+t+1}$ & $z_{j+t}$&$\cdots$ & $z_{j+1}$ &\textcolor{red}{$z_{j}$} &$z_{j-1}$ & $\cdots$ & $z_{j-r}$ &$z_{j-r-1}$ &$\cdots$ \\
+%	\end{tabular}	
+%	\end{center}
+	    
+   Parallel conversion with the rewriting rule $x-\beta$ -- \textcolor{red}{$z_j=z_j(w_{j}, \dots, w_{j-r})$} for fixed $r\in\NN$:
+      	\begin{center}
+	\begin{tabular}{rcccccccccl}
+	$\cdots$ &$w_{j+1}$ &\textcolor{red}{$w_{j}$} &\textcolor{red}{$w_{j-1}$}& \textcolor{red}{$\cdots$}  & \textcolor{red}{$w_{j-r}$} &$w_{j-r-1}$ &$\cdots$ \\
+	$\longrightarrow \cdots$  & $z_{j+1}$ &\textcolor{red}{$z_{j}$} &$z_{j-1}$ & $\cdots$ & $z_{j-r}$ &$z_{j-r-1}$ &$\cdots$ \\
+	\end{tabular}	
+	\end{center}
+	}
