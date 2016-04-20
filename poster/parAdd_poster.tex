@@ -71,11 +71,11 @@
 \begin{columns} 
 \column{0.4}
 \block{Abstract}{
-Parallel addition is used for example as a part of division algorithm  in computer power units with base 4 and an integer alphabet.  An extending window method, which is due to M. Svobodov\'a, constructs parallel addition algorithms in more general numeration systems. 
+Parallel addition is used for example in fast radix-4 SRT divider with an integer alphabet.  An extending window method, which is due to M. Svobodov\'a, attempts to construct parallel addition algorithms in more general numeration systems. 
 
-We discuss convergence of the method and we develop tools to reveal possible non-convergence. 
+We discuss the sucessfulness of the method based on given parameters and we develop tools to reveal failure. 
 
-We implemented the method with several inner modifications in SageMath. The easy control of non-convergence allowed to test more than 5000 different numeration systems to obtain a parallel addition algorithm in about 120 cases.
+Besides the theoretical results, we implemented the method with several inner modifications in SageMath. The easy control of failure allowed to test more than 5000 different numeration systems to obtain a parallel addition algorithm in about 120 cases.
 }
 
 \input{numSystem.tex}

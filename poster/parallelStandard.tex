@@ -18,7 +18,8 @@
    Parallel conversion -- \textcolor{red}{$z_j=z_j(w_{j}, \dots, w_{j-r})$} for fixed $r\in\NN$:
       	\begin{center}
 	\begin{tabular}{rcccccccccl}
-	$\cdots$ &$w_{j+1}$ &\textcolor{red}{$w_{j}$} &\textcolor{red}{$w_{j-1}$}& \textcolor{red}{$\cdots$}  & \textcolor{red}{$w_{j-r}$} &$w_{j-r-1}$ &$\cdots$ \\
+	\cline{3-6}
+	$\cdots$ &$w_{j+1}$ &\multicolumn{1}{|c}{\textcolor{red}{$w_{j}$}} &\textcolor{red}{$w_{j-1}$}& \textcolor{red}{$\cdots$}  & \multicolumn{1}{c|}{\textcolor{red}{$w_{j-r}$}} &$w_{j-r-1}$ &$\cdots$ \\ \cline{3-6}
 	$\longrightarrow \cdots$  & $z_{j+1}$ &\textcolor{red}{$z_{j}$} &$z_{j-1}$ & $\cdots$ & $z_{j-r}$ &$z_{j-r-1}$ &$\cdots$ \\
 	\end{tabular}	
 	\end{center}
