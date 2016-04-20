@@ -1,61 +1,72 @@
+\begin{defn}
+\label{def:lexicographical}
+Let $n$ be a positive integer. Let $(x_1, \dots, x_n)$ and $(y_1, \dots, y_n)$ are elements of $\ZZ^n$. We say that $(x_1, \dots, x_n)\preceq (y_1, \dots, y_n)$ if 
+$$
+x_1<y_1 \text{ or } \left(x_1=y_1 \wedge (x_2, \dots, x_n)\preceq (y_2, \dots, y_n)\right)\,.
+$$
+If $x$ and $y$ are elements of $\Zomega$, then we say that $x$ is \emph{lexicographically smaller} than $y$ if
+$$
+\pi(x)^T \preceq \pi(y)^T\,,
+$$
+where $^T$ indicates transpose of column vector.
+\end{defn}
+
+
 \begin{upravit}
 For construction of the set $\Q_{[w_j,\dots, w_{j-m+1}]}$ we first choose such elements of $\Q_{[w_j,\dots, w_{j-m+2}]}$ which are the only possible to cover some value $x \in w_0 + \Q_{[w_{j-1},\dots, w_{j-m+1}]}$. Other elements from $\Q_{[w_j,\dots, w_{j-m+2}]}$ which cover an uncovered value are added one by one to $\Q_{[w_j,\dots, w_{j-m+1}]}$ until each $x$ equals $a+\beta q_j$ for some $q_j$ in $\Q_{[w_j,\dots, w_{j-m+1}]}$ and $a\in\A$. The pseudocode is in Algorithm~\ref{alg:minimalSet}. 
+\end{upravit}
 
 \begin{algorithm}
   \caption{Search for set $\Qwo{k}$ }
     \label{alg:minimalSet}
   \begin{algorithmic}[1]
-    \REQUIRE{Input digit $w_0$, set of possible carries $\Qw{1}{k}$, previous set of possible weight coefficients $\Qwo{k}$}
+    \REQUIRE{Input digit $w_0$, set of possible carries $\Qw{1}{k}$, previous set of possible weight coefficients $\Qwo{(k-1)}$}
     \STATE $C:=\emptyset$
     \FORALL{$x \in w_0 + \Qw{1}{k}$}
-    	\STATE $S_x:= \{q_0\in\Qwo{(k-1)}\colon\, \exists \, a\in\A: x=a+\beta q_0 \}$
+    	\STATE $C_x:= \{q_0\in\Qwo{(k-1)}\colon\, \exists \, a\in\A: x=a+\beta q_0 \}$
         \STATE Add $C_x$ to $C$
     \ENDFOR
-    \STATE $\Qwo{k}:=\emptyset$
+    \STATE $\Qwo{k}':=\emptyset$
     \FORALL{$C_x\in C$}
     	\IF {$\#C_x=1$}
-    		\STATE Add the element $q\in C_x$ to $\Qwo{k}$
+    		\STATE Add the element $q\in C_x$ to $\Qwo{k}'$
 	        \STATE Remove sets $C_{x'}$ such that $q \in C_{x'}$  from the set $C$ 
 	    \ENDIF
 	\ENDFOR
     \WHILE{$C\neq\emptyset$}
         \STATE By Algorithm~\ref{alg:pickElement},  pick an element $q$ from $\bigcup C$
-        \STATE Add the element $q$ to $\Qwo{k}$
+        \STATE Add the element $q$ to $\Qwo{k}'$
         \STATE Remove sets $C_x$ such that $q \in C_x$  from the set $C$ 
     \ENDWHILE
+	\STATE $\Qwo{k}:=\Qwo{k}'$
     \RETURN $\Qwo{k}$
   \end{algorithmic}
 \end{algorithm}
 
 
 \begin{algorithm}
-  \caption{Choose one element from the set of covering $C$ }
-    \label{alg:pickElement}
+   \caption{Choose one element from the set of covering $C$ }
+   \label{alg:pickElement}   
   \begin{algorithmic}[1]
-    \REQUIRE{set of covering $C$, method number $M$}
+    \REQUIRE{set of coverings $C$, method number $M\in\{9,15,22,23\}$, already added elements $\Qwo{k}'$}
     \IF {$M=9$}
-    	\STATE $g:=$ point of gravity $\bigcup C$ jernfkjnfk
-    	\STATE 
-    	\RETURN 
-    \ENDIF
+    	\STATE $g:=$ point of gravity of elements of $\bigcup C$ as complex numbers
+    	\STATE $T:=$ elements of $\bigcup C$ which are closest to $g$ in absolute value
+    \ELSE
+    	\STATE $m:=\min\{\#C_x \colon C_x\in C \}$
+    	\STATE $C':=\{C_x \in C \colon \#C_x=m\}$
+    	\IF {$M=15$}
+    		\STATE $g:=$ point of gravity of elements of $\Qwo{k}'$ as complex numbers
+    		\STATE $T:=$ elements of $\bigcup C'$ which are closest to $g$ in absolute value
+		\ELSIF {$M=22$}
+			\STATE $T:=$ elements of $\bigcup C'$ which are smallest in absolute value
+    	\ELSIF {$M=23$}
+			\STATE $T:=$ elements of $\bigcup C'$ which are smallest in $\beta$-norm
+    	\ENDIF
+    \ENDIF    
+    \RETURN the lexicographically smallest element of $T$ according to Definition~\ref{def:lexicographical}
 
   \end{algorithmic}
 \end{algorithm}
 
 
-Notice that the result of Algorithm~\ref{alg:minimalSet} is influenced by the way how we pick an element on line~\ref{line:pickElement}. It can be done deterministically or non-deterministically. We use the following deterministic choice -- suppose that we want to choose from elements $x_1=\sum_{i=0}^{d-1}x_{1,i}\omega^i, x_2=\sum_{i=0}^{d-1}x_{2,i}\omega^i, \dots,x_n=\sum_{i=0}^{d-1}x_{n,i}\omega^i\in\Zomega$, where $d$ is the degree of $\omega$. Let $a_0,\dots,a_{d-1}\in\ZZ$ be such that 
-$$
-\sum_{i=0}^{d-1}a_i\omega^i=\sum_{j=1}^n x_j\,.
-$$ 
-Set $c:=\sum_{i=0}^{d-1}c_i\omega^i \in\Zomega$ with $c_i=[\frac{a_i}{n}]$ where $[\cdot]$ denotes rounding to the nearest integer. Let the index set $I_0\subset\{1,\dots,n\}$ be such that 
-$$
-|x_{j,0}-c_0|=\min\{|x_{k,0}-c_0|\colon k\in{1,\dots,n}\}
-$$
-for all $j\in I_0$. For all $i\in\{1,\dots,d-1\}$, let the index set $I_i\subset I_{i-1}$ be such that
-$$
-|x_{j,i}-c_i|=\min\{|x_{k,i}-c_i|\colon k\in I_{i-1}\}
-$$
-for all $j\in I_i$. If there is only one element in the index set $I_{d-1}=\{j_0\}$, choose the element~$x_{j_0}$. Otherwise choose $j_0\in I_{d-1}$ such that $x_{j_0,0}$ is the smallest from all $x_{j,0}$ such that $j\in I_{d-1}$. If there are more such elements, then choose from them according to the value $x_{j,1}$ etc. 
-
-In other words, we take the elements which are the ``closest'' ones to the rounded center of gravity~$c$ of the values $x_1,\dots,x_n$ where ``closest'' is measured by absolute value of the first coordinate of $\pi(x_j)-\pi(c)$. In case of equality, according to the second coordinate etc. If there is more than one such element, we choose the element $x_{j_0}$ with the smallest first, resp. second, etc. coordinate of $\pi(x_{j_0})$.  
-\end{upravit}
