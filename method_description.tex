@@ -185,52 +185,6 @@ Section~\ref{sec:convergencePhase2} discusses the convergence of Phase 1, i.e. w
   \end{algorithmic}
 \end{algorithm}
 
-There may be more possible weight coefficients which cover some element of the set $\B+ \Q_k$. Let us suppose that we have the list which contains the lists of these candidates for each element of the set $\B+ \Q_k$. This list of lists is saved in the variable \verb+candidates+ in Algorithm~\ref{alg:extendWeightCoefSet}. Now, for each element, we check the list of candidates which cover this element and if there is none of them contained in the set $\Q_k$, the smallest (in absolute value) weight coefficient from the list of candidates is added to the set $\Q_k$. If there are more elements with the same absolute value, we deterministically choose one of them. The extension $\Q_{k+1}$ of the set $\Q_k$ is obtained in this manner.   
-
-We may slightly improve this procedure: for example we may first extend $\Q_{k}$ by all single-element lists of \verb+candidates+. These elements may be enough to cover also other elements of $\B+\Q_{k}$. It implies that the resulting $\Q$ is dependent on the way of selection from \verb+candidates+.
-
-\begin{algorithm}
-  \caption{Extending intermediate weight coefficients set}
-    \label{alg:extendWeightCoefSet}
-  \begin{algorithmic}[1]
-    \REQUIRE{\verb+candidates+ from Algorithm~\ref{alg:searchCand}, previous weight coefficients set $\Q_{k}$}
-    \STATE $\Q_{k+1}:=\Q_{k}$
-    \FORALL{\texttt{cand\_for\_x} in \texttt{candidates}}
-        \IF{no element of \texttt{cand\_for\_x} in $\Q_{k}$}
-            \STATE Add the smallest element (in absolute value) of  \verb+cand_for_x+ to $\Q_{k+1}$  
-        \ENDIF
-    \ENDFOR
-    \RETURN $\Q_{k+1}$
-  \end{algorithmic}
-\end{algorithm}
-
-Algorithm~\ref{alg:searchCand} describes the search for the list of lists of candidates. For each element $x\in \B + \Q_{k}$ we build the list of candidates (in the variable \verb+cand_for_x+) so that we test the divisibility of $x-a$ by the base $\beta$ for all letters $a\in\A$. In the positive case, the result of division is appended to \verb+cand_for_x+ as a possible weight coefficient. We remark that Theorem~\ref{thm:divisibility} is used to check the divisibility.
-
-
-\begin{algorithm}
-  \caption{Search for candidates}
-    \label{alg:searchCand}
-  \begin{algorithmic}[1]
-    \REQUIRE{the previous weight coefficients set $\Q_{k}$, alternatively also the set $\Q_{k-1}$}
-    \STATE \verb+candidates+:= empty list of lists
-    \FORALL[Alternatively, $x \in (\B + \Q_{k})\setminus (\B + \Q_{k-1})$]{$x \in \B + \Q_{k}$} \label{line:replaceBySmaller}
-      \STATE \verb+cand_for_x+:= empty list
-      \FORALL{$a \in \A$}
-          \IF{$(x-a)$ is divisible by $\beta$ in $\Zomega$ (using Theorem~\ref{thm:divisibility})}
-              \STATE Append $\frac{x-a}{\beta}$ to \verb+cand_for_x+
-            \ENDIF
-      \ENDFOR 
-      \STATE Append \verb+cand_for_x+ to \verb+candidates+
-  \ENDFOR
-  \RETURN \verb+candidates+
-  \end{algorithmic}
-\end{algorithm}  
-
-We can improve the performance of Algorithm~\ref{alg:searchCand} by substituting the set $\B + \Q_{k}$ by $(\B + \Q_{k})\setminus (\B + \Q_{k-1})$ on the line~\ref{line:replaceBySmaller} because
-$$
-\B + \Q_{k-1} \subset \A + \beta \Q_{k} \subset \A + \beta \Q_{k+1}
-$$
-for any $\Q_{k+1} \supset \Q_{k}$. Thus there is no need to check whether the elements of $\B + \Q_{k-1}$ are covered by some weight coefficient from $\Q_k$ in Algorithm~\ref{alg:extendWeightCoefSet}.
 
 % An added element from each list of \verb+candidates+ is chosen as the smallest one unless there is already a covering element contained in $\Q_{k}$ (Algorithm~\ref{alg:extendWeightCoefSet}).  
 

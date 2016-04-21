@@ -21,7 +21,7 @@ For construction of the set $\Q_{[w_j,\dots, w_{j-m+1}]}$ we first choose such e
     \label{alg:minimalSet}
   \begin{algorithmic}[1]
     \REQUIRE{Input digit $w_0$, set of possible carries $\Qw{1}{k}$, previous set of possible weight coefficients $\Qwo{(k-1)}$}
-    \STATE $C:=\emptyset$
+    \STATE $C:=\{\emptyset\}$
     \FORALL{$x \in w_0 + \Qw{1}{k}$}
     	\STATE $C_x:= \{q_0\in\Qwo{(k-1)}\colon\, \exists \, a\in\A: x=a+\beta q_0 \}$
         \STATE Add $C_x$ to $C$
