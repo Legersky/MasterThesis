@@ -1,0 +1,71 @@
+\begin{upravit}
+
+There may be more possible weight coefficients which cover some element of the set $\B+ \Q_k$. Let us suppose that we have the list which contains the lists of these candidates for each element of the set $\B+ \Q_k$. This list of lists is saved in the variable \verb+candidates+ in Algorithm~\ref{alg:extendWeightCoefSet}. Now, for each element, we check the list of candidates which cover this element and if there is none of them contained in the set $\Q_k$, the smallest (in absolute value) weight coefficient from the list of candidates is added to the set $\Q_k$. If there are more elements with the same absolute value, we deterministically choose one of them. The extension $\Q_{k+1}$ of the set $\Q_k$ is obtained in this manner.   
+
+We may slightly improve this procedure: for example we may first extend $\Q_{k}$ by all single-element lists of \verb+candidates+. These elements may be enough to cover also other elements of $\B+\Q_{k}$. It implies that the resulting $\Q$ is dependent on the way of selection from \verb+candidates+.
+
+Algorithm~\ref{alg:searchCand} describes the search for the list of lists of candidates. For each element $x\in \B + \Q_{k}$ we build the list of candidates (in the variable \verb+cand_for_x+) so that we test the divisibility of $x-a$ by the base $\beta$ for all letters $a\in\A$. In the positive case, the result of division is appended to \verb+cand_for_x+ as a possible weight coefficient. We remark that Theorem~\ref{thm:divisibility} is used to check the divisibility.
+
+We can improve the performance of Algorithm~\ref{alg:searchCand} by substituting the set $\B + \Q_{k}$ by $(\B + \Q_{k})\setminus (\B + \Q_{k-1})$ on the line~\ref{line:replaceBySmaller} because
+$$
+\B + \Q_{k-1} \subset \A + \beta \Q_{k} \subset \A + \beta \Q_{k+1}
+$$
+for any $\Q_{k+1} \supset \Q_{k}$. Thus there is no need to check whether the elements of $\B + \Q_{k-1}$ are covered by some weight coefficient from $\Q_k$ in Algorithm~\ref{alg:extendWeightCoefSet}.
+
+\end{upravit}
+\komentar{
+PODLE LEMMA 4.2 
+Denote $C:=\max\{\normBeta{b-a}\colon a \in \A, b \in \B\}$. Consequently, set $R:=\frac{C}{|\gamma|-1}$ and $\Q:=\{q\in\Zomega\colon \normBeta{q}\leq R\}$.}
+\begin{algorithm}
+  \caption{Extending intermediate weight coefficients set}
+    \label{alg:extendWeightCoefSet}
+  \begin{algorithmic}[1]
+    \REQUIRE{previous weight coefficients set $\Q_{k}$, method number $M\in\{12,13,14,15,16\}$}
+    \STATE $\widetilde{\Q}:=\Q_{k}$
+    \IF {$M\in\{12,13,14\}$}
+    	\FORALL {$D_x \in D$}
+    		\IF {$\# D_x =1$}
+		    	\STATE Add the element of $D_x$ to $\widetilde{\Q}$
+			\ENDIF
+		\ENDFOR
+	\ENDIF
+    \STATE $\Q_{k+1}:=\widetilde{\Q}$
+    \FORALL{$D_x \in D$}
+        \IF{$D_x \cap \widetilde{\Q}=\emptyset$}
+	        \IF {$M=12$}
+	        	\STATE Add all smallest elements in absolute value of $D_x$ to $\Q_{k+1}$
+	        \ELSIF {$M=13$}
+	        	\STATE Add all smallest elements in $\beta$-norm of $D_x$ to $\Q_{k+1}$
+	        \ELSIF {$M=14$}
+	        	\STATE Add all elements of $D_x$ to$\Q_{k+1}$
+	        \ELSIF {$M=15$}
+	        	\STATE Add all smallest elements in $\beta$-norm of $D_x$ to $\Q_{k+1}$
+	        \ELSIF {$M=16$}
+	        	\STATE Add all smallest elements in absolute value of $D_x$ to $\Q_{k+1}$ 
+	        \ENDIF
+        \ENDIF
+    \ENDFOR
+    \RETURN $\Q_{k+1}$
+  \end{algorithmic}
+\end{algorithm}
+
+
+
+\begin{algorithm}
+  \caption{Search for set of candidates $D$}
+    \label{alg:searchCand}
+  \begin{algorithmic}[1]
+    \REQUIRE{the previous weight coefficients set $\Q_{k}$, alternatively also the set $\Q_{k-1}$}
+    \STATE $D:=\{\emptyset\}$
+    \FORALL[Alternatively, $x \in (\B + \Q_{k})\setminus (\B + \Q_{k-1})$]{$x \in \B + \Q_{k}$} \label{line:replaceBySmaller}
+      \STATE $D_x:=\emptyset$
+      \FORALL{$a \in \A$}
+          \IF{$(x-a)$ is divisible by $\beta$ in $\Zomega$ (using Theorem~\ref{thm:divisibility})}
+              \STATE Add $\frac{x-a}{\beta}$ to $D_x$
+            \ENDIF
+      \ENDFOR 
+      \STATE Add the set $D_x$ to $D$
+  \ENDFOR
+  \RETURN $D$
+  \end{algorithmic}
+\end{algorithm}  
