@@ -1,6 +1,11 @@
 \block{Failure of Phase 2}{
-If number of possible weight coefficients for input digits $bb\dots b$ does not decrease for some $b\in\A+\A$ when the length of window is increased, then Phase 2 fails.
+(C1) If $\#\Q_{[b,b,\dots,b]}$ does not decrease for some $b\in\A+\A$ when the length of window is increased or% , then Phase 2 fails.
 
-\vspace{20pt}
-If there is an infinite path in the graph which is defined by non-decreasing combinations of input digits, then Phase 2 fails.
+\vspace{10pt}
+(C2) there is an infinite path in a specific graph,
+
+\vspace{10pt}
+then Phase 2 fails.
+\vspace{10pt}
 }
+\note[targetoffsetx=0.25\colwidth,targetoffsety=0.13\colwidth,innersep=0.5cm,angle=-90, width=.45\colwidth]{In the implementation, the control of the condition (C1) runs before Phase 2, while the graph in (C2) is constructed and  checked during it.}

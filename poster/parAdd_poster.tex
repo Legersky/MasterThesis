@@ -2,13 +2,14 @@
 \tikzposterlatexaffectionproofoff
 
 
-\usepackage{booktabs}
+
 \usepackage{tabulary}
+\usepackage{caption}
 \input{../commands.tex}
 
 \title{Construction of algorithms for parallel addition} 
-\author{Jan Legersk\'y} 
-\institute{Czech Technical University in Prague}
+\author{Jan Legersk\'y, Czech Technical University in Prague} 
+%\institute{Czech Technical University in Prague}
 
 
 \definecolorstyle{Czech} {
@@ -57,6 +58,15 @@
 
 
 
+\settitle{ \centering \vbox{
+%\@titlegraphic\\[\TP@titlegraphictotitledistance] 
+\centering
+\color{titlefgcolor} {\bfseries \Huge \sc \@title \par}
+\vspace*{1em}
+{\huge \@author \par}% \vspace*{1em} {\LARGE \@institute}
+}}
+
+
 \renewcommand{\Qw}[3][w]{\Q_{[#1_{j-#2}, \dots, #1_{j-#3}]}}
 \renewcommand{\Qwo}[2][w]{\Q_{[#1_{j}, \dots, #1_{j-#2}]}}
 
@@ -67,15 +77,15 @@
 
 
 \begin{document}
-\maketitle
+\maketitle[titletoblockverticalspace=15mm]
 \begin{columns} 
 \column{0.4}
 \block{Abstract}{
-Parallel addition is used for example in fast radix-4 SRT divider with an integer alphabet.  An extending window method, which is due to M. Svobodov\'a, attempts to construct parallel addition algorithms in more general numeration systems. 
+Parallel addition is used for example in fast division algorithms with an integer base and alphabet.  An extending window method, which is due to M. Svobodov\'a, attempts to construct parallel addition algorithms in more general numeration systems. 
 
 We discuss the sucessfulness of the method based on given parameters and we develop tools to reveal failure. 
 
-Besides the theoretical results, we implemented the method with several inner modifications in SageMath. The easy control of failure allowed to test more than 5000 different numeration systems to obtain a parallel addition algorithm in about 120 cases.
+Besides theoretical results, we implemented the method with several inner modifications in SageMath. The easy control of failure allowed to test more than 5000 different numeration systems to obtain a parallel addition algorithm in about 120 cases.
 }
 
 \input{numSystem.tex}
@@ -84,21 +94,19 @@ Besides the theoretical results, we implemented the method with several inner mo
 \input{parallelStandard.tex}
 \input{alphabet.tex}
 
-
-
+\note[targetoffsetx=0cm,targetoffsety=11pt,innersep=0.5cm,angle=-90, width=\colwidth]{\url{jan.legersky@gmail.com}, \url{github.com/Legersky/ParallelAddition}}
+%\block{}{}
 
 \column{0.6}
 \input{ewm.tex}
 
 
 
-
-
 \begin{subcolumns}
-\subcolumn{0.45}
+\subcolumn{0.43}
 \input{phase1.tex}
 \input{phase2img.tex}
-\subcolumn{0.55}
+\subcolumn{0.57}
 \input{phase1img.tex}
 \input{phase2.tex}
 \end{subcolumns}
@@ -119,10 +127,19 @@ Besides the theoretical results, we implemented the method with several inner mo
 \input{examples.tex}
 
 
+\block{}{
+C.~Frougny, E.~Pelantov\'a, and M.~Svobodov\'a, \emph{Parallel addition in
+  non-standard numeration systems}, Theoret. Comput. Sci. \textbf{412} (2011),
+  5714--5727.
 
+%C.~Frougny, E.~Pelantov{\'a}, and M.~Svobodov{\'a}, \emph{Minimal digit sets
+%  for parallel addition in non-standard numeration systems}, J. Integer Seq.
+%  \textbf{16} (2013), 36.
+}
 
 
 \end{columns}
+%\center KM FJFI \v{C}VUT, Trojanova 13, 120 00 Praha 2, Czech Republic,  \url{jan.legersky@gmail.com}
 \end{document}
 
 
