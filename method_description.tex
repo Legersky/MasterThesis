@@ -1,50 +1,65 @@
 
 We recall the general concept of addition at the beginning of this chapter and then we describe a so-called \emph{extending window method} which is due to M. Svobodov\'a \cite{milena}. The method attempts to construct a conversion algorithm computable in parallel for a given numeration system $(\beta,\A)$. We recall that $\omega$ is an algebraic integer, $\beta \in \Zomega$ is a base and $0\in\A\Zomega$ is an alphabet. 
 
-\begin{upravit}
-The general concept of addition (standard or parallel) in any numeration system $(\beta,\A)$, such that $\fin{\A}$ is closed under addition, is the following: we sum up two numbers digitwise and then we convert the result into the alphabet $\A$. Obviously, digitwise addition is computable in parallel, thus the problematic part is the digit set conversion of the obtained result. It can be easily done in a standard way but a parallel digit set conversion is nontrivial. However, formulas are basically the same but the choice of so called \emph{weight coefficients} differs.
 
-Now we go step by step more precisely. Let $x=\sum_{i=-m'}^{n'} x_i\beta^i,y=\sum_{i=-m'}^{n'} y_i\beta^i \in \fin{\A}$ with $(\beta,\A)$-representations padded by zeros to have the same length. We set 
+The general idea of addition (standard or parallel) in any numeration system $(\beta,\A)$ is the following: we sum up two numbers digitwise and then we convert the result with digits in $\A+\A$ into the alphabet $\A$. Obviously, digitwise addition is computable in parallel, thus the problematic part is the digit set conversion of the obtained result. It can be easily done in a standard way but a parallel digit set conversion is nontrivial. Parallel conversion is based on the same  formulas as standard one but the choice of so called \emph{weight coefficients} differs.
+
+Now we go step by step more precisely. Let $x,y \in \fin{\A}$ with $(\beta,\A)$-representations $x_{n'}x_{{n'}-1}\cdots x_1 x_0\bullet x_{-1} x_{-2} \cdots x_{-m'}$ and $y_{n'}y_{{n'}-1}\cdots y_1 y_0\bullet y_{-1} y_{-2} \cdots y_{-m'}$ padded by zeros to have the same length. We set 
   \begin{align*}
     w&=x+y =\sum_{i=-m'}^{n'} x_i\beta^i + \sum_{i=-m'}^{n'} y_i\beta^i = \sum_{i=-m'}^{n'} (x_i+y_i)\beta^i \\
     &=\sum_{i=-m'}^{n'} w_i\beta^i \,,
   \end{align*}
   where $w_i=x_i+y_i \in \A +\A$. Thus, $w_{n'} w_{{n'}-1}\cdots w_1 w_0 \bullet w_{-1} w_{-2} \cdots w_{-m'}$ is a  $(\beta, \A+\A)$-representation of $w\in \fin{\A+\A}$. 
 
-We also use column notation of addition in what follows, e.g.,     
+We also use column notation of addition in what follows, e.g.,    
+%	\begin{center}
+%	\begin{tabulary}{0.7\textwidth}{CCCCCCCCCCCL}
+%	$x_{n'}$& $x_{{n'}-1}$ & $\cdots$ & $x_1$ &$x_0$ &$\bullet$  &$x_{-1}$ & $x_{-2}$ & $\cdots$ & $x_{-m'}$ & $=$& $(x)_{\beta,\A}$\\
+%	$y_{n'}$& $y_{{n'}-1}$ & $\cdots$ & $y_1$ &$y_0$ &$\bullet$  &$y_{-1}$ & $y_{-2}$ & $\cdots$ & $y_{-m'}$ & $=$& $(y)_{\beta,\A}$\\ \hline
+%	$w_{n'}$& $w_{{n'}-1}$ & $\cdots$ & $w_1$ &$w_0$ &$\bullet$  &$w_{-1}$ & $w_{-2}$ & $\cdots$ & $w_{-m'}$ & $=$& $(x+y)_{\beta,\A+\A}$\\\,.
+%	\end{tabulary}	
+%	\end{center}
+ 
   \begin{align*}
   x_{n'} \;x_{{n'}-1}\cdots x_1 \;x_0 &\bullet x_{-1} \;x_{-2}\, \cdots x_{-m'} \\[-3pt]
-  y_{n'} \;y_{{n'}-1}\cdots y_1 \,\;y_0 &\bullet y_{-1} \;y_{-2} \;\cdots y_{-m'} \\[-7pt]
+  y_{n'} \;y_{{n'}-1}\cdots y_1 \,\;y_0 &\bullet y_{-1} \;y_{-2} \;\cdots y_{-m'} \\[-10pt]
     \line(1,0){90} & \line(1,0){100} \\[-7pt]
   w_{n'} w_{{n'}-1}\cdots w_1 w_0 &\bullet w_{-1} w_{-2} \cdots w_{-m'}\,.
   \end{align*}
   
-As we want to obtain a $(\beta,\A)$-representation of $w$, we search for a sequence 
+We search for a $(\beta,\A)$-representation of $w$, i.e., a  sequence 
   $$z_{n} z_{n-1}\cdots z_1 z_0 z_{-1} z_{-2} \cdots z_{-m}$$ such that $z_j \in \A$ and
   $$
     z_{n} z_{n-1}\cdots z_1 z_0 \bullet z_{-1} z_{-2} \cdots z_{-m}=(w)_{\beta,\A}\,.
   $$
-  From now on, we consider without lost of generality only $\beta$-integers since modification for representations with rational part is obvious:
-  $$
-  \beta^m \cdot z_{n} z_{n-1}\cdots z_1 z_0 \bullet z_{-1} z_{-2} \cdots z_{-m} = z_{n} z_{n-1}\cdots z_1 z_0 z_{-1} z_{-2} \cdots z_{-m} \bullet
-  $$  
-  Particularly, let $(w)_{\beta, \A+\A}=w_{n'} w_{{n'}-1}\cdots w_1 w_0 \bullet$. We search for a number $n \in \NN$ and \mbox{$z_{n}, z_{n-1},\dots, z_1, z_0 \in\A$} such that $(w)_{\beta, \A}=z_{n} z_{n-1}\cdots z_1 z_0 \bullet$.   
+  Note that the index of the first, resp. last, non-zero digit of the converted representation $z_{n} z_{n-1}\cdots z_1 z_0 \bullet z_{-1} z_{-2} \cdots z_{-m}=(w)_{\beta,\A}$ may differ from the original representation $w_{n'} w_{{n'}-1}\cdots w_1 w_0 \bullet w_{-1} w_{-2} \cdots w_{-m'}$. We assume that $ n\geq n'$ and $m\geq m'$, otherwise we pad the converted representation by zeros.
   
-  We use a suitable representation of zero to convert digits $w_j$ into the alphabet $\A$. 
-  For our purpose, we use the simplest possible representation deduced from the polynomial
+  Without lost of generality, we consider only conversion of so called $\beta$-integers -- numbers from $\fin{\A+\A}$ whose representations have all digits with negative indices equal zero. Modification for general representation $w_{n'} w_{n-1}\cdots w_1 w_0 \bullet w_{-1} w_{-2} \cdots w_{-m'}$ is obvious:
+  $$
+  \beta^m \cdot w_{n'} w_{n'-1}\cdots w_1 w_0 \bullet w_{-1} w_{-2} \cdots w_{-m'} = w_{n} w_{n'-1}\cdots w_1 w_0 w_{-1} w_{-2} \cdots w_{-m'} \bullet
+  $$  
+  and after conversion
+  $$
+  z_{n} z_{n-1}\cdots z_1 z_0 z_{-1} z_{-2} \cdots z_{-m'}\bullet\cdots z_{-m} = \beta^m \cdot z_{n} z_{n-1}\cdots z_1 z_0 \bullet z_{-1} z_{-2} \cdots z_{-m'}\,. 
+  $$  
+%  Particularly, let $(w)_{\beta, \A+\A}=w_{n'} w_{{n'}-1}\cdots w_1 w_0 \bullet$. We search for a number $n \in \NN$ and \mbox{$z_{n}, z_{n-1},\dots, z_1, z_0 \in\A$} such that $(w)_{\beta, \A}=z_{n} z_{n-1}\cdots z_1 z_0 \bullet$.   
+  
+  Digits $w_j$ are converted into the alphabet $\A$ by adding a suitable representation of zero digitwise.
+  For our purpose, we use the simplest possible representation which is deduced from the polynomial
   $$
     x-\beta \in \left(\Zomega\right)[x]\,.
   $$
 
-We remark that any polynomial $R(x)=r_s x^s+r_{s-1}x^{s-1}+ \dots + r_1 x+r_0$ with coefficients $r_i \in \Zomega,$ such that $R(\beta)=0$ gives us a possible representation of zero. The polynomial $R$ is called a \emph{rewriting rule}. 
+We remark that any polynomial $R(x)=r_s x^s+r_{s-1}x^{s-1}+ \dots + r_1 x+r_0$ with coefficients $r_i \in \Zomega$ such that $R(\beta)=0$ gives us a possible representation of zero. The polynomial $R$ is called a \emph{rewriting rule}. One of the coefficients of $R$ which is greatest in modulus (so-called \emph{core coefficient}) is used for the conversion of a digit $w_j$. Nevertheless, the extending window method is strongly dependent on the rewriting rule, so we focus only on the simplest possible rewriting rule $R(x)=x-\beta$. Using of an arbitrary rewriting rule $R$ is out of scope of this thesis.
 
-Within a digit set conversion with an arbitrary rewriting rule $R$, one of the coefficients of $R$ which is greatest in modulus (so-called \emph{core coefficient}) is used for the conversion of a digit $w_j$. But using of an arbitrary rewriting rule $R$ is out of scope of this thesis, so we focus on the simplest possible rewriting rule $R(x)=x-\beta$.
-  
+ 
 As $0=\beta^{j} \cdot R(\beta)=1\cdot \beta^{j+1} -\beta \cdot \beta^{j}$, we have a representation of zero 
 $$1 (-\!\beta) \underbrace{0 \cdots 0}_{j}\bullet = (0)_\beta\,. $$
 for all $j \in \NN$. We multiply this representation by $q_j \in \Zomega$, which is called a \emph{weight coefficient}, to obtain another  representation of zero 
 $$q_j (-q_j\beta) \underbrace{0 \cdots 0}_{j}\bullet = (0)_\beta\,. $$ 
-This is digitwise added to $w_{n} w_{n-1}\cdots w_1 w_0 \bullet$ to convert the digit $w_j$ into the alphabet $\A$. The conversion of $j$-th digit causes a \emph{carry} $q_{j}$ on the $(j+1)$-th position. The digit set conversion runs from the right ($j=0$) to the left until all digits and carries are converted into the alphabet $\A$:
+This is digitwise added to $w_{n} w_{n-1}\cdots w_1 w_0 \bullet$ to convert the digit $w_j$ into the alphabet $\A$. The conversion of $j$-th digit causes a \emph{carry} $q_{j}$ on the $(j+1)$-th position. 
+
+In standard addition, the digit set conversion runs from the right ($j=0$) to the left until all non-zero digits and carries are converted into the alphabet $\A$:
         \begin{align}
         \label{eq:conversionScheme}
             \hspace{100pt}  w_n w_{n-1}&&&\cdots& &w_{j+1}&\!\! &\textcolor{red}{w_j}  & \!\!  &w_{j-1} &&\cdots &&w_1 w_0\bullet \hspace{100pt} \notag\\[-5pt]
@@ -60,8 +75,10 @@ This is digitwise added to $w_{n} w_{n-1}\cdots w_1 w_0 \bullet$ to convert the 
     \begin{equation*}
         z_j=w_j + q_{j-1} - q_j \beta
     \end{equation*}
-    for $j \in \NN$. We set $q_{-1}=0$ as there is no carry from the right on the 0-th position.
+    for $j \in \NN$. We set $q_{-1}=0$ as there is no carry from the right on the 0-th position. To clarify, the terms carry and weight coefficient are related to a position. While $q_{j-1}$ is a carry from the right  and $q_j$ is a chosen weight coefficient on the $j$-th position, $q_j$ is a carry from the right on the $(j+1)$-th position etc.
     
+    \komentar{m=m'}
+    \begin{upravit} 
      Clearly, the value of $w$ is preserved:
 \begin{align}
 \label{eq:valuePreserving}
