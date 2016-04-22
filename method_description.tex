@@ -1,16 +1,15 @@
+
+We recall the general concept of addition at the beginning of this chapter and then we describe a so-called \emph{extending window method} which is due to M. Svobodov\'a \cite{milena}. The method attempts to construct a conversion algorithm computable in parallel for a given numeration system $(\beta,\A)$. We recall that $\omega$ is an algebraic integer, $\beta \in \Zomega$ is a base and $0\in\A\Zomega$ is an alphabet. 
+
 \begin{upravit}
-We recall the general concept of addition at the beginning of this chapter and then we describe a so-called \emph{extending window method} which is due to M. Svobodov\'a \cite{milena}. 
+The general concept of addition (standard or parallel) in any numeration system $(\beta,\A)$, such that $\fin{\A}$ is closed under addition, is the following: we sum up two numbers digitwise and then we convert the result into the alphabet $\A$. Obviously, digitwise addition is computable in parallel, thus the problematic part is the digit set conversion of the obtained result. It can be easily done in a standard way but a parallel digit set conversion is nontrivial. However, formulas are basically the same but the choice of so called \emph{weight coefficients} differs.
 
-From now on, let $\omega$ be an algebraic integer and $(\beta,\A)$ be a numeration system such that the base $\beta \in \Zomega$ and the alphabet $\A \ni 0$ is a finite subset of $\Zomega$. 
-
-The general concept of addition (standard or parallel) in any numeration system $(\beta,\A)$, such that $\fin{\A}$ is closed under addition, is the following: we add numbers digitwise and then we convert the result into the alphabet $\A$. Obviously, digitwise addition is computable in parallel, thus the crucial point is the digit set conversion of the obtained result. It can be easily done in a standard way but a parallel digit set conversion is nontrivial. However, formulas are basically the same but the choice of coefficients differs.
-
-Now we go step by step more precisely. Let $x=\sum_{-m'}^{n'} x_i\beta^i,y=\sum_{-m'}^{n'} y_i\beta^i \in \fin{\A}$ with $(\beta,\A)$-representations padded by zeros to have the same length. We set 
+Now we go step by step more precisely. Let $x=\sum_{i=-m'}^{n'} x_i\beta^i,y=\sum_{i=-m'}^{n'} y_i\beta^i \in \fin{\A}$ with $(\beta,\A)$-representations padded by zeros to have the same length. We set 
   \begin{align*}
-    w&=x+y =\sum_{-m'}^{n'} x_i\beta^i + \sum_{-m'}^{n'} y_i\beta^i = \sum_{-m'}^{n'} (x_i+y_i)\beta^i \\
-    &=\sum_{-m'}^{n'} w_i\beta^i \,,
+    w&=x+y =\sum_{i=-m'}^{n'} x_i\beta^i + \sum_{i=-m'}^{n'} y_i\beta^i = \sum_{i=-m'}^{n'} (x_i+y_i)\beta^i \\
+    &=\sum_{i=-m'}^{n'} w_i\beta^i \,,
   \end{align*}
-  where $w_j=x_j+y_j \in \A +\A$. Thus, $w_{n'} w_{{n'}-1}\cdots w_1 w_0 \bullet w_{-1} w_{-2} \cdots w_{-m'}$ is a  $(\beta, \A+\A)$-representation of $w\in \fin{\A+\A}$. 
+  where $w_i=x_i+y_i \in \A +\A$. Thus, $w_{n'} w_{{n'}-1}\cdots w_1 w_0 \bullet w_{-1} w_{-2} \cdots w_{-m'}$ is a  $(\beta, \A+\A)$-representation of $w\in \fin{\A+\A}$. 
 
 We also use column notation of addition in what follows, e.g.,     
   \begin{align*}
