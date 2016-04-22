@@ -16,7 +16,18 @@
 \end{landscape}
 }
 
-
+\afterpage{
+\clearpage   % To flush out all floats, might not be what you want
+\begin{landscape}
+	\begin{table}[h]
+		\begin{center}
+		\input{resultsPhaseTwo.tex}
+		\end{center}
+	\caption{sdvhbsdjhvjsd}
+	\label{tab:resultsQuadrNonint}
+	\end{table}
+\end{landscape}
+}
 
 \section{Quadratic bases with non-integer alphabet}
 \begin{table}[h]
