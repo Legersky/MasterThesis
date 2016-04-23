@@ -1,7 +1,26 @@
 \section{Different methods in Phase 2}
 \label{sec:methodsTwo}
-\komentar{tady popsat ruzne metody vyberu? nebo to dat nekam jinam?}
+We propose some methods which can be used in Phase~2 to construct a set $\Qwo{k}$.
 
+The set of possible weight coefficients $\Qwo{k}$ must be a subset of the previous set of possible weight coefficients $\Qwo{(k-1)}$. It is constructed such that
+$$
+ w_0 + \Qw{1}{k} \subset \A + \beta \Qwo{k}\,,
+$$
+i.e, it is determined also by the input digit $w_0$ and the set of carries from the right $\Qw{1}{k}$. Whereas in Phase~1 the constructed set $\Q_{k+1}$ is extended from $\Q_k$, now we  reduce the set $\Qwo{(k-1)}$ to obtain $\Qwo{k}$. Set 
+$$
+C_x:= \left\{q_0\in\Qwo{(k-1)}\colon\, \exists \, a\in\A: x=a+\beta q_0 \right\}\,,
+$$
+where $x\in w_0 + \Qw{1}{k}$, and 
+$$C:=\left\{C_x\colon x\in w_0 + \Qw{1}{k}\right\}\,.$$
+ The goal is to find $\Qwo{k}$ such that $C_x \cap \Qwo{k} \neq \emptyset$ for all $x\in w_0 + \Qw{1}{k}$. In other words, if at least one element of each covering sets $C_x\in C$ is contained in $\Qwo{k}$, then 
+$$
+ w_0 + \Qw{1}{k} \subset \A + \beta \Qwo{k}\,.
+$$
+We follow Algorithm~\ref{alg:minimalSet} now. Choice of possible weight coefficients set starts with $\Qwo{k}':=\emptyset$. We add the elements of all $C_x\in C$ such that $\#C_x=1$ to $\Qwo{k}'$. We remove from covering set $C$ all sets $C_x\in C$ such that $\Qwo{k}' \cup C_c \neq \emptyset$. 
+
+Next, while $C$ is nonempty, we pick an element $q$ from $\bigcup C$ according to a chosen method, we add $q$ to $\Qwo{k}'$ and we remove all sets $C_x$ which contain $q$ from $C$. Finally, the possible weight coefficient set $\Qwo{k}=\Qwo{k}'$ is found.
+
+Before we explain different methods  to pick an element from $\bigcup C$, we define a linear order on $\Zomega$.
 
 \begin{defn}
 \label{def:lexicographical}
@@ -15,11 +34,21 @@ $$
 $$
 where $^T$ indicates transpose of column vector.
 \end{defn}
+Roughly speaking, elements of $\Zomega$ are first ordered according their absolute coeffient, then quadratic, etc.
 
+Algorithm~\ref{alg:pickElement} outlines methods 9, 15, 22 and 23. All methods select a set $T$ of elements of $\bigcup C$. If there is more than one element in $T$, then the lexicographically smallest element is picked.
 
-\begin{upravit}
-For construction of the set $\Q_{[w_j,\dots, w_{j-m+1}]}$ we first choose such elements of $\Q_{[w_j,\dots, w_{j-m+2}]}$ which are the only possible to cover some value $x \in w_0 + \Q_{[w_{j-1},\dots, w_{j-m+1}]}$. Other elements from $\Q_{[w_j,\dots, w_{j-m+2}]}$ which cover an uncovered value are added one by one to $\Q_{[w_j,\dots, w_{j-m+1}]}$ until each $x$ equals $a+\beta q_j$ for some $q_j$ in $\Q_{[w_j,\dots, w_{j-m+1}]}$ and $a\in\A$. The pseudocode is in Algorithm~\ref{alg:minimalSet}. 
-\end{upravit}
+Method 9 computes the point of gravity $g$ of elements of $\bigcup C$ considered as complex numbers. The set $T$ are elements of  $\bigcup C$ which are closest to $g$ in absolute value. 
+
+For remaining methods, set
+$$C':=\left\{C_x \in C \colon \#C_x=\min_{C_x\in C} \#C_x \right\}\,.$$
+Method 15 computes the point of gravity $g$ of already picked elements $\Qwo{k}'$ considered as complex numbers. The set $T$ are elements of  $\bigcup C'$ which are closest to $g$ in absolute value. 
+
+Methods 22, resp. 23, builds the set $T$ to be the smallest elements of  $\bigcup C'$ in absolute value, resp.  $\beta$-norm. 
+
+The motivation of these methods is to obtain the set $\Qwo{k}$ small and ``compact'' as it should be easier to cover them in the next iteration of Phase~2. Moreover, methods 15, 22 and 23 prefer elements from the smallest covering sets $C_x$ in the hope that the picked elements are also in the bigger covering sets.
+
+Other implemented methods can be found in the source code. 
 
 \begin{algorithm}
   \caption{Search for set $\Qwo{k}$ }

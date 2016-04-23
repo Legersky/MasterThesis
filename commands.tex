@@ -73,25 +73,21 @@
 \renewcommand{\algorithmicensure}{\textbf{Ouput:}}
 \algsetup{indent=2em}
 
-
-% \newcommand{\var}[1]{\textit{#1}}
-% \newcommand{\fun}[2]{\textbf{#1}(\var{#2})}
-
-
  \usepackage{pifont}
  \renewcommand\checkmark{\ding{51}}
  \newcommand\xmark{\ding{55}}
 
+ \newcommand{\var}[1]{\textit{#1}}
+ \newcommand{\fun}[2]{\textbf{#1}(\var{#2})}
 
+ \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+ \let\endchangemargin=\endlist 
 
-% \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
-% \let\endchangemargin=\endlist 
-
-% \newenvironment{method}[2]{
-% \noindent \textbf{#1(}\textit{#2}\textbf{)}
-% \vspace{-5pt}
-% \begin{changemargin}{3em}{0em}}
-% {\end{changemargin}}
+ \newenvironment{method}[2]{
+ \noindent \textbf{#1(}\textit{#2}\textbf{)}
+ \vspace{-5pt}
+ \begin{changemargin}{3em}{0em}}
+ {\end{changemargin}}
 
 
 % \usepackage{pgfkeys}

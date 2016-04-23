@@ -8,10 +8,10 @@ $$
 $$
 It means that a weight coefficient $q$ such that $x=a+\beta q$ for some $a\in\A$ must be found for all $x\in \B+\Q_k$. Since the alphabet $\A$ is redundant, there might be more such weight coefficients. Let $D_x\subset \Zomega$ be a set of all these candidates for some $x\in \B+\Q_k$, i.e., $D_x=\{q\in\Zomega\colon x=a+\beta q, a\in\A\}$. Set $D:=\{D_x\colon x\in \B+\Q_k\}$. For a given $x\in \B+\Q_k$, the set $D_x$ is constructed so that all digits $a\in\A$ are tested whether $x-a$ is divisible by $\beta$ according to Theorem~\ref{thm:divisibility}. See Algorithm~\ref{alg:extendWeightCoefSet} which constructs the set $D$.
 
-Now we extend the set $\Q_k$ to $\Q_{k+1}$ so that $D_x \cap \Q_{k+1} \neq \emptyset$ for all $D_x \in D$. We describe five methods how it can be done (12,13,14,15 and 16), see source code for other ones. 
+Now we extend the set $\Q_k$ to $\Q_{k+1}$ so that $D_x \cap \Q_{k+1} \neq \emptyset$ for all $D_x \in D$. We describe five methods how it can be done (12, 13, 14, 15 and 16), see source code for other ones. 
 
-As $Q_k\subset \Q_{k+1}$ , set $\Q_{k+1}:=\Q_k$. For methods 12,13 and 14, add  the element of all $D_x\in D$ such that $\#D_x=1$ to $\Q_{k+1}$. Next, select elements from all $D_x\in D$ such that $D_x \cap \Q_{k+1} = \emptyset$ according to a chosen method and add them to $\Q_{k+1}$. Selection for different methods is following:
-\begin{enumerate}[ 1 --]
+As $Q_k\subset \Q_{k+1}$ , set $\Q_{k+1}:=\Q_k$. For methods 12, 13 and 14, add  the element of all $D_x\in D$ such that $\#D_x=1$ to $\Q_{k+1}$. Next, select elements from all $D_x\in D$ such that $D_x \cap \Q_{k+1} = \emptyset$ according to a chosen method and add them to $\Q_{k+1}$. Selection for different methods is following:
+\begin{enumerate}[ method 1 --]
 	\setcounter{enumi}{11}
 	\item all smallest elements in absolute value of $D_x$,
 	\item all smallest elements in $\beta$-norm of $D_x$,
@@ -26,16 +26,12 @@ Another methods may decrease the number of added elements for instance by pickin
 	
 
 
-We can improve performance by substituting the set $\B + \Q_{k}$ by $(\B + \Q_{k})\setminus (\B + \Q_{k-1})$ on the line~\ref{line:replaceBySmaller} in Algorithm~\ref{alg:searchCand}, because
+We can slightly improve performance by substituting the set $\B + \Q_{k}$ by $(\B + \Q_{k})\setminus (\B + \Q_{k-1})$ on the line~\ref{line:replaceBySmaller} in Algorithm~\ref{alg:searchCand}, because
 $$
-\B + \Q_{k-1} \subset \A + \beta \Q_{k} \subset \A + \beta \Q_{k+1}
+\B + \Q_{k-1} \subset \A + \beta \Q_{k}\,.
 $$
-for any $\Q_{k+1} \supset \Q_{k}$. Thus, $D_x \cap \Q_{k+1} \neq \emptyset$ for  $x\in \B + \Q_{k-1}$.
+Since $\Q_{k+1} \supset \Q_{k}$, $D_x \cap \Q_{k+1} \neq \emptyset$ for  $x\in \B + \Q_{k-1}$.
 
-
-\komentar{
-PODLE LEMMA 4.2 
-Denote $C:=\max\{\normBeta{b-a}\colon a \in \A, b \in \B\}$. Consequently, set $R:=\frac{C}{|\gamma|-1}$ and $\Q:=\{q\in\Zomega\colon \normBeta{q}\leq R\}$.}
 \begin{algorithm}
   \caption{Extending intermediate weight coefficients set}
     \label{alg:extendWeightCoefSet}
