@@ -1,6 +1,7 @@
 
-We recall the general concept of addition at the beginning of this chapter and then we describe a so-called \emph{extending window method} which is due to M. Svobodov\'a \cite{milena}. The method attempts to construct a conversion algorithm computable in parallel for a given numeration system $(\beta,\A)$. We recall that $\omega$ is an algebraic integer, $\beta \in \Zomega$ is a base and $0\in\A\Zomega$ is an alphabet. 
+We recall the general concept of addition at the beginning of this chapter and then we describe a so-called \emph{extending window method} which is due to M. Svobodov\'a \cite{milena}. The method attempts to construct a conversion algorithm computable in parallel for a given numeration system $(\beta,\A)$. We recall that $\omega$ is an algebraic integer, $\beta \in \Zomega$ is a base and $0\in\A\subset\Zomega$ is an alphabet. 
 
+\section{Addition}
 
 The general idea of addition (standard or parallel) in any numeration system $(\beta,\A)$ is the following: we sum up two numbers digitwise and then we convert the result with digits in $\A+\A$ into the alphabet $\A$. Obviously, digitwise addition is computable in parallel, thus the problematic part is the digit set conversion of the obtained result. It can be easily done in a standard way but a parallel digit set conversion is nontrivial. Parallel conversion is based on the same  formulas as standard one but the choice of so called \emph{weight coefficients} differs.
 
@@ -11,7 +12,7 @@ Now we go step by step more precisely. Let $x,y \in \fin{\A}$ with $(\beta,\A)$-
   \end{align*}
   where $w_i=x_i+y_i \in \A +\A$. Thus, $w_{n'} w_{{n'}-1}\cdots w_1 w_0 \bullet w_{-1} w_{-2} \cdots w_{-m'}$ is a  $(\beta, \A+\A)$-representation of $w\in \fin{\A+\A}$. 
 
-We also use column notation of addition in what follows, e.g.,    
+We also use column notation for digitwise addition in what follows, e.g.,    
 %	\begin{center}
 %	\begin{tabulary}{0.7\textwidth}{CCCCCCCCCCCL}
 %	$x_{n'}$& $x_{{n'}-1}$ & $\cdots$ & $x_1$ &$x_0$ &$\bullet$  &$x_{-1}$ & $x_{-2}$ & $\cdots$ & $x_{-m'}$ & $=$& $(x)_{\beta,\A}$\\
@@ -56,30 +57,41 @@ We remark that any polynomial $R(x)=r_s x^s+r_{s-1}x^{s-1}+ \dots + r_1 x+r_0$ w
 As $0=\beta^{j} \cdot R(\beta)=1\cdot \beta^{j+1} -\beta \cdot \beta^{j}$, we have a representation of zero 
 $$1 (-\!\beta) \underbrace{0 \cdots 0}_{j}\bullet = (0)_\beta\,. $$
 for all $j \in \NN$. We multiply this representation by $q_j \in \Zomega$, which is called a \emph{weight coefficient}, to obtain another  representation of zero 
-$$q_j (-q_j\beta) \underbrace{0 \cdots 0}_{j}\bullet = (0)_\beta\,. $$ 
+%$$q_j (-q_j\beta) \underbrace{0 \cdots 0}_{j}\bullet = (0)_\beta\,. $$ 
+$q_j (-q_j\beta) 0 \cdots 0\bullet = (0)_\beta\,. $
 This is digitwise added to $w_{n} w_{n-1}\cdots w_1 w_0 \bullet$ to convert the digit $w_j$ into the alphabet $\A$. The conversion of $j$-th digit causes a \emph{carry} $q_{j}$ on the $(j+1)$-th position. 
 
 In standard addition, the digit set conversion runs from the right ($j=0$) to the left until all non-zero digits and carries are converted into the alphabet $\A$:
-        \begin{align}
-        \label{eq:conversionScheme}
-            \hspace{100pt}  w_n w_{n-1}&&&\cdots& &w_{j+1}&\!\! &\textcolor{red}{w_j}  & \!\!  &w_{j-1} &&\cdots &&w_1 w_0\bullet \hspace{100pt} \notag\\[-5pt]
-                         &&&&       &       & &     &   &q_{j-2} &&\iddots  \notag \\[-3pt] 
-                         &&&&       &       & &\textcolor{red}{q_{j-1}}& -&\beta q_{j-1} \notag \\[-3pt]
-                         &&&&         &q_j&   \textcolor{red}{-}&\textcolor{red}{\beta q_j} &&\\[-8pt]
-                         &&&  \iddots      &   -&\beta q_{j+1}&   &\ && \notag \\[-17pt]
-          \intertext{\hspace{60pt}\line(1,0){300}}
-          \notag \\[-30pt]
-           z_{n+s} \cdots z_{n} z_{n-1}&&&\cdots& &z_{j+1}& &\textcolor{red}{z_j}& &z_{j-1} &&\cdots &&z_1 \; z_0\bullet \notag                  
-        \end{align}
+
+	\begin{tabular}{rcccccccclcl}
+	$w_{n'}$ & $w_{{n'}-1}$ & $\cdots$ & $w_{j+1}$ &\textcolor{red}{$w_{j}$} &$w_{j-1}$ & $\cdots$ & $w_1$ &$w_0$ &$\bullet$ & $=$&$(w)_{\beta,{\A+\A}}$\\
+	  &   & &   &  &$q_{j-2}$ & $\iddots$ &  &  &\\
+	   &   & &   & \textcolor{red}{$q_{j-1}$}  & $-\beta q_{j-1}$ &  &  &  &\\
+	  &   &  $\iddots$&  $q_{j}$ &  \textcolor{red}{$-\beta q_{j}$} & & &  &  &\\ \cline{1-10}
+	$z_{n} \cdots z_{n'}$ & $z_{{n'}-1}$ & $\cdots$ & $z_{j+1}$ &\textcolor{red}{$z_{j}$} &$z_{j-1}$ & $\cdots$ & $z_1$ &$z_0$ &$\bullet$  & $=$&$(w)_{\beta,{\A}}$\\
+	\end{tabular}
+
+%        \begin{align}
+%        \label{eq:conversionScheme}
+%            \hspace{100pt}  w_n w_{n-1}&&&\cdots& &w_{j+1}&\!\! &\textcolor{red}{w_j}  & \!\!  &w_{j-1} &&\cdots &&w_1 w_0\bullet \hspace{100pt} \notag\\[-5pt]
+%                         &&&&       &       & &     &   &q_{j-2} &&\iddots  \notag \\[-3pt] 
+%                         &&&&       &       & &\textcolor{red}{q_{j-1}}& -&\beta q_{j-1} \notag \\[-3pt]
+%                         &&&&         &q_j&   \textcolor{red}{-}&\textcolor{red}{\beta q_j} &&\\[-8pt]
+%                         &&&  \iddots      &   -&\beta q_{j+1}&   &\ && \notag \\[-17pt]
+%          \intertext{\hspace{60pt}\line(1,0){300}}
+%          \notag \\[-30pt]
+%           z_{n'} \cdots z_{n} z_{n-1}&&&\cdots& &z_{j+1}& &\textcolor{red}{z_j}& &z_{j-1} &&\cdots &&z_1 \; z_0\bullet \notag                  
+%        \end{align}
     Hence, the desired formula for conversion on the $j$-th position is 
     \begin{equation*}
         z_j=w_j + q_{j-1} - q_j \beta
     \end{equation*}
     for $j \in \NN$. We set $q_{-1}=0$ as there is no carry from the right on the 0-th position. To clarify, the terms carry and weight coefficient are related to a position. While $q_{j-1}$ is a carry from the right  and $q_j$ is a chosen weight coefficient on the $j$-th position, $q_j$ is a carry from the right on the $(j+1)$-th position etc.
-    
-    \komentar{m=m'}
-    \begin{upravit} 
-     Clearly, the value of $w$ is preserved:
+
+We remark that the conversion with rewriting rule $x-\beta$ prolongs the part of non-zero digits only to the left as there is no carry from the left. Thus, all digits with negative indices of the converted sequence are zero.
+
+
+     The fact that the conversion preserves the value of $w$ follows from adding a representation of zero or we may formally verified it.
 \begin{align}
 \label{eq:valuePreserving}
     \sum_{j\geq 0} z_j \beta^j &=w_0 - \beta q_0 + \sum_{j> 0} (w_j + q_{j-1} - q_j \beta) \beta^j \notag\\
@@ -88,7 +100,7 @@ In standard addition, the digit set conversion runs from the right ($j=0$) to th
     &=\sum_{j\geq 0} w_j \beta^j = w\,. \notag
 \end{align}
 
-     The weight coefficient $q_j$ must be chosen so that the converted digit is in the alphabet~$\A$, i.e., 
+    The weight coefficient $q_j$ must be chosen so that the converted digit is in the alphabet~$\A$, i.e., 
     \begin{equation}
     \label{eq:conversionFormula}
         z_j=w_j + q_{j-1} - q_j \beta \in \A\,.
@@ -120,7 +132,7 @@ In standard addition, the digit set conversion runs from the right ($j=0$) to th
      
      \end{exmp}
   
-  We require that the digit set conversion from $\A+\A$ into $\A$ is computable in parallel, i.e., there exist constants $r,t \in \NN_0$ such that for all $j\geq 0$ is $z_j=z_j(w_{j+r},\dots,w_{j-t})$. To avoid the dependency on all less, respectively more, significant digits, we need variety in the choice of weight coefficient $q_j$. This implies that the used numeration system must be redundant.
+  We require that the digit set conversion from $\A+\A$ into $\A$ is computable in parallel, i.e., there exist constants $r,t \in \NN_0$ such that for all $j\geq 0$ is $z_j=z_j(w_{j+t},\dots,w_{j-r})$. Anticipation $t$ equals zero since we use the rewriting rule $x-\beta$. To avoid the dependency on all less significant digits, we need variety in the choice of weight coefficient $q_j$. This implies that the used numeration system must be redundant.
   
 
 \section{Extending window method}
@@ -130,9 +142,15 @@ As mentioned above, the key problem is to find for every $j\geq 0$ a weight coef
     $$
         z_j=\underbrace{w_j}_{\in \B} + q_{j-1} - q_j \beta \in \A 
     $$  
-    for any input $w_{n'}w_{n'-1}\dots w_1 w_0 \bullet=(w)_{\beta,\B}, w\in \fin{\B}$. We remark that the weight coefficient $q_{j-1}$ is determined by the input $w$. For a digit set conversion to be computable in parallel the digit $z_j$ is required to satisfy $z_j=z_j(w_{j+r},\dots,w_{j-t})$ for a fixed anticipation $r$ and memory $t$ in $\NN$.
+    for any input $w_{n'}w_{n'-1}\dots w_1 w_0 \bullet=(w)_{\beta,\B}, w\in \fin{\B}$. We remark that the weight coefficient $q_{j-1}$ is determined by the input $w_{j-1}\dots w_1 w_0 \bullet$. For a digit set conversion with the rewriting rule $x-\beta$ to be computable in parallel, the digit $z_j$ is required to satisfy $z_j=z_j(w_{j},\dots,w_{j-r})$ for a fixed memory $r$ in $\NN$.
     
-    We introduce following definitions. 
+    Note that the digit $z_j$ is given by the input digit $w_j$ and carry $q_{j-1}$ which is determined by input digits  $w_{j-1} w_{j-2}\dots$. Thus, if we find a weight coefficient $q_j$ all possible combinations of input digits $w_j w_{j-1} w_{j-2}\dots$, then the position $j$ is not important. Therefore, we may strongly simplify our notation if we omit $j$ in subscripts. From now on, $w_0\in\B$ is a converted digit, $w_{-1} w_{-2}\dots\in\B$ are digits on right, $q_{-1}\in\Zomega$ is a carry from the right and we search for a weight coefficient $q_0\in\Zomega$ such that 
+    $$
+    z_0=w_0 + q_{-1} - q_0 \beta \in \A\,.
+    $$
+    
+   
+    We introduce two definitions before we describe the extending window method.
     \begin{defn}
     \label{def:weightCoefficientsSet}
         Let $\B$ be a set such that $\A \subsetneq \B \subset \A +\A$. Then any finite set $\Q\subset\Zomega$ containing~0 such that 
@@ -143,30 +161,31 @@ As mentioned above, the key problem is to find for every $j\geq 0$ a weight coef
     \end{defn}
     We see that if $\Q$ is a weight coefficients set, then
         $$
-        (\forall w_j \in \B)(\forall q_{j-1}\in\Q)(\exists q_j \in \Q )(w_j + q_{j-1} - q_j \beta \in \A )\,.
+        (\forall w_0 \in \B)(\forall q_{-1}\in\Q)(\exists q_0 \in \Q )(\underbrace{w_0 + q_{-1} - q_0 \beta}_{z_0} \in \A )\,.
         $$
-    In other words, there is a weight coefficient $q_j \in \Q$ for a carry from the right $q_{j-1}\in \Q$ and  digit $w_j$ in the input alphabet $\B$. I.e., we  satisfy the basic digit set conversion formula~\eqref{eq:conversionFormula}. Notice that $q_{-1}=0$ is in $\Q$ by the definition. Thus, all weight coefficients may be chosen from $\Q$.
+    In other words, there is a weight coefficient $q_0 \in \Q$ for a carry from the right $q_{-1}\in \Q$ and a digit $w_0$ in the input alphabet $\B$ such that $z_0$ is in the alphabet $\A$.  Notice that  the  carry from the right for the right most non-zero digit of a converted sequence which is $0$ is in $\Q$ by the definition.
     \begin{defn}
-    Let $M$ be an integer and $q:\B^{M} \rightarrow \Q$ be a mapping such that 
+    Let $r$ be an integer and $q:\B^{r} \rightarrow \Q$ be a mapping such that 
     $$
-    w_j+ q(w_{j-1}, \dots, w_{j-M}) - \beta q(w_j, \dots, w_{j-M+1}) \in \A
+    w_0+ q(w_{-1}, \dots, w_{-r}) - \beta q\tupleo{(r-1)} \in \A
     $$
-    for all $w_j,w_{j-1}, \dots, w_{j-M} \in \B$, and $q(0,0,\dots,0)=0$. Then $q$ is called a \emph{weight function} and $M$ is called a \emph{length of window}.    
+    for all $w_0,w_{-1}, \dots, w_{-r} \in \B$, and $q(0,0,\dots,0)=0$. Then $q$ is called a \emph{weight function} and $r$~is called a \emph{length of window}.    
     \end{defn}
 
- Having a weight function $q$, we define a function $\phi:\B^{M+1}\rightarrow \A$ by
+ Having a weight function $q$, we define a function $\phi:\B^{r+1}\rightarrow \A$ by
     \begin{equation}
     \label{eq:localConversion}
-        \phi(w_{j}, \dots, w_{j-M})=w_j+ \underbrace{q(w_{j-1}, \dots, w_{j-M})}_{=q_{j-1}} - \beta \underbrace{q(w_j, \dots, w_{j-M+1})}_{=q_j}=:z_j\,,
+        \phi(w_{0}, \dots, w_{-r})=w_0+ \underbrace{q(w_{-1}, \dots, w_{-r})}_{=q_{-1}} - \beta \underbrace{q\tupleo{(r-1)}}_{=q_0}=:z_0\,,
     \end{equation} 
-    which verifies that the digit set conversion is indeed a $(M+1)$-local function with anticipation $r=0$ and memory $t=M$. The requirement of zero output of the weight function $q$ for the input of $M$ zeros guarantees that $\phi(0,0,\dots,0)=0$. Thus the first condition of Definition~\ref{def:digitSetConversion} is satisfied. The second one follows from the equation \eqref{eq:valuePreserving}. 
+    which verifies that the digit set conversion is indeed a $(r+1)$-local function and memory $r$. The requirement of zero output of the weight function $q$ for the input of $r$ zeros guarantees that $\phi(0,0,\dots,0)=0$. Thus, the first condition of Definition~\ref{def:digitSetConversion} is satisfied. The second one follows from the equation \eqref{eq:valuePreserving}. 
     
-Let us summarize the construction of the digit set conversion by the rewriting rule \mbox{$x-\beta$}. We need to find weight coefficients for all possible combinations of digits of the input alphabet~$\B$. Their multiples of the rewriting rules are digitwise added to the input sequence. In fact, it means that the equation  \eqref{eq:conversionFormula} is applied on each position. If the digit set conversion is computable in parallel, the weight coefficients are determined as the outputs of the weight function $q$ with some fixed length of window $M$.  
+Let us summarize the construction of the digit set conversion by the rewriting rule \mbox{$x-\beta$}. We need to find weight coefficients for all possible combinations of digits of the input alphabet~$\B$. The rewriting rules multiplied by the weight coefficients are digitwise added to an input sequence. In fact, it means that the equation  \eqref{eq:conversionFormula} is applied on each position. If the digit set conversion is computable in parallel, the weight coefficients are determined as the outputs of the weight function $q$ with some fixed length of window $r$.  
 
-We search for the weight function $q$ for a given base $\beta$ and input alphabet $\B$ by the extending window method. It consists of two phases. First, we find a minimal possible weight coefficients set $\Q$. We know that it is possible to convert an input sequence by choosing the weight coefficients from the set $\Q$. The set $\Q$ serves as the starting point for the second phase in which we increment the expected length of the window $M$ until the weight function $q$ is uniquely defined for each $(w_j,w_{j-1}, \dots , w_{j-M+1}) \in \B^{M}$. Then, the local conversion is determined -- we use the weight function outputs as weight coefficients in the formula \eqref{eq:conversionFormula}.    
+We search for a weight function $q$ for a given base $\beta$ and input alphabet $\B$ by the extending window method. It consists of two phases. First, we find some weight coefficients set $\Q$. We know that it is possible to convert an input sequence by choosing the weight coefficients from the set $\Q$. The set $\Q$ serves as the starting point for the second phase in which we increment the expected length of the window $r$ until the weight function $q$ is uniquely defined for each $\tupleo{(r-1)} \in \B^{r}$. Then, the local conversion is determined -- we use the weight function outputs as weight coefficients in the formula \eqref{eq:localConversion}.    
 
-Note that the convergence of both phases is discussed separately in Chapter~\ref{chap:convergence}.
-
+We describe the general concept of the extending window method in this chapter, while various possibilities of construction of sets during both phases are discussed in Chapter~\ref{chap:diffChoices}.
+Note that  convergence of both phases is studied in Chapter~\ref{chap:convergence}.
+      \begin{upravit}
 \section{Phase 1 -- Weight coefficients set}
 \label{subsec:phase1}
 The goal of the first phase is to compute a weight coefficients set $\Q$, i.e., to find a set $\Q \ni 0$ such that 
