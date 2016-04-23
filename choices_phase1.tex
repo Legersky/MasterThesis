@@ -1,21 +1,38 @@
 \section{Different methods in Phase 1}
 \label{sec:methodsOne}
 
-\begin{upravit}
 
-There may be more possible weight coefficients which cover some element of the set $\B+ \Q_k$. Let us suppose that we have the list which contains the lists of these candidates for each element of the set $\B+ \Q_k$. This list of lists is saved in the variable \verb+candidates+ in Algorithm~\ref{alg:extendWeightCoefSet}. Now, for each element, we check the list of candidates which cover this element and if there is none of them contained in the set $\Q_k$, the smallest (in absolute value) weight coefficient from the list of candidates is added to the set $\Q_k$. If there are more elements with the same absolute value, we deterministically choose one of them. The extension $\Q_{k+1}$ of the set $\Q_k$ is obtained in this manner.   
+We recall that the ambiguous part of Phase~1 is extending an intermediate weight coefficient set $\Q_k$ to $\Q_{k+1}$ so that 
+$$
+\B+\Q_k \subset \A+\beta \Q_{k+1}\,.
+$$
+It means that a weight coefficient $q$ such that $x=a+\beta q$ for some $a\in\A$ must be found for all $x\in \B+\Q_k$. Since the alphabet $\A$ is redundant, there might be more such weight coefficients. Let $D_x\subset \Zomega$ be a set of all these candidates for some $x\in \B+\Q_k$, i.e., $D_x=\{q\in\Zomega\colon x=a+\beta q, a\in\A\}$. Set $D:=\{D_x\colon x\in \B+\Q_k\}$. For a given $x\in \B+\Q_k$, the set $D_x$ is constructed so that all digits $a\in\A$ are tested whether $x-a$ is divisible by $\beta$ according to Theorem~\ref{thm:divisibility}. See Algorithm~\ref{alg:extendWeightCoefSet} which constructs the set $D$.
 
-We may slightly improve this procedure: for example we may first extend $\Q_{k}$ by all single-element lists of \verb+candidates+. These elements may be enough to cover also other elements of $\B+\Q_{k}$. It implies that the resulting $\Q$ is dependent on the way of selection from \verb+candidates+.
+Now we extend the set $\Q_k$ to $\Q_{k+1}$ so that $D_x \cap \Q_{k+1} \neq \emptyset$ for all $D_x \in D$. We describe five methods how it can be done (12,13,14,15 and 16), see source code for other ones. 
 
-Algorithm~\ref{alg:searchCand} describes the search for the list of lists of candidates. For each element $x\in \B + \Q_{k}$ we build the list of candidates (in the variable \verb+cand_for_x+) so that we test the divisibility of $x-a$ by the base $\beta$ for all letters $a\in\A$. In the positive case, the result of division is appended to \verb+cand_for_x+ as a possible weight coefficient. We remark that Theorem~\ref{thm:divisibility} is used to check the divisibility.
+As $Q_k\subset \Q_{k+1}$ , set $\Q_{k+1}:=\Q_k$. For methods 12,13 and 14, add  the element of all $D_x\in D$ such that $\#D_x=1$ to $\Q_{k+1}$. Next, select elements from all $D_x\in D$ such that $D_x \cap \Q_{k+1} = \emptyset$ according to a chosen method and add them to $\Q_{k+1}$. Selection for different methods is following:
+\begin{enumerate}[ 1 --]
+	\setcounter{enumi}{11}
+	\item all smallest elements in absolute value of $D_x$,
+	\item all smallest elements in $\beta$-norm of $D_x$,
+	\item all elements of $D_x$,
+	\item all smallest elements in $\beta$-norm of $D_x$,
+	\item all smallest elements in absolute value of $D_x$.
+\end{enumerate}
+Note that more elements may be added by method 15 than 13, resp. 16 than 12, since adding necessary elements before ($\#D_x=1$)  may cause that $D_{x'}\cap \Q_{k+1} \neq \emptyset$ for some $D_{x'}\in D$. 
 
-We can improve the performance of Algorithm~\ref{alg:searchCand} by substituting the set $\B + \Q_{k}$ by $(\B + \Q_{k})\setminus (\B + \Q_{k-1})$ on the line~\ref{line:replaceBySmaller} because
+The procedure is summarized in Algorithm~\ref{alg:extendWeightCoefSet}. 
+Another methods may decrease the number of added elements for instance by picking only one of all smallest elements.
+	
+
+
+We can improve performance by substituting the set $\B + \Q_{k}$ by $(\B + \Q_{k})\setminus (\B + \Q_{k-1})$ on the line~\ref{line:replaceBySmaller} in Algorithm~\ref{alg:searchCand}, because
 $$
 \B + \Q_{k-1} \subset \A + \beta \Q_{k} \subset \A + \beta \Q_{k+1}
 $$
-for any $\Q_{k+1} \supset \Q_{k}$. Thus there is no need to check whether the elements of $\B + \Q_{k-1}$ are covered by some weight coefficient from $\Q_k$ in Algorithm~\ref{alg:extendWeightCoefSet}.
+for any $\Q_{k+1} \supset \Q_{k}$. Thus, $D_x \cap \Q_{k+1} \neq \emptyset$ for  $x\in \B + \Q_{k-1}$.
 
-\end{upravit}
+
 \komentar{
 PODLE LEMMA 4.2 
 Denote $C:=\max\{\normBeta{b-a}\colon a \in \A, b \in \B\}$. Consequently, set $R:=\frac{C}{|\gamma|-1}$ and $\Q:=\{q\in\Zomega\colon \normBeta{q}\leq R\}$.}
@@ -33,6 +50,7 @@ Denote $C:=\max\{\normBeta{b-a}\colon a \in \A, b \in \B\}$. Consequently, set $
 		\ENDFOR
 	\ENDIF
     \STATE $\Q_{k+1}:=\widetilde{\Q}$
+    \STATE By Algorithm~\ref{alg:searchCand}, find set of candidates $D$
     \FORALL{$D_x \in D$}
         \IF{$D_x \cap \widetilde{\Q}=\emptyset$}
 	        \IF {$M=12$}
@@ -40,7 +58,7 @@ Denote $C:=\max\{\normBeta{b-a}\colon a \in \A, b \in \B\}$. Consequently, set $
 	        \ELSIF {$M=13$}
 	        	\STATE Add all smallest elements in $\beta$-norm of $D_x$ to $\Q_{k+1}$
 	        \ELSIF {$M=14$}
-	        	\STATE Add all elements of $D_x$ to$\Q_{k+1}$
+	        	\STATE Add all elements of $D_x$ to $\Q_{k+1}$
 	        \ELSIF {$M=15$}
 	        	\STATE Add all smallest elements in $\beta$-norm of $D_x$ to $\Q_{k+1}$
 	        \ELSIF {$M=16$}
