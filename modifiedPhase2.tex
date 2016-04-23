@@ -1,4 +1,5 @@
-
+\section{Modified Phase 2}
+\label{sec:modifiedPhase2}
 
 In this section, we introduce algorithms based on the theorems proven in Chapter~\ref{chap:convergence}. We recall an algorithm for checking convergence of Phase 2 for $bb\dots b$ inputs. Next, we show that it is possible to make Phase 2 stable by wrapping the choice of a set of possible weight coefficients into a simple while loop. Finally, we present an algorithm for Phase~2 which includes all modifications -- the menshioned check for $bb\dots b$ inputs and control of convergence by searching for an infinite walk in Rauzy graph $G_k$.
 
@@ -149,7 +150,7 @@ We remark that the non-convergence caused by an input $bb\dots b$ for some $b\in
      %    	\STATE $G_{k}:=G_{k+1}$
         \ENDFOR  
     \ENDWHILE  
-    \STATE $r:= k+1$  ??????????????????????????? 
+    \STATE $r:= k+1$
     \FORALL {$l\in\NN, l\leq r$}
 	    \FORALL{$\{\tupleo{l}\in\B^{l+1} \colon \Qwo{l} \text{ was found, } \#\Qwo{l}=1\}$}
 	    	\FORALL{$\tuple{(l+1)}{r}\in\B^{r-l}$}
@@ -162,7 +163,9 @@ We remark that the non-convergence caused by an input $bb\dots b$ for some $b\in
 \end{algorithm}
 
 
-
+\begin{upravit}
+We may reduce the number of the combinations of the input digits so that if for some $(w_j,\dots, w_{j-m+1})\in\B^m, m<M$ we have   $\#\Q_{[w_j,\dots, w_{j-m+1}]}=1$, we do not extend the window for these digits but we set the ouput of $q(w_j,\dots, w_{j-m+1}, w_{j-m}, \dots w_{j-M+1})$ to the single element of $\Q_{[w_j,\dots, w_{j-m+1}]}$ for all $(w_{j-m}, \dots w_{j-M+1})\in \B^{M-m}$. 
+\end{upravit}
 
 
 
