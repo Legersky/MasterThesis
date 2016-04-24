@@ -1,17 +1,31 @@
-This class constructs necessary structures for computation in $\Zomega$. It is \emph{PolynomialQuotientRing} obtained as a \emph{PolynomialRing} over integers factored by polynomial $p$. This is used for representation of elements of $\Zomega$ and arithmetic. We remark that it is independent on the choice of root of the  minimal polynomial $p$. But as we need also comparisons of numbers in~$\Zomega$ in modulus, we specify $\omega$ by its approximate complex value and we form a factor ring of rational polynomials by using class \emph{NumberField}. This enables us to get absolute values of elements of $\Zomega$ which can be then compared.
+The necessary structures for computation in $\Zomega$ are constructed when an instance of this class is created. 
+The set $\Zomega$ is represented by \emph{PolynomialQuotientRing} which is obtained by factorization of \emph{PolynomialRing} over integers by polynomial $m_\omega$. 
+We remark that arithmetic operations in $\Zomega$ are independent on the choice of root of the  minimal polynomial $m_\omega$. Since comparison of absolute value of numbers in~$\Zomega$ is required, we specify $\omega$ by its approximate complex value to form a factor ring of rational polynomials by using class \emph{NumberField}. Elements of this class can be coerced to complex numbers and their absolute value is computed.
 
-Method \textbf{findWeightFunction()} links together both phases of the extending window method to find the weight function $q$. That is used in the methods for addition and digit set conversion to process them as local functions. There are also verification methods.
-
-Moreover, many methods for printing, plotting and saving outputs are implemented.
+%Method \textbf{findWeightFunction()} links together both phases of the extending window method to find a weight function $q$ for given parametres. That is used in the methods for addition and digit set conversion to process them as local functions. There are also verification methods.
+%
+%Moreover, many methods for printing, plotting and saving outputs are implemented.
 
 The constructor of class \emph{AlgorithmForParallelAddition} is 
 
 \begin{method}{\_\_init\_\_}{minPol\_str, embd, alphabet, base, name='NumerationSystem', inputAlphabet=' ',\\
- printLog=True, printLogLatex=False, verbose=0}
-Take \var{minPol\_str} which is a string of symbolic expression in the variable $x$ of an irreducible polynomial~$p$. The closest root of  \var{minPol\_str} to \var{embd} is used as the ring generator $\omega$ (see more in documentation of \emph{NumberField} in SageMath \cite{sage}). The structures for $\Zomega$ are constructed as described above. Setters \fun{setAlphabet}{alphabet}, \fun{setInputAlphabet}{inputAlphabet} and \fun{setBase}{base} are called.  Messages saved to logfile during existence of an instance are printed (using \LaTeX) on standard output depending on \var{printLog} and \var{printLogLatex}. The level of messages for a development is set by \var{verbose}. 
+ printLog=True, printLogLatex=False, verbose=0, maxInputs=Infinity}
+Take \var{minPol\_str} which is a string of symbolic expression in the variable $x$ of an irreducible polynomial~$m_\omega$. The closest root of  \var{minPol\_str} to \var{embd} is used as the ring generator $\omega$ (see more in the documentation of \emph{NumberField} in SageMath \cite{sage}). The structures for $\Zomega$ are constructed as described above. 
+
+A base $\beta$ is given by a symbolic expression \var{base} where \verb+omega+ is used for $\omega$.
+Setter \fun{setBase}{base} inspects whether the base $\beta$ has a real conjugate greater than one.
+
+The parameter \var{alphabet} and \var{inputAlphabet} expect a string with a list of symbolic expressions (use \verb+omega+ for $\omega$) to define an alphabet $\A$ and input alphabet $\B$. If the string \var{alphabet} is empty, then an alphabet $\A\subset\Zomega$ is generated such that it contains all representants modulo $\beta$ and $\beta-1$ in $\Zomega$ according to Theorem~\ref{thm:lowerBoundAlphabet}. If \var{alphabet} is \verb+oneMore+, then a bigger alphabet is generated.  If \var{alphabet} is \verb+integer+, \verb+integer2+ or \verb+integer3+, an algorithm attempts to find an integer alphabet of different size. An exception is raised when alphabet generating fails. If  \var{inputAlphabet} is empty, then $\B$ is set to $\A+\A$.
+
+Messages saved to logfile during existence of an instance are printed (using \LaTeX) on standard output depending on \var{printLog} and \var{printLogLatex}. The level of messages for a development is set by \var{verbose}. The number of entries in a constructed weight function may be limited by \var{maxInputs}.
+
+Example:
+\verb|alg= AlgorithmForParallelAddition('x^2+x+1',-0.5+0.8*I,|
+
+\verb| '[0,1,-1,omega,-omega,-omega-1,omega+1]','omega-1','Eisenstein')|
 \end{method}
 
-Methods for the construction of an addition algorithm which is computable in parallel by the designed extending window method are the following:
+Methods for the construction of an algorithm for a digit set conversion from $\B$ to $\A$, which is computable in parallel, are the following:
 
 \begin{method}{\_findWeightCoefSet}{ max\_iterations, method\_number}
 Create an instance of \emph{WeightCoefficientsSetSearch(method\_number)} and call its method \fun{findWeightCoefficientsSet}{max\_iterations} to obtain a weight coefficients set $\Q$.
@@ -26,7 +40,7 @@ Create an instance of \emph{WeightFunctionSearch(method\_number)} and call its m
 It is verified that there are all representatives mod $\beta$ in the alphabet and that all elements of the input alphabet have their representatives mod $\beta-1$ in the alphabet, see Section \ref{sec:alphabet}.
 Return the weight function $q$ obtained by calling \fun{\_findWeightCoefSet\\}{max\_iterations, method\_weightCoefSet} and \fun{\_findWeightFunction}{max\_input\_length, method\_weightFunSearch}.
 \end{method}
-
+\begin{upravit}
 The important function for the searching for possible weight coefficients is
 
 \begin{method}{divideByBase}{divided\_number}

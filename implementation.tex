@@ -1,6 +1,6 @@
 \section{Implementation}
 
-Our implementation is an upgrade of the program attached to \cite{vu}. The chosen programming language is SageMath. It is Python-based language with numerous implemented mathematical structures. That is the main reason of our choice -- the extending window method requires to handle elements of $\Zomega$ and arithmetic operations in this set. Moreover, SageMath provides various data structures and plotting tools.  The code is simpler and more similar to pseudocode than for instance C++. Due to it, we may concern with algorithmic part of the problem instead of difficult programming. Unfortunately, SageMath is much slower than C++.
+Our implementation of the desing is an upgrade of the program attached to \cite{vu}. The chosen programming language is SageMath. It is Python-based language with numerous implemented mathematical structures. That is the main reason of our choice -- the extending window method requires to handle elements of $\Zomega$ and arithmetic operations in this set. Moreover, SageMath provides various data structures and plotting tools.  The code is simpler and more similar to pseudocode than for instance C++. Due to it, we may concern with algorithmic part of the problem instead of difficult programming. Unfortunately, SageMath is much slower than C++.
 
 
 The implementation is object-oriented. It consists of five classes. Class \emph{AlgorithmForParallelAddition} contains structures for computations in $\Zomega$. The build-in classes \emph{PolynomialQuotientRing} and \emph{NumberField} are used to represent elements of $\Zomega$ as an algebraic and complex numbers. The class also links together all functions and instances of other classes which are necessary to construct an algorithm for parallel addition by the extending window method. The input parameters are an algebraic integer $\omega$ given by its minimal polynomial $m_\omega$ and an approximate complex value, a base $\beta\in\Zomega$, an alphabet $\A\subset\Zomega$ and input alphabet $\B$. 
@@ -9,28 +9,31 @@ Phase 1 of the extending window method is implemented in class \emph{WeightCoeff
 
 We use notation from previous chapters in descriptions of the classes. We list only the most important methods of each class, see commented source code for all of them.  
 
-\begin{upravit}
-Basically, weight function can be found just by creating an instance of \emph{AlgorithmForParallelAddition} and calling \textbf{findWeightFunction()}. For more comfortable usage, our implementation includes two interfaces -- a shell version and graphic user interface using interact in SageMath Cloud. The whole implementation is on the attached DVD or it can be downloaded from  \url{https://github.com/Legersky/ParallelAddition}.
+For basic use, load \verb+AlgorithmForParallelAddition.sage+, create an instance of \emph{AlgorithmForParallelAddition} and call \textbf{findWeightFunction()}.
 
-\subsection{Class AlgorithmForParallelAddition}
+We also provide a shell interface and a graphic user interface which runs as an interact in SageMathCloud. If the network access is enabled and the modul \verb+gspread+ is installed (see \cite{gspread}), then results from both interfaces are automatically saved to Google spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results}. The interfaces are described at the end of this section. The whole implementation is on the attached DVD or it can be downloaded from  \url{https://github.com/Legersky/ParallelAddition}.
+
+
+
+\subsection*{Class AlgorithmForParallelAddition}
 \input{AlgorithmForParallelAddition.tex}
 
 
-\subsection{Class WeightCoefficientsSetSearch}
+\subsection*{Class WeightCoefficientsSetSearch}
 \input{WeightCoefficientsSetSearch.tex}
 
 
-\subsection{Class WeightFunctionSearch}
+\subsection*{Class WeightFunctionSearch}
 \input{WeightFunctionSearch.tex}
 
 
-\subsection{Class WeightFunction}
+\subsection*{Class WeightFunction}
 \input{WeightFunction.tex}
 
-\subsection{User interfaces}
+\subsection*{User interfaces}
 We provide two interfaces for running of the implemented extending window method -- the~shell version and graphic user interface.
 
-\subsubsection{Shell}
+\subsubsection*{Shell}
 SageMath must be installed. The implementation of the extending window method is launched in a shell by typing \verb+sage extending_window_method.sage <input_sample.sage>+. The parameters of the numeration system and setting of outputs and computation is given by the SageMath file \verb+input_sample.sage+. See Appendix \ref{app:inputSample} for an example of such a file.
 
 The name of the numeration system, minimal polynomial of generator $\omega$, an approximate value of $\omega$, the base $\beta$, alphabet $\A$ and input alphabet $\B$ are set in the part INPUTS. The maximum number of iterations in Phase 1, maximal length of the window in Phase 2 and the launching of the sanity check are set in SETTING. 
