@@ -1,9 +1,9 @@
-Class \emph{WeightCoefficientsSetSearch} implements Phase 1 of the extending window method described in Section \ref{subsec:phase1}. The most important method is  \fun{findWeightCoefficientsSet}{} which returns the weight coefficients set $\Q$.
+Class \emph{WeightCoefficientsSetSearch} implements Phase 1 of the extending window method described in Section \ref{subsec:phase1} with different methods how an intermediate weight coefficients set $\Q_k$ is extended to $\Q_{k+1}$. Algorithm~\ref{alg:extendWeightCoefSet} explains some of these methods. The most important method of the class is  \fun{findWeightCoefficientsSet}{} which returns a weight coefficients set $\Q$.
 
 The constructor of the class is 
-
+\begin{upravit}
 \begin{method}{\_\_init\_\_}{ algForParallelAdd, method}
-Initialize the ring generator $\omega$, base $\beta$, alphabet $\A$ and input alphabet $\B$ by values obtained from \var{algForParallelAdd}. The parameter \var{method} characterizes the way of the choice from the possible candidates for the weight coefficients set, \var{None} is the default way -- according to absolute values.  
+Initialize a ring generator $\omega$, base $\beta$, an alphabet $\A$ and input alphabet $\B$ by values obtained from \var{algForParallelAdd}. The parameter \var{method} characterizes how an intermediate weight coefficients set $\Q_k$ is extended to $\Q_{k+1}$. If \var{None}, then method 13 from Algorithm~\ref{alg:extendWeightCoefSet} is used as default.
 \end{method}
 
 Methods implementing Phase 1 are the following:

@@ -3,7 +3,7 @@
 % \usepackage{sidecap}
 \usepackage{enumerate}
 \usepackage{xcolor}
-\usepackage{hyperref}
+
 \usepackage{mathtools, mathdots}
 \usepackage{pgffor}
 \usepackage{pdflscape}
@@ -13,13 +13,8 @@
 \usepackage{tabulary}
 \usepackage{listings}
 
-\lstset{
-    %frame=single,
-    breaklines=true,
-    %postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
-    language=python
-}
-
+\usepackage{breqn}
+\usepackage{hyperref}
 
 \newcommand{\komentar}[1]{\textcolor{red}{\MakeUppercase{#1}} \newline}
 \newenvironment{upravit}{\color{blue}}{}

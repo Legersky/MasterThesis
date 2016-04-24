@@ -1,92 +1,220 @@
 \begin{exmp}
-\label{ex:AA}
+\label{ex:tAA}
 
-Parameters:
-\begin{itemize}
-    \item Minimal polynomial of $\omega$: $t^2 + t + 2$
-    \item Base $\beta= \omega $
-    \item Minimal polynomial of base: $x^2 + x + 2$
-    \item Alphabet $\mathcal{A} = \{0, \omega + 1, 1, -1\} $
-    \item Input alphabet $\mathcal{B} =\A+\A$
-\end{itemize}
 
-The result of the extending window method is:
-\begin{enumerate}
-    \item Phase 1 was successful.
-The number of elements in the weight coefficient set $\mathcal{Q}$ is $ 29 $.
+\rule{0cm}{0cm}
 
-    \item There is a unique weight coefficient for input $b,b,\dots,b$ for all $b\in\mathcal{B}$.
+\begin{tabular}{ll}
+$\omega=  \frac{1}{2} i \, \sqrt{3} - \frac{1}{2} $  & $\beta= \omega - 1 = \frac{1}{2} i \, \sqrt{3} - \frac{3}{2} $\\
+$m_\omega(t)=  t^{2} + t + 1 $  & $m_\beta(x)=  x^{2} + 3 \, x + 3 $\\
+Real conjugate of $\beta$ greater than 1:   &  ? \\ \hline
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, -1, \omega, -\omega, -\omega - 1, \omega + 1\right\}  \end{dmath*}\end{minipage} }\\
+$\#\A= $ 7 $ $ & $\A$ is minimal. \\
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\B =\A+\A \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, \omega, -\omega - 1\right\}, \left\{-1, -\omega, \omega + 1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{\omega\right\}, \left\{-\omega\right\}, \left\{-\omega - 1\right\}, \left\{\omega + 1\right\}\right\}  \end{dmath*}\end{minipage} }\\
+ & \\ \hline
+ & \\
+Phase 1 (method  3): &
+\checkmark, $\#\mathcal{Q} = $ 19 $ $ \\ 
+$b,b,\dots,b$ inputs: & \checkmark \\
+Phase 2 (method  15): & \checkmark , $r= 3$ \\
+\end{tabular}
 
-    \item Phase 2 was successful.
-The length of window $m$ of the weight function $q$ is  $ 8 $.
-\end{enumerate}
 \end{exmp}
+
+
+
+
 \begin{exmp}
-\label{ex:AB}
+\label{ex:tAB}
 
-Parameters:
-\begin{itemize}
-    \item Minimal polynomial of $\omega$: $t^2 + t + 2$
-    \item Base $\beta= \omega $
-    \item Minimal polynomial of base: $x^2 + x + 2$
-    \item Alphabet $\mathcal{A} = \{0, \omega + 1, 1, -1\} $
-    \item Input alphabet $\mathcal{B} =\A+\A$
-\end{itemize}
 
-The result of the extending window method is:
-\begin{enumerate}
-    \item Phase 1 was successful.
-The number of elements in the weight coefficient set $\mathcal{Q}$ is $ 29 $.
+\rule{0cm}{0cm}
 
-    \item There is a unique weight coefficient for input $b,b,\dots,b$ for all $b\in\mathcal{B}$.
+\begin{tabular}{ll}
+$\omega=  \frac{1}{2} i \, \sqrt{3} - \frac{1}{2} $  & $\beta= \omega - 1 = \frac{1}{2} i \, \sqrt{3} - \frac{3}{2} $\\
+$m_\omega(t)=  t^{2} + t + 1 $  & $m_\beta(x)=  x^{2} + 3 \, x + 3 $\\
+Real conjugate of $\beta$ greater than 1:   &  ? \\ \hline
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, -1, \omega, -\omega, -\omega - 1, \omega + 1\right\}  \end{dmath*}\end{minipage} }\\
+$\#\A= $ 7 $ $ & $\A$ is minimal. \\
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\B =\A+\A \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, \omega, -\omega - 1\right\}, \left\{-1, -\omega, \omega + 1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{\omega\right\}, \left\{-\omega\right\}, \left\{-\omega - 1\right\}, \left\{\omega + 1\right\}\right\}  \end{dmath*}\end{minipage} }\\
+ & \\ \hline
+ & \\
+Phase 1 (method  8): &
+\checkmark, $\#\mathcal{Q} = $ 19 $ $ \\ 
+$b,b,\dots,b$ inputs: & \checkmark \\
+Phase 2 (method  15): & \checkmark , $r= 3$ \\
+\end{tabular}
 
-    \item Phase 2 was successful.
-The length of window $m$ of the weight function $q$ is  $ 8 $.
-\end{enumerate}
 \end{exmp}
+
+
+
+
 \begin{exmp}
-\label{ex:AC}
+\label{ex:tAC}
 
-Parameters:
-\begin{itemize}
-    \item Minimal polynomial of $\omega$: $t^2 + 2$
-    \item Base $\beta= \omega $
-    \item Minimal polynomial of base: $x^2 + 2$
-    \item Alphabet $\mathcal{A} = \{0, \omega + 1, -\omega - 1\} $
-    \item Input alphabet $\mathcal{B} =\A+\A$
-\end{itemize}
 
-The result of the extending window method is:
-\begin{enumerate}
-    \item Phase 1 was successful.
-The number of elements in the weight coefficient set $\mathcal{Q}$ is $ 9 $.
+\rule{0cm}{0cm}
 
-    \item There is a unique weight coefficient for input $b,b,\dots,b$ for all $b\in\mathcal{B}$.
+\begin{tabular}{ll}
+$\omega=  \frac{1}{2} i \, \sqrt{3} - \frac{1}{2} $  & $\beta= \omega - 1 = \frac{1}{2} i \, \sqrt{3} - \frac{3}{2} $\\
+$m_\omega(t)=  t^{2} + t + 1 $  & $m_\beta(x)=  x^{2} + 3 \, x + 3 $\\
+Real conjugate of $\beta$ greater than 1:   &  ? \\ \hline
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, -1, \omega, -\omega, -\omega - 1, \omega + 1\right\}  \end{dmath*}\end{minipage} }\\
+$\#\A= $ 7 $ $ & $\A$ is minimal. \\
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\B =\A+\A \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, \omega, -\omega - 1\right\}, \left\{-1, -\omega, \omega + 1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{\omega\right\}, \left\{-\omega\right\}, \left\{-\omega - 1\right\}, \left\{\omega + 1\right\}\right\}  \end{dmath*}\end{minipage} }\\
+ & \\ \hline
+ & \\
+Phase 1 (method  8): &
+\checkmark, $\#\mathcal{Q} = $ 19 $ $ \\ 
+$b,b,\dots,b$ inputs: & \checkmark \\
+Phase 2 (method  15): & \checkmark , $r= 3$ \\
+\end{tabular}
 
-    \item Phase 2 was successful.
-The length of window $m$ of the weight function $q$ is  $ 4 $.
-\end{enumerate}
 \end{exmp}
+
+
+
+
 \begin{exmp}
-\label{ex:AD}
+\label{ex:tAD}
 
-Parameters:
-\begin{itemize}
-    \item Minimal polynomial of $\omega$: $t^2 + 2$
-    \item Base $\beta= \omega $
-    \item Minimal polynomial of base: $x^2 + 2$
-    \item Alphabet $\mathcal{A} = \{0, 1, -1\} $
-    \item Input alphabet $\mathcal{B} =\A+\A$
-\end{itemize}
 
-The result of the extending window method is:
-\begin{enumerate}
-    \item Phase 1 was successful.
-The number of elements in the weight coefficient set $\mathcal{Q}$ is $ 9 $.
+\rule{0cm}{0cm}
 
-    \item There is a unique weight coefficient for input $b,b,\dots,b$ for all $b\in\mathcal{B}$.
+\begin{tabular}{ll}
+$\omega=  i - 1 $  & $\beta= \omega = i - 1 $\\
+$m_\omega(t)=  t^{2} + 2 \, t + 2 $  & $m_\beta(x)=  x^{2} + 2 \, x + 2 $\\
+Real conjugate of $\beta$ greater than 1:   &  ? \\ \hline
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, \omega + 1, -\omega - 1, 1, -1\right\}  \end{dmath*}\end{minipage} }\\
+$\#\A= $ 5 $ $ & $\A$ is minimal. \\
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\B =\A+\A \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1, -\omega - 1, 1, -1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1\right\}, \left\{-\omega - 1\right\}, \left\{1\right\}, \left\{-1\right\}\right\}  \end{dmath*}\end{minipage} }\\
+ & \\ \hline
+ & \\
+Phase 1 (method  3): &
+\checkmark, $\#\mathcal{Q} = $ 45 $ $ \\ 
+$b,b,\dots,b$ inputs: & \checkmark \\
+Phase 2 (method  15): & \checkmark , $r= 6$ \\
+\end{tabular}
 
-    \item Phase 2 was successful.
-The length of window $m$ of the weight function $q$ is  $ 4 $.
-\end{enumerate}
+\end{exmp}
+
+
+
+
+\begin{exmp}
+\label{ex:tAE}
+
+
+\rule{0cm}{0cm}
+
+\begin{tabular}{ll}
+$\omega=  i - 1 $  & $\beta= \omega = i - 1 $\\
+$m_\omega(t)=  t^{2} + 2 \, t + 2 $  & $m_\beta(x)=  x^{2} + 2 \, x + 2 $\\
+Real conjugate of $\beta$ greater than 1:   &  ? \\ \hline
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, \omega + 1, -\omega - 1, 1, -1\right\}  \end{dmath*}\end{minipage} }\\
+$\#\A= $ 5 $ $ & $\A$ is minimal. \\
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\B =\A+\A \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1, -\omega - 1, 1, -1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1\right\}, \left\{-\omega - 1\right\}, \left\{1\right\}, \left\{-1\right\}\right\}  \end{dmath*}\end{minipage} }\\
+ & \\ \hline
+ & \\
+Phase 1 (method  8): &
+\checkmark, $\#\mathcal{Q} = $ 45 $ $ \\ 
+$b,b,\dots,b$ inputs: & \checkmark \\
+Phase 2 (method  15): & \checkmark , $r= 6$ \\
+\end{tabular}
+
+\end{exmp}
+
+
+
+
+\begin{exmp}
+\label{ex:tAF}
+
+
+\rule{0cm}{0cm}
+
+\begin{tabular}{ll}
+$\omega=  i \, \sqrt{2} - 1 $  & $\beta= -\omega - 2 = -i \, \sqrt{2} - 1 $\\
+$m_\omega(t)=  t^{2} + 2 \, t + 3 $  & $m_\beta(x)=  x^{2} + 2 \, x + 3 $\\
+Real conjugate of $\beta$ greater than 1:   &  ? \\ \hline
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, \omega + 1, -\omega - 1, 1, -1, \omega\right\}  \end{dmath*}\end{minipage} }\\
+$\#\A= $ 6 $ $ & $\A$ is minimal. \\
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\B =\A+\A \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1, -1\right\}, \left\{-\omega - 1, 1, \omega\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1\right\}, \left\{-\omega - 1\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{\omega\right\}\right\}  \end{dmath*}\end{minipage} }\\
+ & \\ \hline
+ & \\
+Phase 1 (method  8): &
+\checkmark, $\#\mathcal{Q} = $ 27 $ $ \\ 
+$b,b,\dots,b$ inputs: & \checkmark \\
+Phase 2 (method  15): & \checkmark , $r= 7$ \\
+\end{tabular}
+
+\end{exmp}
+
+
+
+
+\begin{exmp}
+\label{ex:tAG}
+
+
+\rule{0cm}{0cm}
+
+\begin{tabular}{ll}
+$\omega=  \frac{1}{2} i \, \sqrt{11} - \frac{3}{2} $  & $\beta= \omega = \frac{1}{2} i \, \sqrt{11} - \frac{3}{2} $\\
+$m_\omega(t)=  t^{2} + 3 \, t + 5 $  & $m_\beta(x)=  x^{2} + 3 \, x + 5 $\\
+Real conjugate of $\beta$ greater than 1:   &  ? \\ \hline
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, -1, \omega + 1, -\omega - 1, \omega + 2, -\omega - 2, \omega + 3, -\omega - 3\right\}  \end{dmath*}\end{minipage} }\\
+$\#\A= $ 9 $ $ & $\A$ is minimal. \\
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\B =\A+\A \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, \omega + 1\right\}, \left\{-1, -\omega - 1\right\}, \left\{\omega + 2, -\omega - 3\right\}, \left\{-\omega - 2, \omega + 3\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{\omega + 1\right\}, \left\{-\omega - 1\right\}, \left\{\omega + 2\right\}, \left\{-\omega - 2\right\}, \left\{\omega + 3\right\}, \left\{-\omega - 3\right\}\right\}  \end{dmath*}\end{minipage} }\\
+ & \\ \hline
+ & \\
+Phase 1 (method  8): &
+\checkmark, $\#\mathcal{Q} = $ 11 $ $ \\ 
+$b,b,\dots,b$ inputs: & \checkmark \\
+\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 (method  15) fails because  the sequence $(0, 2, 2\omega + 2, 2\omega + 2, 2, 2\omega + 2, 2\omega + 2, ... ,2, 2\omega + 2, 2\omega + 2, ...)$ leads to an infinite loop.\end{minipage} }\\
+\end{tabular}
+
+\end{exmp}
+
+
+
+
+\begin{exmp}
+\label{ex:tAH}
+
+
+\rule{0cm}{0cm}
+
+\begin{tabular}{ll}
+$\omega=  \frac{1}{2} i \, \sqrt{11} - \frac{3}{2} $  & $\beta= \omega = \frac{1}{2} i \, \sqrt{11} - \frac{3}{2} $\\
+$m_\omega(t)=  t^{2} + 3 \, t + 5 $  & $m_\beta(x)=  x^{2} + 3 \, x + 5 $\\
+Real conjugate of $\beta$ greater than 1:   &  ? \\ \hline
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, -1, \omega + 1, -\omega - 1, \omega + 2, -\omega - 2, \omega + 3, -\omega - 3\right\}  \end{dmath*}\end{minipage} }\\
+$\#\A= $ 9 $ $ & $\A$ is minimal. \\
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\B =\A+\A \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, \omega + 1\right\}, \left\{-1, -\omega - 1\right\}, \left\{\omega + 2, -\omega - 3\right\}, \left\{-\omega - 2, \omega + 3\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
+\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{\omega + 1\right\}, \left\{-\omega - 1\right\}, \left\{\omega + 2\right\}, \left\{-\omega - 2\right\}, \left\{\omega + 3\right\}, \left\{-\omega - 3\right\}\right\}  \end{dmath*}\end{minipage} }\\
+ & \\ \hline
+ & \\
+Phase 1 (method  8): &
+\checkmark, $\#\mathcal{Q} = $ 11 $ $ \\ 
+$b,b,\dots,b$ inputs: & \checkmark \\
+\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 (method  15) fails because  the sequence $(0, 2, 2\omega + 2, 2\omega + 2, 2, 2\omega + 2, 2\omega + 2, ... ,2, 2\omega + 2, 2\omega + 2, ...)$ leads to an infinite loop.\end{minipage} }\\
+\end{tabular}
+
 \end{exmp}

@@ -13,7 +13,7 @@ The constructor of class \emph{AlgorithmForParallelAddition} is
 Take \var{minPol\_str} which is a string of symbolic expression in the variable $x$ of an irreducible polynomial~$m_\omega$. The closest root of  \var{minPol\_str} to \var{embd} is used as the ring generator $\omega$ (see more in the documentation of \emph{NumberField} in SageMath \cite{sage}). The structures for $\Zomega$ are constructed as described above. 
 
 A base $\beta$ is given by a symbolic expression \var{base} where \verb+omega+ is used for $\omega$.
-Setter \fun{setBase}{base} inspects whether the base $\beta$ has a real conjugate greater than one.
+Setter \fun{setBase}{base} checks if the base $\beta$ is expanding and inspects whether it has a real conjugate greater than one.
 
 The parameter \var{alphabet} and \var{inputAlphabet} expect a string with a list of symbolic expressions (use \verb+omega+ for $\omega$) to define an alphabet $\A$ and input alphabet $\B$. If the string \var{alphabet} is empty, then an alphabet $\A\subset\Zomega$ is generated such that it contains all representants modulo $\beta$ and $\beta-1$ in $\Zomega$ according to Theorem~\ref{thm:lowerBoundAlphabet}. If \var{alphabet} is \verb+oneMore+, then a bigger alphabet is generated.  If \var{alphabet} is \verb+integer+, \verb+integer2+ or \verb+integer3+, an algorithm attempts to find an integer alphabet of different size. An exception is raised when alphabet generating fails. If  \var{inputAlphabet} is empty, then $\B$ is set to $\A+\A$.
 
@@ -73,4 +73,3 @@ The correctness of the implementation of the extending window for a given numera
 Check whether the values of all possible numbers of the length \var{num\_digits} with digits in the input alphabet $\B$ are the same as their $(\beta, \A)$-representation obtained by \fun{parallelConversion}{}.   
 \end{method}
 
-\begin{upravit}

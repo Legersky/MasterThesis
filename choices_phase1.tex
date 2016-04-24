@@ -6,20 +6,20 @@ We recall that the ambiguous part of Phase~1 is extending an intermediate weight
 $$
 \B+\Q_k \subset \A+\beta \Q_{k+1}\,.
 $$
-It means that a weight coefficient $q$ such that $x=a+\beta q$ for some $a\in\A$ must be found for all $x\in \B+\Q_k$. Since the alphabet $\A$ is redundant, there might be more such weight coefficients. Let $D_x\subset \Zomega$ be a set of all these candidates for some $x\in \B+\Q_k$, i.e., $D_x=\{q\in\Zomega\colon x=a+\beta q, a\in\A\}$. Set $D:=\{D_x\colon x\in \B+\Q_k\}$. For a given $x\in \B+\Q_k$, the set $D_x$ is constructed so that all digits $a\in\A$ are tested whether $x-a$ is divisible by $\beta$ according to Theorem~\ref{thm:divisibility}. See Algorithm~\ref{alg:extendWeightCoefSet} which constructs the set $D$.
+It means that a weight coefficient $q$ such that $x=a+\beta q$ for some $a\in\A$ must be found for all $x\in \B+\Q_k$. Since the alphabet $\A$ is redundant, there might be more such weight coefficients. Let $C_x\subset \Zomega$ be a set of all these candidates for some $x\in \B+\Q_k$, i.e., $C_x=\{q\in\Zomega\colon x=a+\beta q, a\in\A\}$. Set $C:=\{C_x\colon x\in \B+\Q_k\}$. For a given $x\in \B+\Q_k$, the set $C_x$ is constructed so that all digits $a\in\A$ are tested whether $x-a$ is divisible by $\beta$ according to Theorem~\ref{thm:divisibility}. See Algorithm~\ref{alg:extendWeightCoefSet} which constructs the set $C$.
 
-Now we extend the set $\Q_k$ to $\Q_{k+1}$ so that $D_x \cap \Q_{k+1} \neq \emptyset$ for all $D_x \in D$. We describe five methods how it can be done (12, 13, 14, 15 and 16), see source code for other ones. 
+Now we extend the set $\Q_k$ to $\Q_{k+1}$ so that $C_x \cap \Q_{k+1} \neq \emptyset$ for all $C_x \in C$. We describe five methods how it can be done (12, 13, 14, 15 and 16), see source code for other ones. 
 
-As $Q_k\subset \Q_{k+1}$ , set $\Q_{k+1}:=\Q_k$. For methods 12, 13 and 14, add  the element of all $D_x\in D$ such that $\#D_x=1$ to $\Q_{k+1}$. Next, select elements from all $D_x\in D$ such that $D_x \cap \Q_{k+1} = \emptyset$ according to a chosen method and add them to $\Q_{k+1}$. Selection for different methods is following:
+As $Q_k\subset \Q_{k+1}$ , set $\Q_{k+1}:=\Q_k$. For methods 12, 13 and 14, add  the element of all $C_x\in C$ such that $\#C_x=1$ to $\Q_{k+1}$. Next, select elements from all $C_x\in C$ such that $C_x \cap \Q_{k+1} = \emptyset$ according to a chosen method and add them to $\Q_{k+1}$. Selection for different methods is following:
 \begin{enumerate}[ method 1 --]
 	\setcounter{enumi}{11}
-	\item all smallest elements in absolute value of $D_x$,
-	\item all smallest elements in $\beta$-norm of $D_x$,
-	\item all elements of $D_x$,
-	\item all smallest elements in $\beta$-norm of $D_x$,
-	\item all smallest elements in absolute value of $D_x$.
+	\item all smallest elements in absolute value of $C_x$,
+	\item all smallest elements in $\beta$-norm of $C_x$,
+	\item all elements of $C_x$,
+	\item all smallest elements in $\beta$-norm of $C_x$,
+	\item all smallest elements in absolute value of $C_x$.
 \end{enumerate}
-Note that more elements may be added by method 15 than 13, resp. 16 than 12, since adding necessary elements before ($\#D_x=1$)  may cause that $D_{x'}\cap \Q_{k+1} \neq \emptyset$ for some $D_{x'}\in D$. 
+Note that more elements may be added by method 15 than 13, resp. 16 than 12, since adding necessary elements before ($\#C_x=1$)  may cause that $C_{x'}\cap \Q_{k+1} \neq \emptyset$ for some $C_{x'}\in C$. 
 
 The procedure is summarized in Algorithm~\ref{alg:extendWeightCoefSet}. 
 Another methods may decrease the number of added elements for instance by picking only one of all smallest elements.
@@ -30,7 +30,7 @@ We can slightly improve performance by substituting the set $\B + \Q_{k}$ by $(\
 $$
 \B + \Q_{k-1} \subset \A + \beta \Q_{k}\,.
 $$
-Since $\Q_{k+1} \supset \Q_{k}$, $D_x \cap \Q_{k+1} \neq \emptyset$ for  $x\in \B + \Q_{k-1}$.
+Since $\Q_{k+1} \supset \Q_{k}$, $C_x \cap \Q_{k+1} \neq \emptyset$ for  $x\in \B + \Q_{k-1}$.
 
 \begin{algorithm}
   \caption{Extending intermediate weight coefficients set}
@@ -39,26 +39,26 @@ Since $\Q_{k+1} \supset \Q_{k}$, $D_x \cap \Q_{k+1} \neq \emptyset$ for  $x\in \
     \REQUIRE{previous weight coefficients set $\Q_{k}$, method number $M\in\{12,13,14,15,16\}$}
     \STATE $\widetilde{\Q}:=\Q_{k}$
     \IF {$M\in\{12,13,14\}$}
-    	\FORALL {$D_x \in D$}
-    		\IF {$\# D_x =1$}
-		    	\STATE Add the element of $D_x$ to $\widetilde{\Q}$
+    	\FORALL {$C_x \in C$}
+    		\IF {$\# C_x =1$}
+		    	\STATE Add the element of $C_x$ to $\widetilde{\Q}$
 			\ENDIF
 		\ENDFOR
 	\ENDIF
     \STATE $\Q_{k+1}:=\widetilde{\Q}$
-    \STATE By Algorithm~\ref{alg:searchCand}, find set of candidates $D$
-    \FORALL{$D_x \in D$}
-        \IF{$D_x \cap \widetilde{\Q}=\emptyset$}
+    \STATE By Algorithm~\ref{alg:searchCand}, find set of candidates $C$
+    \FORALL{$C_x \in C$}
+        \IF{$C_x \cap \widetilde{\Q}=\emptyset$}
 	        \IF {$M=12$}
-	        	\STATE Add all smallest elements in absolute value of $D_x$ to $\Q_{k+1}$
+	        	\STATE Add all smallest elements in absolute value of $C_x$ to $\Q_{k+1}$
 	        \ELSIF {$M=13$}
-	        	\STATE Add all smallest elements in $\beta$-norm of $D_x$ to $\Q_{k+1}$
+	        	\STATE Add all smallest elements in $\beta$-norm of $C_x$ to $\Q_{k+1}$
 	        \ELSIF {$M=14$}
-	        	\STATE Add all elements of $D_x$ to $\Q_{k+1}$
+	        	\STATE Add all elements of $C_x$ to $\Q_{k+1}$
 	        \ELSIF {$M=15$}
-	        	\STATE Add all smallest elements in $\beta$-norm of $D_x$ to $\Q_{k+1}$
+	        	\STATE Add all smallest elements in $\beta$-norm of $C_x$ to $\Q_{k+1}$
 	        \ELSIF {$M=16$}
-	        	\STATE Add all smallest elements in absolute value of $D_x$ to $\Q_{k+1}$ 
+	        	\STATE Add all smallest elements in absolute value of $C_x$ to $\Q_{k+1}$ 
 	        \ENDIF
         \ENDIF
     \ENDFOR
@@ -69,20 +69,20 @@ Since $\Q_{k+1} \supset \Q_{k}$, $D_x \cap \Q_{k+1} \neq \emptyset$ for  $x\in \
 
 
 \begin{algorithm}
-  \caption{Search for set of candidates $D$}
+  \caption{Search for set of candidates $C$}
     \label{alg:searchCand}
   \begin{algorithmic}[1]
     \REQUIRE{the previous weight coefficients set $\Q_{k}$, alternatively also the set $\Q_{k-1}$}
-    \STATE $D:=\{\emptyset\}$
+    \STATE $C:=\{\emptyset\}$
     \FORALL[Alternatively, $x \in (\B + \Q_{k})\setminus (\B + \Q_{k-1})$]{$x \in \B + \Q_{k}$} \label{line:replaceBySmaller}
-      \STATE $D_x:=\emptyset$
+      \STATE $C_x:=\emptyset$
       \FORALL{$a \in \A$}
           \IF{$(x-a)$ is divisible by $\beta$ in $\Zomega$ (using Theorem~\ref{thm:divisibility})}
-              \STATE Add $\frac{x-a}{\beta}$ to $D_x$
+              \STATE Add $\frac{x-a}{\beta}$ to $C_x$
             \ENDIF
       \ENDFOR 
-      \STATE Add the set $D_x$ to $D$
+      \STATE Add the set $C_x$ to $C$
   \ENDFOR
-  \RETURN $D$
+  \RETURN $C$
   \end{algorithmic}
 \end{algorithm}  
