@@ -25,27 +25,29 @@ Example:
 \verb| '[0,1,-1,omega,-omega,-omega-1,omega+1]','omega-1','Eisenstein')|
 \end{method}
 
-Methods for the construction of an algorithm for a digit set conversion from $\B$ to $\A$, which is computable in parallel, are the following:
+Methods for the construction of a weight function for a digit set conversion from $\B$ to $\A$:
+\begin{method}{checkAlphabet}{}
+It is verified that the alphabet $\A$ contains all representatives mod $\beta$ in  and that all elements of the input alphabet $\B$ have their representatives mod $\beta-1$ in the alphabet $\A$ according to Theorem~\ref{thm:lowerBoundAlphabet}, including the case when the base $\beta$ has a real conjugate greater than one.
+\end{method}
 
 \begin{method}{\_findWeightCoefSet}{ max\_iterations, method\_number}
-Create an instance of \emph{WeightCoefficientsSetSearch(method\_number)} and call its method \fun{findWeightCoefficientsSet}{max\_iterations} to obtain a weight coefficients set $\Q$.
+Create an instance of \emph{WeightCoefficientsSetSearch(self,method\_number)} and call its method \fun{findWeightCoefficientsSet}{max\_iterations} to obtain a weight coefficients set $\Q$.
 \end{method}
 
 \begin{method}{\_findWeightFunction}{ max\_input\_length,method\_number}
-Create an instance of \emph{WeightFunctionSearch(method\_number)} and call its methods \fun{check\_one\_letter\_inputs}{max\_input\_length} and \\ \fun{findWeightFunction}{max\_input\_length} to obtain a weight function $q$.
+Create an instance of \emph{WeightFunctionSearch(self, $\Q$, method\_number, maxInputs)} and call its methods \fun{check\_one\_letter\_inputs}{max\_input\_length} and \\ \fun{findWeightFunction}{max\_input\_length} to obtain a weight function $q$.
 \end{method}
 
 
 \begin{method}{findWeightFunction}{ max\_iterations, max\_input\_length, method\_weightCoefSet=None,\\ method\_weightFunSearch=None}
-It is verified that there are all representatives mod $\beta$ in the alphabet and that all elements of the input alphabet have their representatives mod $\beta-1$ in the alphabet, see Section \ref{sec:alphabet}.
-Return the weight function $q$ obtained by calling \fun{\_findWeightCoefSet\\}{max\_iterations, method\_weightCoefSet} and \fun{\_findWeightFunction}{max\_input\_length, method\_weightFunSearch}.
+Call \fun{checkAlphabet}{} and return the weight function $q$ obtained by calling \\ \fun{\_findWeightCoefSet}{max\_iterations, method\_weightCoefSet} and \\ \fun{\_findWeightFunction}{max\_input\_length, method\_weightFunSearch}.
 \end{method}
-\begin{upravit}
-The important function for the searching for possible weight coefficients is
 
-\begin{method}{divideByBase}{divided\_number}
-Using Theorem \ref{thm:divisibility}, check if \var{divided\_number} is divisible by the base $\beta$. If it is so, return the result of division, else return \var{None}.
-\end{method}
+%The important function for the searching for possible weight coefficients is
+%
+%\begin{method}{divideByBase}{divided\_number}
+%Using Theorem \ref{thm:divisibility}, check if \var{divided\_number} is divisible by the base $\beta$. If it is so, return the result of division, else return \var{None}.
+%\end{method}
 
 
 Methods for the addition and the digit set conversion computable in parallel are following:
@@ -56,18 +58,19 @@ Sum up numbers represented by the lists of digits \var{a} and \var{b} digitwise 
 
 
 \begin{method}{parallelConversion}{\_w}
-Return $(\beta,\A)$-representation of the number represented by the list \var{\_w} of digits in the input alphabet $\B$. According to the equation \eqref{eq:conversionFormula}, it is computed locally by using the weight function $q$.
+Return $(\beta,\A)$-representation of the number represented by the list \var{\_w} of digits from the input alphabet $\B$. According to the equation \eqref{eq:conversionFormula}, it is computed locally by using the weight function $q$. An exception is raised when an outputed digit is not in the alphabet $\A$.
 \end{method}
 
 
-\begin{method}{localConversion}{w}
-Return converted digit according to the equation \eqref{eq:conversionFormula} for the list of input digits \var{w}.
-\end{method}
+%\begin{method}{localConversion}{w}
+%Return converted digit according to the equation \eqref{eq:conversionFormula} for the list of input digits \var{w}.
+%\end{method}
 
 
 The correctness of the implementation of the extending window for a given numeration system can be verified by
  
-\begin{method}{sanityCheck\_conversion}{ num\_digits}
+\begin{method}{sanityCheck\_conversion}{num\_digits}
 Check whether the values of all possible numbers of the length \var{num\_digits} with digits in the input alphabet $\B$ are the same as their $(\beta, \A)$-representation obtained by \fun{parallelConversion}{}.   
 \end{method}
 
+\begin{upravit}
