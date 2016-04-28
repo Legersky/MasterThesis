@@ -10,7 +10,7 @@
 		\begin{center}
 		\input{resultsPhaseOne.tex}
 		\end{center}
-	\caption{Different methods in Phase 1}
+	\caption{Comparing methods in Phase 1}
 	\label{tab:resultsQuadrNonint}
 	\end{table}
 \end{landscape}
@@ -23,7 +23,7 @@
 		\begin{center}
 		\input{resultsPhaseTwo.tex}
 		\end{center}
-	\caption{Different methods in Phase 2}
+	\caption{Comparing methods in Phase 2}
 	\label{tab:resultsQuadrNonint}
 	\end{table}
 \end{landscape}
@@ -34,20 +34,34 @@
 	\begin{center}
 	\input{results_quadr_nonint.tex}
 	\end{center}
-\caption{Quadratic bases with non-integer alphabet}
+\caption{Quadratic bases with a non-integer alphabet}
 \label{tab:resultsQuadrNonint}
 \end{table}
 
 
 \section{Quadratic bases with integer alphabet}
-%\begin{table}[h]
-%	\begin{center}
-%	\input{results_quadr_int.tex}
-%	\end{center}
-%\caption{Quadratic bases with integer alphabet}
-%\label{tab:resultsQuadrInt}
-%\end{table}
+\begin{table}[h]
+	\begin{center}
+	\input{results_quadr_int.tex}
+	\end{center}
+\caption{Quadratic bases with an integer alphabet}
+\label{tab:resultsQuadrInt}
+\end{table}
 
 
 
 \section{Cubic bases}
+
+
+\afterpage{
+\clearpage   % To flush out all floats, might not be what you want
+\begin{landscape}
+	\begin{table}[h]
+		\begin{center}
+		\input{results_cubic.tex}
+		\end{center}
+	\caption{Cubic bases}
+	\label{tab:resultsQuadrInt}
+\end{table}
+\end{landscape}
+}
