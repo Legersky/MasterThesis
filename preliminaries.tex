@@ -7,7 +7,7 @@ In the binary system, numbers are expressed as a sum of powers of 2 multiplied b
 Sometimes, the term \emph{radix} is used instead of base. So-called standard numeration systems have an integer base $\beta$ and an alphabet $\A$ which is a set of contiguous integers. We restrict ourselves to a base $\beta$ which is an algebraic integer and possibly non-integer alphabet $\A$. 
 
 \begin{defn}
-Let $(\beta, \A)$ be a positional numeration system.  We say that a complex number $x$ has a \emph{$(\beta, \A)$-representation} if~ there exist digits $x_n,x_{n-1}, x_{n-2},\ldots \in\A, n\geq 0$ such that $x=\sum_{j=-\infty}^n x_j \beta^j$.
+Let $(\beta, \A)$ be a positional numeration system. Let $x$ be a complex number and $x_n,x_{n-1}, x_{n-2},\ldots \in\A, n\geq 0$. We say that $^\omega0 x_n x_{n-1}\cdots x_1 x_0 \bullet x_{-1} x_{-2} \cdots $ is a \emph{$(\beta, \A)$-representation} of $x$ if~  $x=\sum_{j=-\infty}^n x_j \beta^j$, where $^\omega0$  denotes left-infinite sequence of zeros.
 \end{defn}
  We write briefly a \emph{representation} instead of a $(\beta, \A)$-representation if the base $\beta$ and alphabet $\A$ follow from context. The assumption $|\beta|>1$ implies that the sum for a given representation converges.
 
@@ -22,26 +22,28 @@ For  $x\in\fin{\A}$, we write
 $$
 (x)_{\beta,\A}=\,  ^\omega0 x_n x_{n-1}\cdots x_1 x_0 \bullet x_{-1} x_{-2} \cdots x_{-m} 0^\omega\,,
 $$ 
-where $^\omega0$ and $0^\omega$ denotes left and right-infinite sequence of zeros. From now on, we omit the starting and ending $0^\omega$ when we work with numbers in $\fin{\A}$, but we still consider a representaton as a bi-infinite sequence of digits. Note that indices are decreasing from left to right as it is usual to write the most significant digits first. 
+where $0^\omega$ denotes right-infinite sequence of zeros. From now on, we omit the starting $^\omega0$ and ending $0^\omega$ when we work with numbers in $\fin{\A}$, but we still consider a representation as a bi-infinite sequence of digits. Note that indices are decreasing from left to right as it is usual to write the most significant digits first. 
 
- We remark that the set $\fin{\A}$ is not necessarily closed under addition. Nevertheless, existence of a parallel addition algorithm in the sense of definitions in the next section implies that the set $\fin{\A}$ is closed under addition, i.e.,
+ We remark that the set $\fin{\A}$ is not necessarily closed under addition. Nevertheless, existence of a parallel addition algorithm in the sense of definitions in the next section implies, as we will see later, that the set $\fin{\A}$ is closed under addition, i.e.,
 $$
 \fin{\A} + \fin{\A} \subset \fin{\A}\,.
 $$ 
 
 Designing an algorithm for parallel addition requires some redundancy in numeration system \cite{kornerup}. According to \cite{redundant}, a numeration system $(\beta,\A)$ is called \emph{redundant} if there exists $x \in \fin{\A}$ which has two different $(\beta,\A)$-representations. For instance, the number 1 has $(2,\{-1,0,1\})$-representations $1\bullet$ and $1(-1)\bullet$.
-Redundant numeration system may allow to avoid carry propagation in addition. On the other hand, redundancy bring some disadvantages. For example, comparison is problematic.  
+Redundant numeration system may allow to avoid carry propagation in addition. On the other hand, redundancy brings some disadvantages. For example, comparison is problematic.  
 
 
 \section{Parallel addition}
-Informally, parallel algorithm means that there are many threads or processes which run at the same time. Usually, the main task is to reduce communication among processes to minimum, since waiting for a result of another process slows down the whole computation. In the scope of parallel addition, parallelism is formalized by a  local function, which is also often called a sliding block code.
+Informally, parallel algorithm consists of many threads or processes which run at the same time. Usually, the main task is to reduce communication among processes to minimum, since waiting for a result of another process slows down the whole computation. In the scope of parallel addition, parallelism is formalized by a  local function, which is also often called a sliding block code.
 
 \begin{defn}
 Let $\A$ and $\B$ be alphabets. A function $\varphi:\B^\ZZ \rightarrow \A^\ZZ$ is said to be \emph{$p$-local} if there exist $r,t\in\NN$ satisfying $p=r+t+1$ and a function $\phi: \B^p \rightarrow \A$ such that, for any $w=(w_j)_{j\in\ZZ}\in\B^\ZZ$ and its image $z=\varphi(w)=(z_j)_{j\in\ZZ}\in\A^\ZZ$, we have $z_j=\phi(w_{j+t},\cdots,w_{j-r})$ for every $j\in\ZZ$. The parameter $t$, resp. $r$, is called \emph{anticipation}, resp. \emph{memory}.
 \end{defn}
-This means that each digit of the image $\varphi(w)$ is computed from $p$ digits of $w$ in a sliding window. 
+%This means that each digit of the image $\varphi(w)$ is computed from $p$ digits of $w$ in a sliding window. 
+This means that a sliding window of a length $p$ computes the digit $z_j$ of the image $\varphi(w)$ from digits $(w_{j+t},\cdots,w_{j-r})$, the digit $z_{j+1}$ from digits $(w_{j+t-1},\cdots,w_{j-r-1})$ etc.
   
-Since two $(\beta,\A)$-representations may be easily summed up digitwise in parallel, the crucial point of parallel addition is conversion of a $(\beta,\A+\A)$-representation of the sum to a $(\beta,\A)$-representation. The notion of a $p$-local function is applied to this conversion.
+  
+Since two $(\beta,\A)$-representations may be easily summed up digit-wise in parallel, the crucial point of parallel addition is conversion of a $(\beta,\A+\A)$-representation of the sum to a $(\beta,\A)$-representation. The notion of a $p$-local function is applied to this conversion.
 \begin{defn}
 \label{def:digitSetConversion}
 Let $\beta$ be a base and let $\A$ and $\B$ be alphabets containing 0. A function $\varphi:\B^\ZZ\rightarrow \A^\ZZ$ such that
@@ -52,9 +54,9 @@ Let $\beta$ be a base and let $\A$ and $\B$ be alphabets containing 0. A functio
   is called \emph{digit set conversion} in the base $\beta$ from $\B$ to $\A$. Such a conversion $\varphi$ is said to be \emph{computable in parallel} if $\varphi$ is a $p$-local function for some $p\in\NN$. 
 \end{defn}
 
-Suppose that there is a processing unit on  each position with access to $t$ input digits on the left and $r$ input digits on the right. Then computation of $\varphi(w)$, where $w$ has only finitely many non-zero digits, can be done in a constant time independent on the number of non-zeros in the sequence $w$.
+Suppose that there is a processing unit on  each position of an input $w=(w_j)_{j\in\ZZ}$ with access to $t$ input digits on the left and $r$ input digits on the right. If $w$ has only finitely many non-zero digits, then computation of $\varphi(w)$ can be done in a constant time independent on the number of non-zeros in the sequence $w$.
 
-We recall few results about parallel addition in a numeration system with an integer alphabet. C. Frougny, E. Pelantov\'a and M. Svobodov\'a proved  the following sufficient condition of existence of an algorithm for parallel addition in \cite{parAddNS}.
+We recall some results on parallel addition in a numeration system with an integer alphabet. C. Frougny, E. Pelantov\'a and M. Svobodov\'a proved  the following sufficient condition of existence of an algorithm for parallel addition in \cite{parAddNS}.
   \begin{thm}
   \label{thm:suffConjugates}
   Let $\beta\in\CC$ be an algebraic number such that $|\beta|>1$ and all its conjugates in modulus differ from 1. There exists an alphabet $\A$ of contiguous integers containing 0 such that addition on $\fin{\A}$ can be performed in parallel.
@@ -65,23 +67,23 @@ The same authors showed in \cite{kBlock} that the condition on the conjugates of
   \begin{thm}
   Let the base $\beta\in\CC, |\beta|>1,$ be an algebraic number with a conjugate $\beta'$ such that $|\beta'|=1$. Let $\A\subset\ZZ$ be an alphabet of contiguous integers containing 0. Then addition on $\fin{\A}$ cannot be computable in parallel.
   \end{thm}
-We see later that absolute value of conjugates of a base significantly influences also a method in the focus of this thesis.
+We will see later that the construction of a parallel addition algorithm by the method from Chapter~\ref{chap:ewm} is also significantly influenced by the absolute value of conjugates of a base.
   
 A lower bound on the size of an integer alphabet is provided in \cite{minAlph}. 
   \begin{thm}
   \label{thm:lowerBoundAlphabet}
-Let $\beta\in\CC, |\beta|>1,$  be an algebraic integer with the minimal polynomial $m_\beta$. Let $\A\subset\ZZ$ be an alphabet of contiguous integers containing 0 and 1. If addition on $\fin{\A}$ is computable in parallel, then $\#\A \geq |m_\beta(1)|$. Moreover, if $\beta$ is a positive real number, $\beta>1$, then $\#\A \geq  |m_\beta(1)|+2$.
+Let $\beta\in\CC, |\beta|>1,$  be an algebraic integer with the minimal polynomial $m_\beta$. Let $\A\subset\ZZ$ be an alphabet of contiguous integers containing 0 and 1. If addition on $\fin{\A}$ is computable in parallel, then $\#\A \geq |m_\beta(1)|$. Moreover, if $\beta$ is a real number, $\beta>1$, then $\#\A \geq  |m_\beta(1)|+2$.
   \end{thm}
   
-In Section~\ref{sec:minimalAlphabet}, we prove the same bound for a larger class of alphabets. The most general alphabets, which are considered in this thesis, are finite subsets of the set from the next definition. For our purposes, a ring is commutative, associative under multiplication and there is a multiplicative identity.
+In Section~\ref{sec:minimalAlphabet}, we prove the same bound for a larger class of alphabets. The most general alphabets, which are considered in this thesis, are finite subsets of the set from the next definition. For our purposes, a ring is associative under multiplication and there is a multiplicative identity.
 \begin{defn}
 Let $\omega$ be a complex number. The smallest ring which contains integers $\ZZ$ and $\omega$ is denoted by
 $$
     \ZZ[\omega] =\left\{\sum_{i=0}^n a_i \omega^i\colon n\in\NN, a_i\in\ZZ \right\} \,.
 $$
 \end{defn}
-In other words, the set $\Zomega$ are all polynomials with integer coefficients evaluated in $\omega$. Obviously, it is a subset of the field extension $\QQ(\omega)$.
+In other words, the set $\Zomega$ are all polynomials with integer coefficients evaluated in $\omega$. Obviously, it is a subset of the field extension $\QQ(\omega)$ and commutative ring.
     
-From now on, let $\omega$ be an algebraic integer  which generates the set $\Zomega$ and let $\beta\in\Zomega$ be a base, i.e., $|\beta|>1$. We remark that $\beta$ is also an algebraic integer as all elements of $\Zomega$ are algebraic integers. Finally, let $\A\subset\Zomega$ be an alphabet, it means that it is finite set containing 0.
+From now on, let $\omega$ be an algebraic integer  which generates the set $\Zomega$ and let $\beta\in\Zomega$ be a base, i.e., $|\beta|>1$. We remark that $\beta$ is also an algebraic integer as all elements of $\Zomega$ are algebraic integers. Finally, let $\A\subset\Zomega$ be an alphabet. By definition, it means that it is a finite set containing 0 .
 
-Few parallel addition algorithms for such numeration system with a non-integer alphabet were found ad hoc. We introduce the method for construction of a parallel addition algorithm for a given numeration system $(\beta,\A)$ in Chapter \ref{chap:methodDescription}. 
+A few parallel addition algorithms for such numeration system with a non-integer alphabet were found manually \cite{milena}. We introduce the method for construction of a parallel addition algorithm for a given numeration system $(\beta,\A)$ in Chapter \ref{chap:ewm}. 
