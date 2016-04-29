@@ -1,7 +1,7 @@
 \section{Minimal alphabet $\A$}
 \label{sec:minimalAlphabet}	
 
-Frougny, Pelantov\'a and Svodov\'a \cite{minAlph} proved a lower bound on the size of an alphabet $0\in\A\subset\ZZ$ of consecutive integers which enables parallel addition. In this sextion, we prove the same bound for an arbitrary alphabet $\A\in\Zbeta$. We recall their auxiliary results in Theorem~\ref{thm:reprBetaMinusOne} an Lemma~\ref{lem:alphabetRestrictions}, but only for a parallel digit set conversion without anticipation as our rewriting rule $x-\beta$ does not require memory. The following theorem says that all classes modulo $\beta$ which are contained in $\A+\A$ must have their representatives in $\A$.
+Frougny, Pelantov\'a and Svodov\'a \cite{minAlph} proved a lower bound on the size of an alphabet $0\in\A\subset\ZZ$ of consecutive integers which enables parallel addition. In this section, we prove the same bound for an arbitrary alphabet $\A\in\Zbeta$. We recall their auxiliary results in Theorem~\ref{thm:reprBetaMinusOne} an Lemma~\ref{lem:alphabetRestrictions}, but only for a parallel digit set conversion without anticipation as our rewriting rule $x-\beta$ does not require memory. The following theorem says that all classes modulo $\beta$ which are contained in $\A+\A$ must have their representatives in $\A$.
 \begin{thm}
 \label{thm:reprBetaMinusOne}
 Let $\omega$ be an algebraic integer. Let the base $\beta\in\Zomega$ be such that $|\beta|>1$ and the alphabet $\A\subset\Zomega$ be such that $0\in\A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then the number $\phi(b,\dots,b)-b$ belongs to the set $(\beta-1)\Zomega$ for any $b\in\A+\A$. 
@@ -23,7 +23,7 @@ Since both representations have same value, we have
 b \sum_{j=-r}^{n-1} \beta^j &= W \beta^n + a \sum_{j=0}^{n-1} \beta^j + \beta^{-r}\widetilde{W} \notag \\
 b \sum_{j=-r}^{-1} \beta^j +b\frac{\beta^n-1}{\beta-1} &= W \beta^n + a \frac{\beta^n-1}{\beta-1} + \beta^{-r}\widetilde{W}\,,
 \end{align}
-for all $n\geq 1$. We substract this equation for $n$ and $n-1$ to obtain
+for all $n\geq 1$. We subtract this equation for $n$ and $n-1$ to obtain
 $$
 b\frac{\beta^n-\beta^{n-1}}{\beta-1}=W(\beta^n-\beta^{n-1}) + a\frac{\beta^n-\beta^{n-1}}{\beta-1}\,.
 $$
@@ -118,7 +118,7 @@ $$
 The following lemma summarizes that if we have a parallel addition algorithm for a base $\beta$, then we easily obtain an algorithm also for conjugates of $\beta$.
 \begin{lem}
 \label{lem:parAddAlgForConjugate}
-Let $\omega$ be an algebraic integer with a conjugate $\omega'$. Let $\beta\in\Zomega, |\beta|>1$ and let $\sigma:\QQ(\omega)\rightarrow \QQ(\omega')$ be an isomorphism such that $|\sigma(\beta)|>1$. Let $\varphi$ is a digit set conversion  in the base $\beta$ from $\A+\A$ to $\A$. There exists  is a digit set conversion $\varphi'$ in the base $\beta'$ from $\A'+\A'$ to $\A'$ where $\beta'=\sigma(\beta)$ and $\A'=\{\sigma(a) \colon a\in\A\}$.
+Let $\omega$ be an algebraic integer with a conjugate $\omega'$. Let $\beta\in\Zomega, |\beta|>1$ and let $\sigma:\QQ(\omega)\rightarrow \QQ(\omega')$ be an isomorphism such that $|\sigma(\beta)|>1$. Let $\varphi$ be a digit set conversion  in the base $\beta$ from $\A+\A$ to $\A$. There exists  is a digit set conversion $\varphi'$ in the base $\beta'$ from $\A'+\A'$ to $\A'$ where $\beta'=\sigma(\beta)$ and $\A'=\{\sigma(a) \colon a\in\A\}$.
 \end{lem}
 \begin{proof}
 Let $\phi:\A^p\rightarrow\A$ be a mapping which defines $\varphi$ with $p=r+t+1$. We define a mapping $\phi':\A^p\rightarrow \A$ by 
@@ -152,7 +152,7 @@ $$
 \begin{proof}
 By Theorem~\ref{thm:representativesInAlphabet}, there are all representatives modulo $\beta$ and modulo $\beta-1$ in the alphabet $\A$. The numbers of congruence classes are $|m_\beta(0)|$ and $|m_{\beta-1}(0)|$ by Theorem~\ref{thm:numbCongruenceClasses}. Obviously, $m_{\beta-1}(x) = m_\beta (x+1)$. Thus $m_{\beta-1}(0) = m_\beta (1)$.
 
-Let $\phi$ be a mapping which defines the parallel addition. According to Lemma~\ref{lem:parAddAlgForConjugate}, we may asssume that $\beta$ is real and greater than 1 in the proof of the second part. The assumption $1\in \A[\beta]$ implies that $\Lambda>0$. Thus, there are at least three elements in the alphabet $\A$, because $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$ by Lemma \ref{lem:alphabetRestrictions}. It also implies that there are at least two representatives modulo $\beta-1$ in the alphabet in the class which contains $\Lambda$, since $\phi(\Lambda,\dots,\Lambda)\equiv_{\beta-1} \Lambda$.  
+Let $\phi$ be a mapping which defines the parallel addition. According to Lemma~\ref{lem:parAddAlgForConjugate}, we may assume that $\beta$ is real and greater than 1 in the proof of the second part. The assumption $1\in \A[\beta]$ implies that $\Lambda>0$. Thus, there are at least three elements in the alphabet $\A$, because $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \lambda$ and $\A\ni\phi(\Lambda,\dots,\Lambda)\neq \Lambda$ by Lemma \ref{lem:alphabetRestrictions}. It also implies that there are at least two representatives modulo $\beta-1$ in the alphabet in the class which contains $\Lambda$, since $\phi(\Lambda,\dots,\Lambda)\equiv_{\beta-1} \Lambda$.  
 
 If $\lambda\equiv_{\beta-1}\Lambda$, there must be one more element of the alphabet $\A$ in this class, since $\lambda \neq \Lambda$. Therefore, $\#\A\geq |m_\beta(1)|+2$. 
 
@@ -168,7 +168,7 @@ The case that $\lambda\not\equiv_{\beta-1}\Lambda$ is divided into two subcases.
 %$$ 
 %also $e\equiv_{\beta-1}f$ and $g\equiv_{\beta-1}h$ which is a contradiction. In the same manner, the assumption that there is no nonzero element of the alphabet $\A$ which is congruent to 0 leads to contradiction for arbitrarily large alphabet.
 
-If $\lambda=0$, then all elements of $\A+\A$ are nonnegative and $\phi(b,\dots,b)\neq 0$ for all $b\in(\A+\A)\setminus 0$. Suppose for contradiction, that there is no nonzero element of the alphabet $\A$ congruent to 0. We know that there is at least one represenative of each congruence class class modulo $\beta-1$ in $\A$ and at least two representatives in the congruence class which contains $\Lambda$. Let $k\in\NN$ denote the number of elements which are in $\A$ extra to one element in each congruence class, i.e., $\#A=|m_\beta(1)|+k$.  For $d\in\Lambda+\A$, the value $\phi(d,\dots,d)\in\A$ is not congruent to 0 as it is nonzero and the class containing zero has only one element by the assumption. Therefore, the values  $\phi(d,\dots,d)\in\A$ for $|m_\beta(1)|+k$ distinct letters $d\in\Lambda+\A$ belong to only $|m_\beta(1)|-1$ congruence classes. Hence, there exists $e_1,\dots e_k, e_{k+1}\in\A$, pairwise distinct, and $f_1,\dots f_k, f_{k+1}\in\A$ such that $e_i\neq f_i$ and $\phi(e_i+\Lambda,\dots, e_i+\Lambda)\equiv_{\beta-1}\phi(f_i+\Lambda,\dots, f_i+\Lambda)$ for all $i, 1\leq i\leq k+1$. Since 
+If $\lambda=0$, then all elements of $\A+\A$ are nonnegative and $\phi(b,\dots,b)\neq 0$ for all $b\in(\A+\A)\setminus 0$. Suppose for contradiction, that there is no nonzero element of the alphabet $\A$ congruent to 0. We know that there is at least one representative of each congruence class class modulo $\beta-1$ in $\A$ and at least two representatives in the congruence class which contains $\Lambda$. Let $k\in\NN$ denote the number of elements which are in $\A$ extra to one element in each congruence class, i.e., $\#A=|m_\beta(1)|+k$.  For $d\in\Lambda+\A$, the value $\phi(d,\dots,d)\in\A$ is not congruent to 0 as it is nonzero and the class containing zero has only one element by the assumption. Therefore, the values  $\phi(d,\dots,d)\in\A$ for $|m_\beta(1)|+k$ distinct letters $d\in\Lambda+\A$ belong to only $|m_\beta(1)|-1$ congruence classes. Hence, there exists $e_1,\dots e_k, e_{k+1}\in\A$, pairwise distinct, and $f_1,\dots f_k, f_{k+1}\in\A$ such that $e_i\neq f_i$ and $\phi(e_i+\Lambda,\dots, e_i+\Lambda)\equiv_{\beta-1}\phi(f_i+\Lambda,\dots, f_i+\Lambda)$ for all $i, 1\leq i\leq k+1$. Since 
 $$
 e_i+\Lambda\equiv_{\beta-1}\phi(e_i+\Lambda,\dots, e_i+\Lambda)\equiv_{\beta-1}\phi(f_i+\Lambda,\dots, f_i+\Lambda)\equiv_{\beta-1}f_i+\Lambda\,.
 $$ 

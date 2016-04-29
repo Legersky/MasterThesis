@@ -44,7 +44,7 @@ For all $n\in\NN$ we may write
 \end{proof}
 
 
-Now we can easily prove that existence of a parallel addition algorithm with rewriting rule $x-\beta$ implies that $\beta$ is expanding.
+Now we can easily prove that existence of a parallel addition algorithm with the rewriting rule $x-\beta$ implies that $\beta$ is expanding.
 \begin{thm}
 Let $\A\subset \Zomega$ be an alphabet such that $1\in \A[\beta]$. If the extending window method with the rewriting rule $x-\beta$ converges for the numeration system $(\beta, \A)$, then the base $\beta$ is expanding. 
 \end{thm}
@@ -68,8 +68,8 @@ Let $\gamma$ be the smallest conjugate of $\beta$ in modulus.
  $$ 
  Also, $|\gamma|>1$ as $\beta$ is an expanding integer.  Since $C>0$, the set $\Q$ is nonempty. Any element $x=b+q \in \Zomega$ with $b\in\B$ and $q\in\Q$ can be written as $x=a+\beta q'$ for some $a\in\A$  and $q'\in\Zomega$ due to existence of a representative of each congruence class in $\A$. Using the isomorphism $\pi$, we may write $\pi(q')=S^{-1}_\beta \cdot \pi(b-a+q)$. We prove that $q'$ is in $\Q$:
 \begin{align*}
-    \normBeta{q'}&=\norm{\pi(q')}{S_\beta}=\norm{S^{-1}_\beta \cdot \pi(b-a+q)}{S_\beta}\leq \Mnorm{S^{-1}_\beta}{S_\beta}  \normBeta{b-a+q} \\
-    &\leq  \frac{1}{|\gamma|} (\normBeta{b-a} +\normBeta{q})=\frac{1}{|\gamma|} (C+R)=\frac{C}{|\gamma|} (1+\frac{1}{|\gamma|-1}) =R\,.
+    \normBeta{q'}&=\norm{\pi\left(q'\right)}{S_\beta}=\norm{S^{-1}_\beta \cdot \pi\left(b-a+q\right)}{S_\beta}\leq \Mnorm{S^{-1}_\beta}{S_\beta}  \normBeta{b-a+q} \\
+    &\leq  \frac{1}{|\gamma|} \left(\normBeta{b-a} +\normBeta{q}\right)=\frac{1}{|\gamma|} \left(C+R\right)=\frac{C}{|\gamma|} \left(1+\frac{1}{|\gamma|-1}\right) =R\,.
 \end{align*}
  
  Hence $q'\in\Q$ and thus  $x=b+q \in \A + \beta \Q$. 

@@ -1,15 +1,14 @@
 \section{Number of congruence classes}
-Congruence classes play important role in the structure of an alphabet which allows parallel addition. We have seen that the isomorphism with $\ZZ^d$ is an efficient tool for handling elements of $\Zomega$. We use it also for counting number of congruence classes. The definition of congruence in $\ZZ^d$ is following.
+Congruence classes play important role in the structure of an alphabet which allows parallel addition, as we will see later. We have seen that the isomorphism with $\ZZ^d$ is an efficient tool for handling elements of $\Zomega$. We use it also for counting number of congruence classes. The definition of congruence in $\ZZ^d$ is following.
 \begin{defn}
 Let $M\in\ZZ^{d\times d}$ be a nonsingular integer matrix. Vectors $x,y \in \ZZ^d$ are \emph{congruent modulo $M$ in $\ZZ^d$} if $x-y \in M\ZZ^d$.
 \end{defn}
 Let $x,y,z\in\ZZ^d$. We verify that congruence modulo $M$ is an equivalence. 
 \begin{enumerate}[i)]
 	\item reflexivity: $x-x=0=M\cdot 0$,
-	\item symetry: if $\exists\, v \in\ZZ^d$ such that $x-y=M\cdot v$, then $y-x=M\cdot (-v)$,
+	\item symmetry: if $\exists\, v \in\ZZ^d$ such that $x-y=M\cdot v$, then $y-x=M\cdot (-v)$,
 	\item transitivity: if $\exists\, v,v'\in \ZZ^d$ such that $x-y=M\cdot v$ and $y-z=M\cdot v'$, then $z-x=(z-y)+(y-x)=M\cdot (v'+v)$.
 \end{enumerate}
-\komentar{je potreba ten priklad?}
 In Theorem~\ref{thm:numbCongruenceClasses}, we will see that a congruence class modulo $\beta$ in $\Zomega$ corresponds to a congruence class modulo $S_\beta$ in $\ZZ^d$, where we use the notation from the previous section. Therefore, we count number of congruence classes modulo a matrix $M$ in Lemma~\ref{lem:numCongruenceClasses}.
 \begin{lem}
 Let $M\in\ZZ^{d\times d}$ be a nonsingular integer matrix. The number of congruence classes modulo $M$ in $\ZZ^d$ is $|\det M|$.

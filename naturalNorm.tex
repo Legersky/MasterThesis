@@ -5,7 +5,7 @@ First, we recall a simple way how a new norm can be constructed from another one
 
 \begin{lem}
 \label{lem:vectNorm}
-Let $\nu$ be a norm of the vector space $\CC^d$ and $P$ be a nonsingular matrix in $\CC^d$. Then the mapping $\mu:\CC^d\rightarrow \RR^+_0$ defined by $\mu(x)=\nu(Px)$ is also a norm of the vector space $\CC^d$.
+Let $\nu$ be a norm of the vector space $\CC^d$ and $P$ be a nonsingular matrix in $\CC^d$. The mapping $\mu:\CC^d\rightarrow \RR^+_0$ defined by $\mu(x)=\nu(Px)$ is also a norm of the vector space $\CC^d$.
 \end{lem}
 \begin{proof}
 Let $x$ and $y$ be vectors in $\CC^d$ and $\alpha\in \CC$.  We use linearity of matrix multiplication, nonsingularity of matrix $P$ and the fact that $\nu$ is a norm to prove the following statements:
@@ -33,8 +33,7 @@ $$
 for all $A\in\CC^{n\times n}$.
 \end{defn}
 
-The following theorem is a known result from matrix theory -- for a given diagonalizable matrix, there is a matrix norm such that the norm of the matrix equals its spectral radius.
-\komentar{je potreba nejakou citaci?}
+The following theorem is a known result from matrix theory -- for a given diagonalizable matrix, there is a matrix norm such that the norm of the matrix equals its spectral radius \cite{horn}.
 
 \begin{thm}
 \label{thm:norm}
@@ -67,23 +66,25 @@ which implies the statement.
 Before we define a norm in $\Zomega$, we verify that a specific matrix given by an algebraic number $\beta\in\Zomega$ is diagonalizable. Lemma~\ref{lem:propertiesSbeta} summarizes also some other properties of this matrix and the norm which it induces according to Theorem~\ref{thm:norm}.
 \begin{lem}
 \label{lem:propertiesSbeta}
-Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion matrix of its minimal polynomial $m_\omega$. Let $\beta=\sum_{i=0}^{d-1} b_i \omega^i$, where $b_i \in \ZZ$, be a nonzero element of $\Zomega$. Set $S_\beta=\multMat{b}$. Then
+Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion matrix of its minimal polynomial $m_\omega$. Let $\beta=\sum_{i=0}^{d-1} b_i \omega^i$, where $b_i \in \ZZ$, be a nonzero element of $\Zomega$. Set $S_\beta=\multMat{b}$.
 \begin{enumerate}[i)]
    \item The matrix $S_\beta$ is diagonalizable.
    \item The characteristic polynomial of $S_\beta$ is $m_\beta^k$ with $k=d / \deg \beta$.
    \item $|\det S_\beta|=|m_\beta(0)|^k$.
    \item $\norm{x}{S_\beta}=\norm{x}{S_\beta^{-1}}$ for all $x \in \CC^d$ and $\Mnorm{X}{S_\beta}=\Mnorm{X}{S_\beta^{-1}}$ for all $X \in \CC^{d\times d}$.
-   \item $\Mnorm{S_\beta}{S_\beta}=\max \{|\beta'| \colon \beta' \text{ is conjugate of } \beta\}$ and $ \Mnorm{S_\beta^{-1}}{S_\beta}=\max \{\frac{1}{|\beta'|} \colon \beta' \text{ is conjugate of } \beta\}$.
+   \item $\Mnorm{S_\beta}{S_\beta}=\max \{|\beta'| \colon \beta' \text{ is conjugate of } \beta\}$ and $ \Mnorm{S_\beta^{-1}}{S_\beta}=\max \{\frac{1}{|\beta'|} \colon \beta' \text{ is a conjugate of } \beta\}$.
 \end{enumerate}  
 \end{lem}
 \begin{proof}
-The characteristic polynomial of the companion matrix $S$ is the same as minimal polynomial of $\omega$ which has no multiple roots. Hence, $S$ is diagonalizable, i.e., $S=P^{-1}DP$ where $D$ is diagonal matrix with the conjugates of $\omega$ on the diagonal and $P$ is a nonsingular complex matrix. The matrix $S_\beta$ is also diagonalized by $P$:
+The characteristic polynomial of the companion matrix $S$ is the same as the minimal polynomial of $\omega$ which has no multiple roots. Hence, $S$ is diagonalizable, i.e., $S=P^{-1}DP$ where $D$ is diagonal matrix with the conjugates of $\omega$ on the diagonal and $P$ is a nonsingular complex matrix. The matrix $S_\beta$ is also diagonalized by $P$:
 $$
 S_\beta=\sum_{i=0}^{d-1} b_i S^i= \sum_{i=0}^{d-1} b_i \left(P^{-1}DP\right)^i=P^{-1}\underbrace{\left(\sum_{i=0}^{d-1} b_i D^i\right)}_{D_\beta}P\,.
 $$
-There is a result in theory of algebraic numbers about conjugates under a field isomorphism -- let $\alpha$ be an algebraic number with a conjugate $\alpha'$ and $\sigma:\QQ(\alpha)\rightarrow\QQ(\alpha')$ be a field isomorphism. If $\gamma\in\QQ(\alpha)$, then $\sigma(\gamma)$ is a conjugate of $\gamma$. \komentar{je potreba nejakou citaci?}
+It is known (see for instance \cite{chapman}) that if $\sigma:\QQ(\omega)\rightarrow\QQ(\omega')$ is a field isomorphism and $\beta\in\QQ(\omega)$, then $\sigma(\beta)$ is a conjugate of $\beta$. Moreover, a so-called field polynomial $\Pi_{i=0}^{d-1}(\sigma_i(\beta)-x)$, where $\sigma_i$ are all possible isomorphisms, is a power of $m_\beta$.
 
-Therefore, the diagonal elements of the diagonal matrix $D_\beta$ are conjugates of $\beta$. Since $S_\beta\in\ZZ^{d\times d}$, its characteristic polynomial $p_{S_\beta}$ has integer coefficients. There exists $k\in\NN, k\geq 1$ such that $p_{S_\beta}=m^k_\beta$ as all roots of $p_{S_\beta}$ must be conjugates of $\beta$. The value $k$ follows from the equality $d=\deg(m_\beta^k)=k \deg m_\beta$. 
+%There is a result in theory of algebraic numbers about conjugates under a field isomorphism -- let $\alpha$ be an algebraic number with a conjugate $\alpha'$ and $\sigma:\QQ(\alpha)\rightarrow\QQ(\alpha')$ be a field isomorphism. If $\gamma\in\QQ(\alpha)$, then $\sigma(\gamma)$ is a conjugate of $\gamma$. \komentar{je potreba nejakou citaci?}
+
+Since $\beta=\sum_{i=0}^{d-1} b_i \omega^i$ and $D$ has conjugates of $\omega$ on the diagonal, the diagonal elements of the diagonal matrix $D_\beta$ are conjugates of $\beta$. The characteristic polynomial $p_{S_\beta}$ of $S_\beta$ equals $\Pi_{i=0}^{d-1}(\sigma_i(\beta)-x)$. Thus, there exists $k\in\NN, k\geq 1$ such that $p_{S_\beta}=m^k_\beta$. The value $k$ follows from the equality $d=\deg(m_\beta^k)=k \deg m_\beta$. 
 
 The modulus of the determinant of $S_\beta$ equals the modulus of the absolute coefficient of the characteristic polynomial $p_{S_\beta}$ which is $|m_\beta(0)|^k$.
 

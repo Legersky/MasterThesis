@@ -2,10 +2,10 @@
 
 
 \section{\texorpdfstring{Isomorphism of $\Zomega$ and $\ZZ^{d}$}{Isomorphism of Z[omega] and Zd}}
-In this section, we recall that  the ring $\Zomega$ is isomorphic to the set $\ZZ^d$ equiped with multiplication, where $d$ is the degree of an algebraic integer $\omega$. This structure is useful as it allows to handle elements of $\Zomega$ as vectors. For example, division in $\Zomega$ can be replaced by searching for an integer solution of a linear system (Theorem \ref{thm:divisibility}) which is used in our implementation of the extending window method.
+In this section, we recall that  the ring $\Zomega$ is isomorphic to the set $\ZZ^d$ equipped with multiplication, where $d$ is the degree of the algebraic integer $\omega$. This structure is useful as it allows to handle elements of $\Zomega$ as vectors. For example, division in $\Zomega$ can be replaced by searching for an integer solution of a linear system (Theorem \ref{thm:divisibility}) which is used in our implementation of the extending window method.
 
 
-For defining multiplication in $\ZZ^d$, we recall the notion of companion matrix. 
+Before defining multiplication in $\ZZ^d$, we recall the notion of companion matrix. 
 \begin{defn}
 Let  $p(x)=x^d +p_{d-1}x^{d-1}+ \cdots + p_1 x+p_0 \in \ZZ[x]$ be a monic polynomial with integer coefficients, $d\geq 1$. The matrix 
 $$
@@ -17,7 +17,7 @@ S := \begin{pmatrix}
             0 & 0 & \cdots & 1 & -p_{d-1} 
             \end{pmatrix} \in \ZZ^{d\times d}
 $$
-is called \emph{companion matrix} of the polynomial $p$.
+is the \emph{companion matrix} of the polynomial $p$.
 \end{defn}
 Let $S$ be the companion matrix of a polynomial $p$. It is well known (see for instance \cite{horn}) that the characteristic polynomial of the companion matrix $S$ is $p$. The matrix $S$ is also root of the polynomial $p$.
 
@@ -47,7 +47,7 @@ Let $S$ be the companion matrix of a polynomial $p$. It is well known (see for i
 %              \end{pmatrix}\,.             
 %$$
 % We remark that 1 in $e_i$ is in the $(i+1)$-st row because the index corresponds to the power of a companion matrix in the following definition. 
-We remark that the minimal polynomial of an algebraic integer $\omega$ is denoted by $m_\omega$ and is always meant to be monic.  
+We recall that the minimal polynomial of an algebraic integer $\omega$ is denoted by $m_\omega$ and is monic by definition.  
 Multiplication in $\ZZ^d$ is defined in the following way.
 \begin{defn}
 Let $\omega$ be an algebraic integer of degree $d\geq 1$ and let $S$ be the companion matrix of $m_\omega$. We define a mapping $\odot_\omega: \ZZ^d \times \ZZ^d \rightarrow \ZZ^d$ by 
@@ -65,7 +65,7 @@ The technical proof of Theorem~\ref{thm:isomorphismWithZd}, which shows that $\Z
 
 \begin{thm}
 \label{thm:isomorphismWithZd}
-Let  $\omega$ be an algebraic integer of degree $d$. Then 
+If  $\omega$ is an algebraic integer of degree $d$, then 
 $$
 \Zomega =\left\{\sum_{i=0}^{d-1} a_i \omega^i \colon a_i\in\ZZ \right\},
 $$ 
@@ -81,7 +81,7 @@ This theorem provides simple representation of elements of $\Zomega$ in computer
 Divisibility in $\Zomega$ can be also transformed into $\ZZ^d$. To check whether an element of $\Zomega$ is divisible by another element, we look for an integer solution of a linear system given by Theorem~\ref{thm:divisibility}. Moreover, this solution provides the result of  division in the positive case. 
 \begin{thm}
 \label{thm:divisibility}
-Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion matrix of its minimal polynomial. Let $\beta=\sum_{i=0}^{d-1} b_i \omega^i$ be a nonzero element of $\Zomega$. Then for every $u\in\Zomega$
+Let $\omega$ be an algebraic integer of degree $d$ and let $S$ be the companion matrix of its minimal polynomial. If $\beta=\sum_{i=0}^{d-1} b_i \omega^i$ is a nonzero element of $\Zomega$, then for every $u\in\Zomega$
 $$
 u\in\beta\Zomega \iff S_\beta^{-1}\cdot \pi(u) \in \ZZ^d\,,
 $$
