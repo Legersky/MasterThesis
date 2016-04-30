@@ -1,88 +1,27 @@
 \begin{exmp}
-\label{ex:compareAA}
-
-Eisenstein\_1--block\_complex
-
-\rule{0cm}{0cm}
-
-\begin{tabular}{ll}
-$\omega=  \frac{1}{2} i \, \sqrt{3} - \frac{1}{2} $  & $\beta= \omega - 1 = \frac{1}{2} i \, \sqrt{3} - \frac{3}{2} $\\
-$m_\omega(t)=  t^{2} + t + 1 $  & $m_\beta(x)=  x^{2} + 3 \, x + 3 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 7 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, -1, \omega, -\omega, -\omega - 1, \omega + 1\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, \omega, -\omega - 1\right\}, \left\{-1, -\omega, \omega + 1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{\omega\right\}, \left\{-\omega\right\}, \left\{-\omega - 1\right\}, \left\{\omega + 1\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =19$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 3$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 3$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 3$ \\
-Method  23: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 3$ \\
-\hline
-\end{tabular}
-
-\end{exmp}
-
-
-
-
-\begin{exmp}
 \label{ex:compareAB}
 
-Eisenstein\_1--block\_integer
+\textbf{Eisenstein\_1--block\_integer}
 
-\rule{0cm}{0cm}
+Phase 1 (methods 1b, 1c, 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2, 3, 5, 6, -5, -4, -3\}$.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2, 3, 6, -6, -4, -3\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 1, 3, 4, 6, -6, -4, -3, -1\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{3, 4, 6, -6, -4, -3\}$.
+\item  2e -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2, 3, 6, -2, -6, -4, -3\}$.
+\end{enumerate}
 
-\begin{tabular}{ll}
-$\omega=  \frac{1}{2} i \, \sqrt{3} - \frac{1}{2} $  & $\beta= \omega - 1 = \frac{1}{2} i \, \sqrt{3} - \frac{3}{2} $\\
-$m_\omega(t)=  t^{2} + t + 1 $  & $m_\beta(x)=  x^{2} + 3 \, x + 3 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 7 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{-3, -2, -1, 0, 1, 2, 3\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{-3, 0, 3\right\}, \left\{-2, 1\right\}, \left\{-1, 2\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{-3\right\}, \left\{-2\right\}, \left\{-1\right\}, \left\{0\right\}, \left\{1\right\}, \left\{2\right\}, \left\{3\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
 
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =57$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2, 3, 5, 6, -5, -4, -3\}$ \\
-Method  15: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2, 3, 6, -6, -4, -3\}$ \\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 1, 3, 4, 6, -6, -4, -3, -1\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{3, 4, 6, -6, -4, -3\}$ \\
-\hline
-Phase 1 (methods $14$): &
-\checkmark, $\#\mathcal{Q} =139$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 2, 4, 5, -2, -5, -4\}$ \\
-Method  15: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 2, 4, 5, -2, -5, -4\}$ \\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 2, 3, 5, 6, -2, -6, -5, -3\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 3, 4, 5, 6, -6, -5, -4, -3\}$ \\
-\hline
-\end{tabular}
+Phase 1 (methods 1a):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 2, 4, 5, -2, -5, -4\}$.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 2, 4, 5, -2, -5, -4\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 2, 3, 5, 6, -2, -6, -5, -3\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 3, 4, 5, 6, -6, -5, -4, -3\}$.
+\item  2e -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 2, 4, 5, -2, -5, -4\}$.
+\end{enumerate}
+
 
 \end{exmp}
 
@@ -92,35 +31,17 @@ Failing $b,b,\dots,b$ inputs: & $\{0, 3, 4, 5, 6, -6, -5, -4, -3\}$ \\
 \begin{exmp}
 \label{ex:compareAC}
 
-Eisenstein\_2--block\_complex
+\textbf{Eisenstein\_2--block\_complex}
 
-\rule{0cm}{0cm}
+Phase 1 (methods 1a, 1b, 1c, 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega - 1, \omega + 1, -2\omega, -4, -\omega - 2\}$.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega - 1, \omega + 1, -2\omega, -4, -\omega - 2\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega - 1, \omega + 1, -2\omega, -4, -\omega - 2\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega - 1, \omega + 1, -2\omega, -4, -\omega - 2\}$.
+\item  2e -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega - 1, \omega + 1, -2\omega, -4, -\omega - 2\}$.
+\end{enumerate}
 
-\begin{tabular}{ll}
-$\omega=  \frac{1}{2} i \, \sqrt{3} - \frac{1}{2} $  & $\beta= -3 \, \omega = -\frac{3}{2} i \, \sqrt{3} + \frac{3}{2} $\\
-$m_\omega(t)=  t^{2} + t + 1 $  & $m_\beta(x)=  x^{2} - 3 \, x + 9 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 14 $ $ & $\A$ is not minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, \omega, \omega + 1, 2 \, \omega, 2 \, \omega - 1, \omega - 1, -1, -2, -\omega, -\omega - 1, -\omega - 2, -2 \, \omega, -2 \, \omega - 1\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, -2\right\}, \left\{\omega, -2 \, \omega\right\}, \left\{\omega + 1\right\}, \left\{2 \, \omega, -\omega\right\}, \left\{2 \, \omega - 1, -\omega - 1\right\}, \left\{\omega - 1, -2 \, \omega - 1\right\}, \left\{-1\right\}, \left\{-\omega - 2\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, \omega - 1\right\}, \left\{\omega, -2 \, \omega - 1\right\}, \left\{\omega + 1, 2 \, \omega - 1, -\omega - 2, -2 \, \omega\right\}, \left\{2 \, \omega, -\omega - 1\right\}, \left\{-1\right\}, \left\{-2, -\omega\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =17$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega - 1, \omega + 1, -2\omega, -4, -\omega - 2\}$ \\
-Method  15: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega - 1, \omega + 1, -2\omega, -4, -\omega - 2\}$ \\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega - 1, \omega + 1, -2\omega, -4, -\omega - 2\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega - 1, \omega + 1, -2\omega, -4, -\omega - 2\}$ \\
-\hline
-\end{tabular}
 
 \end{exmp}
 
@@ -130,77 +51,17 @@ Failing $b,b,\dots,b$ inputs: & $\{2\omega - 1, \omega + 1, -2\omega, -4, -\omeg
 \begin{exmp}
 \label{ex:compareAD}
 
-Eisenstein\_2--block\_integer
+\textbf{Eisenstein\_2--block\_integer}
 
-\rule{0cm}{0cm}
+Phase 1 (methods 1a, 1b, 1c, 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 1, 2, 2\omega - 4, \omega - 2, 4\omega, 3\omega - 5, \omega - 1, -\omega + 3, -2\omega + 5, 2\omega - 3\}$.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 1, 2, 2\omega - 4, 2\omega - 2, \omega - 2, \omega, 4\omega, 3\omega - 5, \omega - 1, -\omega + 3, -2\omega + 5, 2\omega - 3\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 1, 2, 2\omega - 4, \omega - 2, \omega, 4\omega, 3\omega - 5, \omega - 1, -\omega + 3, -2\omega + 5, 2\omega - 3\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{1, 2, 2\omega - 4, \omega - 2, 4\omega, 3\omega - 5, \omega - 1, -\omega + 3, -2\omega + 5, 2\omega - 3\}$.
+\item  2e -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 1, 2, 2\omega - 4, 2\omega - 2, \omega - 2, \omega, 4\omega, 3\omega - 5, \omega - 1, -\omega + 3, -2\omega + 5, 2\omega - 3\}$.
+\end{enumerate}
 
-\begin{tabular}{ll}
-$\omega=  \frac{1}{2} i \, \sqrt{3} - \frac{1}{2} $  & $\beta= -3 \, \omega = -\frac{3}{2} i \, \sqrt{3} + \frac{3}{2} $\\
-$m_\omega(t)=  t^{2} + t + 1 $  & $m_\beta(x)=  x^{2} - 3 \, x + 9 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 16 $ $ & $\A$ is not minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{-\omega + 3, -\omega + 2, -\omega + 1, -\omega, 2, 1, 0, -1, \omega + 1, \omega, \omega - 1, \omega - 2, 2 \, \omega, 2 \, \omega - 1, 2 \, \omega - 2, 2 \, \omega - 3\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{-\omega + 3, -\omega, 2 \, \omega, 2 \, \omega - 3\right\}, \left\{-\omega + 2, 2 \, \omega - 1\right\}, \left\{-\omega + 1, 2 \, \omega - 2\right\}, \left\{2, -1\right\}, \left\{1\right\}, \left\{0\right\}, \left\{\omega + 1, \omega - 2\right\}, \left\{\omega\right\}, \left\{\omega - 1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{-\omega + 3, 1, \omega - 1, 2 \, \omega - 3\right\}, \left\{-\omega + 2, 0, \omega - 2\right\}, \left\{-\omega + 1, -1\right\}, \left\{-\omega\right\}, \left\{2, \omega, 2 \, \omega - 2\right\}, \left\{\omega + 1, 2 \, \omega - 1\right\}, \left\{2 \, \omega\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =26$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 1, 2, 2\omega - 4, \omega - 2, 4\omega, 3\omega - 5, \omega - 1, -\omega + 3, -2\omega + 5, 2\omega - 3\}$ \\
-Method  15: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 1, 2, 2\omega - 4, 2\omega - 2, \omega - 2, \omega, 4\omega, 3\omega - 5, \omega - 1, -\omega + 3, -2\omega + 5, 2\omega - 3\}$ \\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 1, 2, 2\omega - 4, \omega - 2, \omega, 4\omega, 3\omega - 5, \omega - 1, -\omega + 3, -2\omega + 5, 2\omega - 3\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{1, 2, 2\omega - 4, \omega - 2, 4\omega, 3\omega - 5, \omega - 1, -\omega + 3, -2\omega + 5, 2\omega - 3\}$ \\
-\hline
-\end{tabular}
-
-\end{exmp}
-
-
-
-
-\begin{exmp}
-\label{ex:compareAE}
-
-Penney\_1--block\_complex
-
-\rule{0cm}{0cm}
-
-\begin{tabular}{ll}
-$\omega=  i - 1 $  & $\beta= \omega = i - 1 $\\
-$m_\omega(t)=  t^{2} + 2 \, t + 2 $  & $m_\beta(x)=  x^{2} + 2 \, x + 2 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 5 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, \omega + 1, -\omega - 1, 1, -1\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1, -\omega - 1, 1, -1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1\right\}, \left\{-\omega - 1\right\}, \left\{1\right\}, \left\{-1\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =45$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 6$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 6$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 6$ \\
-Method  23: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 6$ \\
-\hline
-\end{tabular}
 
 \end{exmp}
 
@@ -210,214 +71,27 @@ Phase 2: & \checkmark , $r= 6$ \\
 \begin{exmp}
 \label{ex:compareAF}
 
-Penney\_1--block\_integer
+\textbf{Penney\_1--block\_integer}
 
-\rule{0cm}{0cm}
-
-\begin{tabular}{ll}
-$\omega=  i $  & $\beta= \omega - 1 = i - 1 $\\
-$m_\omega(t)=  t^{2} + 1 $  & $m_\beta(x)=  x^{2} + 2 \, x + 2 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 5 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{-2, -1, 0, 1, 2\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{-2, 0, 2\right\}, \left\{-1, 1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{-2\right\}, \left\{-1\right\}, \left\{0\right\}, \left\{1\right\}, \left\{2\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =49$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 3, 4, -4, -3\}$ \\
-Method  15: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 3, -3\}$ \\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 3, 4, -4, -3, -2\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 3, 4, -4, -3, -2\}$ \\
-\hline
-Phase 1 (methods $14$): &
-\checkmark, $\#\mathcal{Q} =141$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 1, 2, -1, -2\}$ \\
-Method  15: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 1, 2, -1, -2\}$ \\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 1, 2, 3, 4, -4, -3, -2\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{0, 1, 2, 3, 4, -4, -3, -2\}$ \\
-\hline
-\end{tabular}
-
-\end{exmp}
+Phase 1 (methods 1b, 1c, 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 3, 4, -4, -3\}$.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 3, -3\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 3, 4, -4, -3, -2\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 3, 4, -4, -3, -2\}$.
+\item  2e -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 3, -3\}$.
+\end{enumerate}
 
 
+Phase 1 (methods 1a):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 1, 2, -1, -2\}$.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 1, 2, -1, -2\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 1, 2, 3, 4, -4, -3, -2\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{0, 1, 2, 3, 4, -4, -3, -2\}$.
+\item  2e -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2, -2\}$.
+\end{enumerate}
 
-
-\begin{exmp}
-\label{ex:compareAG}
-
-Penney\_2--block\_integer
-
-\rule{0cm}{0cm}
-
-\begin{tabular}{ll}
-$\omega=  i $  & $\beta= -2 \, \omega = -2 i $\\
-$m_\omega(t)=  t^{2} + 1 $  & $m_\beta(x)=  x^{2} + 4 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 9 $ $ & $\A$ is not minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, -1, \omega, -\omega, \omega - 1, -\omega + 1, \omega - 2, -\omega + 2\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, -1\right\}, \left\{\omega, -\omega, \omega - 2, -\omega + 2\right\}, \left\{\omega - 1, -\omega + 1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0, \omega - 2, -\omega + 2\right\}, \left\{1, \omega - 1\right\}, \left\{-1, -\omega + 1\right\}, \left\{\omega\right\}, \left\{-\omega\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =27$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 5$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 5$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 5$ \\
-Method  23: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 5$ \\
-\hline
-\end{tabular}
-
-\end{exmp}
-
-
-
-
-\begin{exmp}
-\label{ex:compareAH}
-
-Quadratic+1+0--2\_integer
-
-\rule{0cm}{0cm}
-
-\begin{tabular}{ll}
-$\omega=  \sqrt{2} $  & $\beta= \omega = \sqrt{2} $\\
-$m_\omega(t)=  t^{2} - 2 $  & $m_\beta(x)=  x^{2} - 2 $\\
-Real conjugate of $\beta$ greater than 1:   &  yes \\
-$\#\A= $ 3 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, -1\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, -1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0, 1, -1\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =9$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 5$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 5$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 5$ \\
-Method  23: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 4$ \\
-\hline
-\end{tabular}
-
-\end{exmp}
-
-
-
-
-\begin{exmp}
-\label{ex:compareAI}
-
-Quadratic+1+0--21\_integer
-
-\rule{0cm}{0cm}
-
-\begin{tabular}{ll}
-$\omega=  -\frac{1}{2} \, \sqrt{21} + \frac{3}{2} $  & $\beta= 2 \, \omega - 3 = -\sqrt{21} $\\
-$m_\omega(t)=  t^{2} - 3 \, t - 3 $  & $m_\beta(x)=  x^{2} - 21 $\\
-Real conjugate of $\beta$ greater than 1:   &  yes \\
-$\#\A= $ 22 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{-10, 11\right\}, \left\{-9\right\}, \left\{-8\right\}, \left\{-7\right\}, \left\{-6\right\}, \left\{-5\right\}, \left\{-4\right\}, \left\{-3\right\}, \left\{-2\right\}, \left\{-1\right\}, \left\{0\right\}, \left\{1\right\}, \left\{2\right\}, \left\{3\right\}, \left\{4\right\}, \left\{5\right\}, \left\{6\right\}, \left\{7\right\}, \left\{8\right\}, \left\{9\right\}, \left\{10\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{-10, 0, 10\right\}, \left\{-9, 1, 11\right\}, \left\{-8, 2\right\}, \left\{-7, 3\right\}, \left\{-6, 4\right\}, \left\{-5, 5\right\}, \left\{-4, 6\right\}, \left\{-3, 7\right\}, \left\{-2, 8\right\}, \left\{-1, 9\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =9$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 4$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 4$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 4$ \\
-Method  23: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 4$ \\
-\hline
-\end{tabular}
-
-\end{exmp}
-
-
-
-
-\begin{exmp}
-\label{ex:compareAJ}
-
-Quadratic+1+0--3\_integer
-
-\rule{0cm}{0cm}
-
-\begin{tabular}{ll}
-$\omega=  \sqrt{3} - 1 $  & $\beta= -\omega - 1 = -\sqrt{3} $\\
-$m_\omega(t)=  t^{2} + 2 \, t - 2 $  & $m_\beta(x)=  x^{2} - 3 $\\
-Real conjugate of $\beta$ greater than 1:   &  yes \\
-$\#\A= $ 4 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, -1, 2\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1\right\}, \left\{-1, 2\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0, 2\right\}, \left\{1, -1\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =9$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 4$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 5$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 5$ \\
-Method  23: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 5$ \\
-\hline
-\end{tabular}
 
 \end{exmp}
 
@@ -427,38 +101,13 @@ Phase 2: & \checkmark , $r= 5$ \\
 \begin{exmp}
 \label{ex:compareAK}
 
-Quadratic+1+0--5\_integer
+\textbf{Quadratic+1+0--5\_integer}
 
-\rule{0cm}{0cm}
+Phase 1 (methods 1a, 1b, 1c, 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-2\}$.
+\end{enumerate}
 
-\begin{tabular}{ll}
-$\omega=  \frac{1}{2} \, \sqrt{5} - \frac{1}{2} $  & $\beta= 2 \, \omega + 1 = \sqrt{5} $\\
-$m_\omega(t)=  t^{2} + t - 1 $  & $m_\beta(x)=  x^{2} - 5 $\\
-Real conjugate of $\beta$ greater than 1:   &  yes \\
-$\#\A= $ 8 $ $ & $\A$ is not minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{-3, -2, -1, 0, 1, 2, 3, 4\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{-3, 2\right\}, \left\{-2, 3\right\}, \left\{-1, 4\right\}, \left\{0\right\}, \left\{1\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{-3, -1, 1, 3\right\}, \left\{-2, 0, 2, 4\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =9$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{-2\}$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 3$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 2$ \\
-Method  23: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 2$ \\
-\hline
-\end{tabular}
 
 \end{exmp}
 
@@ -468,39 +117,15 @@ Phase 2: & \checkmark , $r= 2$ \\
 \begin{exmp}
 \label{ex:compareAL}
 
-Quadratic+1+2+3\_complex
+\textbf{Quadratic+1+2+3\_complex}
 
-\rule{0cm}{0cm}
+Phase 1 (methods 1a, 1b, 1c, 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Phase 2   fails because  the sequence $(1, -2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, \dots ,-2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, \dots)$ leads to an infinite loop.
+\item  2c -- Phase 2   fails because  the sequence $(1, -2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, \dots ,-2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, \dots)$ leads to an infinite loop.
+\item  2d -- Phase 2   fails because  the sequence $(0, \omega + 2, -1, -1, 2\omega + 1, -1, -1, 2\omega + 1, -1, \dots ,-1, -1, 2\omega + 1, -1, \dots)$ leads to an infinite loop.
+\end{enumerate}
 
-\begin{tabular}{ll}
-$\omega=  i \, \sqrt{2} - 1 $  & $\beta= -\omega - 2 = -i \, \sqrt{2} - 1 $\\
-$m_\omega(t)=  t^{2} + 2 \, t + 3 $  & $m_\beta(x)=  x^{2} + 2 \, x + 3 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 6 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, \omega + 1, -\omega - 1, 1, -1, \omega\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1, -1\right\}, \left\{-\omega - 1, 1, \omega\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1\right\}, \left\{-\omega - 1\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{\omega\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
-
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =27$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(1, -2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, \dots ,-2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 7$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(1, -2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, \dots ,-2\omega - 2, -\omega - 2, 2\omega + 2, -2\omega - 2, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  23: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(0, \omega + 2, -1, -1, 2\omega + 1, -1, -1, 2\omega + 1, -1, \dots ,-1, -1, 2\omega + 1, -1, \dots)$ leads to an infinite loop.\end{minipage} }\\
-\hline
-\end{tabular}
 
 \end{exmp}
 
@@ -510,80 +135,37 @@ $b,b,\dots,b$ inputs: & \checkmark \\
 \begin{exmp}
 \label{ex:compareAM}
 
-Quadratic+1+3+4\_complex
+\textbf{Quadratic+1+3+4\_complex}
 
-\rule{0cm}{0cm}
+Phase 1 (methods 1b):
+\begin{enumerate}[ ]
+\item  2c -- Phase 2   fails because  the sequence $(2, 2\omega + 1, -\omega - 2, -2, 2\omega, 2\omega + 1, -\omega - 2, -2, 2\omega, \dots ,2\omega + 1, -\omega - 2, -2, 2\omega, \dots)$ leads to an infinite loop.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{\omega + 3\}$.
+\end{enumerate}
 
-\begin{tabular}{ll}
-$\omega=  \frac{1}{2} i \, \sqrt{7} - \frac{1}{2} $  & $\beta= \omega - 1 = \frac{1}{2} i \, \sqrt{7} - \frac{3}{2} $\\
-$m_\omega(t)=  t^{2} + t + 2 $  & $m_\beta(x)=  x^{2} + 3 \, x + 4 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 8 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, \omega + 1, -\omega - 1, 1, -1, \omega, -\omega, \omega + 2\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1, -\omega - 1\right\}, \left\{1, \omega\right\}, \left\{-1, -\omega, \omega + 2\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1\right\}, \left\{-\omega - 1\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{\omega\right\}, \left\{-\omega\right\}, \left\{\omega + 2\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
 
-\begin{tabular}{ll}
-Phase 1 (methods $12$): &
-\checkmark, $\#\mathcal{Q} =20$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 7$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 7$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(2, 2\omega + 1, -\omega - 2, -2, 2\omega, 2\omega + 1, -\omega - 2, -2, 2\omega, \dots ,2\omega + 1, -\omega - 2, -2, 2\omega, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{\omega + 3\}$ \\
-\hline
-Phase 1 (methods $16$): &
-\checkmark, $\#\mathcal{Q} =19$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(2, 2\omega + 3, -2\omega - 2, 2, 2\omega + 3, -2\omega - 2, 2, \dots ,2, 2\omega + 3, -2\omega - 2, 2, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 7$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(2, 2\omega + 2, -\omega + 1, 2, 2\omega + 2, -\omega + 1, 2, \dots ,2, 2\omega + 2, -\omega + 1, 2, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{\omega + 3\}$ \\
-\hline
-Phase 1 (methods $13, 15$): &
-\checkmark, $\#\mathcal{Q} =20$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(2, 2\omega + 3, -2\omega - 2, 2, 2\omega + 3, -2\omega - 2, 2, \dots ,2, 2\omega + 3, -2\omega - 2, 2, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 7$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(2, 2\omega + 2, -\omega + 1, 2, 2\omega + 2, -\omega + 1, 2, \dots ,2, 2\omega + 2, -\omega + 1, 2, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{\omega + 3\}$ \\
-\hline
-Phase 1 (methods $14$): &
-\checkmark, $\#\mathcal{Q} =21$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 7$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 7$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(2, 2\omega + 2, -\omega + 1, 2, 2\omega + 2, -\omega + 1, 2, \dots ,2, 2\omega + 2, -\omega + 1, 2, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{\omega + 3\}$ \\
-\hline
-\end{tabular}
+Phase 1 (methods 1c):
+\begin{enumerate}[ ]
+\item  2a -- Phase 2   fails because  the sequence $(2, 2\omega + 3, -2\omega - 2, 2, 2\omega + 3, -2\omega - 2, 2, \dots ,2, 2\omega + 3, -2\omega - 2, 2, \dots)$ leads to an infinite loop.
+\item  2c -- Phase 2   fails because  the sequence $(2, 2\omega + 2, -\omega + 1, 2, 2\omega + 2, -\omega + 1, 2, \dots ,2, 2\omega + 2, -\omega + 1, 2, \dots)$ leads to an infinite loop.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{\omega + 3\}$.
+\end{enumerate}
+
+
+Phase 1 (methods 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Phase 2   fails because  the sequence $(2, 2\omega + 3, -2\omega - 2, 2, 2\omega + 3, -2\omega - 2, 2, \dots ,2, 2\omega + 3, -2\omega - 2, 2, \dots)$ leads to an infinite loop.
+\item  2c -- Phase 2   fails because  the sequence $(2, 2\omega + 2, -\omega + 1, 2, 2\omega + 2, -\omega + 1, 2, \dots ,2, 2\omega + 2, -\omega + 1, 2, \dots)$ leads to an infinite loop.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{\omega + 3\}$.
+\end{enumerate}
+
+
+Phase 1 (methods 1a):
+\begin{enumerate}[ ]
+\item  2c -- Phase 2   fails because  the sequence $(2, 2\omega + 2, -\omega + 1, 2, 2\omega + 2, -\omega + 1, 2, \dots ,2, 2\omega + 2, -\omega + 1, 2, \dots)$ leads to an infinite loop.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{\omega + 3\}$.
+\end{enumerate}
+
 
 \end{exmp}
 
@@ -593,58 +175,37 @@ Failing $b,b,\dots,b$ inputs: & $\{\omega + 3\}$ \\
 \begin{exmp}
 \label{ex:compareAN}
 
-Quadratic+1+3+5\_complex1
+\textbf{Quadratic+1+3+5\_complex1}
 
-\rule{0cm}{0cm}
+Phase 1 (methods 1a):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, \omega + 4, -\omega - 4, -2\omega - 2\}$.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -2\omega - 2\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, \omega + 4, -\omega - 4, -2\omega - 2\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, 2\omega + 4, \omega + 4, -\omega - 4, -2\omega - 4, -2\omega - 2\}$.
+\item  2e -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -2\omega - 2\}$.
+\end{enumerate}
 
-\begin{tabular}{ll}
-$\omega=  \frac{1}{2} i \, \sqrt{11} - \frac{3}{2} $  & $\beta= \omega = \frac{1}{2} i \, \sqrt{11} - \frac{3}{2} $\\
-$m_\omega(t)=  t^{2} + 3 \, t + 5 $  & $m_\beta(x)=  x^{2} + 3 \, x + 5 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 9 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, 1, -1, \omega + 1, -\omega - 1, \omega + 2, -\omega - 2, \omega + 3, -\omega - 3\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1, \omega + 1\right\}, \left\{-1, -\omega - 1\right\}, \left\{\omega + 2, -\omega - 3\right\}, \left\{-\omega - 2, \omega + 3\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{\omega + 1\right\}, \left\{-\omega - 1\right\}, \left\{\omega + 2\right\}, \left\{-\omega - 2\right\}, \left\{\omega + 3\right\}, \left\{-\omega - 3\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
 
-\begin{tabular}{ll}
-Phase 1 (methods $14$): &
-\checkmark, $\#\mathcal{Q} =19$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, \omega + 4, -\omega - 4, -2\omega - 2\}$ \\
-Method  15: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, -2\omega - 2\}$ \\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, \omega + 4, -\omega - 4, -2\omega - 2\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, 2\omega + 4, \omega + 4, -\omega - 4, -2\omega - 4, -2\omega - 2\}$ \\
-\hline
-Phase 1 (methods $12, 16$): &
-\checkmark, $\#\mathcal{Q} =11$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{-2\omega - 2\}$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(2, 2\omega + 2, 2\omega + 2, 2, 2\omega + 2, 2\omega + 2, \dots ,2, 2\omega + 2, 2\omega + 2, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, -2\omega - 2\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, -2\omega - 2\}$ \\
-\hline
-Phase 1 (methods $13, 15$): &
-\checkmark, $\#\mathcal{Q} =17$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, -2\omega - 2\}$ \\
-Method  15: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, -2\omega - 2\}$ \\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, -2\omega - 2\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, 2\omega + 4, -2\omega - 4, -2\omega - 2\}$ \\
-\hline
-\end{tabular}
+Phase 1 (methods 1b, 1c):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-2\omega - 2\}$.
+\item  2b -- Phase 2   fails because  the sequence $(2, 2\omega + 2, 2\omega + 2, 2, 2\omega + 2, 2\omega + 2, \dots ,2, 2\omega + 2, 2\omega + 2, \dots)$ leads to an infinite loop.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -2\omega - 2\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -2\omega - 2\}$.
+\item  2e -- Phase 2   fails because  the sequence $(2, 2\omega + 2, 2\omega + 2, 2, 2\omega + 2, 2\omega + 2, \dots ,2, 2\omega + 2, 2\omega + 2, \dots)$ leads to an infinite loop.
+\end{enumerate}
+
+
+Phase 1 (methods 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -2\omega - 2\}$.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -2\omega - 2\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -2\omega - 2\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, 2\omega + 4, -2\omega - 4, -2\omega - 2\}$.
+\item  2e -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -2\omega - 2\}$.
+\end{enumerate}
+
 
 \end{exmp}
 
@@ -654,62 +215,37 @@ Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, 2\omega + 4, -2\omega - 4, -2\om
 \begin{exmp}
 \label{ex:compareAO}
 
-Quadratic+1+3+5\_complex2 
+\textbf{Quadratic+1+3+5\_complex2 }
 
-\rule{0cm}{0cm}
+Phase 1 (methods 1b, 1c):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-3\omega - 4, 2\omega + 2, 2\omega + 3, \omega + 3, -2\omega - 4, -2\omega - 3, -2\omega - 2, -\omega - 3\}$.
+\item  2b -- Phase 2   fails because  the sequence $(0, 1, 2\omega + 1, -4\omega - 4, 4\omega + 4, 0, 1, 4\omega + 4, 0, 1, 4\omega + 4, \dots ,4\omega + 4, 0, 1, 4\omega + 4, \dots)$ leads to an infinite loop.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-3\omega - 3, 3\omega + 3\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-3\omega - 4, 2\omega + 3, 2\omega + 4, \omega + 3, -2\omega - 4, -2\omega - 3, -\omega - 3, 3\omega + 4\}$.
+\item  2e -- Phase 2   fails because  the sequence $(0, 1, 2\omega + 1, -4\omega - 4, 4\omega + 4, 0, 1, 4\omega + 4, 0, 1, 4\omega + 4, \dots ,4\omega + 4, 0, 1, 4\omega + 4, \dots)$ leads to an infinite loop.
+\end{enumerate}
 
-\begin{tabular}{ll}
-$\omega=  \frac{1}{2} i \, \sqrt{11} - \frac{3}{2} $  & $\beta= \omega = \frac{1}{2} i \, \sqrt{11} - \frac{3}{2} $\\
-$m_\omega(t)=  t^{2} + 3 \, t + 5 $  & $m_\beta(x)=  x^{2} + 3 \, x + 5 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 9 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{0, \omega + 1, -\omega - 1, 1, -1, 2 \, \omega + 2, -2 \, \omega - 2, \omega + 2, -\omega - 2\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1, 1\right\}, \left\{-\omega - 1, -1\right\}, \left\{2 \, \omega + 2, \omega + 2\right\}, \left\{-2 \, \omega - 2, -\omega - 2\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{0\right\}, \left\{\omega + 1\right\}, \left\{-\omega - 1\right\}, \left\{1\right\}, \left\{-1\right\}, \left\{2 \, \omega + 2\right\}, \left\{-2 \, \omega - 2\right\}, \left\{\omega + 2\right\}, \left\{-\omega - 2\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
 
-\begin{tabular}{ll}
-Phase 1 (methods $12, 16$): &
-\checkmark, $\#\mathcal{Q} =33$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{-3\omega - 4, 2\omega + 2, 2\omega + 3, \omega + 3, -2\omega - 4, -2\omega - 3, -2\omega - 2, -\omega - 3\}$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(0, 1, 2\omega + 1, -4\omega - 4, 4\omega + 4, 0, 1, 4\omega + 4, 0, 1, 4\omega + 4, \dots ,4\omega + 4, 0, 1, 4\omega + 4, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{-3\omega - 3, 3\omega + 3\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{-3\omega - 4, 2\omega + 3, 2\omega + 4, \omega + 3, -2\omega - 4, -2\omega - 3, -\omega - 3, 3\omega + 4\}$ \\
-\hline
-Phase 1 (methods $13, 15$): &
-\checkmark, $\#\mathcal{Q} =39$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, -2\omega - 4, -2\omega - 3, -2\omega - 2, -\omega - 3\}$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(0, 0, -4\omega - 4, 3\omega + 4, 0, 4\omega + 4, 0, 4\omega + 4, 0, 4\omega + 4, \dots ,0, 4\omega + 4, 0, 4\omega + 4, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(0, 0, -2\omega - 1, 3\omega + 3, -4\omega - 4, \omega, -2\omega - 3, 4\omega + 4, -\omega, 2\omega + 3, -3\omega - 3, 4\omega + 4, 2\omega + 2, 4\omega + 4, 2\omega + 2, 4\omega + 4, 2\omega + 2, \dots ,4\omega + 4, 2\omega + 2, 4\omega + 4, 2\omega + 2, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{-3\omega - 4, 2\omega + 3, 2\omega + 4, \omega + 3, -2\omega - 4, -2\omega - 3, -\omega - 3, 3\omega + 4\}$ \\
-\hline
-Phase 1 (methods $14$): &
-\checkmark, $\#\mathcal{Q} =43$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{-3\omega - 3, 2\omega + 2, -2\omega - 3, -\omega - 3, 3\omega + 3\}$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(0, -1, -3\omega - 3, \omega, -3\omega - 4, -3\omega - 4, -3\omega - 3, 4\omega + 4, -3\omega - 4, 2\omega + 1, 0, -1, -3\omega - 3, \omega, \dots ,0, -1, -3\omega - 3, \omega, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth} Phase 2 fails because  the sequence $(0, 0, -4\omega - 4, 2\omega + 1, -\omega - 2, -3\omega - 4, 2\omega + 2, -\omega - 1, -\omega, 3\omega + 3, -2\omega - 4, 2\omega + 1, -\omega - 2, -3\omega - 4, 2\omega + 2, \dots ,2\omega + 1, -\omega - 2, -3\omega - 4, 2\omega + 2, \dots)$ leads to an infinite loop.\end{minipage} }\\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 3, \omega + 3, -2\omega - 3, -\omega - 3\}$ \\
-\hline
-\end{tabular}
+Phase 1 (methods 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -2\omega - 4, -2\omega - 3, -2\omega - 2, -\omega - 3\}$.
+\item  2b -- Phase 2   fails because  the sequence $(0, 0, -4\omega - 4, 3\omega + 4, 0, 4\omega + 4, 0, 4\omega + 4, 0, 4\omega + 4, \dots ,0, 4\omega + 4, 0, 4\omega + 4, \dots)$ leads to an infinite loop.
+\item  2c -- Phase 2   fails because  the sequence $(0, 0, -2\omega - 1, 3\omega + 3, -4\omega - 4, \omega, -2\omega - 3, 4\omega + 4, -\omega, 2\omega + 3, -3\omega - 3, 4\omega + 4, 2\omega + 2, 4\omega + 4, 2\omega + 2, 4\omega + 4, 2\omega + 2, \dots ,4\omega + 4, 2\omega + 2, 4\omega + 4, 2\omega + 2, \dots)$ leads to an infinite loop.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-3\omega - 4, 2\omega + 3, 2\omega + 4, \omega + 3, -2\omega - 4, -2\omega - 3, -\omega - 3, 3\omega + 4\}$.
+\item  2e -- Phase 2   fails because  the sequence $(0, -3\omega - 4, 3\omega + 3, -3\omega - 4, -4\omega - 4, 4\omega + 4, 0, 0, 4\omega + 4, -3\omega - 4, -1, -3\omega - 4, -1, -3\omega - 4, -1, \dots ,-3\omega - 4, -1, -3\omega - 4, -1, \dots)$ leads to an infinite loop.
+\end{enumerate}
+
+
+Phase 1 (methods 1a):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-3\omega - 3, 2\omega + 2, -2\omega - 3, -\omega - 3, 3\omega + 3\}$.
+\item  2b -- Phase 2   fails because  the sequence $(0, -1, -3\omega - 3, \omega, -3\omega - 4, -3\omega - 4, -3\omega - 3, 4\omega + 4, -3\omega - 4, 2\omega + 1, 0, -1, -3\omega - 3, \omega, \dots ,0, -1, -3\omega - 3, \omega, \dots)$ leads to an infinite loop.
+\item  2c -- Phase 2   fails because  the sequence $(0, 0, -4\omega - 4, 2\omega + 1, -\omega - 2, -3\omega - 4, 2\omega + 2, -\omega - 1, -\omega, 3\omega + 3, -2\omega - 4, 2\omega + 1, -\omega - 2, -3\omega - 4, 2\omega + 2, \dots ,2\omega + 1, -\omega - 2, -3\omega - 4, 2\omega + 2, \dots)$ leads to an infinite loop.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 3, \omega + 3, -2\omega - 3, -\omega - 3\}$.
+\item  2e -- Phase 2   fails because  the sequence $(0, -3\omega - 4, 3\omega + 3, -\omega, 2\omega + 1, -2\omega - 1, 1, 2\omega + 1, 0, -1, -3\omega - 3, \omega, -3\omega - 4, -3\omega - 4, -3\omega - 3, 4\omega + 4, -3\omega - 4, 2\omega + 1, 0, -1, -3\omega - 3, \dots ,2\omega + 1, 0, -1, -3\omega - 3, \dots)$ leads to an infinite loop.
+\end{enumerate}
+
 
 \end{exmp}
 
@@ -719,46 +255,36 @@ Failing $b,b,\dots,b$ inputs: & $\{2\omega + 3, \omega + 3, -2\omega - 3, -\omeg
 \begin{exmp}
 \label{ex:compareAP}
 
-Quadratic+1+4+5\_complex1
+\textbf{Quadratic+1+4+5\_complex1}
 
-\rule{0cm}{0cm}
+Phase 1 (Lemma \ref{lem:suffCondPhase1}):
+\begin{enumerate}[ ]
+\item  2a -- Phase 2   fails because  the sequence $(2, 2\omega - 1, -2\omega + 1, 2\omega - 2, -\omega + 2, 2, 2\omega - 2, -\omega + 2, 2, 2\omega - 2, \dots ,2\omega - 2, -\omega + 2, 2, 2\omega - 2, \dots)$ leads to an infinite loop.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-\omega - 2, -2\omega + 1\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-\omega - 2\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-\omega - 2\}$.
+\end{enumerate}
 
-\begin{tabular}{ll}
-$\omega=  i $  & $\beta= \omega - 2 = i - 2 $\\
-$m_\omega(t)=  t^{2} + 1 $  & $m_\beta(x)=  x^{2} + 4 \, x + 5 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 10 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{\omega + 2, \omega + 1, \omega, \omega - 1, 1, 0, -1, -\omega + 1, -\omega, -\omega - 1\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{\omega + 2, -1, -\omega + 1\right\}, \left\{\omega + 1, -\omega\right\}, \left\{\omega, -\omega - 1\right\}, \left\{\omega - 1, 1\right\}, \left\{0\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{\omega + 2\right\}, \left\{\omega + 1\right\}, \left\{\omega\right\}, \left\{\omega - 1\right\}, \left\{1\right\}, \left\{0\right\}, \left\{-1\right\}, \left\{-\omega + 1\right\}, \left\{-\omega\right\}, \left\{-\omega - 1\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
 
-\begin{tabular}{ll}
-Phase 1 (methods $14$): &
-\checkmark, $\#\mathcal{Q} =19$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2, -\omega - 2, -2\omega\}$ \\
-Method  15: &\\
-Failing $b,b,\dots,b$ inputs: & $\{-\omega - 2\}$ \\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega - 2, 2\omega + 2, \omega + 3, -\omega - 2, -2\omega + 2\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega - 2, 2\omega + 2, \omega + 3, -\omega - 2, -2\omega + 2\}$ \\
-\hline
-Phase 1 (methods $12, 13, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =17$ \\ 
-Method  9: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2, -\omega - 2, -2\omega\}$ \\
-Method  15: &\\
-Failing $b,b,\dots,b$ inputs: & $\{-\omega - 2\}$ \\
-Method  22: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, -\omega - 2\}$ \\
-Method  23: &\\
-Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, -\omega - 2\}$ \\
-\hline
-\end{tabular}
+Phase 1 (methods 1a):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2, -\omega - 2, -2\omega\}$.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-\omega - 2\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega - 2, 2\omega + 2, \omega + 3, -\omega - 2, -2\omega + 2\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega - 2, 2\omega + 2, \omega + 3, -\omega - 2, -2\omega + 2\}$.
+\item  2e -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-\omega - 2\}$.
+\end{enumerate}
+
+
+Phase 1 (methods 1b, 1c, 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2, -\omega - 2, -2\omega\}$.
+\item  2b -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-\omega - 2\}$.
+\item  2c -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -\omega - 2\}$.
+\item  2d -- Check of $b,b,\dots,b$ inputs fails for $b\in \{2\omega + 2, -\omega - 2\}$.
+\item  2e -- Check of $b,b,\dots,b$ inputs fails for $b\in \{-\omega - 2\}$.
+\end{enumerate}
+
 
 \end{exmp}
 
@@ -766,41 +292,37 @@ Failing $b,b,\dots,b$ inputs: & $\{2\omega + 2, -\omega - 2\}$ \\
 
 
 \begin{exmp}
-\label{ex:compareAQ}
+\label{ex:compareAR}
 
-Quadratic+1+4+5\_complex2
+\textbf{Cubic+1+0+0+2\_integer}
 
-\rule{0cm}{0cm}
+Phase 1 (methods 1a, 1b, 1c, 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Phase 2   fails because  the sequence $(0, 1, 0, 1, 0, 1, 0, \dots ,0, 1, 0, 1, 0, \dots)$ leads to an infinite loop.
+\item  2b -- Phase 2   fails because  the sequence $(0, 1, 0, -1, 0, 1, 0, -1, 0, \dots ,0, 1, 0, -1, 0, \dots)$ leads to an infinite loop.
+\item  2c -- Phase 2   fails because  the sequence $(0, 1, 0, -1, 0, 1, 0, -1, 0, \dots ,0, 1, 0, -1, 0, \dots)$ leads to an infinite loop.
+\item  2e -- Phase 2   fails because  the sequence $(0, 1, 0, -1, 0, 1, 0, -1, 0, \dots ,0, 1, 0, -1, 0, \dots)$ leads to an infinite loop.
+\end{enumerate}
 
-\begin{tabular}{ll}
-$\omega=  i $  & $\beta= \omega - 2 = i - 2 $\\
-$m_\omega(t)=  t^{2} + 1 $  & $m_\beta(x)=  x^{2} + 4 \, x + 5 $\\
-Real conjugate of $\beta$ greater than 1:   &  no \\
-$\#\A= $ 10 $ $ & $\A$ is minimal. \\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}\begin{dmath*}\A = \left\{\omega + 2, \omega + 1, \omega, 2, 1, 0, -1, -\omega + 1, -\omega, -\omega - 1\right\}  \end{dmath*}\end{minipage} }\\
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta$: \begin{dmath*} \left\{\left\{\omega + 2, -1, -\omega + 1\right\}, \left\{\omega + 1, -\omega\right\}, \left\{\omega, 2, -\omega - 1\right\}, \left\{1\right\}, \left\{0\right\}\right\}  \end{dmath*}\end{minipage} }\\[10pt]
-\multicolumn{2}{l}{\begin{minipage}{\textwidth}$\A$ divided into congruence classes modulo $\beta-1$: \begin{dmath*} \left\{\left\{\omega + 2\right\}, \left\{\omega + 1\right\}, \left\{\omega\right\}, \left\{2\right\}, \left\{1\right\}, \left\{0\right\}, \left\{-1\right\}, \left\{-\omega + 1\right\}, \left\{-\omega\right\}, \left\{-\omega - 1\right\}\right\}  \end{dmath*}\end{minipage} }\\
- & \\ \hline
- & \\
-\end{tabular}
 
-\begin{tabular}{ll}
-Phase 1 (methods $12, 13, 14, 15, 16$): &
-\checkmark, $\#\mathcal{Q} =17$ \\ 
-Method  9: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 3$ \\
-Method  15: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 3$ \\
-Method  22: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 3$ \\
-Method  23: &\\
-$b,b,\dots,b$ inputs: & \checkmark \\
-Phase 2: & \checkmark , $r= 3$ \\
-\hline
-\end{tabular}
+\end{exmp}
+
+
+
+
+\begin{exmp}
+\label{ex:compareAS}
+
+\textbf{Cubic+1+0+0--2\_integer}
+
+Phase 1 (methods 1a, 1b, 1c, 1d, 1e):
+\begin{enumerate}[ ]
+\item  2a -- Phase 2   fails because  the sequence $(0, 1, 0, 1, 0, 1, 0, \dots ,0, 1, 0, 1, 0, \dots)$ leads to an infinite loop.
+\item  2b -- Phase 2   fails because  the sequence $(0, 1, 0, -1, 0, 1, 0, -1, 0, \dots ,0, 1, 0, -1, 0, \dots)$ leads to an infinite loop.
+\item  2c -- Phase 2   fails because  the sequence $(0, 1, 0, -1, 0, 1, 0, -1, 0, \dots ,0, 1, 0, -1, 0, \dots)$ leads to an infinite loop.
+\item  2e -- Phase 2   fails because  the sequence $(0, 1, 0, -1, 0, 1, 0, -1, 0, \dots ,0, 1, 0, -1, 0, \dots)$ leads to an infinite loop.
+\end{enumerate}
+
 
 \end{exmp}
 
