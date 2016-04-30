@@ -1,7 +1,7 @@
 \section{Modified Phase 2}
 \label{sec:modifiedPhase2}
 
-In this section, we introduce algorithms based on the theorems proved in Chapter~\ref{chap:convergence}. The first one checks convergence of Phase 2 for $bb\dots b$ inputs. Next, we show that it is possible to make Phase 2 stable by wrapping the choice of a set of possible weight coefficients into a simple while loop. Finally, we present an algorithm for Phase~2 which includes all modifications -- the mentioned check for $bb\dots b$ inputs and control of convergence by searching for an infinite walk in Rauzy graph $G_k$.
+In this section, we introduce algorithms based on the theorems proved in Chapter~\ref{chap:convergence}. The first one checks convergence of Phase 2 for $bb\dots b$ inputs. Next, we show that it is possible to make Phase 2 stable by wrapping the choice of a set of possible weight coefficients into a simple while loop. Finally, we present an algorithm for Phase~2 which includes all modifications -- the mentioned check for $bb\dots b$ inputs and control of non-convergence by searching for an infinite walk in Rauzy graph $G_k$.
 
 \subsection*{Checking $bb\dots b$ inputs}
 
@@ -107,7 +107,7 @@ Note that saving of the traversed path requires only the label of the first vert
 \end{algorithm}
 
 
-\subsection*{Phase 2 with convergence control}
+\subsection*{Phase 2 with non-convergence control}
 Algorithm~\ref{alg:weightFunction_modified} modifies the basic proposal of Phase~2 to reveal its possible non-convergence. First, the necessary condition given by Theorem~\ref{thm:bbbCondition} is checked, i.e., the convergence of Phase~2 for inputs $bb\dots b$ is verified by Algorithm~\ref{alg:oneletterSets} for all $b\in\B$. 
 
 Then we proceed in the same way as in Algorithm~\ref{alg:weightFunction} with the following modifications: it is sufficient to process only $\tupleo{k} \in \B^{k+1}$ such that $\#\Qwo{(k-1)}>1$ since if $\#\Qwo{(k-1)}=1$, then $\Qwo{k'}=\Qwo{(k-1)}$ for all $k'>k$. 

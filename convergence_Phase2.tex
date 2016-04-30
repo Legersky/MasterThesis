@@ -1,6 +1,6 @@
 \label{sec:convergencePhase2}
 
-We have no simple sufficient or necessary condition for convergence of Phase~2 on properties of a base $\beta$ or an alphabet $\A$. Nevertheless, the non-convergence can be controled during a run of algorithm. An easy check of non-convergence can be done by finding $\Q_{[b, \dots, b]}$ for each $b\in\B$ separately. This was already described in \cite{vu}, but we recall it with a simpler proof. For its purposes, we introduce a notion of stable Phase~2, which is used also in the main result of this section -- the control of convergence during Phase 2 is transformed into searching for a cycle in a directed graph.
+We have no simple sufficient or necessary condition for convergence of Phase~2 on properties of a base $\beta$ or an alphabet $\A$. Nevertheless, the non-convergence can be controled during a run of algorithm. An easy check of non-convergence can be done by finding $\Q_{[b, \dots, b]}$ for each $b\in\B$ separately. This was already described in \cite{vu}, but we recall it in this section with a simpler proof. For its purposes, we introduce a notion of stable Phase~2, which is used also in the main result of this section -- the control of non-convergence during Phase 2 is transformed into searching for a cycle in a directed graph.
 
 Firstly, we mention some equivalent conditions of non-convergence of Phase~2. 
 \begin{lem}
@@ -9,7 +9,7 @@ The following statements are equivalent:
 \begin{enumerate}[i)]
 	\item Phase~2 does not converge,
 	\item $\forall \,k\in \NN \,\exists\, \tupleo{k}\in\B^{k+1} \colon \#\Qwo{k}\geq 2$,
-	\item $\exists \,(w_{-k})_{k\geq 0}, w_{-k}\in\B \,\exists\, k_0\forall k\geq k_0 \colon \#\Qwo{k}=\#\Qwo{(k-1)}\geq 2$.
+	\item $\exists \,(w_{-j})_{j\geq 0}, w_{-j}\in\B \,\exists\, k_0\forall k\geq k_0 \colon \#\Qwo{k}=\#\Qwo{(k-1)}\geq 2$.
 \end{enumerate}
 \end{lem}
 \begin{proof}
@@ -27,17 +27,18 @@ $$
 $$
 for all $k\in\NN, k\geq 2$ and for all $\tupleo{(k+1)} \in \B^{k+1}$.
 
-\komentar{ii)$\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$, neni potreba pokud nebude opacna implikace}
+%\komentar{ii)$\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$, neni potreba pokud nebude opacna implikace}
 \end{defn}
-The definition may seem too restrictive, but note that $\Qwo{k}$ if fully determined by $\Qw{1}{k}$, $\Qwo{(k-1)}$ and $w_0$ for a fixed deterministic way of choice of possible weight coefficients sets. Therefore, the assumption $\Qw{1}{k}=\Qw{1}{(k-1)}$, i.e. carries from the right are same, implies that the only difference in the choice of $\Qwo{k}$ an $\Qwo{(k-1)}$ is that $\Qwo{k}$ is a subset of  $\Qwo{(k-1)}$, while $\Qwo{(k-1)}$ is chosen as a subset of $\Qwo{(k-2)}$. At the same time, $\Qwo{(k-1)}$ is a subset of $\Qwo{(k-2)}$. Thus, the requirement that Phase~2 is stable means that the same possible weight coefficients set is found even if it is searched as a subset of smaller set. This is natural way how an algorithm of choice should be constructed -- the set $\Qwo{k}$ is searched such that
+The definition may seem too restrictive, but note that $\Qwo{k}$ if fully determined by $\Qw{1}{k}$, $\Qwo{(k-1)}$ and $w_0$ for a fixed deterministic way of choice of possible weight coefficients sets. Therefore, the assumption $\Qw{1}{k}=\Qw{1}{(k-1)}$, i.e. carries from the right are same, implies that the only difference in the choice of $\Qwo{k}$ an $\Qwo{(k-1)}$ is that $\Qwo{k}$ is a subset of  $\Qwo{(k-1)}$, while $\Qwo{(k-1)}$ is chosen as a subset of $\Qwo{(k-2)}$. At the same time, $\Qwo{(k-1)}$ is a subset of $\Qwo{(k-2)}$. Thus, the property that Phase~2 is stable means that the same possible weight coefficients set is found even if it is constructed as a subset of smaller set. This is natural way how an algorithm of choice should be constructed -- the set $\Qwo{k}$ is constructed such that
 $$
 \B+\Qw{1}{k} \subset \A+\beta \Qwo{k}\,,
 $$
-i.e., there is no reason to choose the set $\Qwo{k}\subsetneq\Qwo{(k-1)}$ as we know that
+i.e., there is no reason to choose the set $\Qwo{k}$ to be a proper subset of $\Qwo{(k-1)}$ as we know that
 $$
-\B+\underbrace{\Qw{1}{(k-1)}}_{=\Qw{1}{k}} \subset \A+\beta \Qwo{(k-1)}\,.
+\B+\underbrace{\Qw{1}{(k-1)}}_{=\Qw{1}{k}} \subset \A+\beta \Qwo{(k-1)}\,,
 $$
-In other word, if $\Qwo{k}\subsetneq\Qwo{(k-1)}$, the set $\Qwo{(k-1)}$ might have been chosen smaller. 
+and $\Qw{1}{(k-1)}$ was chosen as sufficient.
+In other words, if $\Qwo{k}\subsetneq\Qwo{(k-1)}$, the set $\Qwo{(k-1)}$ might have been chosen better. 
 
 We may guarantee that Phase~2 is stable by wrapping the choice of the set $\Qwo{k}$ into a simple while loop, see Algorithm~\ref{alg:possibleWeightCoefSetStable} in Chapter~\ref{chap:design}.
 
@@ -73,9 +74,9 @@ If $\#\Qb{m_0}\geq 2$, then the statement \textit{iii)} in Lemma~\ref{lem:equiva
 
 
 
-The condition of convergence during Phase~2 is formulated as a searching for an infinite path in a so-called Rauzy graph. This term comes from combinatorics on words. The vertices of our graph are combinations of input digits for which the size of their possible weight coefficients sets did not decreased with an increment of length of the window. Whereas in combinatorics on words, vertices are given as factors of some language. But the edges are placed identically -- if some combination of digits without the first one equals another one without the last digit.
+The condition of non-convergence during Phase~2 is formulated as a searching for an infinite path in a so-called Rauzy graph.
 \begin{defn}
-Let $\B$ be an alphabet of input digits. Let Phase~2 is stable. Let $k\in\NN, k\geq 2$. We set
+Let $\B$ be an alphabet of input digits. Let Phase~2 be stable. Let $k\in\NN, k\geq 2$. We set
 $$
 V:=\left\{\tuple{1}{k}\in\B^k \colon \#\Qw{1}{k}=\#\Qw{1}{(k-1)}\right\}
 $$
@@ -85,6 +86,7 @@ E:=\left\{\tuple{1}{k}\rightarrow\tuple[w']{1}{k}\in V\times V \colon \tuple{2}{
 $$
 The directed graph $G_k=(V,E)$ is called \emph{Rauzy graph of Phase~2 (for the window of length~$k$)}.
 \end{defn}
+ This term comes from combinatorics on words. The vertices of our graph are combinations of input digits for which the size of their possible weight coefficients sets did not decrease with an increment of length of the window. Whereas in combinatorics on words, vertices are given as factors of some language. But the directed edges are placed in the same manner -- if some combination of digits without the first digit equals another combination without the last digit.
 
 The structure of Rauzy graph $G_k$ signifies whether the non-decreasing combinations are such that they cause non-convergence of Phase~2. Existence of an infinite walk in $G_k$ implies that Phase~2 does not converge:
 
@@ -93,7 +95,7 @@ The structure of Rauzy graph $G_k$ signifies whether the non-decreasing combinat
 Let Phase~2 is stable.  If there exists $k_0\in\NN, k_0\geq 2$, and $\tupleo{k_0}\in\B^{k_0+1}$ such that
 \begin{enumerate}[i)]
 	\item $\#\Qwo{(k_0-1)}>1$ and
-	\item there exist an infinite walk $(\tuple[w^{(i)}]{1}{k_0})_{i\geq 1}$ in $G_{k_0}$ which starts in the vertex  $$\tuple[w^{(1)}]{1}{k_0}=\tuple{1}{k_0}\,,$$ 
+	\item there exists an infinite walk $(\tuple[w^{(i)}]{1}{k_0})_{i\geq 1}$ in $G_{k_0}$ which starts in the vertex  $$\tuple[w^{(1)}]{1}{k_0}=\tuple{1}{k_0}\,,$$ 
 \end{enumerate}
 then Phase~2 does not converge.
 \end{thm}
@@ -105,17 +107,17 @@ We prove that $\#\Qwo{k}=\#\Qwo{(k_0-1)}>1$ for all $k\geq k_0-1$, i.e., the con
 %The general ideas of the proof are following: if $\tuple[w']{1}{k_0}$ is a vertex of $G_{k_0}$, then $$\Qw[w']{1}{(k_0-1)}=\Qw[w']{1}{k_0}\,.$$ And the assumption that Phase~2 is stable implies that $$\Qw[w']{1}{(k_0-1)}=\Qw[w']{1}{k_0}\implies \Qwo[w']{(k_0-1)}=\Qwo[w']{k_0}$$ for all $w'_0\in\B$.
 
 %Now we show that $\Qwo{k}=\Qwo{(k+1)}$ for all $k\geq k_0-1$. 
-Let $l\in\NN$. Since $\tuple{(1+l)}{(k_0+l)}$ is a vertex of $G_{k_0}$, the set $\Qw{l}{(k_0+l)}$ equals $\Qw{l}{(k_0+l-1)}$. As Phase~2 is stable, we have
+Let $\ell\in\NN$. Since $\tuple{(1+\ell)}{(k_0+\ell)}$ is a vertex of $G_{k_0}$, the set $\Qw{\ell}{(k_0+\ell)}$ equals $\Qw{\ell}{(k_0+\ell-1)}$. As Phase~2 is stable, we have
 \begin{align*}
-\Qw{l}{(k_0+l)}&=\Qw{l}{(k_0+l-1)}\\
-\implies \Qw{(l-1)}{(k_0+l)}&=\Qw{(l-1)}{(k_0+l-1)}\\
+\Qw{\ell}{(k_0+\ell)}&=\Qw{\ell}{(k_0+\ell-1)}\\
+\implies \Qw{(\ell-1)}{(k_0+\ell)}&=\Qw{(\ell-1)}{(k_0+\ell-1)}\\
 &\vdots \\
-\implies \Qw{1}{(k_0+l)}&=\Qw{1}{(k_0+l-1)}\\
-\implies \Qwo{(k_0+l)}&=\Qwo{(k_0+l-1)}\,.
+\implies \Qw{1}{(k_0+\ell)}&=\Qw{1}{(k_0+\ell-1)}\\
+\implies \Qwo{(k_0+\ell)}&=\Qwo{(k_0+\ell-1)}\,.
 \end{align*}
 Hence, $\#\Qwo{k}=\#\Qwo{(k_0-1)}>1$ for all $k\geq k_0-1$.
 \end{proof}
-\komentar{bylo by fajn dokazat i opacny smer, jedine, pres co se neumim dostat je kdyby existovala jen aperiodicka posloupnoust, kvuli ktere to nekonverguje}
+%\komentar{bylo by fajn dokazat i opacny smer, jedine, pres co se neumim dostat je kdyby existovala jen aperiodicka posloupnoust, kvuli ktere to nekonverguje}
 
 
 
