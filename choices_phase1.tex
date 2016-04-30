@@ -8,18 +8,15 @@ $$
 $$
 It means that a weight coefficient $q$ such that $x=a+\beta q$ for some $a\in\A$ must be found for all $x\in \B+\Q_k$. Since the alphabet $\A$ is redundant, there might be more such weight coefficients. Let $C_x\subset \Zomega$ be a set of all these candidates for some $x\in \B+\Q_k$, i.e., $C_x=\{q\in\Zomega\colon x=a+\beta q, a\in\A\}$. Set $C:=\{C_x\colon x\in \B+\Q_k\}$. For a given $x\in \B+\Q_k$, the set $C_x$ is constructed so that all digits $a\in\A$ are tested whether $x-a$ is divisible by $\beta$ according to Theorem~\ref{thm:divisibility}. See Algorithm~\ref{alg:extendWeightCoefSet} which constructs the set $C$.
 
-Now we extend the set $\Q_k$ to $\Q_{k+1}$ so that $C_x \cap \Q_{k+1} \neq \emptyset$ for all $C_x \in C$. We describe five methods how it can be done (12, 13, 14, 15 and 16), see source code for other ones. 
+Now we extend the set $\Q_k$ to $\Q_{k+1}$ so that $C_x \cap \Q_{k+1} \neq \emptyset$ for all $C_x \in C$. We describe five methods how it can be done (1a, 1b, 1c, 1d and 1e).
 
-As $Q_k\subset \Q_{k+1}$ , set $\Q_{k+1}:=\Q_k$. For methods 12, 13 and 14, add  the element of all $C_x\in C$ such that $\#C_x=1$ to $\Q_{k+1}$. Next, select elements from all $C_x\in C$ such that $C_x \cap \Q_{k+1} = \emptyset$ according to a chosen method and add them to $\Q_{k+1}$. Selection for different methods is following:
-\begin{enumerate}[ method 1 --]
-	\setcounter{enumi}{11}
-	\item all smallest elements in absolute value of $C_x$,
-	\item all smallest elements in $\beta$-norm of $C_x$,
-	\item all elements of $C_x$,
-	\item all smallest elements in $\beta$-norm of $C_x$,
-	\item all smallest elements in absolute value of $C_x$.
+As $Q_k\subset \Q_{k+1}$, set $\Q_{k+1}:=\Q_k$. For methods 1a, 1b and 1d, add  the element of all $C_x\in C$ such that $\#C_x=1$ to $\Q_{k+1}$. Next, select elements from all $C_x\in C$ such that $C_x \cap \Q_{k+1} = \emptyset$ according to a chosen method and add them to $\Q_{k+1}$. Selection for different methods is following:
+\begin{enumerate}[ ]
+	\item 1a -- all elements of $C_x$,
+	\item 1b and 1c -- all smallest elements in absolute value of $C_x$,
+	\item 1d and 1e -- all smallest elements in $\beta$-norm of $C_x$,
 \end{enumerate}
-Note that more elements may be added by method 15 than 13, resp. 16 than 12, since adding necessary elements before ($\#C_x=1$)  may cause that $C_{x'}\cap \Q_{k+1} \neq \emptyset$ for some $C_{x'}\in C$. 
+Note that more elements may be added by method 1e than 1d, resp. 1c than 1b, since adding necessary elements before ($\#C_x=1$)  may cause that $C_{x'}\cap \Q_{k+1} \neq \emptyset$ for some $C_{x'}\in C$. 
 
 The procedure is summarized in Algorithm~\ref{alg:extendWeightCoefSet}. 
 Another methods may decrease the number of added elements for instance by picking only one of all smallest elements.
@@ -36,9 +33,9 @@ Since $\Q_{k+1} \supset \Q_{k}$, $C_x \cap \Q_{k+1} \neq \emptyset$ for  $x\in \
   \caption{Extending intermediate weight coefficients set}
     \label{alg:extendWeightCoefSet}
   \begin{algorithmic}[1]
-    \REQUIRE{previous weight coefficients set $\Q_{k}$, method number $M\in\{12,13,14,15,16\}$}
+    \REQUIRE{previous weight coefficients set $\Q_{k}$, method number $M\in\{$1a, 1b, 1c, 1d, 1e$\}$}
     \STATE $\widetilde{\Q}:=\Q_{k}$
-    \IF {$M\in\{12,13,14\}$}
+    \IF {$M\in\{$1a,1b,1d$\}$}
     	\FORALL {$C_x \in C$}
     		\IF {$\# C_x =1$}
 		    	\STATE Add the element of $C_x$ to $\widetilde{\Q}$
@@ -49,16 +46,12 @@ Since $\Q_{k+1} \supset \Q_{k}$, $C_x \cap \Q_{k+1} \neq \emptyset$ for  $x\in \
     \STATE By Algorithm~\ref{alg:searchCand}, find set of candidates $C$
     \FORALL{$C_x \in C$}
         \IF{$C_x \cap \widetilde{\Q}=\emptyset$}
-	        \IF {$M=12$}
-	        	\STATE Add all smallest elements in absolute value of $C_x$ to $\Q_{k+1}$
-	        \ELSIF {$M=13$}
-	        	\STATE Add all smallest elements in $\beta$-norm of $C_x$ to $\Q_{k+1}$
-	        \ELSIF {$M=14$}
+	        \IF {$M=$ 1a}
 	        	\STATE Add all elements of $C_x$ to $\Q_{k+1}$
-	        \ELSIF {$M=15$}
-	        	\STATE Add all smallest elements in $\beta$-norm of $C_x$ to $\Q_{k+1}$
-	        \ELSIF {$M=16$}
+	        \ELSIF {$M\in\{$1b, 1c$\}$}
 	        	\STATE Add all smallest elements in absolute value of $C_x$ to $\Q_{k+1}$ 
+	        \ELSIF {$M\in\{$1d, 1e$\}$}
+	        	\STATE Add all smallest elements in $\beta$-norm of $C_x$ to $\Q_{k+1}$
 	        \ENDIF
         \ENDIF
     \ENDFOR

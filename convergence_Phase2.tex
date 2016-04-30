@@ -1,6 +1,6 @@
 \label{sec:convergencePhase2}
 
-We have no simple sufficient or necessary condition for convergence of Phase~2 on properties of a base $\beta$ or an alphabet $\A$. Nevertheless, the non-convergence can be controled during a run of algorithm. An easy check of non-convergence can be done by finding $\Q_{[b, \dots, b]}$ for each $b\in\B$ separately. This was already described in \cite{vu}, but we recall it with a simpler proof. For its purposes, we introduce a notion of stable Phase~2, which is used also in the main result of this section -- the control of convergence during Phase 2 is transformed into searching for a cycle in an oriented graph.
+We have no simple sufficient or necessary condition for convergence of Phase~2 on properties of a base $\beta$ or an alphabet $\A$. Nevertheless, the non-convergence can be controled during a run of algorithm. An easy check of non-convergence can be done by finding $\Q_{[b, \dots, b]}$ for each $b\in\B$ separately. This was already described in \cite{vu}, but we recall it with a simpler proof. For its purposes, we introduce a notion of stable Phase~2, which is used also in the main result of this section -- the control of convergence during Phase 2 is transformed into searching for a cycle in a directed graph.
 
 Firstly, we mention some equivalent conditions of non-convergence of Phase~2. 
 \begin{lem}
@@ -29,7 +29,7 @@ for all $k\in\NN, k\geq 2$ and for all $\tupleo{(k+1)} \in \B^{k+1}$.
 
 \komentar{ii)$\#\Qw{1}{k}=1 \implies \#\Qwo{k}=1$, neni potreba pokud nebude opacna implikace}
 \end{defn}
-The definition may seem too restrictive, but note that $\Qwo{k}$ if fully determined by $\Qw{1}{k}$, $\Qwo{(k-1)}$ and $w_0$ for a fixed deterministic way of choice of possible weight coefficients sets. Therefore, the assumption $\Qw{1}{k}=\Qw{1}{(k-1)}$ implies that the only difference in the choice of $\Qwo{k}$ an $\Qwo{(k-1)}$ is that $\Qwo{k}$ is a subset of  $\Qwo{(k-1)}$, while $\Qwo{(k-1)}$ is chosen as a subset of $\Qwo{(k-2)}$. At the same time, $\Qwo{(k-1)}$ is a subset of $\Qwo{(k-2)}$. Thus, the requirement that Phase~2 is stable means that the same possible weight coefficients set is found even if it is searched as a subset of smaller set. This is natural way how an algorithm of choice should be constructed -- the set $\Qwo{k}$ is searched such that
+The definition may seem too restrictive, but note that $\Qwo{k}$ if fully determined by $\Qw{1}{k}$, $\Qwo{(k-1)}$ and $w_0$ for a fixed deterministic way of choice of possible weight coefficients sets. Therefore, the assumption $\Qw{1}{k}=\Qw{1}{(k-1)}$, i.e. carries from the right are same, implies that the only difference in the choice of $\Qwo{k}$ an $\Qwo{(k-1)}$ is that $\Qwo{k}$ is a subset of  $\Qwo{(k-1)}$, while $\Qwo{(k-1)}$ is chosen as a subset of $\Qwo{(k-2)}$. At the same time, $\Qwo{(k-1)}$ is a subset of $\Qwo{(k-2)}$. Thus, the requirement that Phase~2 is stable means that the same possible weight coefficients set is found even if it is searched as a subset of smaller set. This is natural way how an algorithm of choice should be constructed -- the set $\Qwo{k}$ is searched such that
 $$
 \B+\Qw{1}{k} \subset \A+\beta \Qwo{k}\,,
 $$
@@ -37,7 +37,9 @@ i.e., there is no reason to choose the set $\Qwo{k}\subsetneq\Qwo{(k-1)}$ as we 
 $$
 \B+\underbrace{\Qw{1}{(k-1)}}_{=\Qw{1}{k}} \subset \A+\beta \Qwo{(k-1)}\,.
 $$
-In other word, if $\Qwo{k}\subsetneq\Qwo{(k-1)}$, the set $\Qwo{(k-1)}$ might have been chosen smaller.
+In other word, if $\Qwo{k}\subsetneq\Qwo{(k-1)}$, the set $\Qwo{(k-1)}$ might have been chosen smaller. 
+
+We may guarantee that Phase~2 is stable by wrapping the choice of the set $\Qwo{k}$ into a simple while loop, see Algorithm~\ref{alg:possibleWeightCoefSetStable} in Chapter~\ref{chap:design}.
 
 Now we use that finiteness of Phase~2 implies that there exists a length of window $m$ such that the set $\Qb{m}$ contains only one element for all $b\in\B$, where $\Qb{m}$ is a shorter notation for
 $$
@@ -81,7 +83,7 @@ and
 $$
 E:=\left\{\tuple{1}{k}\rightarrow\tuple[w']{1}{k}\in V\times V \colon \tuple{2}{k}=\tuple[w']{1}{(k-1)}\right\}\,.
 $$
-The oriented graph $G_k=(V,E)$ is called \emph{Rauzy graph of Phase~2 (for the window of length~$k$)}.
+The directed graph $G_k=(V,E)$ is called \emph{Rauzy graph of Phase~2 (for the window of length~$k$)}.
 \end{defn}
 
 The structure of Rauzy graph $G_k$ signifies whether the non-decreasing combinations are such that they cause non-convergence of Phase~2. Existence of an infinite walk in $G_k$ implies that Phase~2 does not converge:

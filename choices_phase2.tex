@@ -16,7 +16,7 @@ $$D:=\left\{D_x\colon x\in w_0 + \Qw{1}{k}\right\}\,.$$
 $$
  w_0 + \Qw{1}{k} \subset \A + \beta \Qwo{k}\,.
 $$
-We follow Algorithm~\ref{alg:minimalSet} now. Choice of possible weight coefficients set starts with $\Qwo{k}':=\emptyset$. We add the elements of all $D_x\in D$ such that $\#D_x=1$ to $\Qwo{k}'$. We remove from covering set $D$ all sets $D_x\in D$ such that $\Qwo{k}' \cup D_x \neq \emptyset$. 
+We follow Algorithm~\ref{alg:minimalSet} now. Choice of possible weight coefficients set starts with $\Qwo{k}':=\emptyset$. We add the elements of all $D_x\in D$ such that $\#D_x=1$ to $\Qwo{k}'$. We remove from covering set $D$ all sets $D_x\in D$ such that $\Qwo{k}' \cap D_x \neq \emptyset$. 
 
 Next, while $D$ is nonempty, we pick an element $q$ from $\bigcup D$ according to a chosen method, we add $q$ to $\Qwo{k}'$ and we remove all sets $D_x$ which contain $q$ from $D$. Finally, the possible weight coefficient set $\Qwo{k}=\Qwo{k}'$ is found.
 
@@ -24,31 +24,33 @@ Before we explain different methods  to pick an element from $\bigcup D$, we def
 
 \begin{defn}
 \label{def:lexicographical}
-Let $n$ be a positive integer. Let $(x_1, \dots, x_n)$ and $(y_1, \dots, y_n)$ are elements of $\ZZ^n$. We say that $(x_1, \dots, x_n)\preceq (y_1, \dots, y_n)$ if 
+Let $n$ be a positive integer. Let $(x_1, \dots, x_n)$ and $(y_1, \dots, y_n)$ be elements of $\ZZ^n$. We say that  $(x_1, \dots, x_n)$ is \emph{lexicographically smaller} than $(y_1, \dots, y_n)$, denoted by $(x_1, \dots, x_n)\preceq (y_1, \dots, y_n)$, if 
 $$
 x_1<y_1 \text{ or } \left(x_1=y_1 \wedge (x_2, \dots, x_n)\preceq (y_2, \dots, y_n)\right)\,.
 $$
 If $x$ and $y$ are elements of $\Zomega$, then we say that $x$ is \emph{lexicographically smaller} than $y$ if
 $$
-\pi(x)^T \preceq \pi(y)^T\,,
+\pi(x) \preceq \pi(y)\,.
 $$
-where $^T$ indicates transpose of column vector.
+
 \end{defn}
-Roughly speaking, elements of $\Zomega$ are first ordered according their absolute coeffient, then quadratic, etc.
+Roughly speaking, elements of $\Zomega$ are first ordered according their coefficient  of $1$, then of $\omega$, then of $\omega^2$, etc.
 
-Algorithm~\ref{alg:pickElement} outlines methods 9, 15, 22 and 23. All methods select a set $T$ of elements of $\bigcup D$. If there is more than one element in $T$, then the lexicographically smallest element is picked.
+Algorithm~\ref{alg:pickElement} outlines methods 2a, 2b, 2c, 2d and 2d. All methods select a set $T$ of elements of $\bigcup D = \{D_x \colon D_x \in D\}$. If there is more than one element in $T$, then the lexicographically smallest element is picked.
 
-Method 9 computes the point of gravity $g$ of elements of $\bigcup D$ considered as complex numbers. The set $T$ are elements of  $\bigcup D$ which are closest to $g$ in absolute value. 
+Method 2a computes the point of gravity $g$ of elements of $\bigcup D$ considered as complex numbers. The set $T$ are elements of  $\bigcup D$ which are closest to $g$ in absolute value. 
 
 For remaining methods, set
 $$D':=\left\{D_x \in D \colon \#D_x=\min_{D_x\in D} \#D_x \right\}\,.$$
-Method 15 computes the point of gravity $g$ of already picked elements $\Qwo{k}'$ considered as complex numbers. The set $T$ are elements of  $\bigcup D'$ which are closest to $g$ in absolute value. 
+Method 2b computes the point of gravity $g$ of already picked elements $\Qwo{k}'$ considered as complex numbers. The set $T$ are elements of  $\bigcup D'$ which are closest to $g$ in absolute value. 
 
-Methods 22, resp. 23, builds the set $T$ to be the smallest elements of  $\bigcup D'$ in absolute value, resp.  $\beta$-norm. 
+Methods 2c, resp. 2d, builds the set $T$ to be the smallest elements of  $\bigcup D'$ in absolute value, resp.  $\beta$-norm. 
 
-The motivation of these methods is to obtain the set $\Qwo{k}$ small and ``compact'' as it should be easier to cover them in the next iteration of Phase~2. Moreover, methods 15, 22 and 23 prefer elements from the smallest covering sets $D_x$ in the hope that the picked elements are also in the bigger covering sets.
+Method 2e computes the number $n_q$ of $D_x\in D$ such that $q\in D_x$ for each $q \in \bigcup D$. The set $T$ consists of elements $q$ such that $n_q=n$ which are closest to $g$ in absolute value, where $g$ is again the point of gravity of already picked elements $\Qwo{k}'$ and $n=\max\{n_q\colon q\in \bigcup D\}$.
 
-Other implemented methods can be found in the source code. 
+The motivation of these methods is to obtain the set $\Qwo{k}$ small and ``compact'' as it should be easier to cover it in the next iteration of Phase~2 (for $k+1$). Moreover, methods 2b, 2c and 2d prefer elements from the smallest covering sets $D_x$ in the hope that the picked elements are also in the bigger covering sets. Method 2e takes first elements which covers the most of the sets $D_x$.
+
+Other experimental methods can be found in the source code. 
 
 \begin{algorithm}
   \caption{Search for set $\Qwo{k}$ }
@@ -82,21 +84,26 @@ Other implemented methods can be found in the source code.
    \caption{Choose one element from the set of covering $D$ }
    \label{alg:pickElement}   
   \begin{algorithmic}[1]
-    \REQUIRE{set of coverings $D$, method number $M\in\{9,15,22,23\}$, already added elements $\Qwo{k}'$}
-    \IF {$M=9$}
+    \REQUIRE{set of coverings $D$, method number $M\in\{$2a, 2b, 2c, 2d, 2e$\}$, already added elements $\Qwo{k}'$}
+    \IF {$M=$2a}
     	\STATE $g:=$ point of gravity of elements of $\bigcup D$ as complex numbers
     	\STATE $T:=$ elements of $\bigcup D$ which are closest to $g$ in absolute value
-    \ELSE
+    \ELSIF {$M\in\{$2b, 2c, 2d$\}$}
     	\STATE $m:=\min\{\#D_x \colon D_x\in D \}$
     	\STATE $D':=\{D_x \in D \colon \#D_x=m\}$
-    	\IF {$M=15$}
+    	\IF {$M=$ 2b}
     		\STATE $g:=$ point of gravity of elements of $\Qwo{k}'$ as complex numbers
     		\STATE $T:=$ elements of $\bigcup D'$ which are closest to $g$ in absolute value
-		\ELSIF {$M=22$}
+		\ELSIF {$M=$ 2c}
 			\STATE $T:=$ elements of $\bigcup D'$ which are smallest in absolute value
-    	\ELSIF {$M=23$}
+    	\ELSIF {$M=$ 2d}
 			\STATE $T:=$ elements of $\bigcup D'$ which are smallest in $\beta$-norm
     	\ENDIF
+    \ELSIF {$M=$ 2e}
+    	\STATE $n_q:=\#\{D_x\in D\colon q\in D_x\}$ for all $q\in \bigcup D$
+    	\STATE $n=\max\{n_q\colon q\in \bigcup D \}$
+    	\STATE $g:=$ point of gravity of elements of $\Qwo{k}'$ as complex numbers
+    	\STATE $T:=$ elements of $\{q \in \bigcup D \colon n_q=n\}$ which are closest to $g$ in absolute value
     \ENDIF    
     \RETURN the lexicographically smallest element of $T$ according to Definition~\ref{def:lexicographical}
 
