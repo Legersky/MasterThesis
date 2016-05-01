@@ -1,5 +1,13 @@
-\komentar{tabulka vsech uspesnych plus nejake neuspesne a okomentovat}
+We have attempted to find a parallel addition algorithm for more than 5000 different numeration systems. Including various methods in Phase~1 and 2, the implementation of the extending window method has been launched over 7000 times. 
 
+Most of the bases were given by polynomial combinations of $\omega$ with coefficients in a limited range, where $\omega$ was generated as a root of a monic polynomial with bounded integer coefficients. Most of the results is for quadratic $\omega$, but cubic ones has been also tested. Alphabets for these bases were constructed automatically. 
+
+Besides that, the extending window method was run for selected numeration systems in order to compare different methods in Phase~1 and 2. We discuss this in Section~\ref{sec:compareMethods}.
+
+Testing of such a number of inputs is enabled by the developed tools of non-convergence of Phase~2. The control of $bb\dots b$ inputs often reveals non-convergence very quickly, while an infinite loop in Phase~2 is avoided due to check of directed cycles in a Rauzy graph. This condition seems to be really strong -- so far we have only four examples which were killed because of lack of memory before non-convergence was revealed or a weight function found. We discuss them later.
+
+Altogether, a parallel addition algorithm was found for about 140 cases. A possible explanation of such low success rate is the automatic construction of alphabets -- there may exist  alphabets which is better spread or more symmetric. Another reason is that we did not have enough computational power for testing with different methods in Phase~1 and 2 and, as we saw in the previous section, for different numeration systems, different methods are more suitable.
+Nevertheless, we provide various successful examples of numeration systems with integer and non-integer alphabets. Some of them are listed in Section~\ref{sec:resultsExamples}.
 
 \section{Comparing different choices in Phase 1 and 2}
 \label{sec:compareMethods}
@@ -38,7 +46,10 @@
 \label{tab:alphabets}
 \end{table}
 
-\section{Quadratic bases with non-integer alphabet}
+\section{Examples of results}
+\label{sec:resultsExamples}
+
+
 \begin{table}[h]
 	\begin{center}
 	\input{results_quadr_nonint.tex}
@@ -48,9 +59,6 @@
 \end{table}
 
  
-%\afterpage{
-%\clearpage 
-\section{Quadratic bases with integer alphabet}
 \begin{table}[h]
 	\begin{center}
 	\input{results_quadr_int.tex}
@@ -58,7 +66,6 @@
 \caption{Quadratic bases with an integer alphabet (using methods 1d and 2b)}
 \label{tab:resultsQuadrInt}
 \end{table}
-%}
 
 
 \subsection*{Google spreadsheet ParallelAddition\_results}
