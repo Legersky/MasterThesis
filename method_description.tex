@@ -140,7 +140,7 @@ We remark that the conversion with the rewriting rule $x-\beta$ prolongs the par
 
 \section{Extending window method}
 \label{sec:methodDescription}
-In order to construct a digit set conversion in numeration system $(\beta,\A)$ from $\A+\A$ to $\A$ which is computable in parallel, we consider a more general case of digit set conversion from an \emph{input alphabet} $\B$ such that $\A \subsetneq \B$ instead of the alphabet $\A+\A$.
+In order to construct a digit set conversion in numeration system $(\beta,\A)$ from $\A+\A$ to $\A$ which is computable in parallel, we consider a digit set conversion from an \emph{input alphabet} $\B$ such that $\A \subsetneq \B \subset \A+\A$ instead of the alphabet $\A+\A$.
 As mentioned above, the key problem is to find for every $j\geq 0$ a weight coefficient $q_j$ such that 
     $$
         z_j=\underbrace{w_j}_{\in \B} + q_{j-1} - q_j \beta \in \A 
@@ -156,7 +156,7 @@ As mentioned above, the key problem is to find for every $j\geq 0$ a weight coef
     We introduce two definitions before we describe the extending window method.
     \begin{defn}
     \label{def:weightCoefficientsSet}
-        Let $\B$ be a set such that $\A \subsetneq \B$. Then any finite set $\Q\subset\Zomega$ containing~0 such that 
+        Let $\B$ be a set such that $\A \subsetneq \B \subset \A+\A$. Then any finite set $\Q\subset\Zomega$ containing~0 such that 
         $$
             \B + \Q \subset \A + \beta \Q
         $$  

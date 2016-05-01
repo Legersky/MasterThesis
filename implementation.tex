@@ -3,7 +3,7 @@
 Our implementation of the design is based on the program attached to \cite{vu}. The chosen programming language is SageMath. It is Python-based language with numerous implemented mathematical structures. That is the main reason of our choice -- the extending window method requires to handle elements of $\Zomega$ and arithmetic operations in this set. Moreover, SageMath provides various data structures and plotting tools.  The code is simpler and more similar to pseudocode than if we implemented in pure \Cpp. Due to it, we may concern ourselves with the algorithmic part of the problem instead of difficult programming. Unfortunately, SageMath is much slower than \Cpp.
 
 
-The implementation is object-oriented. It consists of five classes. Class \emph{AlgorithmForParallelAddition} contains structures for computations in $\Zomega$. The build-in classes \emph{PolynomialQuotientRing} and \emph{NumberField} are used to represent elements of $\Zomega$ as an algebraic and complex numbers. The class also links together all functions and instances of other classes which are necessary to construct an algorithm for parallel addition by the extending window method. The input parameters are an algebraic integer $\omega$ given by its minimal polynomial $m_\omega$ and an approximate complex value, a base $\beta\in\Zomega$, an alphabet $\A\subset\Zomega$ and input alphabet $\B$. 
+The implementation is object-oriented. It consists of five classes. Class \emph{AlgorithmForParallelAddition} contains structures for computations in $\Zomega$. The build-in classes \emph{PolynomialQuotientRing} and \emph{NumberField} are used to represent elements of $\Zomega$ as an algebraic and complex numbers. The class also links together all functions and instances of other classes which are necessary to construct an algorithm for digit set conversion from $\B$ to $\A$ by the extending window method. The input parameters are an algebraic integer $\omega$ given by its minimal polynomial $m_\omega$ and an approximate complex value, a base $\beta\in\Zomega$, an alphabet $\A\subset\Zomega$ and input alphabet $\B\subset\Zomega$. 
 
 Phase 1 of the extending window method is implemented in class \emph{WeightCoefficientsSetSearch} and Phase 2 in \emph{WeightFunctionSearch}. Class \emph{WeightFunction} serves to save a function $q$ computed in Phase 2. The last class \emph{ExceptionParAdd} is inherited from build-in class \emph{Exception} to distinguish between errors which are raised by the algorithm  of the extending window method and other ones.
 
@@ -30,6 +30,7 @@ We also provide a shell interface and a graphic user interface which runs as an 
 \subsection*{Class WeightFunction}
 \input{WeightFunction.tex}
 
+\begin{upravit}
 \subsection*{User interfaces}
 We provide two interfaces for running of the implemented extending window method -- the~shell version and graphic user interface.
 

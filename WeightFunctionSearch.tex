@@ -1,7 +1,7 @@
 
-This class implements modified Phase 2 of the extending window method from Section \ref{sec:modifiedPhase2} with different methods of choice of possible weight coefficients sets and control of non-convergence. Methods 2a, 2b, 2c, 2d and 2e from Algorithm~\ref{alg:pickElement} correspond to 9, 15, 22, 23 and 14 respectively. A weight function $q$ is returned by method \fun{findWeightFunction}{}. The constructor of the class is
+This class implements Algorithm~\ref{alg:weightFunction_modified} of modified Phase 2 of the extending window method from Section \ref{sec:modifiedPhase2} with different methods of choice of possible weight coefficients sets and control of non-convergence. Methods 2a, 2b, 2c, 2d and 2e from Algorithm~\ref{alg:pickElement} correspond to 9, 15, 22, 23 and 14 respectively. A weight function $q$ is returned by method \fun{findWeightFunction}{}. The constructor of the class is
 
-\begin{method}{\_\_init\_\_}{algForParallelAdd, weightCoefSet, method, maxInputs}
+\begin{method}{\_\_init\_\_}{algForParallelAdd, weightCoefSet, method}
 The ring generator $\omega$, base $\beta$, alphabet $\A$ and input alphabet $\B$ are initialized by the values obtained from \var{algForParallelAdd}. The weight coefficients set $\Q$ is set to \var{weightCoefSet}. The parameter \var{method} (the number of an experimental method or \verb+'2a'+, \verb+'2b'+, etc.) determines the way of the choice of a possible weight coefficients set $\Qwo{k}$ from $\Qwo{(k-1)}$, see Algorithm~\ref{alg:pickElement}. If \var{method} is \var{None}, then is the default method is 2b. Possible weight coefficients sets  are saved in a dictionary \var{\_Qw\_w}, which is set to be empty.
 \end{method}
 
@@ -19,49 +19,20 @@ Return a set $\Qwo{k}=\Q_{[\text{w\_tuple}]}$ by wrapping \fun{\_findQw\_once}{}
 Return a set $\Qwo{k}'=\Q'_{[\text{w\_tuple}]}$ obtained by Algorithm~\ref{alg:minimalSet} as a subset of \var{Qw\_prev}$=\Qwo{(k-1)}$. The set of possible carries from the right $\Qw{1}{k}$ is taken from the class attribute \var{\_Qw\_w}. The methods of Algorithm~\ref{alg:pickElement} are implemented here along with the experimental ones.
 \end{method}
 
-\begin{method}{\_checkCycles}{ w\_tuple}
+\begin{method}{\_checkCycles}{w\_tuple}
+Using Algorithm~\ref{alg:checkCycles}, check if there is a cycle in the Rauzy graph $G_k$ starting in the vertex which label equals \var{w\_tuple} without the first digit. If yes, then an exception \emph{RuntimeErrorParAdd} is raised. 
 \end{method}
 
-\begin{upravit}
+
 \begin{method}{findWeightFunction}{max\_input\_length}
-Return the weight function $q$ unless the length of window exceeds \var{max\_input\_length}. Then an exception is raised. It implements Algorithm \ref{alg:weightFunction} by repetetive calling of the method \fun{\_find\_weightCoef\_for\_comb\_B}{} which extends length of window. This is done until all possible combinations of input digits are solved for some length of window $m$, i.e. $\max\{\#\Q_{[w_j,\dots, w_{j-m+1}]}:(w_j,\dots, w_{j-m+1}) \in \B^m \} = 1$.
+Attempt to construct a weight function $q$ by Algorithm~\ref{alg:weightFunction_modified}. It increments length of window and call the method \fun{\_find\_weightCoef\_for\_comb\_B}{} until a unique weight coefficient is found for all possible combinations of input digits. If the length of window exceeds \var{max\_input\_length}, then an exception \emph{RuntimeErrorParAdd} is raised. 
 \end{method}
 
 
 \begin{method}{check\_one\_letter\_inputs}{max\_input\_length}
-The method checks by Algorithm \ref{alg:oneletterSets} if there is a unique weight coefficient for inputs $({b,b,\dots,b})\in\B^m$ for some length of window $m$. Using Theorem \ref{thm:suffCondPhase1}, an exception is raised in the case of an infinite loop. Otherwise the list of inputs $(b,b,\dots,b)$ which have the largest length of the window is returned.
+Checks by Algorithm \ref{alg:oneletterSets} if there is a unique weight coefficient for inputs $({b,b,\dots,b})\in\B^r$ for some length of window $r$. An exception \emph{RuntimeErrorParAdd} is raised in the case of an infinite loop. Otherwise the list of input digits  $b$ which require the largest length of window is returned.
 \end{method}
 
-%\begin{method}{\_checkCycles}{ w\_tuple}
-%
-%
-%
-%
-%\begin{method}{isSublist}{    def isSublist(\_list, \_sublist}
-%
-%\end{method}
-%
-%
-%\begin{method}{find\_next\_letter}{    def find\_next\_letter(\_w,witness\_seq}
-%
-%\end{method}
-%
-%
-%
-%
-%\begin{method}{\_findQw\_once}{w\_tuple,Qw\_prev}
-%
-%\end{method}
-%
-%
-%\begin{method}{findWeightFunction}{ max\_input\_length}
-%
-%\end{method}
-%
-%
-%\begin{method}{check\_one\_letter\_inputs}{ max\_input\_length}
-%
-%\end{method}
 
 
 
