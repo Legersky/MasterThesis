@@ -54,16 +54,24 @@ The construction of set $\Q_{[\omega,1,2]}$ for the Eisenstein base $\beta = -\f
 
 \newpage
 
-\section{GUI}
-\komentar{cloud, google tabulka?}
+\section{Interfaces}
+File \verb+ewm_gspreadsheet.sage+:
+\label{app:interfaces}
+
+\lstinputlisting[language=Python]{ewm_gspreadsheet.sage}
+
+
+
 \section{Tested examples}
 
 \subsection*{Unsuccessful examples comparing different methods}
 The reasons of failure of Phase~2 for numeration systems in Section~\ref{sec:compareMethods} can be found here. See Tables \ref{tab:resultsPhaseOne}, \ref{tab:resultsPhaseTwo} and \ref{tab:alphabets} for parameters of the numeration systems.
 \input{examples_compare.tex}
 
-\subsection*{Quadratic bases with integer alphabet divided into congruence classes}
+\subsection*{Quadratic bases with integer alphabet}
+The following examples show alphabets  divided into congruence classes modulo $\beta$ and $\beta-1$ for some numeration systems in Table~\ref{tab:resultsQuadrInt}.
 \input{examples_quadr_int.tex}
 
 \subsection*{Killed examples}
+The computation of a weight function for the following numeration systems was killed because of memory limits.
 \input{examples_killed.tex}
