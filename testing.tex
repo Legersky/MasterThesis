@@ -1,13 +1,15 @@
 We have attempted to find a parallel addition algorithm for more than 5000 different numeration systems. Including various methods in Phase~1 and 2, the implementation of the extending window method has been launched over 7000 times. 
 
-Most of the bases were given by polynomial combinations of $\omega$ with coefficients in a limited range, where $\omega$ was generated as a root of a monic polynomial with bounded integer coefficients. Most of the results is for quadratic $\omega$, but cubic ones has been also tested. Alphabets for these bases were constructed automatically. 
+Most of the bases were given by polynomial combinations of $\omega$ with coefficients in a limited range, where $\omega$ was generated as a root of a monic polynomial with bounded integer coefficients. Mainly, $\omega$ are  quadratic, but cubic ones have been also tested. Alphabets for these bases were constructed automatically. 
 
 Besides that, the extending window method was run for selected numeration systems in order to compare different methods in Phase~1 and 2. We discuss this in Section~\ref{sec:compareMethods}.
 
-Testing of such a number of inputs is enabled by the developed tools of non-convergence of Phase~2. The control of $bb\dots b$ inputs often reveals non-convergence very quickly, while an infinite loop in Phase~2 is avoided due to check of directed cycles in a Rauzy graph. This condition seems to be really strong -- so far we have only four examples which were killed because of lack of memory before non-convergence was revealed or a weight function found. We discuss them later.
+Processing such a number of inputs is enabled by the developed tools of non-convergence of Phase~2. The control of $bb\dots b$ inputs often reveals non-convergence very quickly, while an infinite loop in Phase~2 is avoided due to check of directed cycles in a Rauzy graph. This condition seems to be really strong -- so far we have only four examples which were killed because of lack of memory before non-convergence was revealed or a weight function found. We discuss them later.
 
-Altogether, a parallel addition algorithm was found for about 140 cases. A possible explanation of such low success rate is the automatic construction of alphabets -- there may exist  alphabets which is better spread or more symmetric. Another reason is that we did not have enough computational power for testing with different methods in Phase~1 and 2 and, as we saw in the previous section, for different numeration systems, different methods are more suitable.
+Altogether, a parallel addition algorithm was found for about 140 cases. A possible explanation of such low success rate is the automatic construction of alphabets -- there may exist  alphabets which are better spread or more symmetric. Another reason is that we did not have enough computational power for testing with various methods in Phase~1 and 2:  different methods are more suitable for different numeration systems, as we will see in Section~\ref{sec:compareMethods}.
 Nevertheless, we provide various successful examples of numeration systems with integer and non-integer alphabets. Some of them are listed in Section~\ref{sec:resultsExamples}.
+
+In Section~\ref{sec:gspreadsheet}, we describe Google spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results} which contains all test inputs.
 
 \section{Comparing different choices in Phase 1 and 2}
 \label{sec:compareMethods}
@@ -68,11 +70,14 @@ Nevertheless, we provide various successful examples of numeration systems with 
 \end{table}
 
 
-\subsection*{Google spreadsheet ParallelAddition\_results}
+\section{Google spreadsheet ParallelAddition\_results}
+\label{sec:gspreadsheet}
 All tested examples can be found in the spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results}. Its structure is following -- the worksheet \verb+results+ is used for automatically saved results. Results may be copied to \verb+results_archive+ to reduce the number of rows in \verb+results+. The meaning of each column is obvious from the heading line. 
 
-The worksheet \verb+inputs+ serves for loading inputs by the script \verb+ewm_gspreadsheet.sage+. The numeration systems for which a weight function was successfully found are in the worksheet \verb+successful+. We remark that they are listed with a single combination of methods for Phase~1 and 2. Nevertheless, all test variants remain in \verb+results+ and \verb+results_archive+. 
+The worksheet \verb+inputs+ serves for loading inputs by the script \verb+ewm_gspreadsheet.sage+. The numeration systems for which a weight function was successfully found are in the worksheet \verb+successful+. We remark that they are listed with a single combination of methods for Phase~1 and 2. Nevertheless, all tested variants remain in \verb+results+ and \verb+results_archive+. 
 
 Results for selected numeration systems which were tested with various  methods for Phase~1 and 2 are sorted in the worksheet \verb+comparePhase2+. Note that if the result of Phase~1 is same for more methods, then only one of them is used for testing of methods for Phase~2. This fact can be found in the column \emph{Groups of methods with the same result} in the worksheet \verb+comparePhase1+.
+
+Very useful property of storing data in a worksheet is easy sorting and filtering.
 
 The version of \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results} which is on the attached DVD was downloaded on May 2, 2016.
