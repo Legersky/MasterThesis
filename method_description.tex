@@ -203,7 +203,7 @@ This procedure is repeated until the extended weight coefficients set $\Q_{k+1}$
 
 In other words, we start with $\Q_0=\{0\}$ meaning that we search all weight coefficients $q_0$ necessary for digit set conversion for the case where there is no carry from the right, i.e., $q_{-1}=0$. We add them to the weight coefficients set $\Q_0$ to obtain the set $\Q_1$. Assume now that we have a set $\Q_k$ for some $k\geq 1$. The weight coefficients in $\Q_k$ now may appear as a carry $q_{-1}$. If there are no suitable weight coefficients $q_0$ in the weight coefficients set~$\Q_k$ to cover all sums of coefficients from $\Q_k$ and digits of the input alphabet $\B$, we extend $\Q_k$ to $\Q_{k+1}$ by  suitable coefficients. And so on until there is no need to add more elements, i.e., the extended set $\Q_{k+1}$ equals $\Q_k$. Then the weight coefficients set $\Q:=\Q_{k+1}$ satisfies Definition~\ref{def:weightCoefficientsSet}. 
 
-\komentar{For better understanding, see Figures~\ref{img:phase1img1}--\ref{img:phase1img13} in Appendix~\ref{app:phase1} which illustrate the construction of the weight coefficients set $\Q$ for the Eisenstein base and a complex alphabet (see Example~\ref{ex:Eisenstein1-blockcomplex} for its description). }
+For better understanding, see Figures~\ref{img:phase1img3}--\ref{img:phase1img12} in Appendix~\ref{app:phase1} which illustrate the construction of the weight coefficients set $\Q$ for the Eisenstein base and a complex alphabet. 
 
 The precise description of the algorithm in a pseudocode is in Algorithm~\ref{alg:weightCoefSet}. Observe that extending $\Q_k$ to $\Q_{k+1}$ is not unique. Various methods of choice are described in Section~\ref{sec:methodsOne} in Algorithm~\ref{alg:extendWeightCoefSet}.
     
@@ -294,7 +294,8 @@ In the $k$-th step, we search for a set $\Qwo{k}\subset\Qwo{(k-1)}$ such that
     for all $\tupleo{(r-1)} \in \B^r$, then the output $q\tupleo{(r-1)}$ is defined as the element of $\Qwo{(r-1)}$. 
     
     Similarly to Phase 1, the choice of $\Qwo{k}$ is not unique. We list different methods of choice in Section~\ref{sec:methodsTwo}, Algorithm~\ref{alg:minimalSet}.
-    \komentar{ Figures~\ref{img:phase2img1}--\ref{img:phase2img7} in Appendix~\ref{app:phase2} illustrate the construction of the set $\Q_{[\omega,1,2]}$ for the Eisenstein numeration system.   }
+    
+    Figures~\ref{img:phase2img3}--\ref{img:phase2img7} in Appendix~\ref{app:phase2} illustrate the construction of the set $\Q_{[\omega,1,2]}$ for the Eisenstein numeration system.
     
         
     To verify that 

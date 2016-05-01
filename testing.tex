@@ -2,9 +2,10 @@
 
 
 \section{Comparing different choices in Phase 1 and 2}
-\komentar{vsechny Mileniny rucne spoctene, taky by tady mohly byt i nejake neuspesne}
-\afterpage{
-\clearpage   % To flush out all floats, might not be what you want
+\label{sec:compareMethods}
+
+%\afterpage{
+%\clearpage   % To flush out all floats, might not be what you want
 \begin{landscape}
 	\begin{table}[h]
 		\begin{center}
@@ -14,10 +15,10 @@
 	\label{tab:resultsPhaseOne}
 	\end{table}
 \end{landscape}
-}
+%}
 
-\afterpage{
-\clearpage   % To flush out all floats, might not be what you want
+%\afterpage{
+%\clearpage   % To flush out all floats, might not be what you want
 \begin{landscape}
 	\begin{table}[h]
 		\begin{center}
@@ -27,9 +28,15 @@
 	\label{tab:resultsPhaseTwo}
 	\end{table}
 \end{landscape}
-}
+%}
 
-
+\begin{table}[h]
+	\begin{center}
+	\input{alphabets.tex}
+	\end{center}
+\caption{Alphabets for numeration systems in Table~\ref{tab:resultsPhaseOne} and \ref{tab:resultsPhaseTwo}}
+\label{tab:alphabets}
+\end{table}
 
 \section{Quadratic bases with non-integer alphabet}
 \begin{table}[h]
@@ -41,8 +48,8 @@
 \end{table}
 
  
-\afterpage{
-\clearpage 
+%\afterpage{
+%\clearpage 
 \section{Quadratic bases with integer alphabet}
 \begin{table}[h]
 	\begin{center}
@@ -51,7 +58,7 @@
 \caption{Quadratic bases with an integer alphabet (using methods 1d and 2b)}
 \label{tab:resultsQuadrInt}
 \end{table}
-}
+%}
 
 
 \section{Cubic bases}

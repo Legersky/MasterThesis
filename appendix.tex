@@ -1,29 +1,68 @@
 \section{Illustration of Phase 1}
-\komentar{stejne jak ve vyzkumaku?}
+\label{app:phase1}   
+Figures \ref{img:phase1img3} -- \ref{img:phase1img12} illustrates first and last iterations of the construction of the weight coefficients set $\Q$ for the Eisenstein base $\beta = -\frac{3}{2} + \frac{\imath \sqrt{3}}{2}$ with the complex alphabet $\mathcal{A} =\{0, 1, -1, \omega, -\omega, -\omega - 1, \omega + 1\}$ and input alphabet $\B=\A+\A$. The second last iteration is skipped.
+
+\figurehascaptionOne{1 = The starting set $\Q_0{=}\{0\}$.}
+\figurehascaptionOne{2 = The set $\B+\Q_0$ need to be covered.}
+\figurehascaptionOne{3 = The set $\Q_0$ does not cover the set $\B+\Q_0${,} i.e.{,} the set $\A+\beta \cdot \Q_0$ is not superset of $\B+\Q_0$.}
+\figurehascaptionOne{4 = The set $\Q_0$ is extended to $\Q_1$ to cover all elements of $\B+\Q_0$.}
+\figurehascaptionOne{5 = The set $\B+\Q_1$ need to be covered.}
+\figurehascaptionOne{6 = The set $\Q_1$ does not cover the set $\B+\Q_1${,} i.e.{,} the set $\A+\beta \cdot \Q_1$ is not superset of $\B+\Q_1$.}
+\figurehascaptionOne{7 = The set $\Q_1$ is extended to $\Q_2$ to cover all elements of $\B+\Q_1$.}
+\figurehascaptionOne{8 = The set $\B+\Q_2$ need to be covered.}
+\figurehascaptionOne{9 = The set $\Q_2$ does not cover the set $\B+\Q_2${,} i.e.{,} the set $\A+\beta \cdot \Q_2$ is not superset of $\B+\Q_2$.}
+\figurehascaptionOne{10 = The set $\Q_2$ is extended to $\Q_3$ to cover all elements of $\B+\Q_2$.}
+\figurehascaptionOne{11 = The set $\B+\Q_3$ need to be covered.}
+\figurehascaptionOne{12 = In the last iteration{,} the set $\Q_3$ covers the set $\B+\Q_3${,} i.e.{,} the set $\A+\beta \cdot \Q_3$ is superset of $\B+\Q_2$. The weight coefficients set $\Q$ equals $\Q_3$.}
+\figurehascaptionOne{13 = The final weight coefficients $\Q{=}\Q_3$.}
+
+
+\foreach \n in {3,4,6,7,12} {%
+\begin{SCfigure}[][htbp]
+    \centering
+    \caption{\getcaptionOne{\n}}
+    \label{img:phase1img\n}
+    \includegraphics[height=0.27\textheight]{img/eisenstein/phase1_image_\n.png}
+\end{SCfigure}
+    }
+
+\newpage
+
+
 \section{Illustration of Phase 2}
-\komentar{stejne jak ve vyzkumaku?}
+The construction of set $\Q_{[\omega,1,2]}$ for the Eisenstein base $\beta = -\frac{3}{2} + \frac{\imath \sqrt{3}}{2}$ with the complex alphabet $\mathcal{A} =\{0, 1, -1, \omega, -\omega, -\omega - 1, \omega + 1\}$  and input alphabet $\B=\A+\A$ is illustrated on Figures \ref{img:phase2img3} -- \ref{img:phase2img7}.
+\label{app:phase2}    
+
+\figurehascaptionTwo{1 = Phase 2 starts with the weight coefficients set $\Q$ from Phase 1.}
+\figurehascaptionTwo{2 = The set $\omega+\Q$ need to be covered.}
+\figurehascaptionTwo{3 = The elements of $\omega+\Q$ are covered by the set $\Q_{[\omega]}\subset\Q$.}
+\figurehascaptionTwo{4 = The set $\omega+\Q_{[1]}$ need to be covered.}
+\figurehascaptionTwo{5 = The elements of $\omega+\Q_{[1]}$ are covered by the set $\Q_{[\omega,1]}\subset\Q_{[\omega]}$.}
+\figurehascaptionTwo{6 = The set $\omega+\Q_{[1,2]}$ need to be covered.}
+\figurehascaptionTwo{7 = The elements of $\omega+\Q_{[1]}$ are covered by the set $\Q_{[\omega,1,2]}\subset\Q_{[\omega,1]}$ which has only one element{.} This element is the output of the weight function $q{(\omega,1,2)}$.}
+
+
+
+\foreach \n in {3,5,7} {%
+\begin{SCfigure}[][htbp]
+    \centering
+    \caption{\getcaptionTwo{\n}}
+    \label{img:phase2img\n}
+    \includegraphics[height=0.23\textheight]{img/eisenstein/phase2_image_\n.png}
+\end{SCfigure}
+    }
+
+\newpage
 
 \section{GUI}
 \komentar{cloud, google tabulka?}
 \section{Tested examples}
 
-\subsection*{Examples comparing different methods}
-
-\begin{table}[h]
-	\begin{center}
-	\input{alphabets.tex}
-	\end{center}
-\caption{Alphabets of numeration systems in Table~\ref{tab:resultsPhaseOne}}
-\label{tab:alphabets}
-\end{table}
-
+\subsection*{Unsuccessful examples comparing different methods}
+The reasons of failure of Phase~2 for numeration systems in Section~\ref{sec:compareMethods} can be found here. See Tables \ref{tab:resultsPhaseOne}, \ref{tab:resultsPhaseTwo} and \ref{tab:alphabets} for parameters of the numeration systems.
 \input{examples_compare.tex}
 
-
-%\subsection*{Quadratic bases with non-integer alphabet}
-%\input{examples_quadr_nonint.tex}
-%
-\subsection*{Quadratic bases with integer alphabet}
+\subsection*{Quadratic bases with integer alphabet divided into congruence classes}
 \input{examples_quadr_int.tex}
 
 \subsection*{Killed examples}
