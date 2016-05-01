@@ -1,29 +1,28 @@
-Class \emph{WeightCoefficientsSetSearch} implements Phase 1 of the extending window method described in Section \ref{subsec:phase1} with different methods how an intermediate weight coefficients set $\Q_k$ is extended to $\Q_{k+1}$. Algorithm~\ref{alg:extendWeightCoefSet} explains some of these methods. The most important method of the class is  \fun{findWeightCoefficientsSet}{} which returns a weight coefficients set $\Q$.
+Class \emph{WeightCoefficientsSetSearch} implements Phase 1 of the extending window method described in Section \ref{subsec:phase1} with different methods how an intermediate weight coefficients set $\Q_k$ is extended to $\Q_{k+1}$. Algorithm~\ref{alg:extendWeightCoefSet} explains methods 1a, 1b, 1c, 1d and 1e. There are also implemented other experimental methods denoted by numbers. Method 1a corresponds to 14, 1b to 12, 1c to 16, 1d to 13 and 1e to 15. 
 
 The constructor of the class is 
-\begin{upravit}
-\begin{method}{\_\_init\_\_}{ algForParallelAdd, method}
-Initialize a ring generator $\omega$, base $\beta$, an alphabet $\A$ and input alphabet $\B$ by values obtained from \var{algForParallelAdd}. The parameter \var{method} characterizes how an intermediate weight coefficients set $\Q_k$ is extended to $\Q_{k+1}$. If \var{None}, then method 13 from Algorithm~\ref{alg:extendWeightCoefSet} is used as default.
+
+\begin{method}{\_\_init\_\_}{algForParallelAdd, method}
+Initialize a ring generator $\omega$, base $\beta$, an alphabet $\A$ and input alphabet $\B$ by values obtained from \var{algForParallelAdd}. The parameter \var{method} is a number of an experimental method or \verb+'1a'+, \verb+'1b'+, etc. The chosen method determines how an intermediate weight coefficients set $\Q_k$ is extended to $\Q_{k+1}$. If \var{None}, then the method 1d from Algorithm~\ref{alg:extendWeightCoefSet} is used as default.
 \end{method}
 
-Methods implementing Phase 1 are the following:
+Class methods implementing Phase 1 are the following:
 
-\begin{method}{\_findCandidates}{C}
-Following Algorithm \ref{alg:searchCand}, return the list of lists \var{candidates} such that each element in \var{C} is covered by any value of the appropriate list in \var{candidates}.  
+\begin{method}{\_findCandidates}{to\_cover}
+ Return the list of lists \var{candidates}, which corresponds to a covering set $C$ in Algorithm~\ref{alg:searchCand}, such that each element in \var{to\_cover} is covered by all values of the appropriate list in \var{candidates}.  
 \end{method}
 
 
 \begin{method}{\_chooseQk\_FromCandidates}{candidates}
-Take the previous intermediate weight coefficients set $\Q_{k}$ as the class attribute and choose from \var{candidates} the intermediate weight coefficients set $\Q_{k+1}$ by Algorithm \ref{alg:extendWeightCoefSet}.
+Take the previous intermediate weight coefficients set $\Q_{k}$ and constructs a new intermediate weight coefficients set $\Q_{k+1}$ from \var{candidates} by Algorithm~\ref{alg:extendWeightCoefSet}.
 \end{method}
 
 
-\begin{method}{\_getQk}{C}
-Links together methods \fun{\_findCandidates}{C} and \fun{\_chooseQk\_FromCandidates}{} to return itermediate weight coefficients set $\Q_k$.
+\begin{method}{\_getQk}{to\_cover}
+Links together methods \fun{\_findCandidates}{to\_cover} and \fun{\_chooseQk\_FromCandidates}{} to return the intermediate weight coefficients set $\Q_{k+1}$.
 \end{method}
 
-
-\begin{method}{findWeightCoefficientsSet}{ maxIterations}
-According to Algorithm \ref{alg:weightCoefSet}, return the weight coefficients set $\Q$ which is build iteratively by using \fun{\_getQk}{}. The computation is aborted if the number of iterations exceeds \var{maxIterations}. 
+\begin{method}{findWeightCoefficientsSet}{maxIterations}
+According to  Algorithm~\ref{alg:weightCoefSet}, constructs a weight coefficients set $\Q$ by iterative using \fun{\_getQk}{}. A computation is aborted if the number of iterations exceeds \var{maxIterations}. 
 \end{method}
 

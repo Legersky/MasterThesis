@@ -80,11 +80,11 @@ The characteristic polynomial of the companion matrix $S$ is the same as the min
 $$
 S_\beta=\sum_{i=0}^{d-1} b_i S^i= \sum_{i=0}^{d-1} b_i \left(P^{-1}DP\right)^i=P^{-1}\underbrace{\left(\sum_{i=0}^{d-1} b_i D^i\right)}_{D_\beta}P\,.
 $$
-It is known (see for instance \cite{chapman}) that if $\sigma:\QQ(\omega)\rightarrow\QQ(\omega')$ is a field isomorphism and $\beta\in\QQ(\omega)$, then $\sigma(\beta)$ is a conjugate of $\beta$. Moreover, a so-called field polynomial $\Pi_{i=0}^{d-1}(\sigma_i(\beta)-x)$, where $\sigma_i$ are all possible isomorphisms, is a power of $m_\beta$.
+It is known (see for instance \cite{chapman}) that if $\sigma:\QQ(\omega)\rightarrow\QQ(\omega')$ is a field isomorphism and $\beta\in\QQ(\omega)$, then $\sigma(\beta)$ is a conjugate of $\beta$. Moreover, a so-called field polynomial $\Pi_{i=0}^{d-1}(x-\sigma_i(\beta))$, where $\sigma_i:\QQ(\omega)\rightarrow\QQ(\omega_i)$ are all possible isomorphisms, is a power of $m_\beta$. In order to prove this, suppose that $\Pi_{i=0}^{d-1}(x-\sigma_i(\beta))=m_\beta^k g$, where $k\in\NN$ and $g$ is a monic rational polynomial which does not divide $m_\beta$. If $g\neq 1$, then some $\sigma_i(\beta)$ with the minimal polynomial $m_\beta$ is a root $g$. Since any rational polynomial is divisible by the minimal polynomials of its roots, $m_\beta$ divides $g$ which is a contradiction.
 
 %There is a result in theory of algebraic numbers about conjugates under a field isomorphism -- let $\alpha$ be an algebraic number with a conjugate $\alpha'$ and $\sigma:\QQ(\alpha)\rightarrow\QQ(\alpha')$ be a field isomorphism. If $\gamma\in\QQ(\alpha)$, then $\sigma(\gamma)$ is a conjugate of $\gamma$. \komentar{je potreba nejakou citaci?}
 
-Since $\beta=\sum_{i=0}^{d-1} b_i \omega^i$ and $D$ has conjugates of $\omega$ on the diagonal, the diagonal elements of the diagonal matrix $D_\beta$ are conjugates of $\beta$. The characteristic polynomial $p_{S_\beta}$ of $S_\beta$ equals $\Pi_{i=0}^{d-1}(\sigma_i(\beta)-x)$. Thus, there exists $k\in\NN, k\geq 1$ such that $p_{S_\beta}=m^k_\beta$. The value $k$ follows from the equality $d=\deg(m_\beta^k)=k \deg m_\beta$. 
+Since $\beta=\sum_{i=0}^{d-1} b_i \omega^i$ and $D$ has conjugates of $\omega$ on the diagonal, the diagonal elements of the diagonal matrix $D_\beta$ are conjugates of $\beta$. The characteristic polynomial $p_{S_\beta}$ of $S_\beta$ equals $\Pi_{i=0}^{d-1}(\sigma_i(\beta)-x)$. Thus, there exists $k\in\NN, k\geq 1$ such that $p_{S_\beta}=\pm m^k_\beta$. The value $k$ follows from the equality $d=\deg(m_\beta^k)=k \deg m_\beta$. 
 
 The modulus of the determinant of $S_\beta$ equals the modulus of the absolute coefficient of the characteristic polynomial $p_{S_\beta}$ which is $|m_\beta(0)|^k$.
 
