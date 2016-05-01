@@ -11,7 +11,7 @@ We use notation from previous chapters in descriptions of the classes. We list o
 
 For basic use, load \verb+AlgorithmForParallelAddition.sage+, create an instance of \emph{AlgorithmForParallelAddition} and call \textbf{findWeightFunction()}.
 
-We also provide a shell interface and a graphic user interface which runs as an interact in SageMathCloud. If the network access is enabled and the modul \verb+gspread+ is installed (see \cite{gspread}), then results from both interfaces are automatically saved to Google spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results}. The interfaces are described at the end of this section. The whole implementation is on the attached DVD or it can be downloaded from  \url{https://github.com/Legersky/ParallelAddition}.
+We also provide an interface -- a shell script with given parameters is executed. If the network access is enabled and the modul \verb+gspread+ is installed (see \cite{gspread}), then results of computation are automatically saved to Google spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results}. The spreadsheet can be also used for loading input parameters. Both interfaces are described at the end of this section. The whole implementation is on the attached DVD or it can be downloaded from  \url{https://github.com/Legersky/ParallelAddition}.
 
 
 
@@ -30,27 +30,23 @@ We also provide a shell interface and a graphic user interface which runs as an 
 \subsection*{Class WeightFunction}
 \input{WeightFunction.tex}
 
-\begin{upravit}
+
 \subsection*{User interfaces}
-We provide two interfaces for running of the implemented extending window method -- the~shell version and graphic user interface.
+We provide two options of loading inputs for running the implemented extending window method. SageMath must be installed as they are executed as shell scripts.
 
-\subsubsection*{Shell}
-SageMath must be installed. The implementation of the extending window method is launched in a shell by typing \verb+sage extending_window_method.sage <input_sample.sage>+. The parameters of the numeration system and setting of outputs and computation is given by the SageMath file \verb+input_sample.sage+. See Appendix \ref{app:inputSample} for an example of such a file.
-
-The name of the numeration system, minimal polynomial of generator $\omega$, an approximate value of $\omega$, the base $\beta$, alphabet $\A$ and input alphabet $\B$ are set in the part INPUTS. The maximum number of iterations in Phase 1, maximal length of the window in Phase 2 and the launching of the sanity check are set in SETTING. 
-
-The boolean values in the part SAVING determines which formats of the outputs are saved. All outputs are saved in the folder \verb+./outputs/<name>/+. General information about the computation can be saved in the TeX format, the computed weight function and local digit set conversion in the CSV file format. An inputs setting saved as a dictionary can be loaded by the interact interface. The log of the whole computation can be saved as a text file. There is also an option to save unsolved combinations in Phase 2 in the CSV file format in the case of the interruption of the program.
-
-According to the boolean values in the part IMAGES, figures of the alphabet, input alphabet, weight coefficients set or part of the set $\Zomega$ with marked alphabet shifted into points which are divisible by the base $\beta$ are saved in the PNG format to the folder \verb+./outputs/<name>/+ \verb+img/+. Optionally, the weight coefficients set is plotted with the  bound given by the proof of Theorem~\ref{thm:suffCondPhase1}. Images of individual steps of both phases of the extending window method can be saved, too. For Phase 2, the search for the weight coefficient  is plotted for the digits given by \verb+phase2_input+.  
-
-The program prints out all inputs and then it computes the weight function $q$ by calling \fun{findWeightFunction}{ max\_iterations, max\_input\_length}. The increments of the weight coefficients set in each iteration of Phase 1 are printed and then also the obtained weight coefficients set $\Q$. The longest tested combinations given by repetition of one letter are printed after the computation of \fun{check\_one\_letter\_inputs}{max\_input\_length}. During computing of Phase 2, the current length of window and the number of saved combinations are printed. At the end, the final length of window, elapsed time and info about saved outputs are printed.  
-
-It is possible to batch process all input files in one folder by executing the bash script \verb+ewm_batch <folder_name>+.  
-
-\subsubsection{Interact in SageMath Cloud}
-The graphic user interface is implemented using an interact in SageMath Cloud. The parts of the interact are on Figure \ref{fig:interact1}, \ref{fig:interact2} and \ref{fig:interact3} in Appendix \ref{app:interact}. The functionality is basically the same as the shell version. An account on the website \url{https://cloud.sagemath.com} is needed to use the interact. Create a new project and load files \verb+extending_window_method_GUI.sagews+ and \verb+interact_ewm.sage+. After executing of the cell by Shift+Enter in the first one, the parameters of the numeration system are filled in the corresponding spaces or one of the previous settings is loaded by typing its name.  By default, the last inputs are shown in the form. The inputs are submitted by pressing the button Update. Using check-boxes, the formats for saving of the output are chosen and the search for the weight function is launched by pressing second button Update.
-
-The printed output is similar to the shell output. In addition, it contains figures and it is formatted using \LaTeX. Moreover, the sanity check can be run for a given length, the weight coefficient for a tuple of  input digits is returned or images of individual steps of both phases are shown and saved.
+The implementation of the extending window method is launched in a shell by typing \verb+sage ewm_inputs.sage+. The parameters of a numeration system and setting of outputs and computation is given in the heading of the file \verb+ewm_inputs.sage+. See Appendix \ref{app:interfaces} for an example of such a file.
 
 
-\end{upravit}
+The name of the numeration system, minimal polynomial of generator $\omega$, an approximate value of $\omega$, the base $\beta$, alphabet $\A$ and input alphabet $\B$ are set in the part INPUTS. Different methods of choice for Phase 1 and 2 can be set. If there are more methods in the lists, then methods for Phase~1 are compared first. Next, each distinct result is processed with each method for Phase~2.  
+
+The sanity check is launched according to the boolean value in SANITY CHECK. 
+
+The boolean values in the part SAVING determines which formats of the outputs are saved. All outputs are saved in the folder \verb+./outputs/<name>/+. General information about the computation can be saved in the \LaTeX{} format, the computed weight function and local digit set conversion in the CSV file format.  A log of the whole computation can be saved as a text file.
+
+Figures of the alphabet, input alphabet or weight coefficients set are saved in the PNG format in the folder \verb+./outputs/<name>/img/+ according to the boolean values in the part IMAGES. Images of individual steps of both phases of the extending window method can be saved, too. For Phase 2, a search for a weight coefficient  is plotted for digits given by \verb+phase2_input+.  
+
+The program prints out all inputs and then it computes a weight function $q$ by calling \fun{findWeightFunction}{}. The increments of intermediate weight coefficients set in each iteration of Phase 1 and the obtained weight coefficients set $\Q$ are printed out. Convergence of Phase~2 for combinations given by repetition $b\in\B$ is verified by \fun{check\_one\_letter\_inputs}{}. The processed length of window and the number of saved combinations are printed during computing of Phase 2. At the end, the final length of window, elapsed time and info about saved outputs are printed. Results are also saved in the Google spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results} in the worksheet \verb+results+ and \verb+comparePhase1+ if there are more methods for Phase~1.
+
+The second option is to execute the script \verb+ewm_gspreadsheet.sage+ (see Appendix \ref{app:interfaces}). Parameters are loaded from the list \verb+inputs+ in the Google spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results}. The column A marks whether a row should be tested. Columns B--G, i.e., Name, Alphabet $\A$, Input alphabet $\B$, Approximate value of ring generator $\omega$, Minimal polynomial $\m_\omega$ and Base $\beta$ must be filled. Methods for Phase~1, resp. 2, are given in the cell C1, resp. C2.
+
+Program runs in the same way as before, but results are saved only to Google spreadsheet.
