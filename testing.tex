@@ -44,7 +44,7 @@ As we mentioned, both phases of the extending window method are significantly de
 %}
 
 
-\begin{table}[h]
+\begin{table}[htpb]
 	\begin{center}
 	\input{alphabets.tex}
 	\end{center}
@@ -75,7 +75,7 @@ An interesting example is Quadratic+1+4+5\_complex1. Only one element of the alp
 \label{sec:resultsExamples}
 We divide numeration systems with quadratic base according to the type of an alphabet. There are numeration systems with non-integer alphabets in Table~\ref{tab:resultsQuadrNonint}, while numeration systems with integer alphabets in Table~\ref{tab:resultsQuadrInt}. The structure of tables is the same as in the previous section. The method 1d for Phase~1 and 2b for Phase~2 were used for the listed numeration systems.
 
-\begin{table}[h]
+\begin{table}[htpb]
 	\begin{center}
 	\input{results_quadr_nonint.tex}
 	\end{center}
@@ -90,7 +90,7 @@ Note that none of bases has a real conjugate greater than 1. Observe that the li
 Parallel addition algorithms can be found for quite large alphabets  if the final length of window is small or many combinations of input digits  are saved for a shorter window than the final one. Examples~\ref{ex:killAB} and \ref{ex:killAA} in Appendix~\ref{app:examples} are the only inputs with quadratic base which were killed because of this exponential growth of memory requirement.
 
  
-\begin{table}[h]
+\begin{table}[htpb]
 	\begin{center}
 	\input{results_quadr_int.tex}
 	\end{center}
@@ -100,17 +100,19 @@ Parallel addition algorithms can be found for quite large alphabets  if the fina
 
 Table~\ref{tab:resultsQuadrInt} shows some examples of numeration systems with integer alphabets for which the extending window method was successful. The alphabets are of the form $\{-a, -a+1, \dots, -1,0,1,\dots, a-1,a\}$ or $\{-a+1, \dots, -1,0,1,\dots, a-1,a\}$, depending on the parity of their size, where $a$ is a positive integer.
 
-As we mentioned in Section~\ref{sec:minimalAlphabet}, congruences behave differently in $\Zbeta$ and $\Zomega$. The alphabets divided into congruence classes modulo $\beta$ and $\beta-1$ in $\Zomega$ for some of the numeration systems can be found in Examples \ref{ex:integerAB} -- \ref{ex:integerAR} in Appendix~\ref{app:examples}. However, we recall that if $\beta=\pm \omega+c$  for some $c\in\ZZ$, then $\Zbeta=\Zomega$. See for instance Examples \ref{ex:integerAJ} and \ref{ex:integerAK} -- congruence classes modulo $\beta-1$ are different since we work in $\ZZ[\frac{1}{2} \, \sqrt{5} + \frac{1}{2}]$ for the former and in $\ZZ[-\sqrt{5} + 1]$ for the latter one.
+As we mentioned in Section~\ref{sec:minimalAlphabet}, congruences behave differently in $\Zbeta$ and $\Zomega$. The alphabets divided into congruence classes modulo $\beta$ and $\beta-1$ in $\Zomega$ for some of the numeration systems can be found in Examples \ref{ex:integerAB} -- \ref{ex:integerAR} in Appendix~\ref{app:examples}. However, we recall that if $\beta=\pm \omega+c$  for some $c\in\ZZ$, then $\Zbeta=\Zomega$. See for instance Examples \ref{ex:integerAJ} and \ref{ex:integerAK} -- congruence classes modulo $\beta-1$ are different, since we work in $\ZZ\left[\frac{1}{2} \sqrt{5} + \frac{1}{2}\right]$ for the former and in $\ZZ\left[-\sqrt{5} + 1\right]$ for the latter one.
 
-If $\Zbeta\neq\Zomega$, then the alphabet may not contain representatives of all congruence classes modulo $\beta-1$ in $\Zomega$, see Examples \ref{ex:integerAB}, \ref{ex:integerAD},  \ref{ex:integerAJ}, \ref{ex:integerAO}, \ref{ex:integerAQ} and \ref{ex:integerAR}.
+If $\Zbeta\neq\Zomega$, then an alphabet may not contain representatives of all congruence classes modulo $\beta-1$ in $\Zomega$, see Examples \ref{ex:integerAB},  \ref{ex:integerAJ}, \ref{ex:integerAO} and \ref{ex:integerAR}.
 
-It is interesting that division of alphabet into congruence in Example \ref{ex:integerAE} is the same modulo $\beta$ and $\beta-1$.
+It is interesting that division of the alphabet into congruence in Example \ref{ex:integerAE} is the same modulo $\beta$ and $\beta-1$.
 
 Observe that if an alphabet is minimal, there is only one congruence class modulo $\beta$ which has two representatives in the alphabet, i.e, it is only litle  redundant.
 
-An alphabet contains one more element congruent to the smallest and greatest digit modulo $\beta-1$ as it is necessary according to Lemma~\ref{lem:alphabetRestrictions}.
+If a base has a real conjugate greater than one, then the alphabet contains one more element congruent to the smallest and greatest digit modulo $\beta-1$ as it is necessary according to Lemma~\ref{lem:alphabetRestrictions}.
 
-Examples \ref{ex:integerAB}, \ref{ex:integerAD} and \ref{ex:integerAO} show that  an alphabet with one more digit than the minimal one has shorter length of window.
+Examples \ref{ex:integerAB} and \ref{ex:integerAO} show that  an alphabet with one more digit than the minimal one has shorter length of window.
+
+An interesting remark is that the weight coefficients set $\Q$ has size 9 for all successful numeration systems with integer alphabets.
 
 We remark that we have no example of a base for which the extending window method converges with integer and also non-integer alphabet. We are aware of the fact that Theorem~\ref{thm:suffConjugates} provides a parallel addition algorithm with an integer alphabet for an expanding base, but  a different rewriting rule than $x-\beta$ is used.
 
