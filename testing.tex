@@ -1,5 +1,7 @@
 We have attempted to find a parallel addition algorithm for more than 5000 different numeration systems. Including various methods in Phase~1 and 2, the implementation of the extending window method has been launched over 7000 times. 
 
+Only expanding bases were considered as it is  necessary condition of convergence of the extending window method. At the same time, convergence of Phase~1 is guaranteed.
+
 Most of the bases were given by polynomial combinations of $\omega$ with coefficients in a limited range, where $\omega$ was generated as a root of a monic polynomial with bounded integer coefficients. Mainly, $\omega$ are  quadratic, but cubic ones have been also tested. Alphabets for these bases were constructed automatically. 
 
 Besides that, the extending window method was run for selected numeration systems in order to compare different methods in Phase~1 and 2, see  Section~\ref{sec:compareMethods}.
@@ -71,8 +73,17 @@ An interesting example is Quadratic+1+4+5\_complex1. Only one element of the alp
 
 \section{Examples of results}
 \label{sec:resultsExamples}
-We divide nume
+We divide numeration systems with quadratic base according to the type of an alphabet. There are numeration systems with non-integer alphabets in Table~\ref{tab:resultsQuadrNonint}, while numeration systems with integer alphabets in Table~\ref{tab:resultsQuadrInt}. The structure of tables is the same as in the previous section. 
 
+Firstly, we focus on non-integer alphabets. Since many alphabets are large, Table~\ref{tab:resultsQuadrNonint} outlines only their sizes. The whole alphabets can be found in the spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results}.
+
+Note that none of bases has a real conjugate greater than 1. Observe that the linear and absolute coefficients of the minimal polynomial $m_\beta$ are positive if the corresponding alphabet attains the lower bound given by Theorem~\ref{thm:lowerBoundAlphabet}. A possible explanation is that if the linear coefficient were negative, then $\#\A=m_\beta(0)\geq m_\beta(1)$, i.e., the numeration system is not enough redundant.
+
+Parallel addition algorithms can be found for quite large alphabets  if the final length of window is small or many combinations of input digits  are saved for a shorter window than the final one. Examples~\ref{ex:killAB} and \ref{ex:killAA} in Appendix~\ref{app:examples} are the only inputs with quadratic base which were killed because of this exponential growth of memory requirement.
+
+Table~\ref{tab:resultsQuadrInt} shows some examples of numeration systems with integer alphabets for which the extending window method was successful. The alphabets are of the form $\{-c, -c+1, \dots, -1,0,1,\dots, c-1,c\}$ or $\{-c+1, \dots, -1,0,1,\dots, c-1,c\}$, depending on the parity of their size, where $c$ is a positive integer.
+
+We remark that we have no example of a base for which the extending window method converges with integer and also non-integer alphabet. We are aware of the fact that Theorem~\ref{thm:suffConjugates} provides a parallel addition algorithm with an integer alphabet for expanding base, but this alphabet is usually much larger than the minimal one. Moreover, a different rewriting rule than $x-\beta$ is used.
 
 \begin{table}[h]
 	\begin{center}
