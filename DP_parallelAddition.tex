@@ -36,11 +36,18 @@
 
 \chapter*{Introduction}
 Parallel addition have been studied as it is an important part of algorithms for multiplication and division. 
-While carry propagation in the standard algorithms requires to compute digits one by one, a parallel algorithm computes the sum of $x_n x_{n-1}\cdots x_1 x_0 \bullet$ and $y_n y_{n-1}\cdots y_1 y_0 \bullet$ by determining the $j$-th digit of the sum just from the knowledge of fixed number of digits around $x_j$ and $y_j$. Thus it avoids the carry propagation and all output digits can be determined at the same time. 
+While carry propagation in the standard algorithms requires to compute digits of the sum of $x_n x_{n-1}\cdots x_1 x_0 \bullet$ and $y_n y_{n-1}\cdots y_1 y_0 \bullet$  one by one, a parallel algorithm determines the $j$-th digit of the sum just from the knowledge of fixed number of digits around $x_j$ and $y_j$. Thus it avoids the carry propagation and all digits digits of the result can be outputted at the same time. Besides theoretical reasons, parallel addition is used for instance in fast division algorithm in processors Pentium which is implemented in a numeration system with base 4 and digits $\{-2,-1,0,1,2\}$.
 
 A parallel addition algorithm  was introduced by A. Avizienis in \cite{avizienis} in 1961. The algorithm works with an integer base $\beta\geq3$ and an alphabet $\{-a, \dots, 0, \dots a\}$ where $a\in\NN$ is such that $\beta/2 <a \leq \beta-1$. Later, C. Y. Chow and J. E. Robertson presented a parallel addition algorithm for  base 2 and alphabet $\{-1,0,1\}$ in \cite{chow}.
 
-Besides theoretical reasons, it is used for instance in fast division algorithm in processors Pentium which is implemented in a numeration system with base 4 and digits $\{-2,-1,0,1,2\}$.
+So-called non-standard numeration systems have been extensively studied. Non-standard means that a base is not a positive integer. An example of such system is the Penney numeration system with the base $i-1$ and alphabet $\{0,1\}$. Complex numbers can be represented by this system without separating real and imaginary part. As division algorithms are also developed for non-standard numeration systems, we focus on construction of a parallel addition algorithm.
+
+The numeration system which allow parallel addition must be redundant, i.e, some numbers may have more than one represenation. P.~Kornerup studied how  redundancy is related to parallel addition \cite{kornerup}. 
+
+C. Frougny, E. Pelantov\'a and M. Svobodov\'a provided parallel addition algorithms with an integer alphabet for all bases $\beta$ such that $|\beta|>1$ and no conjugate of $\beta$ equals 1 in modulus, see \cite{parAddNS}. Nevertheless, the alphabet is not minimal in general.
+ The parallel addition algorithms for several bases (negative integers, complex numbers $-1+\imath, 2\imath$ and $\sqrt{2}\imath$, quadratic Pisot unit and  non-integer rationals) with minimal integer alphabet are presented in \cite{minAlph}.
+
+
 
 
 \chapter{Preliminaries}
