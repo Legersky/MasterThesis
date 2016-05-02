@@ -52,12 +52,13 @@ In this chapter, the general concept of addition and digit set conversion is rec
 	\input{method_description.tex}
 
 \chapter{\texorpdfstring{Properties of $\Zomega$}{Properties of Z[omega]}}
-We compile some properties  of the ring $\Zomega$ in this chapter. The isomorphism to $\ZZ^d$ is indicated and used for check of divisibility.  We review some results from matrix theory to introduce a norm in $\Zomega$. This norm is involved in the discussion of convergence of Phase~1 in Chapter~\ref{chap:convergence}. In the last section, we show how the number of congruence classes modulo $\beta$ in $\Zomega$ is determined. That is used in the proof of a lower bound on the size of an alphabet which allows parallel addition in Section~\ref{sec:minimalAlphabet}.
+We compile some properties  of the ring $\Zomega$ in this chapter. The isomorphism to $\ZZ^d$ is indicated and used for check of divisibility.  We review some results from matrix theory to introduce a norm in $\Zomega$. This norm is used in the proof of convergence of Phase~1 in Chapter~\ref{chap:convergence}. In the last section of this chapter, we show how the number of congruence classes modulo $\beta$ in $\Zomega$ is determined. That is used in the proof of a lower bound on the size of an alphabet which allows parallel addition in Section~\ref{sec:minimalAlphabet}.
 	\input{isomorphism.tex}
 	\input{naturalNorm.tex}
 	\input{congruenceClasses.tex}	
 	
 \chapter{Convergence}
+We discuss convergence of the extending window method designed in Chapter~\ref{chap:ewm}. We prove a necessary condition of convergence of the whole method and we show that it is also sufficient condition of convergence of Phase~1, using the tools from the previous chapter. Next, we establishes a condition which implies non-convergence of Phase~2. The condition is formulated by existence of an infinite walk in a specific directed graph. We also prove that there is the same lower bound on the size of an alphabet from $\Zbeta$ as for integer alphabets when the extending method converges.
 \label{chap:convergence}
 
 	\section{Convergence of Phase 1}
@@ -70,8 +71,9 @@ We compile some properties  of the ring $\Zomega$ in this chapter. The isomorphi
 	\input{lowerBound.tex}
 
 
-\chapter{Different methods of choice in the extending window method}
+\chapter{Different methods in the extending window method}
 	\label{chap:diffChoices}
+	We mentioned in Chapter~\ref{chap:ewm} that there is a lot of variability in both phases of the extending window method. Within this chapter, we propose various methods how an intermediate weight coefficients set $\Q_k$ can be extended to $\Q_{k+1}$ in Phase~2 and how the set $\Qwo{k}$ can be constructed in Phase~2. The selection of methods is based on testing many experimental ones. 
 
 	\input{choices_phase1.tex}
 
