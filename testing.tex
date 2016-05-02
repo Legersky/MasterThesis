@@ -2,32 +2,19 @@ We have attempted to find a parallel addition algorithm for more than 5000 diffe
 
 Most of the bases were given by polynomial combinations of $\omega$ with coefficients in a limited range, where $\omega$ was generated as a root of a monic polynomial with bounded integer coefficients. Mainly, $\omega$ are  quadratic, but cubic ones have been also tested. Alphabets for these bases were constructed automatically. 
 
-Besides that, the extending window method was run for selected numeration systems in order to compare different methods in Phase~1 and 2. We discuss this in Section~\ref{sec:compareMethods}.
+Besides that, the extending window method was run for selected numeration systems in order to compare different methods in Phase~1 and 2, see  Section~\ref{sec:compareMethods}.
 
 Processing such a number of inputs is enabled by the developed tools of non-convergence of Phase~2. The control of $bb\dots b$ inputs often reveals non-convergence very quickly, while an infinite loop in Phase~2 is avoided due to check of directed cycles in a Rauzy graph. This condition seems to be really strong -- so far we have only four examples which were killed because of lack of memory before non-convergence was revealed or a weight function found. We discuss them later.
 
 Altogether, a parallel addition algorithm was found for about 140 cases. A possible explanation of such low success rate is the automatic construction of alphabets -- there may exist  alphabets which are better spread or more symmetric. Another reason is that we did not have enough computational power for testing with various methods in Phase~1 and 2:  different methods are more suitable for different numeration systems, as we will see in Section~\ref{sec:compareMethods}.
 Nevertheless, we provide various successful examples of numeration systems with integer and non-integer alphabets. Some of them are listed in Section~\ref{sec:resultsExamples}.
 
-In Section~\ref{sec:gspreadsheet}, we describe Google spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results} which contains all test inputs.
+In Section~\ref{sec:gspreadsheet}, we describe Google spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results} which contains all tested inputs.
 
 \section{Comparing different choices in Phase 1 and 2}
 \label{sec:compareMethods}
+
 As we mentioned, both phases of the extending window method are significantly dependent on the way of extending $\Q_k$ to $\Q{k+1}$ , respectively choice of $\Qwo{k}$ from $\Qwo{(k-1)}$. Various methods were designed and implemented. They were all tested on the numeration systems which are listed in Table~\ref{tab:resultsPhaseOne}. Parallel addition algorithms were found manually \cite{milena} for some of them, for instance Eisenstein\_1--block\_complex, Penney\_1--block\_complex, Penney\_2--block\_integer or Quadratic+1+4+5\_complex2. 
-
-The methods 1a, 1b, 1c, 1d and 1e, resp. 2a, 2b, 2c, 2d and 2e, which are desribed in Chapter~\ref{chap:diffChoices}, were selected as they represent groups of methods which behave similarly. Moreover, if a parallel addition algorithm was found for a numeration system, then at least one successful method is contained in the selection.
-
-Let us explain Tables~\ref{tab:resultsPhaseOne}, \ref{tab:resultsPhaseTwo} and \ref{tab:alphabets}. Each row in Table~\ref{tab:resultsPhaseOne} represents one numeration system with a base $\beta\in\Zomega$ for a given algebraic integer $\omega$. The column \emph{conj.} signifies whether the base $\beta$ has a real conjugate greater than 1. The sizes of alphabets are listed and the column \emph{min.} says if the alphabets, which are listed in Table~\ref{tab:alphabets}, are minimal in the sense of the lower bound given by Theorem~\ref{thm:lowerBoundAlphabet}.  We remark that the size of an alphabet is compared with the bound regardless we work in $\Zbeta$ or $\Zomega$. 
-There are the sizes of weight coefficients sets $\Q$ which were found  with various methods of Phase~1 in the last columns.
-
-The results of Phase~2 for the selected numeration systems are shown in Table~\ref{tab:resultsPhaseTwo}. More rows for one numeration system correspond to distinct weight coefficients sets from Phase~1. The column $bb\dots b$ says whether control of $bb\dots$ was successful. If a weight function is found, it is denoted by \checkmark{} in the column \emph{Ph.2} and the length of window is in the column $r$. Symbol \xmark{} in the column \emph{Ph.2} means that a cycle in a Rauzy graph was found, i.e., Phase~2 does not converge. Reasons of non-convergence can be found in the appropriate example in Appendix~\ref{app:examples}.
-
-We remark that Lemma~\ref{lem:suffCondPhase1} instead of some method of Phase~1 means that the set given by this lemma was used as $\Q$ instead of a computed one.  We see that the smaller weight coefficients set $\Q$ does not mean automatically better (Quadratic+1+4+5\_complex1 or Quadratic+1+3+4\_complex). An observation for many numeration systems is that if the extending window method is successful, then weight coefficients sets produced by different methods are similar. But it is not a rule. 
-
-Unfortunately, there is also no best method for Phase~2. For example, method 2e is successful for all selected quadratic bases, but it fails for the cubic ones. Moreover, the length of window $r$ is not always minimal (Quadratic+1+0--5\_integer). On the other hand, the method 2d the only one which finds a weight function for cubic bases, but it fails in many other cases. The method 2b seems to be often successful, but not with the optimal length of window.
-
-An interesting example is Quadratic+1+4+5\_complex1. Only one element of the alphabet is different, comparing with Quadratic+1+4+5\_complex2. Whereas a weight function is easily found for Quadratic+1+4+5\_complex2 by all methods, the only successfull combination of methods for Quadratic+1+4+5\_complex1 is the weight coefficients set given by Lemma~\ref{lem:suffCondPhase1} and method 2e. We remark that many of elements of such $\Q$ are not used as outputs of the obtained weight function.
-
 %\afterpage{
 \clearpage   % To flush out all floats, might not be what you want
 \begin{landscape}
@@ -54,6 +41,7 @@ An interesting example is Quadratic+1+4+5\_complex1. Only one element of the alp
 \end{landscape}
 %}
 
+
 \begin{table}[h]
 	\begin{center}
 	\input{alphabets.tex}
@@ -61,6 +49,25 @@ An interesting example is Quadratic+1+4+5\_complex1. Only one element of the alp
 \caption{Alphabets for numeration systems in Table~\ref{tab:resultsPhaseOne} and \ref{tab:resultsPhaseTwo}}
 \label{tab:alphabets}
 \end{table}
+
+The methods 1a, 1b, 1c, 1d and 1e, resp. 2a, 2b, 2c, 2d and 2e, which are desribed in Chapter~\ref{chap:diffChoices}, were selected as they represent groups of methods which behave similarly. Moreover, if a parallel addition algorithm was found for a numeration system, then at least one successful method is contained in the selection.
+
+
+
+Let us explain Tables~\ref{tab:resultsPhaseOne}, \ref{tab:resultsPhaseTwo} and \ref{tab:alphabets}. Each row in Table~\ref{tab:resultsPhaseOne} represents one numeration system with a base $\beta\in\Zomega$ for a given algebraic integer $\omega$. The column \emph{conj.} signifies whether the base $\beta$ has a real conjugate greater than 1. The sizes of alphabets are listed and the column \emph{min.} says if the alphabets, which are listed in Table~\ref{tab:alphabets}, are minimal in the sense of the lower bound given by Theorem~\ref{thm:lowerBoundAlphabet}.  We remark that the size of an alphabet is compared with the bound regardless we work in $\Zbeta$ or $\Zomega$. 
+There are the sizes of weight coefficients sets $\Q$ which were found  with various methods of Phase~1 in the last columns.
+
+The results of Phase~2 for the selected numeration systems are shown in Table~\ref{tab:resultsPhaseTwo}. More rows for one numeration system correspond to distinct weight coefficients sets from Phase~1. The column $bb\dots b$ says whether control of $bb\dots b$ inputs was successful. If a weight function is found, it is denoted by \checkmark{} in the column \emph{Ph.2} and the length of window is in the column $r$. Symbol \xmark{} in the column \emph{Ph.2} means that a cycle in a Rauzy graph was found, i.e., Phase~2 does not converge. Reasons of non-convergence can be found in the appropriate example in Appendix~\ref{app:examples}.
+
+We remark that Lemma~\ref{lem:suffCondPhase1} instead of some method of Phase~1 means that the set given by this lemma was used as $\Q$ instead of a computed one.  We see that the smaller weight coefficients set $\Q$ does not mean automatically better (Quadratic+1+4+5\_complex1 or Quadratic+1+3+4\_complex). An observation for many numeration systems is that if the extending window method is successful, then weight coefficients sets produced by different methods are similar. But it is not a rule. 
+
+Unfortunately, there is also no best method for Phase~2. For example, method 2e is successful for all selected quadratic bases, but it fails for the cubic ones. Moreover, the length of window $r$ is not always minimal (Quadratic+1+0--5\_integer). On the other hand, the method 2d is the only one which finds a weight function for cubic bases, but it fails in many other cases. The method 2b seems to be often successful, but not with the optimal length of window.
+
+An interesting example is Quadratic+1+4+5\_complex1. Only one element of the alphabet is different, comparing with Quadratic+1+4+5\_complex2. Whereas a weight function is easily found for Quadratic+1+4+5\_complex2 by all methods, the only successfull combination of methods for Quadratic+1+4+5\_complex1 is the weight coefficients set given by Lemma~\ref{lem:suffCondPhase1} and method 2e. We remark that many of elements of such $\Q$ are not used as outputs of the obtained weight function. Notice  in Example~\ref{ex:compareAP} that there are only few inputs digits $b$ such that  Quadratic+1+4+5\_complex1 fails in the check of $bb\dots b$ inputs.
+
+
+
+
 
 \section{Examples of results}
 \label{sec:resultsExamples}

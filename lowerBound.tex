@@ -1,7 +1,11 @@
 \section{Minimal alphabet $\A$}
 \label{sec:minimalAlphabet}	
 
-Frougny, Pelantov\'a and Svodov\'a \cite{minAlph} proved a lower bound on the size of an alphabet $0\in\A\subset\ZZ$ of consecutive integers which enables parallel addition. In this section, we prove the same bound for an arbitrary alphabet $\A\in\Zbeta$. We recall their auxiliary results in Theorem~\ref{thm:reprBetaMinusOne} an Lemma~\ref{lem:alphabetRestrictions}, but only for a parallel digit set conversion without anticipation as our rewriting rule $x-\beta$ does not require memory. The following theorem says that all classes modulo $\beta$ which are contained in $\A+\A$ must have their representatives in $\A$.
+Frougny, Pelantov\'a and Svodov\'a \cite{minAlph} proved a lower bound on the size of an alphabet $0\in\A\subset\ZZ$ of consecutive integers which enables parallel addition. In this section, we prove the same bound for an arbitrary alphabet $\A\in\Zbeta$.  We recall their auxiliary results in Theorem~\ref{thm:reprBetaMinusOne} an Lemma~\ref{lem:alphabetRestrictions}, but only for a parallel digit set conversion without anticipation as our rewriting rule $x-\beta$ does not require memory. 
+
+We remark that we indicate by the assumption $\A\in\Zbeta$  that we work in $\Zbeta$ instead of $\Zomega$. Notice that congruence classes modulo $\beta$ in $\Zomega$ and $\Zbeta$ are generally different. It implies that even an integer alphabet behaves differently if $\beta\in\Zomega$ and $\Zomega\neq\Zbeta$. On the other hand, if $\beta=\pm \omega +c$, where $c\in\ZZ$, then $\Zomega=\Zbeta$
+
+The following theorem says that all classes modulo $\beta$ in $\Zomega$ which are contained in $\A+\A$ must have their representatives in $\A$.
 \begin{thm}
 \label{thm:reprBetaMinusOne}
 Let $\omega$ be an algebraic integer. Let the base $\beta\in\Zomega$ be such that $|\beta|>1$ and the alphabet $\A\subset\Zomega$ be such that $0\in\A$. If there exists a $p$-local digit set conversion defined by the function $\phi\colon (\A+\A)^p\rightarrow \A$ and $p=r+1$, then the number $\phi(b,\dots,b)-b$ belongs to the set $(\beta-1)\Zomega$ for any $b\in\A+\A$. 
@@ -114,6 +118,7 @@ $$
 \sum_{i=0}^{n}a_{i+1}\beta^i\equiv_{\beta-1} a\,.
 $$
 \end{proof}
+Unfortunately, the claim cannot be generalized to modulo in $\Zomega$ -- there are numeration systems with integer alphabets which allow parallel addition, but these alphabets does not contain all representatives modulo $\beta-1$ in $\Zomega$, see Table~\ref{tab:resultsQuadrInt} and Examples~\ref{ex:integerAO}, \ref{ex:integerAQ} and \ref{ex:integerAR}. Nevertheless, each class modulo $\beta -1$ in $\Zomega$ which is contained in $\A+\A$ must still has its representative in $\A$ according to Theorem~\ref{thm:reprBetaMinusOne}.
 
 The following lemma summarizes that if we have a parallel addition algorithm for a base $\beta$, then we easily obtain an algorithm also for conjugates of $\beta$.
 \begin{lem}
@@ -177,4 +182,6 @@ also $e_i\equiv_{\beta-1}f_i$ for all $i, 1\leq i\leq k+1$. This is a contradict
 
 Note that the larger necessary alphabet for a base with a real conjugate greater than one is caused by the fact that minimal and maximal element of $\A$ both require another element in $\A$ which is in the same congruence class. This should be considered when an alphabet for such a base is generated.
 
-\komentar{BYLO BY FAJN TO JESTE ZOBECNIT NA abecedu ze Z[OMEGA] - odkaze na kontrabeispiel}
+Since the proof is based on Theorem~\ref{thm:representativesInAlphabet}, it cannot be easily extended to alphabets which are subsets of  $\Zomega$.
+
+
