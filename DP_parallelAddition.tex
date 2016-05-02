@@ -51,7 +51,7 @@ We are interested in construction of parallel addition algorithm for a given bas
 
 The structure of the thesis is following: we review terminology and known results on numeration systems and parallel addition in Chapter~\ref{chap:preliminaries}. In Chapter~\ref{chap:ewm}, a general concept of addition is recalled and so-called extending window method for construction of parallel addition algorithm is outlined. This method, which consists of two phases, was proposed by M. Svobodov\'a \cite{milena}. 
 
-Some useful tools related to the ring $\Zomega$ are developed in Chapter~\ref{chap:Zomega}. Using these results, a necessary condition of convergence the extending window method is proved in Chapter~\ref{chap:convergence}. We show that it is also a sufficient condition of convergence of Phase~1. We establish check of non-convergence of Phase~2 in Theorem~\ref{thm:infinitePathInRauzyGraph}. Moreover, a lower bound on the size of an alphabet which allows parallel addition is stated.
+Some useful tools related to the ring $\Zomega$ are developed in Chapter~\ref{chap:Zomega}, including a norm derived from a companion matrix. Using these results, a necessary condition of convergence the extending window method is proved in Chapter~\ref{chap:convergence}. We show that it is also a sufficient condition of convergence of Phase~1. We establish check of non-convergence of Phase~2 in Theorem~\ref{thm:infinitePathInRauzyGraph}. Moreover, a lower bound on the size of an alphabet which allows parallel addition is stated.
 
 Different variants of both phases of the extending window method are proposed in Chapter~\ref{chap:diffChoices}. In Chapter~\ref{chap:design}, we present algorithms based on the theorems from Chapter~\ref{chap:convergence} and we describe their implementation in SageMath.
 
@@ -116,7 +116,16 @@ In the first section of this chapter, we propose algorithms which may reveal non
 \label{chap:testing}
 	\input{testing.tex}
 
-%\chapter*{Summary}
+\chapter*{Summary}
+The main goal of this thesis was to improve the extending window method with rewriting rule $x-\beta$ which attempts to construct a parallel addition algorithm for a given base $\beta$ and alphabet $\A$ and discuss its convergence.
+
+We  recalled necessary definitions and notation. The concept of parallel addition and extending  window method was explained. We proposed various methods for both phase. Some of them involved $\beta$-norm, which was constructed by using the companion matrix of the minimal polynomial $m_\beta$.
+
+We solved convergence of Phase~1 as a sufficient condition is that the base $\beta$ is expanding, i.e., all its conjugates are greater than one in modulus. We showed that it is also a necessary condition of convergence of the whole extending method. 
+
+The check convergence of Phase~2 for $bb\dots b$ inputs was reviewed. Next, we introduced the notion of a Rauzy graph of Phase~2. We proved Theorem~\ref{thm:infinitePathInRauzyGraph} which provides control of non-convergence of Phase~2 by searching for a cycle in the Rauzy graph.
+
+
 \newpage
 \bibliography{literatura}
 \addcontentsline{toc}{chapter}{References}
