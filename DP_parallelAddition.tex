@@ -37,6 +37,8 @@
 %\chapter*{Introduction}
 
 \chapter{Preliminaries}
+
+This chapter summarizes definitions related to numeration systems and parallel addition. We recall some known results on properties of a numeration system which allows parallel addition. At the end of the chapter, we define set $\Zomega$ and determine numeration systems within the scope of this thesis.
 	\input{preliminaries.tex}
 
 
@@ -44,9 +46,13 @@
 
 \chapter{Design of extending window method}
 \label{chap:ewm}
+In this chapter, the general concept of addition and digit set conversion is recalled. We outline a so-called \emph{extending window method} which is due to M. Svobodov\'a \cite{milena}. The method consists of two phases. For a given numeration system $(\beta,\A)$, it attempts to construct a digit set conversion algorithm which is computable in parallel. We recall that $\omega$ is an algebraic integer, $\beta \in \Zomega$ is a base and $0\in\A\subset\Zomega$ is an alphabet. 
+
+
 	\input{method_description.tex}
 
 \chapter{\texorpdfstring{Properties of $\Zomega$}{Properties of Z[omega]}}
+We compile some properties  of the ring $\Zomega$ in this chapter. The isomorphism to $\ZZ^d$ is indicated and used for check of divisibility.  We review some results from matrix theory to introduce a norm in $\Zomega$. This norm is involved in the discussion of convergence of Phase~1 in Chapter~\ref{chap:convergence}. In the last section, we show how the number of congruence classes modulo $\beta$ in $\Zomega$ is determined. That is used in the proof of a lower bound on the size of an alphabet which allows parallel addition in Section~\ref{sec:minimalAlphabet}.
 	\input{isomorphism.tex}
 	\input{naturalNorm.tex}
 	\input{congruenceClasses.tex}	

@@ -1,6 +1,4 @@
 
-We recall the general concept of addition at the beginning of this chapter and then we describe a so-called \emph{extending window method} which is due to M. Svobodov\'a \cite{milena}. The method attempts to construct a conversion algorithm computable in parallel for a given numeration system $(\beta,\A)$. We recall that $\omega$ is an algebraic integer, $\beta \in \Zomega$ is a base and $0\in\A\subset\Zomega$ is an alphabet. 
-
 \section{Addition}
 
 The general idea of addition (standard or parallel) in any numeration system $(\beta,\A)$ is the following: we sum up two numbers digit-wise and then we convert the result with digits in $\A+\A$ into the alphabet $\A$. Obviously, digit-wise addition is computable in parallel, thus the problematic part is the digit set conversion of the obtained result. It can be easily done in a standard way but a parallel digit set conversion is non-trivial. A parallel conversion is based on the same  formulas as the standard one but the choice of so-called \emph{weight coefficients} differs.
