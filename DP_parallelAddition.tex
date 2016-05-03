@@ -2,7 +2,8 @@
 %git-latexdiff 17807bf54f868 --main DP_parallelAddition.tex --cleanup none --latexmk
 
 
-\usepackage{a4wide,cite}
+\usepackage{geometry}
+\usepackage{cite}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 % \usepackage[IL2]{fontenc}  
@@ -34,9 +35,10 @@
 \usepackage{fancyhdr}
 	\pagestyle{fancy}
 	\fancyhf{}
-	\fancyhead[LO]{\slshape \nouppercase{\rightmark}}
-	\fancyhead[LE]{\slshape \nouppercase{\leftmark}}
-	\fancyhead[RO,RE]{\thepage}
+	\fancyhead[LO]{ \rightmark}
+	\fancyhead[RO,LE]{\thepage}
+	\fancyhead[RE]{\slshape \leftmark}
+	
 \usepackage{emptypage}
 %\setlength{\headheight}{16pt} 
 
@@ -182,7 +184,7 @@ Děkuji Ing. Štěpánu Starostovi, Ph.D., za vedení mé diplomové práce. Dá
 %%% abstrakt atp.
 \thispagestyle{empty}
 
-\begin{tabular}{lp{0.76\textwidth}}
+\begin{tabular}{lp{0.74\textwidth}}
   {\em N\'azev pr\'ace:} & \bf \nazevcz \\[4mm]
   {\em Autor:} & \autor \\[4mm]
   {\em Obor:} & \obor \\[4mm]
@@ -229,6 +231,7 @@ Děkuji Ing. Štěpánu Starostovi, Ph.D., za vedení mé diplomové práce. Dá
 \addcontentsline{toc}{chapter}{References}
 \bibliographystyle{amsplain}
 
+%\cleardoublepage\phantomsection
 \appendix
 \chapter*{Appendices}
 \markboth{\MakeUppercase{Appendices}}{}
