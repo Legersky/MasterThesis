@@ -1,4 +1,8 @@
+\cleardoublepage\phantomsection
+\addcontentsline{toc}{chapter}{Introduction}
 \chapter*{Introduction}
+\markboth{\MakeUppercase{Introduction}}{}
+
 Parallel addition have been studied as it is an important part of algorithms for multiplication and division. 
 While carry propagation in standard algorithms requires to compute digits of the sum of $x_n x_{n-1}\cdots x_1 x_0 \bullet$ and $y_n y_{n-1}\cdots y_1 y_0 \bullet$  one by one, a parallel algorithm determines the $j$-th digit of the sum just from a fixed number of digits around $x_j$ and $y_j$. Thus it avoids propagation of carry and all digits digits of the result can be outputted at the same time. Besides theoretical reasons, parallel addition is used for instance in fast division algorithm in processors Pentium. Division is implemented with base 4 and digit set $\{-2,-1,0,1,2\}$.
 
@@ -82,7 +86,11 @@ In the first section of this chapter, we propose algorithms which may reveal non
 \label{chap:testing}
 	\input{testing.tex}
 
+
+\cleardoublepage\phantomsection
+\addcontentsline{toc}{chapter}{Summary}
 \chapter*{Summary}
+\markboth{\MakeUppercase{Summary}}{}
 The main goal of this thesis was to improve the extending window method with rewriting rule $x-\beta$ which attempts to construct a parallel addition algorithm for a given base $\beta$ and alphabet $\A$ and discuss its convergence.
 
 We  recalled necessary definitions and notation in the scope of numeration systems and parallel addition. The concept of parallel addition and extending  window method was explained. We proposed various methods for both phase of the method. Some of them involve $\beta$-norm, which was constructed by using the companion matrix of the minimal polynomial $m_\beta$.

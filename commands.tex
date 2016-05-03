@@ -1,5 +1,4 @@
 \usepackage{amsmath, amsthm, amssymb, units, dsfont}
-% \usepackage[nomessages]{fp}
 \usepackage{sidecap}
 \usepackage{enumerate}
 \usepackage{xcolor}
@@ -14,6 +13,16 @@
 
 \usepackage{listings}
 \usepackage{color}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\usepackage{breqn}
+\usepackage{hyperref}
+
+\usepackage{pgfkeys}
+
+\usepackage{changepage}
 
 \definecolor{darkgreen}{rgb}{0,0.6,0}
 \definecolor{darkred}{rgb}{0.6,0,0}
@@ -50,8 +59,7 @@
 }
 
 
-\usepackage{breqn}
-\usepackage{hyperref}
+
 
 %\newcommand{\komentar}[1]{\textcolor{red}{\MakeUppercase{#1}} \newline}
 %\newenvironment{upravit}{\color{blue}}{}
@@ -65,8 +73,6 @@
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
 
-% \newcommand{\OO}{\mathbb{O}}
-\newcommand{\II}{\mathbb{I}}
 
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\B}{\mathcal{B}}
@@ -106,8 +112,7 @@
 \renewcommand\Re{\operatorname{Re}}
 \renewcommand\Im{\operatorname{Im}}
 
-\usepackage{algorithm}
-\usepackage{algorithmic}
+
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Ouput:}}
 \algsetup{indent=2em}
@@ -130,7 +135,7 @@
 
 \def\Cpp{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
 
- \usepackage{pgfkeys}
+
  \pgfkeys{
   /phaseOnecaptions array/.is family, /phaseOnecaptions array,
   .unknown/.style = {\pgfkeyscurrentname/.initial = #1},

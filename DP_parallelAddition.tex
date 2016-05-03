@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{report}
+\documentclass[a4paper, 11pt, twoside, openright]{report}
 %git-latexdiff 17807bf54f868 --main DP_parallelAddition.tex --cleanup none --latexmk
 
 
@@ -17,19 +17,28 @@
             pdfproducer={Jan Legersk\'y},
             pdfcreator={pdflatex},
             pdfencoding=unicode]{hyperref}
-\usepackage{bookmark}
-\hypersetup{pdftitle={Konstrukce algoritmu pro paraleln\'i sc\'it\'an\'i}}
-\hypersetup{pdfsubject={V\'yzkumn\'y \'ukol, Jan Legersk\'y}}
+%\usepackage{bookmark}
+\hypersetup{pdftitle={Construction of algorithms for parallel addition   in non-standard numeration systems}}
+\hypersetup{pdfsubject={Master Thesis, Jan Legersk\'y}}
 \hypersetup{pdfkeywords={parallel addition, non-standard numeration systems}}            
 
 \usepackage[pdftex]{graphicx,color}
+
+
+% fix left/right margins
+\let\tmp\oddsidemargin
+\let\oddsidemargin\evensidemargin
+\let\evensidemargin\tmp
+\reversemarginpar
+
 \usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\slshape \nouppercase{\rightmark}} % \leftmark .. kapitola
-\fancyhead[R]{\thepage}
-% \oddsidemargin=10mm   % jednostranný tisk !!!
-\setlength{\headheight}{16pt} 
+	\pagestyle{fancy}
+	\fancyhf{}
+	\fancyhead[LO]{\slshape \nouppercase{\rightmark}}
+	\fancyhead[LE]{\slshape \nouppercase{\leftmark}}
+	\fancyhead[RO,RE]{\thepage}
+\usepackage{emptypage}
+%\setlength{\headheight}{16pt} 
 
 
 \input{commands.tex}
@@ -47,18 +56,7 @@
 \setcounter{tocdepth}{1}
 
 
-% fix left/right margins
-%\let\tmp\oddsidemargin
-%\let\oddsidemargin\evensidemargin
-%\let\evensidemargin\tmp
-%\reversemarginpar
 
-
-%%% VYHLEDAT A OPRAVIT !!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% vlna !!
-% taky opravit N-1 na N\!-\!1
-% zkontrolovat \min \; ...
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% k vyplnění ZAČÁTEK -------------------------------------------------
 \newcommand{\cvut}{ČESKÉ VYSOKÉ UČENÍ TECHNICKÉ V~PRAZE}
@@ -67,11 +65,12 @@
 \newcommand{\obor}{Matematická informatika}
 %\newcommand{\zamereni}{Matematická informatika}
 
-\newcommand{\nazevczBreaked}{Konstrukce algoritm\r u pro paraleln\'i s\v c\'it\'an\'i \\ v nestandardn\'ich \v c\'iseln\'ych soustav\'ach}
-\newcommand{\nazevenBreaked}{Construction of algorithms for parallel addition  \\ in non-standard numeration systems}
+\newcommand{\nazevczBreaked}{Konstrukce algoritm\r u pro paraleln\'i s\v c\'it\'an\'i \\[8pt] v nestandardn\'ich \v c\'iseln\'ych soustav\'ach}
+\newcommand{\nazevenBreaked}{Construction of algorithms for parallel addition  \\[8pt] in non-standard numeration systems}
 \newcommand{\nazevcz}{Konstrukce algoritm\r u pro paraleln\'i s\v c\'it\'an\'i  v nestandardn\'ich \v c\'iseln\'ych soustav\'ach}
 \newcommand{\nazeven}{Construction of algorithms for parallel addition   in non-standard numeration systems}
-\newcommand{\autor}{Bc. Jan Legersk\'y}
+\newcommand{\autor}{Jan Legersk\'y}
+\newcommand{\autorBc}{Bc. Jan Legersk\'y}
 \newcommand{\vedouci}{Ing. \v St\v ep\'an Starosta, Ph.D.}
 \newcommand{\pracovisteVed}{KAM FIT, \v CVUT v~Praze}
 \newcommand{\konzultant}{---}
@@ -92,21 +91,21 @@
 
 \pagenumbering{roman}
 \begin{titlepage}
-
-% 1. úvodní strana
- \thispagestyle{empty}
- \begin{center}
- 	{\Large \cvut \\[12pt] \fjfi\\}   % 260pt od nadpisu k "Bak. práce"
- 	\vspace{45pt}
- 	\includegraphics[height=100pt]{img/logoCVUT.pdf}\\  %bylo  75
- 	\vspace{160pt}
- 	{\Huge DIPLOMOV\'A PR\'ACE}
- \end{center}
- \vfill
- {
- 	\Large 2016 \hfill Jan Legersk\'y
- }
- \newpage
+%
+%% 1. úvodní strana
+% \thispagestyle{empty}
+% \begin{center}
+% 	{\Large \cvut \\[12pt] \fjfi\\}   % 260pt od nadpisu k "Bak. práce"
+% 	\vspace{45pt}
+% 	\includegraphics[height=100pt]{img/logoCVUT.pdf}\\  %bylo  75
+% 	\vspace{160pt}
+% 	{\Huge DIPLOMOV\'A PR\'ACE}
+% \end{center}
+% \vfill
+% {
+% 	\Large 2016 \hfill \autor
+% }
+% \newpage
 
 
 %%% 2. úvodní strana
@@ -128,23 +127,23 @@
 {
 	\Large
 	\begin{tabular}{ll}
-	Vypracoval: & \autor\\[3pt]
+	Vypracoval: & \autorBc\\[3pt]
 	\v Skolitel: & \vedouci\\[3pt]
 	Akademick\'y rok: & 2015/2016
 	\end{tabular}
 }
-\newpage
+\cleardoublepage
+\thispagestyle{empty}
 
-
-%%% sem přijde ofic. zadání
-% \thispagestyle{empty}
-% \Large
-% Na toto místo přijde svázat \textbf{zadání diplomové práce}!
-% 
-% \vspace{4mm}
-% V~jednom z~výtisků musí být \textbf{originál} zadání, v~ostatních kopie.
-% \normalsize
-
+%% sem přijde ofic. zadání
+ \thispagestyle{empty}
+ \Large
+ Na toto místo přijde svázat \textbf{zadání diplomové práce}!
+ 
+ \vspace{4mm}
+ V~jednom z~výtisků musí být \textbf{originál} zadání, v~ostatních kopie.
+ \normalsize
+\cleardoublepage
 
 %%% prohlášení
 \thispagestyle{empty}
@@ -157,12 +156,12 @@ Prohla\v suji na tomto m\'ist\v e, \v ze jsem p\v redlo\v zenou pr\'aci vypracov
 \vspace{1.5cm}
 
 \noindent
-\vspace{5mm}V Praze dne 4. 5. 2016\hfill
+\vspace{5mm}V Praze dne 4. května 2016\hfill
 	\begin{tabular}{c}
-	\\
+	\\[40pt]
 	\autor
 	\end{tabular}
-\newpage
+\cleardoublepage
 
 
 %%% poděkování
@@ -175,9 +174,9 @@ Prohla\v suji na tomto m\'ist\v e, \v ze jsem p\v redlo\v zenou pr\'aci vypracov
 Děkuji Ing. Štěpánu Starostovi, Ph.D., za vedení mé diplomové práce. Dále děkuji Ing. Mileně Svobodové, Ph.D., a prof. Ing. Editě Pelantové, CSc., za  podnětné diskuze o implementované metodě. Velký dík patří také mým rodičům za podporu během celého studia.
 
 \begin{flushright}
-Jan Legersk\'y
+\autor
 \end{flushright}
-\newpage
+\cleardoublepage
 
 
 %%% abstrakt atp.
@@ -199,14 +198,20 @@ Jan Legersk\'y
   {\em Abstract:} & \abstrEN \\[4mm]
   {\em Key words:} & \keyword
 \end{tabular}
-\newpage
+\cleardoublepage
 
 
 %%% obsah
+\thispagestyle{empty}
 \renewcommand\contentsname{\vspace{-3cm} Contents \vspace{-0.8cm}}
 \tableofcontents
 \thispagestyle{empty}
 
+\cleardoublepage
+\thispagestyle{empty}
+\input{symbols.tex}
+\thispagestyle{empty}
+\cleardoublepage
 \end{titlepage}
 \pagenumbering{arabic}
 
@@ -215,8 +220,7 @@ Jan Legersk\'y
 %     Z A Č Á T E K   P R Á C E                                        %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\tableofcontents
-\input{symbols.tex}
+
 
 \input{DP_body.tex}
 
@@ -227,7 +231,8 @@ Jan Legersk\'y
 
 \appendix
 \chapter*{Appendices}
-\pagenumbering{Roman}
+\markboth{\MakeUppercase{Appendices}}{}
+%\pagenumbering{Roman}
 \addcontentsline{toc}{chapter}{Appendices}
 \renewcommand{\thesection}{\Alph{section}}
 \counterwithin{exmp}{section}
