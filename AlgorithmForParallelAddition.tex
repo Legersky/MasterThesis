@@ -15,7 +15,7 @@ Take \var{minPol\_str} which is a string of symbolic expression in the variable 
 A base $\beta$ is given by a symbolic expression \var{base} where \verb+omega+ is used for $\omega$.
 Setter \fun{setBase}{base} checks if the base $\beta$ is expanding and inspects whether it has a real conjugate greater than one.
 
-The parameter \var{alphabet} and \var{inputAlphabet} expect a string with a list of symbolic expressions (use \verb+omega+ for $\omega$) to define an alphabet $\A$ and input alphabet $\B$. If the string \var{alphabet} is empty, then an alphabet $\A\subset\Zomega$ is generated such that it contains all representants modulo $\beta$ and $\beta-1$ in $\Zomega$ according to Theorem~\ref{thm:lowerBoundAlphabet}. %If \var{alphabet} is \verb+oneMore+, then a bigger alphabet is generated.  
+The parameter \var{alphabet} and \var{inputAlphabet} expect a string with a list of symbolic expressions (use \verb+omega+ for $\omega$) to define an alphabet $\A$ and input alphabet $\B$. If the string \var{alphabet} is empty, then an alphabet $\A\subset\Zomega$ is generated such that it contains all representants modulo $\beta$ and $\beta-1$ in $\Zomega$, see the end of Section~\ref{sec:minimalAlphabet}. %If \var{alphabet} is \verb+oneMore+, then a bigger alphabet is generated.  
 If \var{alphabet} is \verb+'integer'+, % \verb+integer2+ or \verb+integer3+,
  an algorithm attempts to find an integer alphabet. An exception is raised when alphabet generating fails. If  \var{inputAlphabet} is empty, then $\B$ is set to $\A+\A$.
 

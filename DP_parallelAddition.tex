@@ -51,7 +51,7 @@ We are interested in construction of parallel addition algorithm for a given bas
 
 The structure of the thesis is following: we review terminology and known results on numeration systems and parallel addition in Chapter~\ref{chap:preliminaries}. In Chapter~\ref{chap:ewm}, a general concept of addition is recalled and so-called extending window method for construction of parallel addition algorithm is outlined. This method, which consists of two phases, was proposed by M. Svobodov\'a \cite{milena}. 
 
-Some useful tools related to the ring $\Zomega$ are developed in Chapter~\ref{chap:Zomega}, including a norm derived from a companion matrix. Using these results, a necessary condition of convergence the extending window method is proved in Chapter~\ref{chap:convergence}. We show that it is also a sufficient condition of convergence of Phase~1. We establish check of non-convergence of Phase~2 in Theorem~\ref{thm:infinitePathInRauzyGraph}. Moreover, a lower bound on the size of an alphabet which allows parallel addition is stated.
+Some useful tools related to the ring $\Zomega$ are developed in Chapter~\ref{chap:Zomega}, including a norm derived from a companion matrix. Using these results, a necessary condition of convergence the extending window method is proved in Chapter~\ref{chap:convergence}. We show that it is also a sufficient condition of convergence of Phase~1. We establish check of non-convergence of Phase~2 in Theorem~\ref{thm:infinitePathInRauzyGraph}. Moreover, a lower bound on the size of an alphabet which allows parallel addition is stated. We also indicate a way how an alphabet with necessary properties can be generated.
 
 Different variants of both phases of the extending window method are proposed in Chapter~\ref{chap:diffChoices}. In Chapter~\ref{chap:design}, we present algorithms based on the theorems from Chapter~\ref{chap:convergence} and we describe their implementation in SageMath.
 
@@ -82,7 +82,7 @@ We compile some properties  of the ring $\Zomega$ in this chapter. The isomorphi
 	\input{congruenceClasses.tex}	
 	
 \chapter{Convergence}
-We discuss convergence of the extending window method designed in Chapter~\ref{chap:ewm}. We prove a necessary condition of convergence of the whole method and we show that it is also sufficient condition of convergence of Phase~1, using the tools from the previous chapter. Next, we establishes a condition which implies non-convergence of Phase~2. The condition is formulated by existence of an infinite walk in a specific directed graph. We also prove that there is the same lower bound on the size of an alphabet from $\Zbeta$ as for integer alphabets when the extending method converges.
+We discuss convergence of the extending window method designed in Chapter~\ref{chap:ewm}. We prove a necessary condition of convergence of the whole method and we show that it is also sufficient condition of convergence of Phase~1, using the tools from the previous chapter. Next, we establishes a condition which implies non-convergence of Phase~2. The condition is formulated by existence of an infinite walk in a specific directed graph. We also prove that there is the same lower bound on the size of an alphabet from $\Zbeta$ as for integer alphabets when the extending method converges. We propose a way how an alphabet can be generated for a given base.
 \label{chap:convergence}
 
 	\section{Convergence of Phase 1}
