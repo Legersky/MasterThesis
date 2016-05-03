@@ -8,8 +8,7 @@ We remark that arithmetic operations in $\Zomega$ are independent on the choice 
 
 The constructor of class \emph{AlgorithmForParallelAddition} is 
 
-\begin{method}{\_\_init\_\_}{minPol\_str, embd, alphabet, base, name='NumerationSystem', inputAlphabet=' ',\\
- printLog=True, printLogLatex=False, verbose=0}
+\begin{method}{\_\_init\_\_}{minPol\_str, embd, alphabet, base, name='NumerationSystem', inputAlphabet='', printLog=True, printLogLatex=False, verbose=0}
 Take \var{minPol\_str} which is a string of symbolic expression in the variable $x$ of an irreducible polynomial~$m_\omega$. The closest root of  \var{minPol\_str} to \var{embd} is used as the ring generator $\omega$ (see more in the documentation of \emph{NumberField} in SageMath \cite{sage}). The structures for $\Zomega$ are constructed as described above. 
 
 A base $\beta$ is given by a symbolic expression \var{base} where \verb+omega+ is used for $\omega$.

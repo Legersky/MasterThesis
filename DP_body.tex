@@ -64,7 +64,7 @@ We discuss convergence of the extending window method designed in Chapter~\ref{c
 
 \chapter{Different methods in~Phases~1~and~2}
 	\label{chap:diffChoices}
-	We mentioned in Chapter~\ref{chap:ewm} that there is a lot of variability in both phases of the extending window method. Within this chapter, we propose various methods how an intermediate weight coefficients set $\Q_k$ can be extended to $\Q_{k+1}$ in Phase~2 and how the set $\Qwo{k}$ can be constructed in Phase~2. The selection of methods is based on testing many experimental ones. 
+	We mentioned in Chapter~\ref{chap:ewm} that there is a lot of variability in both phases of the extending window method. Within this chapter, we propose various methods how an intermediate weight coefficients set $\Q_k$ can be extended to $\Q_{k+1}$ in Phase~1 and how the set $\Qwo{k}$ can be constructed in Phase~2. The presented methods are based on many preliminary tests.
 
 	\input{choices_phase1.tex}
 
@@ -76,7 +76,7 @@ We discuss convergence of the extending window method designed in Chapter~\ref{c
 
 \chapter{Design and implementation}
 
-In the first section of this chapter, we propose algorithms which may reveal non-convergence of Phase~2. They are based on the theorems from Chapter~\ref{chap:convergence}. We present a simple algorithm which makes Phase~2 stable. We develop Algorithm~\ref{alg:weightFunction_modified} that summarizes  Phase~2 with all modifications. All designed algorithms are implemented in SageMath. The program is described in Section~\ref{sec:implementation}.
+In the first section of this chapter, we propose algorithms which may reveal non-convergence of Phase~2. They are based on the theorems from Chapter~\ref{chap:convergence}. We present a simple algorithm which makes Phase~2 stable. We develop Algorithm~\ref{alg:weightFunction_modified} that executes  Phase~2 with all modifications. All designed algorithms are implemented in SageMath. The program is described in Section~\ref{sec:implementation}.
 \label{chap:design}
 	\input{modifiedPhase2.tex}
 	\input{implementation.tex}

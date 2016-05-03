@@ -1,6 +1,6 @@
 We attempted to find a parallel addition algorithm for more than 5000 different numeration systems. Including various methods in Phase~1 and 2, the implementation of the extending window method was launched over 7000 times. 
 
-Only expanding bases were considered as it is  necessary condition of convergence of the extending window method. At the same time, convergence of Phase~1 is guaranteed.
+Only expanding bases were considered as it is a necessary condition for convergence of the extending window method. At the same time, convergence of Phase~1 is guaranteed.
 
 Most of the bases were given by polynomial combinations of $\omega$ with coefficients in a limited range, where $\omega$ was generated as a root of a monic polynomial with bounded integer coefficients. Mostly, $\omega$ were  quadratic, but cubic ones were also tested. Alphabets for these bases were generated automatically according to Section~\ref{sec:alphabetGeneration}.
 
@@ -82,7 +82,7 @@ An interesting example is Quadratic+1+4+5\_complex1. Only one element of the alp
 
 \section{Examples of results}
 \label{sec:resultsExamples}
-We divide numeration systems with quadratic base according to the type of an alphabet. There are numeration systems with non-integer alphabets in Table~\ref{tab:resultsQuadrNonint}, while numeration systems with integer alphabets in Table~\ref{tab:resultsQuadrInt}. The structure of tables is the same as in the previous section. The method 1d for Phase~1 and 2b for Phase~2 were used for the listed numeration systems.
+We divide numeration systems with quadratic base according to the type of  alphabet. Numeration systems with non-integer alphabets are in Table~\ref{tab:resultsQuadrNonint}, while numeration systems with integer alphabets are in Table~\ref{tab:resultsQuadrInt}. The structure of tables is the same as in the previous section. The methods 1d for Phase~1 and 2b for Phase~2 were used for the listed numeration systems.
 
 \begin{table}[tpb]
 	\begin{center}
@@ -92,7 +92,7 @@ We divide numeration systems with quadratic base according to the type of an alp
 \label{tab:resultsQuadrNonint}
 \end{table}
 
-Firstly, we focus on non-integer alphabets. Since many alphabets are large, Table~\ref{tab:resultsQuadrNonint} outlines only their sizes. The whole alphabets can be found in the spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results}.
+Firstly, we focus on non-integer alphabets. Since many alphabets are large, Table~\ref{tab:resultsQuadrNonint} outlines only their sizes. The whole alphabets can be found in the spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results}, see Section~\ref{sec:gspreadsheet}.
 
 Note that none of bases has a real conjugate greater than 1. Observe that the linear and absolute coefficients of the minimal polynomial $m_\beta$ are positive if the corresponding alphabet attains the lower bound given by Theorem~\ref{thm:lowerBoundAlphabet}. A possible explanation is that if the linear coefficient were negative, then $\#\A=m_\beta(0)\geq m_\beta(1)$, i.e., the numeration system is not enough redundant.
 
