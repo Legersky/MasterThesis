@@ -1,6 +1,5 @@
-\documentclass[11pt,a4paper]{report}	%,twoside,openright
-%git-latexdiff 17807bf54f868 --main DP_parallelAddition.tex --cleanup none --latex
-
+\documentclass[a4paper, 11pt]{report}
+%git-latexdiff 17807bf54f868 --main DP_parallelAddition.tex --cleanup none --latexmk
 
 
 \usepackage{a4wide,cite}
@@ -9,11 +8,43 @@
 % \usepackage[IL2]{fontenc}  
 % \usepackage{amsmath,amsthm} 
 % \usepackage{amsfonts}
-
+\usepackage{amsmath, amsthm, amssymb, units, dsfont}
 
 \usepackage[fixlanguage]{babelbib}
 \selectbiblanguage{english}
 
+\usepackage[pdfauthor={Jan Legersk\'y},
+            pdfproducer={Jan Legersk\'y},
+            pdfcreator={pdflatex},
+            pdfencoding=unicode]{hyperref}
+\usepackage{bookmark}
+\hypersetup{pdftitle={Konstrukce algoritmu pro paraleln\'i sc\'it\'an\'i}}
+\hypersetup{pdfsubject={V\'yzkumn\'y \'ukol, Jan Legersk\'y}}
+\hypersetup{pdfkeywords={parallel addition, non-standard numeration systems}}            
+
+\usepackage[pdftex]{graphicx,color}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\slshape \nouppercase{\rightmark}} % \leftmark .. kapitola
+\fancyhead[R]{\thepage}
+% \oddsidemargin=10mm   % jednostranný tisk !!!
+\setlength{\headheight}{16pt} 
+
+
+\input{commands.tex}
+
+
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[chapter]
+\newtheorem{exmp}{Example}[chapter]
+
+\renewcommand{\bibname}{References}
+
+\setcounter{tocdepth}{1}
 
 
 % fix left/right margins
@@ -22,123 +53,172 @@
 %\let\evensidemargin\tmp
 %\reversemarginpar
 
-\input{commands.tex}    
-\newtheorem{thm}{Theorem}[chapter]
-\newtheorem{lem}[thm]{Lemma}
 
-\theoremstyle{definition}
-\newtheorem{defn}{Definition}[chapter]
-\newtheorem{exmp}{Example}[chapter]
+%%% VYHLEDAT A OPRAVIT !!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% vlna !!
+% taky opravit N-1 na N\!-\!1
+% zkontrolovat \min \; ...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% k vyplnění ZAČÁTEK -------------------------------------------------
+\newcommand{\cvut}{ČESKÉ VYSOKÉ UČENÍ TECHNICKÉ V~PRAZE}
+\newcommand{\fjfi}{Fakulta jaderná a fyzikálně inženýrská}
+\newcommand{\km}{Katedra matematiky}
+\newcommand{\obor}{Matematická informatika}
+%\newcommand{\zamereni}{Matematická informatika}
+
+\newcommand{\nazevczBreaked}{Konstrukce algoritm\r u pro paraleln\'i s\v c\'it\'an\'i \\ v nestandardn\'ich \v c\'iseln\'ych soustav\'ach}
+\newcommand{\nazevenBreaked}{Construction of algorithms for parallel addition  \\ in non-standard numeration systems}
+\newcommand{\nazevcz}{Konstrukce algoritm\r u pro paraleln\'i s\v c\'it\'an\'i  v nestandardn\'ich \v c\'iseln\'ych soustav\'ach}
+\newcommand{\nazeven}{Construction of algorithms for parallel addition   in non-standard numeration systems}
+\newcommand{\autor}{Bc. Jan Legersk\'y}
+\newcommand{\vedouci}{Ing. \v St\v ep\'an Starosta, Ph.D.}
+\newcommand{\pracovisteVed}{KAM FIT, \v CVUT v~Praze}
+\newcommand{\konzultant}{---}
+
+\newcommand{\klicova}{Paraleln\'i s\v c\'it\'an\'i, nestandardn\'i numera\v cn\'i syst\'emy, extending window method.}  % max. 5 klíčových slov
+\newcommand{\keyword}{Parallel addition, non-standard numeration systems, extending window method.}
+\newcommand{\abstrCZ}%{\begin{minipage}{0.7\textwidth}
+{%Pr\'{a}ce je v\v{e}nov\'{a}na konstrukci algoritm\r{u} pro paraleln\'{\i} s\v{c}\'{\i}t\'{a}n\'{\i} v r\r{u}zn\'{y}ch numera\v{c}n\'{\i}ch soustav\'{a}ch. Zam\v{e}\v{r}uje se hlavn\v{e} na nestandardn\'{\i} numera\v{c}n\'{\i} syst\'{e}my s necelo\v{c}\'{\i}selnou, obecn\v{e} komplexn\'{\i}, b\'{a}z\'{\i} $\beta\in\Zomega$ a obecn\v{e} necelo\v{c}\'{\i}selnou abecedou $\A\subset\Zomega$ pro n\v{e}jak\'{e} algebraick\'{e} cel\'{e} \v{c}\'{\i}slo $\omega$. Navrhujeme takzvanou \emph{extending window method} s pou\v{z}it\'{\i}m z\'{a}kladn\'{\i}ho p\v{r}episovac\'{\i}ho pravidla $x-\beta$, kter\'{a} pro danou b\'{a}zi $\beta$ a abecedu $\A$ hled\'{a} algoritmus pro paraleln\'{\i} s\v{c}\'{\i}t\'{a}n\'{\i}. Metoda se skl\'{a}d\'{a} ze dvou f\'{a}z\'{\i}. Pro prvn\'{\i} z nich uv\'{a}d\'{\i}me posta\v{c}uj\'{\i}c\'{\i} podm\'{\i}nku konvergence, pro druhou m\'{a}me algoritmus, kter\'{y} kontroluje nutnou podm\'{\i}nku konvergence. Tuto metodu implementujeme v programovac\'{\i}m jazyce SageMath a uv\'{a}d\'{\i}me mno\v{z}stv\'{\i} otestovan\'{y}ch numera\v{c}n\'{\i}ch syst\'{e}m\r{u}.
+} 
+% \end{minipage}}
+\newcommand{\abstrEN}{
+%We focus on the construction of algorithms for parallel addition in different numeration systems, especially non-standard ones. The base $\beta$ is an element of $\Zomega$ and the alphabet, in general non-integer, is a subset of $\Zomega$ for some algebraic integer $\omega$. We design so-called extending window method with the basic rewriting rule $x-\beta$. The method searches for a parallel addition algorithm for a given base $\beta$ and alphabet $\A$. It consists of two phases. We have the sufficient condition of convergence of Phase 1. We introduce the algorithm which verifies the necessary condition of convergence of Phase 2. The method is implemented in SageMath and we provide several tested examples.
+}
+%%% k vyplnění KONEC ---------------------------------------------------
+
 
 \begin{document}
+
+\pagenumbering{roman}
+\begin{titlepage}
+
+% 1. úvodní strana
+ \thispagestyle{empty}
+ \begin{center}
+ 	{\Large \cvut \\[12pt] \fjfi\\}   % 260pt od nadpisu k "Bak. práce"
+ 	\vspace{45pt}
+ 	\includegraphics[height=100pt]{img/logoCVUT.pdf}\\  %bylo  75
+ 	\vspace{160pt}
+ 	{\Huge DIPLOMOV\'A PR\'ACE}
+ \end{center}
+ \vfill
+ {
+ 	\Large 2016 \hfill Jan Legersk\'y
+ }
+ \newpage
+
+
+%%% 2. úvodní strana
+\thispagestyle{empty}
+\begin{center}
+	{\Large \cvut \\[10pt] \fjfi \\[10pt] \km\\}
+	\vspace{45pt} %120
+	\includegraphics[height=100pt]{img/logoCVUT.pdf}\\
+	\vspace{90pt}
+	{\Large DIPLOMOV\'A PR\'ACE}
+	\vspace{90pt}
+	
+	{\Large\bf \nazevczBreaked}
+	\vspace{30pt}
+	
+	{\Large\bf \nazevenBreaked}
+\end{center}
+\vfill
+{
+	\Large
+	\begin{tabular}{ll}
+	Vypracoval: & \autor\\[3pt]
+	\v Skolitel: & \vedouci\\[3pt]
+	Akademick\'y rok: & 2015/2016
+	\end{tabular}
+}
+\newpage
+
+
+%%% sem přijde ofic. zadání
+% \thispagestyle{empty}
+% \Large
+% Na toto místo přijde svázat \textbf{zadání diplomové práce}!
+% 
+% \vspace{4mm}
+% V~jednom z~výtisků musí být \textbf{originál} zadání, v~ostatních kopie.
+% \normalsize
+
+
+%%% prohlášení
+\thispagestyle{empty}
+~
+\vfill
+\noindent\textbf{Čestné prohlášení}
+\vspace{0.5cm}
+
+Prohla\v suji na tomto m\'ist\v e, \v ze jsem p\v redlo\v zenou pr\'aci vypracoval samostatn\v e a \v ze jsem uvedl ve\v skerou pou\v zitou literaturu.
+\vspace{1.5cm}
+
+\noindent
+\vspace{5mm}V Praze dne 4. 5. 2016\hfill
+	\begin{tabular}{c}
+	\\
+	\autor
+	\end{tabular}
+\newpage
+
+
+%%% poděkování
+\thispagestyle{empty}
+~
+\vfill
+\noindent\textbf{Pod\v ekov\'an\'i}
+\vspace{0.5cm}
+
+Děkuji Ing. Štěpánu Starostovi, Ph.D., za vedení mé diplomové práce. Dále děkuji Ing. Mileně Svobodové, Ph.D., a prof. Ing. Editě Pelantové, CSc., za  podnětné diskuze o implementované metodě. Velký dík patří také mým rodičům za podporu během celého studia.
+
+\begin{flushright}
+Jan Legersk\'y
+\end{flushright}
+\newpage
+
+
+%%% abstrakt atp.
+\thispagestyle{empty}
+
+\begin{tabular}{lp{0.76\textwidth}}
+  {\em N\'azev pr\'ace:} & \bf \nazevcz \\[4mm]
+  {\em Autor:} & \autor \\[4mm]
+  {\em Obor:} & \obor \\[4mm]
+%  {\em Zam\v e\v ren\'i:} & \zamereni \\[4mm]
+  {\em Druh pr\'ace:} & Diplomová práce \\[4mm]
+  {\em Vedoucí práce:} & \vedouci, \pracovisteVed \\[4mm]
+  {\em Konzultant:} & \konzultant \\[4mm]
+  {\em Abstrakt:} & \abstrCZ \\[4mm]
+  {\em Kl\'i\v cov\'a slova:} & \klicova \\[20mm]
+
+  {\em Title:} & \bf \nazeven \\[4mm]
+  {\em Author:} & \autor \\[4mm]
+  {\em Abstract:} & \abstrEN \\[4mm]
+  {\em Key words:} & \keyword
+\end{tabular}
+\newpage
+
+
+%%% obsah
+\renewcommand\contentsname{\vspace{-3cm} Contents \vspace{-0.8cm}}
+\tableofcontents
+\thispagestyle{empty}
+
+\end{titlepage}
+\pagenumbering{arabic}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Z A Č Á T E K   P R Á C E                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \tableofcontents
 \input{symbols.tex}
 
-\chapter*{Introduction}
-Parallel addition have been studied as it is an important part of algorithms for multiplication and division. 
-While carry propagation in standard algorithms requires to compute digits of the sum of $x_n x_{n-1}\cdots x_1 x_0 \bullet$ and $y_n y_{n-1}\cdots y_1 y_0 \bullet$  one by one, a parallel algorithm determines the $j$-th digit of the sum just from a fixed number of digits around $x_j$ and $y_j$. Thus it avoids propagation of carry and all digits digits of the result can be outputted at the same time. Besides theoretical reasons, parallel addition is used for instance in fast division algorithm in processors Pentium. Division is implemented with base 4 and digit set $\{-2,-1,0,1,2\}$.
-
-A parallel addition algorithm  was introduced by A. Avizienis in 1961 \cite{avizienis}. The algorithm works with an integer base $\beta\geq3$ and an alphabet $\{-a, \dots, 0, \dots a\}$ where $a\in\NN$ is such that $\beta/2 <a \leq \beta-1$. Later, C. Y. Chow and J. E. Robertson presented a parallel addition algorithm for  base 2 and alphabet $\{-1,0,1\}$ \cite{chow}.
-
-So-called non-standard numeration systems have been extensively studied. Non-standard means that a base is not a positive integer. An example of such system is the Penney numeration system with the base $\imath-1$ and alphabet $\{0,1\}$. Complex numbers can be represented by this system without separating real and imaginary part. As division algorithms are also developed for non-standard numeration systems, we focus on construction of a parallel addition algorithm for these systems.
-
-The numeration system which allow parallel addition must be redundant, i.e, some numbers may have more than one represenation. P.~Kornerup studied how  redundancy is related to parallel addition \cite{kornerup}. 
-
-C. Frougny, E. Pelantov\'a and M. Svobodov\'a provided parallel addition algorithms with an integer alphabet for all bases $\beta$ such that $|\beta|>1$ and no conjugate of $\beta$ equals 1 in modulus \cite{parAddNS}. Nevertheless, the alphabet is not minimal in general.
- The parallel addition algorithms for several bases (negative integers, complex numbers $\imath-1, 2\imath$ and $\sqrt{2}\imath$, quadratic Pisot unit and  non-integer rationals) with minimal integer alphabet are presented \cite{minAlph}.
- 
-We are interested in construction of parallel addition algorithm for a given base $\beta$ which is an algebraic integer such that $|\beta|>1$ and generally non-integer alphabet $\A$. Our aim is to implement method which attempts to construct an algorithm automatically for the numeration system $(\beta,\A)$. 
-
-The structure of the thesis is following: we review terminology and known results on numeration systems and parallel addition in Chapter~\ref{chap:preliminaries}. In Chapter~\ref{chap:ewm}, a general concept of addition is recalled and so-called extending window method for construction of parallel addition algorithm is outlined. This method, which consists of two phases, was proposed by M. Svobodov\'a \cite{milena}. 
-
-Some useful tools related to the ring $\Zomega$ are developed in Chapter~\ref{chap:Zomega}, including a norm derived from a companion matrix. Using these results, a necessary condition of convergence the extending window method is proved in Chapter~\ref{chap:convergence}. We show that it is also a sufficient condition of convergence of Phase~1. We establish check of non-convergence of Phase~2 in Theorem~\ref{thm:infinitePathInRauzyGraph}. Moreover, a lower bound on the size of an alphabet which allows parallel addition is stated. We also indicate a way how an alphabet with necessary properties can be generated.
-
-Different variants of both phases of the extending window method are proposed in Chapter~\ref{chap:diffChoices}. In Chapter~\ref{chap:design}, we present algorithms based on the theorems from Chapter~\ref{chap:convergence} and we describe their implementation in SageMath.
-
-Finally, several examples of results can be found in Chapter~\ref{chap:testing}. We compare various methods from Chapter~\ref{chap:diffChoices} and discuss successful numeration systems with a quadratic base and integer or non-integer alphabet. 
-
-Appendix contains images illustrating the extending window method, interfaces of program and details of tested examples.
-
-\chapter{Preliminaries}
-\label{chap:preliminaries}
-This chapter summarizes definitions related to numeration systems and parallel addition. We recall some known results on properties of a numeration system which allows parallel addition. At the end of the chapter, we define the ring $\Zomega$ and determine numeration systems within the scope of this thesis.
-	\input{preliminaries.tex}
-
-
-
-
-\chapter{Design of extending window method}
-\label{chap:ewm}
-In this chapter, the general concept of addition and digit set conversion is recalled. We outline a so-called \emph{extending window method} which is due to M. Svobodov\'a \cite{milena}. The method consists of two phases. For a given numeration system $(\beta,\A)$, it attempts to construct a digit set conversion algorithm which is computable in parallel. We recall that $\omega$ is an algebraic integer, $\beta \in \Zomega$ is a base and $0\in\A\subset\Zomega$ is an alphabet. 
-
-
-	\input{method_description.tex}
-
-\chapter{\texorpdfstring{Properties of $\Zomega$}{Properties of Z[omega]}}
-\label{chap:Zomega}
-We compile some properties  of the ring $\Zomega$ in this chapter. The isomorphism to $\ZZ^d$ is indicated and used for check of divisibility.  We review some results from matrix theory to introduce a norm in $\Zomega$. This norm is used in the proof of convergence of Phase~1 in Chapter~\ref{chap:convergence}. In the last section of this chapter, we show how the number of congruence classes modulo $\beta$ in $\Zomega$ is determined. That is used in the proof of a lower bound on the size of an alphabet which allows parallel addition in Section~\ref{sec:minimalAlphabet}.
-	\input{isomorphism.tex}
-	\input{naturalNorm.tex}
-	\input{congruenceClasses.tex}	
-	
-\chapter{Convergence}
-We discuss convergence of the extending window method designed in Chapter~\ref{chap:ewm}. We prove a necessary condition of convergence of the whole method and we show that it is also sufficient condition of convergence of Phase~1, using the tools from the previous chapter. Next, we establishes a condition which implies non-convergence of Phase~2. The condition is formulated by existence of an infinite walk in a specific directed graph. We also prove that there is the same lower bound on the size of an alphabet from $\Zbeta$ as for integer alphabets when the extending method converges. We propose a way how an alphabet can be generated for a given base.
-\label{chap:convergence}
-
-	\section{Convergence of Phase 1}
-	\input{convergence_Phase1.tex}
-
-	\section{Convergence of Phase 2}
-	\input{convergence_Phase2.tex}
-	
-
-	\input{lowerBound.tex}
-
-
-\chapter{Different methods in the extending window method}
-	\label{chap:diffChoices}
-	We mentioned in Chapter~\ref{chap:ewm} that there is a lot of variability in both phases of the extending window method. Within this chapter, we propose various methods how an intermediate weight coefficients set $\Q_k$ can be extended to $\Q_{k+1}$ in Phase~2 and how the set $\Qwo{k}$ can be constructed in Phase~2. The selection of methods is based on testing many experimental ones. 
-
-	\input{choices_phase1.tex}
-
-	\input{choices_phase2.tex}
-
-	
-	
-
-
-\chapter{Design and implementation}
-
-In the first section of this chapter, we propose algorithms which may reveal non-convergence of Phase~2. They are based on the theorems from Chapter~\ref{chap:convergence}. We present a simple algorithm which makes Phase~2 stable. We develop Algorithm~\ref{alg:weightFunction_modified} that summarizes  Phase~2 with all modifications. All designed algorithms are implemented in SageMath. The program is described in Section~\ref{sec:implementation}.
-\label{chap:design}
-	\input{modifiedPhase2.tex}
-	\input{implementation.tex}
-
-\chapter{Testing}
-\label{chap:testing}
-	\input{testing.tex}
-
-\chapter*{Summary}
-The main goal of this thesis was to improve the extending window method with rewriting rule $x-\beta$ which attempts to construct a parallel addition algorithm for a given base $\beta$ and alphabet $\A$ and discuss its convergence.
-
-We  recalled necessary definitions and notation in the scope of numeration systems and parallel addition. The concept of parallel addition and extending  window method was explained. We proposed various methods for both phase of the method. Some of them involve $\beta$-norm, which was constructed by using the companion matrix of the minimal polynomial $m_\beta$.
-
-We solved convergence of Phase~1 -- a sufficient condition is that the base $\beta$ is expanding, i.e., all its conjugates are greater than one in modulus. We showed that it is also a necessary condition of convergence of the whole extending method. 
-
-The check of convergence of Phase~2 for $bb\dots b$ inputs was reviewed. Next, we introduced the notion of stable Phase~2 and a Rauzy graph. We proved Theorem~\ref{thm:infinitePathInRauzyGraph} which may reveal non-convergence of Phase~2 by searching for a cycle in the Rauzy graph.
-
-We indicated that there is the same lower bound on the size of an alphabet from $\Zbeta$ as of an integer one. The necessary conditions on the alphabet which allows parallel addition were summarized and the way of generating such an alphabet was sketched.
-
-Algorithms based on the obtained theoretical results were designed. Algorithm~\ref{alg:weightFunction_modified} summarizes Phase~2 with the control of non-convergence. The extending window method was implemented with all proposed algorithms in SageMath.
-
-The shell interfaces are provided for running the implementation. All results are automatically saved to Google spreadsheet which enables easy sorting.
-
-We have tested large number of numeration systems with different methods for both phases. The controls of non-convergence reveal failure of Phase~2 very efficiently. Thus, many inputs may be processed. We compared various methods for Phase~1 and 2 for selected numeration systems including those for which a parallel addition algorithm was found manually.
-
- To conclude, there is about 140 numeration systems for which the implemented extending window method successfully found a parallel addition algorithm. The numeration system have integer or non-integer alphabet, often of the minimal size.
-
-The question of sufficient condition of convergence of Phase~2 remains open.
-
+\input{DP_body.tex}
 
 \newpage
 \bibliography{literatura}
@@ -152,5 +232,9 @@ The question of sufficient condition of convergence of Phase~2 remains open.
 \renewcommand{\thesection}{\Alph{section}}
 \counterwithin{exmp}{section}
 \input{appendix.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     K O N E C   P R Á C E                                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \end{document}

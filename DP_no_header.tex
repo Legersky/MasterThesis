@@ -1,0 +1,53 @@
+\documentclass[11pt,a4paper]{report}	%,twoside,openright
+%git-latexdiff 17807bf54f868 --main DP_parallelAddition.tex --cleanup none --latexmk
+
+
+
+\usepackage{a4wide,cite}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+% \usepackage[IL2]{fontenc}  
+% \usepackage{amsmath,amsthm} 
+% \usepackage{amsfonts}
+
+
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{english}
+
+
+
+% fix left/right margins
+%\let\tmp\oddsidemargin
+%\let\oddsidemargin\evensidemargin
+%\let\evensidemargin\tmp
+%\reversemarginpar
+
+\input{commands.tex}    
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[chapter]
+\newtheorem{exmp}{Example}[chapter]
+
+\begin{document}
+\tableofcontents
+\input{symbols.tex}
+
+
+\input{body}
+
+\newpage
+\bibliography{literatura}
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{amsplain}
+
+\appendix
+\chapter*{Appendices}
+\pagenumbering{Roman}
+\addcontentsline{toc}{chapter}{Appendices}
+\renewcommand{\thesection}{\Alph{section}}
+\counterwithin{exmp}{section}
+\input{appendix.tex}
+
+\end{document}
