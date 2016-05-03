@@ -1,22 +1,20 @@
-We have attempted to find a parallel addition algorithm for more than 5000 different numeration systems. Including various methods in Phase~1 and 2, the implementation of the extending window method has been launched over 7000 times. 
+We attempted to find a parallel addition algorithm for more than 5000 different numeration systems. Including various methods in Phase~1 and 2, the implementation of the extending window method was launched over 7000 times. 
 
 Only expanding bases were considered as it is  necessary condition of convergence of the extending window method. At the same time, convergence of Phase~1 is guaranteed.
 
-Most of the bases were given by polynomial combinations of $\omega$ with coefficients in a limited range, where $\omega$ was generated as a root of a monic polynomial with bounded integer coefficients. Mainly, $\omega$ are  quadratic, but cubic ones have been also tested. Alphabets for these bases were generated automatically. 
+Most of the bases were given by polynomial combinations of $\omega$ with coefficients in a limited range, where $\omega$ was generated as a root of a monic polynomial with bounded integer coefficients. Mostly, $\omega$ were  quadratic, but cubic ones were also tested. Alphabets for these bases were generated automatically according to Section~\ref{sec:alphabetGeneration}.
 
 Besides that, the extending window method was run for selected numeration systems in order to compare different methods in Phase~1 and 2, see  Section~\ref{sec:compareMethods}.
 
-Processing such a number of inputs is enabled by the developed tools of non-convergence of Phase~2. The control of $bb\dots b$ inputs often reveals non-convergence very quickly, while an infinite loop in Phase~2 is avoided due to check of directed cycles in a Rauzy graph. This condition seems to be really strong -- so far we have only four examples which were killed because of lack of memory before non-convergence was revealed or a weight function found. We discuss them later.
+Processing such a number of inputs is enabled by the developed criteria of non-convergence of Phase~2. The control of $bb\dots b$ inputs often reveals non-convergence very quickly, while an infinite loop in Phase~2 is avoided due to check of directed cycles in a Rauzy graph. This condition seems to be really strong -- so far we have only four examples which were interrupted because of lack of memory before non-convergence was revealed or a weight function found. We discuss them later.
 
-Altogether, a parallel addition algorithm was found for about 140 cases. A possible explanation of such low success rate is the automatic construction of alphabets -- there may exist  alphabets which are better spread or more symmetric. Another reason is that we did not have enough computational power for testing with various methods in Phase~1 and 2:  different methods are more suitable for different numeration systems, as we will see in Section~\ref{sec:compareMethods}.
-Nevertheless, we provide various successful examples of numeration systems with integer and non-integer alphabets. Some of them are listed in Section~\ref{sec:resultsExamples}.
+Altogether, a parallel addition algorithm was found for about 140
+% cases. A possible explanation of such low success rate is the automatic construction of alphabets -- there may exist  alphabets which are better spread or more symmetric. Another reason is that we did not have enough computational power for testing with various methods in Phase~1 and 2:  different methods are more suitable for different numeration systems, as we will see in Section~\ref{sec:compareMethods}.
+%Nevertheless, we provide various successful examples of 
+numeration systems with integer and non-integer alphabets. Some of them are listed in Section~\ref{sec:resultsExamples}.
 
 In Section~\ref{sec:gspreadsheet}, we describe Google spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results} which contains all tested inputs.
 
-\section{Comparing different choices in Phase 1 and 2}
-\label{sec:compareMethods}
-
-As we mentioned, both phases of the extending window method are significantly dependent on the way of extending $\Q_k$ to $\Q{k+1}$ , respectively choice of $\Qwo{k}$ from $\Qwo{(k-1)}$. Various methods were designed and implemented. They were all tested on the numeration systems which are listed in Table~\ref{tab:resultsPhaseOne}. Parallel addition algorithms were found manually~\cite{milena} for some of them, for instance Eisenstein\_1--block\_complex, Penney\_1--block\_complex, Penney\_2--block\_integer or Quadratic+1+4+5\_complex2. 
 \afterpage{
 \clearpage   % To flush out all floats, might not be what you want
 \begin{landscape}
@@ -45,7 +43,16 @@ As we mentioned, both phases of the extending window method are significantly de
 }
 
 
-\begin{table}[t]
+\section{Comparing different choices in Phase 1 and 2}
+\label{sec:compareMethods}
+
+As we mentioned, both phases of the extending window method are significantly dependent on the way of extending $\Q_k$ to $\Q{k+1}$ , respectively choice of $\Qwo{k}$ from $\Qwo{(k-1)}$. Various methods were designed and implemented. They were all tested on the numeration systems which are listed in Table~\ref{tab:resultsPhaseOne}. Parallel addition algorithms were found manually~\cite{milena} for some of them, for instance Eisenstein\_1--block\_complex, Penney\_1--block\_complex, Penney\_2--block\_integer or Quadratic+1+4+5\_complex2. 
+
+The methods 1a, 1b, 1c, 1d and 1e, resp. 2a, 2b, 2c, 2d and 2e, which are desribed in Chapter~\ref{chap:diffChoices}, were selected as they represent groups of methods which behave similarly. Moreover, if a parallel addition algorithm was found for a numeration system, then at least one successful method is contained in the selection.
+
+
+
+\begin{table}[htb]
 	\begin{center}
 	\input{alphabets.tex}
 	\end{center}
@@ -53,7 +60,7 @@ As we mentioned, both phases of the extending window method are significantly de
 \label{tab:alphabets}
 \end{table}
 
-The methods 1a, 1b, 1c, 1d and 1e, resp. 2a, 2b, 2c, 2d and 2e, which are desribed in Chapter~\ref{chap:diffChoices}, were selected as they represent groups of methods which behave similarly. Moreover, if a parallel addition algorithm was found for a numeration system, then at least one successful method is contained in the selection.
+
 
 
 
@@ -88,7 +95,7 @@ Firstly, we focus on non-integer alphabets. Since many alphabets are large, Tabl
 
 Note that none of bases has a real conjugate greater than 1. Observe that the linear and absolute coefficients of the minimal polynomial $m_\beta$ are positive if the corresponding alphabet attains the lower bound given by Theorem~\ref{thm:lowerBoundAlphabet}. A possible explanation is that if the linear coefficient were negative, then $\#\A=m_\beta(0)\geq m_\beta(1)$, i.e., the numeration system is not enough redundant.
 
-Parallel addition algorithms can be found for quite large alphabets  if the final length of window is small or many combinations of input digits  are saved for a shorter window than the final one. Examples~\ref{ex:killAB} and \ref{ex:killAA} in Appendix~\ref{app:examples} are the only inputs with quadratic base which were killed because of this exponential growth of memory requirement.
+Parallel addition algorithms can be found for quite large alphabets  if the final length of window is small or many combinations of input digits  are saved for a shorter window than the final one. Examples~\ref{ex:killAB} and \ref{ex:killAA} in Appendix~\ref{app:examples} are the only inputs with quadratic base which were interrupted because of this exponential growth of memory requirement.
 
  
 \begin{table}[htpb]
@@ -119,7 +126,7 @@ We remark that we have no example of a base for which the extending window metho
 
 
 
-Cubic bases have also been tested but the only successful inputs are in Table~\ref{tab:resultsPhaseOne}. There are only two more examples (\ref{ex:killAC} and \ref{ex:killAD}) when the check of $bb\dots b$ inputs was successful. Unfortunately, the computations were killed before non-convergence by a Rauzy graph was revealed or a weight function found. Both were interrupted having the length of window 3 processed, but the final length of window would be at least 5, resp., 6 according to the lenght of window for $bb,\dots,b$ inputs.
+Cubic bases have also been tested but the only successful inputs are in Table~\ref{tab:resultsPhaseOne}. There are only two more examples (\ref{ex:killAC} and \ref{ex:killAD}) when the check of $bb\dots b$ inputs was successful. Unfortunately, the computations were interrupted before non-convergence by a Rauzy graph was revealed or a weight function found. Both were interrupted having the length of window 3 processed, but the final length of window would be at least 5, resp., 6 according to the lenght of window for $bb,\dots,b$ inputs.
 
 
 
