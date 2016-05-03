@@ -182,8 +182,12 @@ $$
 also $e_i\equiv_{\beta-1}f_i$ for all $i, 1\leq i\leq k+1$. This is a contradiction since it implies that $\#\A=|m_\beta(1)|+k+1$. Hence, classes containing $\lambda$ and $\Lambda$ have both at least one more  element of the alphabet $\A$, i.e., $\#\A\geq |m_\beta(1)|+2$. 
 \end{proof}
 
-Note that the larger necessary alphabet for a base with a real conjugate greater than one is caused by the fact that minimal and maximal element of $\A$ both require another element in $\A$ which is in the same congruence class. This should be considered when an alphabet for such a base is generated.
+
 
 Since the proof is based on Theorem~\ref{thm:representativesInAlphabet}, it cannot be easily extended to alphabets which are subsets of  $\Zomega$.
 
+\subsection{Alphabet generating}
+Before we sketch how an alphabet $\A$ that allows parallel addition for a given base can be generated, we summarize its necessary properties. The alphabet $\A$ must contain representatives of all congruence classes modulo $\beta$ in order to guarantee convergence of Phase~1, see assumptions of Theorem~\ref{thm:suffCondPhase1}. According to Theorem~\ref{thm:reprBetaMinusOne}, there must be representatives of all congruence classes modulo $\beta-1$ which are contained in $\A+\A$. Moreover, if the base $\beta$ is real and greater than one, there must be another digit which is congruent to the minimal, resp., maximal digit of $\A$ (Lemma~\ref{lem:alphabetRestrictions} and the proof of Theorem~\ref{thm:lowerBoundAlphabet}). If the base $\beta$ has a real conjugate $\sigma(\beta)>1$, then the isomorphism $\sigma$ is applied in the same way as in the Lemma~\ref{lem:parAddAlgForConjugate}.
+
+For construction of an integer alphabet, start with $a=1$ and examine whether $\{-a+1, \dots, -1,0,1,\dots, a-1,a\}$ or $\{-a, -a+1, \dots, -1,0,1,\dots, a-1,a\}$ is suitable. If not, increment $a$ and check again. It might happen that there are not all representatives modulo $\beta$ in $\Zomega$ if $\Zomega \neq \Zbeta$. Therefore, stop without success when $a>m_\beta(0)$.
 
