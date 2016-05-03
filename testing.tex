@@ -18,10 +18,10 @@ In Section~\ref{sec:gspreadsheet}, we describe Google spreadsheet \href{https://
 \afterpage{
 \clearpage   % To flush out all floats, might not be what you want
 \begin{landscape}
-	\begin{table}[h]
-		\begin{center}
+	\begin{table}[htbp]
+		\begin{adjustwidth}{-2cm}{}
 		\input{resultsPhaseOne.tex}
-		\end{center}
+		\end{adjustwidth}
 	\caption{Comparing methods in Phase 1}
 	\label{tab:resultsPhaseOne}
 	\end{table}
@@ -32,7 +32,8 @@ In Section~\ref{sec:gspreadsheet}, we describe Google spreadsheet \href{https://
 %\clearpage   % To flush out all floats, might not be what you want
 \begin{landscape}
 	\begin{table}[h]
-	\begin{adjustwidth}{-1cm}{}
+	\vspace{-0.5cm}
+	\begin{adjustwidth}{-3cm}{}
 		\input{resultsPhaseTwo.tex}
 	\caption{Comparing methods in Phase 2}
 	\label{tab:resultsPhaseTwo}
@@ -48,7 +49,7 @@ In Section~\ref{sec:gspreadsheet}, we describe Google spreadsheet \href{https://
 
 As we mentioned, both phases of the extending window method are significantly dependent on the way of extending $\Q_k$ to $\Q{k+1}$ , respectively choice of $\Qwo{k}$ from $\Qwo{(k-1)}$. Various methods were designed and implemented. They were all tested on the numeration systems which are listed in Table~\ref{tab:resultsPhaseOne}. Parallel addition algorithms were found manually~\cite{milena} for some of them, for instance Eisenstein\_1--block\_complex, Penney\_1--block\_complex, Penney\_2--block\_integer or Quadratic+1+4+5\_complex2. 
 
-The methods 1a, 1b, 1c, 1d and 1e, resp. 2a, 2b, 2c, 2d and 2e, which are desribed in Chapter~\ref{chap:diffChoices}, were selected as they represent groups of methods which behave similarly. Moreover, if a parallel addition algorithm was found for a numeration system, then at least one successful method is contained in the selection.
+The methods 1a, 1b, 1c, 1d and 1e, resp. 2a, 2b, 2c, 2d and 2e, which are desribed in Chapter~\ref{chap:diffChoices}, were selected as they represent groups of methods which seems to behave similarly from our experience with many preliminary tests. Moreover, if a parallel addition algorithm was found for a numeration system in a preliminary test, then at least one successful method is contained in the selection.
 
 
 
@@ -64,10 +65,10 @@ The methods 1a, 1b, 1c, 1d and 1e, resp. 2a, 2b, 2c, 2d and 2e, which are desrib
 
 
 
-Let us explain Tables~\ref{tab:resultsPhaseOne}, \ref{tab:resultsPhaseTwo} and \ref{tab:alphabets}. Each row in Table~\ref{tab:resultsPhaseOne} represents one numeration system with a base $\beta\in\Zomega$ for a given algebraic integer $\omega$. The column \emph{conj.} signifies whether the base $\beta$ has a real conjugate greater than 1. The sizes of alphabets are listed and the column \emph{min.} says if the alphabets, which are listed in Table~\ref{tab:alphabets}, are minimal in the sense of the lower bound given by Theorem~\ref{thm:lowerBoundAlphabet}.  We remark that the size of an alphabet is compared with the bound regardless we work in $\Zbeta$ or $\Zomega$. 
-There are the sizes of weight coefficients sets $\Q$ which were found  with various methods of Phase~1 in the last columns.
+Let us explain Tables~\ref{tab:resultsPhaseOne}, \ref{tab:resultsPhaseTwo} and \ref{tab:alphabets}. Each row in Table~\ref{tab:resultsPhaseOne} represents one numeration system with a base $\beta\in\Zomega$ for a given algebraic integer $\omega$. The column \emph{conj.} signifies whether the base $\beta$ has a real conjugate greater than 1. The sizes of alphabets are listed and the column \emph{min.} says if the alphabets, which are listed in Table~\ref{tab:alphabets}, are minimal in the sense of the lower bound given by Theorem~\ref{thm:lowerBoundAlphabet}.  We remark that the size of an alphabet is compared with the bound regardless to working in $\Zbeta$ or $\Zomega$. 
+In the last columns, there are the sizes of weight coefficients sets $\Q$ which were found  with various methods of Phase~1.
 
-The results of Phase~2 for the selected numeration systems are shown in Table~\ref{tab:resultsPhaseTwo}. More rows for one numeration system correspond to distinct weight coefficients sets from Phase~1. The column $bb\dots b$ says whether control of $bb\dots b$ inputs was successful. If a weight function is found, it is denoted by \checkmark{} in the column \emph{Ph.2} and the length of window is in the column $r$. Symbol \xmark{} in the column \emph{Ph.2} means that a cycle in a Rauzy graph was found, i.e., Phase~2 does not converge. Reasons of non-convergence (digits $b$ or a cycle in Rauzy graph) can be recognized in the appropriate example in Appendix~\ref{app:examples}.
+The results of Phase~2 for the selected numeration systems are shown in Table~\ref{tab:resultsPhaseTwo}. More rows for one numeration system correspond to distinct weight coefficients sets from Phase~1. The column $bb\dots b$ says whether check of $bb\dots b$ inputs was successful. If a weight function is found, it is denoted by \checkmark{} in the column \emph{Ph.2} and the length of window is in the column $r$. Symbol \xmark{} in the column \emph{Ph.2} means that a cycle in a Rauzy graph was found, i.e., Phase~2 does not converge. Reasons for non-convergence (digits $b$ or a cycle in Rauzy graph) can be recognized in the  example given by the last column in Appendix~\ref{app:examples}.
 
 We remark that Lemma~\ref{lem:suffCondPhase1} instead of some method of Phase~1 means that the set given by this lemma was used as $\Q$ instead of a computed one.  We see that the smaller weight coefficients set $\Q$ does not mean automatically better (Quadratic+1+4+5\_complex1 or Quadratic+1+3+4\_complex). An observation for many numeration systems is that if the extending window method is successful, then weight coefficients sets produced by different methods are similar. But it is not a rule. 
 
@@ -137,7 +138,7 @@ Cubic bases have also been tested but the only successful inputs are in Table~\r
 
 \section{Google spreadsheet ParallelAddition\_results}
 \label{sec:gspreadsheet}
-All tested examples can be found in the spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results}. Its structure is following -- the worksheet \verb+results+ is used for automatically saved results. Results may be copied to \verb+results_archive+ to reduce the number of rows in \verb+results+. The meaning of each column is obvious from the heading line. 
+All results can be found in the spreadsheet \href{https://docs.google.com/spreadsheets/d/1TnhrHdefHfHa0WSeVs4q6XVj3epjPlPlnoekE0E1xeM/edit?usp=sharing}{ParallelAddition\_results}. Its structure is the following -- the worksheet \verb+results+ is used for automatically saved results. Some results were copied to \verb+results_archive+ to reduce the number of rows in \verb+results+. The meaning of each column is obvious from the heading line. 
 
 The worksheet \verb+inputs+ serves for loading inputs by the script \verb+ewm_gspreadsheet.sage+. The numeration systems for which a weight function was successfully found are in the worksheet \verb+successful+. We remark that they are listed with a single combination of methods for Phase~1 and 2. Nevertheless, all tested variants remain in \verb+results+ and \verb+results_archive+. 
 
