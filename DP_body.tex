@@ -92,22 +92,29 @@ In the first section of this chapter, we propose algorithms which may reveal non
 \markboth{\MakeUppercase{Summary}}{}
 The main goal of this thesis was to improve the extending window method with rewriting rule $x-\beta$ which attempts to construct a parallel addition algorithm for a given base $\beta$ and alphabet $\A$ and discuss its convergence.
 
-We  recalled necessary definitions and notation in the scope of numeration systems and parallel addition. The concept of parallel addition and extending  window method was explained. We proposed various methods for both phase of the method. Some of them involve $\beta$-norm, which was constructed by using the companion matrix of the minimal polynomial $m_\beta$.
+We  recalled necessary definitions and notation in the scope of numeration systems and parallel addition. The concept of parallel addition and extending  window method was explained. We proposed various methods for both phases of the method. Some of them involve so-called $\beta$-norm, which was constructed by using the companion matrix of the minimal polynomial $m_\beta$ of $\beta$.
 
-We solved convergence of Phase~1 -- a sufficient condition is that the base $\beta$ is expanding, i.e., all its conjugates are greater than one in modulus. We showed that it is also a necessary condition of convergence of the whole extending method. 
+We gave a sufficient condition for convergence of Phase~1: the base $\beta$ must be expanding, i.e., all its conjugates are greater than one in modulus. We showed that it is also a necessary condition of convergence of the whole extending window method. 
 
-The check of convergence of Phase~2 for $bb\dots b$ inputs was reviewed. Next, we introduced the notion of stable Phase~2 and a Rauzy graph. We proved Theorem~\ref{thm:infinitePathInRauzyGraph} which may reveal non-convergence of Phase~2 by searching for a cycle in the Rauzy graph.
+The check of convergence of Phase~2 for $bb\dots b$ inputs was reviewed. Next, we introduced the notion of stable Phase~2 and  Rauzy graph. We proved Theorem~\ref{thm:infinitePathInRauzyGraph} which may reveal non-convergence of Phase~2 by searching for a cycle in a Rauzy graph.
 
-We indicated that there is the same lower bound on the size of an alphabet from $\Zbeta$ as of an integer one. The necessary conditions on the alphabet which allows parallel addition were summarized and the way of generating such an alphabet was sketched.
+We indicated that there is the same lower bound on the size of an alphabet from $\Zbeta$ as the size of an integer one. The necessary conditions on the alphabet which allow parallel addition were summarized and the way of generating such an alphabet was sketched.
 
-Algorithms based on the obtained theoretical results were designed. Algorithm~\ref{alg:weightFunction_modified} summarizes Phase~2 with the control of non-convergence. The extending window method was implemented with all proposed algorithms in SageMath.
+Algorithms based on the obtained theoretical results were designed. Algorithm~\ref{alg:weightFunction_modified} executes Phase~2 with the control of non-convergence. The extending window method was implemented with all proposed algorithms in SageMath.
 
 The shell interfaces are provided for running the implementation. All results are automatically saved to Google spreadsheet which enables easy sorting.
 
 We have tested large number of numeration systems with different methods for both phases. The controls of non-convergence reveal failure of Phase~2 very efficiently. Thus, many inputs may be processed. We compared various methods for Phase~1 and 2 for selected numeration systems including those for which a parallel addition algorithm was found manually.
 
- To conclude, there is about 140 numeration systems for which the implemented extending window method successfully found a parallel addition algorithm. The numeration system have integer or non-integer alphabet, often of the minimal size.
+ To conclude, there is about 140 numeration systems for which the implemented extending window method successfully found a parallel addition algorithm. The numeration systems have integer or non-integer alphabet, often of the minimal size.
 
-The question of sufficient condition of convergence of Phase~2 remains open.
+The tasks for future work are for example:
+\begin{itemize}
+	\item The question of sufficient condition of convergence of Phase~2 remains open.
+	\item Generalization and implementation of the extending window method with an arbitrary rewriting rule.
+	\item Testing on a  computer with higher performance or faster implementation.
+	\item Development of theoretical analysis of Phase~2 in order to improve convergence and speed.
+\end{itemize}
+
 
 

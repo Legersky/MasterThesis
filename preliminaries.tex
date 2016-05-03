@@ -7,7 +7,7 @@ In the binary system, numbers are expressed as a sum of powers of 2 multiplied b
 Sometimes, the term \emph{radix} is used instead of base. So-called standard numeration systems have an integer base $\beta$ and an alphabet $\A$ which is a set of contiguous integers. We restrict ourselves to a base $\beta$ which is an algebraic integer and possibly non-integer alphabet $\A$. 
 
 \begin{defn}
-Let $(\beta, \A)$ be a positional numeration system. Let $x$ be a complex number and $x_n,x_{n-1}, x_{n-2},\ldots \in\A, n\geq 0$. We say that $^\omega0 x_n x_{n-1}\cdots x_1 x_0 \bullet x_{-1} x_{-2} \cdots $ is a \emph{$(\beta, \A)$-representation} of $x$ if~  $x=\sum_{j=-\infty}^n x_j \beta^j$, where $^\omega0$  denotes left-infinite sequence of zeros.
+Let $(\beta, \A)$ be a positional numeration system. Let $x$ be a complex number and $x_n,x_{n-1}, x_{n-2},\ldots \in\A, n\geq 0$. We say that $^\omega0 x_n x_{n-1}\cdots x_1 x_0 \bullet x_{-1} x_{-2} \cdots $ is a \emph{$(\beta, \A)$-representation} of $x$ if~  $x=\sum_{j=-\infty}^n x_j \beta^j$, where $^\omega0$  denotes the left-infinite sequence of zeros.
 \end{defn}
  We write briefly a \emph{representation} instead of a $(\beta, \A)$-representation if the base $\beta$ and alphabet $\A$ follow from context. The assumption $|\beta|>1$ implies that the sum for a given representation converges.
 
@@ -22,7 +22,7 @@ For  $x\in\fin{\A}$, we write
 $$
 (x)_{\beta,\A}=\,  ^\omega0 x_n x_{n-1}\cdots x_1 x_0 \bullet x_{-1} x_{-2} \cdots x_{-m} 0^\omega\,,
 $$ 
-where $0^\omega$ denotes right-infinite sequence of zeros. From now on, we omit the starting $^\omega0$ and ending $0^\omega$ when we work with numbers in $\fin{\A}$, but we still consider a representation as a bi-infinite sequence of digits. Note that indices are decreasing from left to right as it is usual to write the most significant digits first. 
+where $0^\omega$ denotes the right-infinite sequence of zeros. From now on, we omit the starting $^\omega0$ and ending $0^\omega$ when we work with numbers in $\fin{\A}$, but we still consider a representation as a bi-infinite sequence of digits. Note that indices are decreasing from left to right as it is usual to write the most significant digits first. 
 
  We remark that the set $\fin{\A}$ is not necessarily closed under addition. Nevertheless, existence of a parallel addition algorithm in the sense of definitions in the next section implies, as we will see later, that the set $\fin{\A}$ is closed under addition, i.e.,
 $$
@@ -43,7 +43,7 @@ Let $\A$ and $\B$ be alphabets. A function $\varphi:\B^\ZZ \rightarrow \A^\ZZ$ i
 This means that a sliding window of a length $p$ computes the digit $z_j$ of the image $\varphi(w)$ from digits $(w_{j+t},\cdots,w_{j-r})$, the digit $z_{j+1}$ from digits $(w_{j+t-1},\cdots,w_{j-r-1})$ etc.
   
   
-Since two $(\beta,\A)$-representations may be easily summed up digit-wise in parallel, the crucial point of parallel addition is conversion of a $(\beta,\A+\A)$-representation of the sum to a $(\beta,\A)$-representation. The notion of a $p$-local function is applied to this conversion.
+Since two $(\beta,\A)$-representations may be easily summed up digitwise in parallel, the crucial point of parallel addition is conversion of a $(\beta,\A+\A)$-representation of the sum to a $(\beta,\A)$-representation. The notion of a $p$-local function is applied to this conversion.
 \begin{defn}
 \label{def:digitSetConversion}
 Let $\beta$ be a base and let $\A$ and $\B$ be alphabets containing 0. A function $\varphi:\B^\ZZ\rightarrow \A^\ZZ$ such that

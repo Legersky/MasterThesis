@@ -25,7 +25,7 @@ Using Algorithm~\ref{alg:checkCycles}, check if there is a cycle in the Rauzy gr
 
 
 \begin{method}{findWeightFunction}{max\_input\_length}
-Attempt to construct a weight function $q$ by Algorithm~\ref{alg:weightFunction_modified}. It increments length of window and call the method \fun{\_find\_weightCoef\_for\_comb\_B}{} until a unique weight coefficient is found for all possible combinations of input digits. If the length of window exceeds \var{max\_input\_length}, then an exception \emph{RuntimeErrorParAdd} is raised. 
+Attempt to construct a weight function $q$ by Algorithm~\ref{alg:weightFunction_modified}. It increments the window length and call the method \fun{\_find\_weightCoef\_for\_comb\_B}{} until a unique weight coefficient is found for all possible combinations of input digits. If the length of window exceeds \var{max\_input\_length}, then an exception \emph{RuntimeErrorParAdd} is raised. 
 \end{method}
 
 
