@@ -2,35 +2,35 @@
 This class implements Algorithm~\ref{alg:weightFunction_modified} of modified Phase 2 of the extending window method from Section \ref{sec:modifiedPhase2} with different methods of choice of possible weight coefficients sets and control of non-convergence. Methods 2a, 2b, 2c, 2d and 2e from Algorithm~\ref{alg:pickElement} correspond to 9, 15, 22, 23 and 14 respectively. A weight function $q$ is returned by method \fun{findWeightFunction}{}. The constructor of the class is
 
 \begin{method}{\_\_init\_\_}{algForParallelAdd, weightCoefSet, method}
-The ring generator $\omega$, base $\beta$, alphabet $\A$ and input alphabet $\B$ are initialized by the values obtained from \var{algForParallelAdd}. The weight coefficients set $\Q$ is set to \var{weightCoefSet}. The parameter \var{method} (the number of an experimental method or \verb+'2a'+, \verb+'2b'+, etc.) determines the way of the choice of a possible weight coefficients set $\Qwo{k}$ from $\Qwo{(k-1)}$, see Algorithm~\ref{alg:pickElement}. If \var{method} is \var{None}, then is the default method is 2b. Possible weight coefficients sets  are saved in a dictionary \var{\_Qw\_w}, which is set to be empty.
+The ring generator $\omega$, base $\beta$, alphabet $\A$ and input alphabet $\B$ are initialized by the values obtained from \var{algForParallelAdd}. The weight coefficients set $\Q$ is set to \var{weightCoefSet}. The parameter \var{method} (the number of an experimental method or \verb+'2a'+, \verb+'2b'+, etc.) determines the way of the choice of a possible weight coefficients set $\Qwo{k}$ from $\Qwo{(k-1)}$, see Algorithm~\ref{alg:pickElement}. If \var{method} is \var{None}, then the default method is 2b. Possible weight coefficients sets  are saved in a dictionary \var{\_Qw\_w}, which is set to be empty.
 \end{method}
 
 The following methods are used for search for a weight function $q$:
 
 \begin{method}{\_find\_weightCoef\_for\_comb\_B}{combinations}
-Take all combinations of input digits $\tupleo{(k-1)} \in \B^{k}$ in \var{combinations} such that $\#\Qwo{(k-1)}>1$, extend them by all letters $w_{-k}\in\B$ and find a possible weight coefficients set $\Qwo{k}$ by the method \fun{\_findQw}{$\tupleo{(k-1)}$}. If there is only one element in $\Qwo{k}$, it is saved as a solved input of the weight function $q$. Otherwise, the set $\Qwo{k}$ is saved in \var{\_Qw\_w} as an unsolved combination which requires extending of the window. The unsolved combinations are returned.  
+All combinations of input digits $\tupleo{(k-1)} \in \B^{k}$ in \var{combinations} such that $\#\Qwo{(k-1)}>1$ are extended by all letters $w_{-k}\in\B$. A possible weight coefficients set $\Qwo{k}$ is constructed by the method \fun{\_findQw}{$\tupleo{(k-1)}$}. If there is only one element in $\Qwo{k}$, it is saved as a solved input of the weight function $q$. Otherwise, the set $\Qwo{k}$ is saved in \var{\_Qw\_w} as an unsolved combination which requires extending of the window. The unsolved combinations are returned.  
 \end{method}
 
 \begin{method}{\_findQw}{w\_tuple}
-Return a set $\Qwo{k}=\Q_{[\text{w\_tuple}]}$ by wrapping \fun{\_findQw\_once}{} into a while loop according to Algorithm~\ref{alg:possibleWeightCoefSetStable}. If $\Qwo{k}=\Qwo{(k-1)}$, then add a vertex $\tupleo{k}$ to a Rauzy graph $G_{k+1}$ and call \fun{\_checkCycles}{w\_tuple} in $G_{k}$.
+The method returns a set $\Qwo{k}=\Q_{[\text{w\_tuple}]}$ by wrapping \fun{\_findQw\_once}{} into a while loop according to Algorithm~\ref{alg:possibleWeightCoefSetStable}. If $\Qwo{k}=\Qwo{(k-1)}$, then add a vertex $\tupleo{k}$ to a Rauzy graph $G_{k+1}$ and call \fun{\_checkCycles}{w\_tuple} in $G_{k}$.
 \end{method}
 
 \begin{method}{\_findQw\_once}{w\_tuple,Qw\_prev} 
-Return a set $\Qwo{k}'=\Q'_{[\text{w\_tuple}]}$ obtained by Algorithm~\ref{alg:minimalSet} as a subset of \var{Qw\_prev}$=\Qwo{(k-1)}$. The set of possible carries from the right $\Qw{1}{k}$ is taken from the class attribute \var{\_Qw\_w}. The methods of Algorithm~\ref{alg:pickElement} are implemented here along with the experimental ones.
+The set $\Qwo{k}'=\Q'_{[\text{w\_tuple}]}$ obtained by Algorithm~\ref{alg:minimalSet} as a subset of \var{Qw\_prev}$=\Qwo{(k-1)}$ is returned. The set of possible carries from the right $\Qw{1}{k}$ is taken from the class attribute \var{\_Qw\_w}. The methods of Algorithm~\ref{alg:pickElement} are implemented here along with the experimental ones.
 \end{method}
 
 \begin{method}{\_checkCycles}{w\_tuple}
-Using Algorithm~\ref{alg:checkCycles}, check if there is a cycle in the Rauzy graph $G_k$ starting in the vertex which label equals \var{w\_tuple} without the first digit. If yes, then an exception \emph{RuntimeErrorParAdd} is raised. 
+Using Algorithm~\ref{alg:checkCycles}, it is controlled if there is a cycle in the Rauzy graph $G_k$ starting in the vertex which label equals \var{w\_tuple} without the first digit. If yes, then an exception \emph{RuntimeErrorParAdd} is raised. 
 \end{method}
 
 
 \begin{method}{findWeightFunction}{max\_input\_length}
-Attempt to construct a weight function $q$ by Algorithm~\ref{alg:weightFunction_modified}. It increments the window length and call the method \fun{\_find\_weightCoef\_for\_comb\_B}{} until a unique weight coefficient is found for all possible combinations of input digits. If the length of window exceeds \var{max\_input\_length}, then an exception \emph{RuntimeErrorParAdd} is raised. 
+The method attempts to construct a weight function $q$ by Algorithm~\ref{alg:weightFunction_modified}. It increments the window length and calls the method \fun{\_find\_weightCoef\_for\_comb\_B}{} until a unique weight coefficient is found for all possible combinations of input digits. If the length of window exceeds \var{max\_input\_length}, then an exception \emph{RuntimeErrorParAdd} is raised. 
 \end{method}
 
 
 \begin{method}{check\_one\_letter\_inputs}{max\_input\_length}
-Checks by Algorithm \ref{alg:oneletterSets} if there is a unique weight coefficient for inputs $({b,b,\dots,b})\in\B^r$ for some length of window $r$. An exception \emph{RuntimeErrorParAdd} is raised in the case of an infinite loop. Otherwise the list of input digits  $b$ which require the largest length of window is returned.
+It is checked by Algorithm \ref{alg:oneletterSets} if there is a unique weight coefficient for inputs $({b,b,\dots,b})\in\B^r$ for some length of window $r$. An exception \emph{RuntimeErrorParAdd} is raised in the case of an infinite loop. Otherwise the list of input digits  $b$ which require the largest length of window is returned.
 \end{method}
 
 
