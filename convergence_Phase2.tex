@@ -38,7 +38,7 @@ $$
 \B+\underbrace{\Qw{1}{(k-1)}}_{=\Qw{1}{k}} \subset \A+\beta \Qwo{(k-1)}\,,
 $$
 and $\Qw{1}{(k-1)}$ was chosen as sufficient.
-In other words, if $\Qwo{k}\subsetneq\Qwo{(k-1)}$, the set $\Qwo{(k-1)}$ might have been chosen better. 
+In other words, if $\Qwo{k}$ is a proper subset of $\Qwo{(k-1)}$, the set $\Qwo{(k-1)}$ might have been chosen better. 
 
 We may guarantee that Phase~2 is stable by wrapping the choice of the set $\Qwo{k}$ into a simple while loop, see Algorithm~\ref{alg:possibleWeightCoefSetStable} in Chapter~\ref{chap:design}.
 
@@ -80,7 +80,7 @@ V:=\left\{\tuple{1}{k}\in\B^k \colon \#\Qw{1}{k}=\#\Qw{1}{(k-1)}\right\}
 $$
 and
 $$
-E:=\left\{\tuple{1}{k}\rightarrow\tuple[w']{1}{k}\in V\times V \colon \tuple{2}{k}=\tuple[w']{1}{(k-1)}\right\}\,.
+E:=\left\{\tuple{1}{k}\rightarrow\tuple[w']{1}{k}\in V\!\!\times\! V \colon \tuple{2}{k}=\tuple[w']{1}{(k-1)}\right\}.
 $$
 The directed graph $G_k=(V,E)$ is called \emph{Rauzy graph of Phase~2 (for the window of length~$k$)}.
 \end{defn}

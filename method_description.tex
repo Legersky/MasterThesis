@@ -2,7 +2,7 @@
 \label{sec:addition}
 The general idea of addition (standard or parallel) in any numeration system $(\beta,\A)$ is the following: we sum up two numbers digitwise and then we convert the result with digits in $\A+\A$ into the alphabet $\A$. Obviously, digitwise addition is computable in parallel, thus the problematic part is the digit set conversion of the obtained result. It can be easily done in a standard way but a parallel digit set conversion is non-trivial. A parallel conversion is based on the same  formulas as the standard one but the choice of so-called \emph{weight coefficients} differs.
 
-Now, we go step by step more precisely. Let $x,y \in \fin{\A}$ with $(\beta,\A)$-representations $x_{n'}x_{{n'}-1}\cdots x_1 x_0\bullet x_{-1} x_{-2} \cdots x_{-m'}$ and $y_{n'}y_{{n'}-1}\cdots y_1 y_0\bullet y_{-1} y_{-2} \cdots y_{-m'}$ padded by zeros to have the same length $n'+m'+1$. We set 
+Now, we go step by step more precisely. Let $x,y \in \fin{\A}$ with $(\beta,\A)$-representa\-tions $x_{n'}x_{{n'}-1}\cdots x_1 x_0\bullet x_{-1} x_{-2} \cdots x_{-m'}$ and $y_{n'}y_{{n'}-1}\cdots y_1 y_0\bullet y_{-1} y_{-2} \cdots y_{-m'}$ padded by zeros to have the same length $n'+m'+1$. We set 
   \begin{align*}
     w&=x+y =\sum_{i=-m'}^{n'} x_i\beta^i + \sum_{i=-m'}^{n'} y_i\beta^i = \sum_{i=-m'}^{n'} (x_i+y_i)\beta^i \\
     &=\sum_{i=-m'}^{n'} w_i\beta^i \,,

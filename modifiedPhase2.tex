@@ -48,7 +48,7 @@ Hence, non-finiteness of Phase~2 can be revealed by running Algorithm \ref{alg:o
 \subsection*{Stable Phase 2}
 Recall that in order to use Theorem~\ref{thm:infinitePathInRauzyGraph} to check non-convergence of Phase~2, we require Phase~2 to be stable. An algorithm of choice of possible weight coefficients set can be easily modified to ensure stability of Phase~2, i.e., 
 $$\Qw{1}{k}=\Qw{1}{(k-1)} \implies \Qwo{k}=\Qwo{(k-1)}$$
-for all $\tuple{1}{k}\in\B^k$. If the algorithm is deterministic, then the set $\Qwo{k}$ is determined by the set $\Qw{1}{k}$, $\Qwo{(k-1)}$ and $w_0$. Similarly, the set $\Qwo{(k-1)}$ is determined by  the set $\Qw{1}{(k-1)}$, $\Qwo{(k-2)}$ and $w_0$. 
+for all $\tuple{1}{k}\in\B^k$. If the algorithm is deterministic, then the set $\Qwo{k}$ is determined by $\Qw{1}{k}$, $\Qwo{(k-1)}$ and $w_0$. Similarly, the set $\Qwo{(k-1)}$ is determined by  the set $\Qw{1}{(k-1)}$, $\Qwo{(k-2)}$ and $w_0$. 
 
 Suppose that $\Qw{1}{k}=\Qw{1}{(k-1)}$. Now, the only difference between $\Qwo{k}$ and $\Qwo{(k-1)}$ is that $\Qwo{k}$ is searched as a subset of $\Qwo{(k-1)}$, whereas $\Qwo{(k-1)}$ as a subset of $\Qwo{(k-2)}$. In order to find  $\Qwo{(k-1)}$, we use Algorithm~\ref{alg:minimalSet} repeatedly instead of once. In each iteration, the input digit $w_0$ and the set $\Qw{1}{(k-1)}$ remains the same but we search for $\Qwo{(k-1)}$ as a subset of $\Q'_w$, where $\Q'_w$ is the output of the previous iteration or $\Qwo{(k-2)}$ in the first iteration. The algorithm stops when $\Qwo{(k-1)}=\Q'_w$. This loop is described in Algorithm~\ref{alg:possibleWeightCoefSetStable}.
 
