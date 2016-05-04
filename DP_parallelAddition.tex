@@ -2,7 +2,7 @@
 %git-latexdiff 17807bf54f868 --main DP_parallelAddition.tex --cleanup none --latexmk
 
 
-\usepackage[bottom=1.3in]{geometry}
+\usepackage[bottom=1.35in]{geometry}
 \usepackage{cite}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -40,8 +40,8 @@
 	\fancyhead[RE]{\slshape \leftmark}
 	
 \usepackage{emptypage}
-%\setlength{\headheight}{16pt} 
-
+\setlength{\headheight}{14pt} 
+\setlength{\headsep}{35pt}
 
 \input{commands.tex}
 
@@ -80,11 +80,11 @@
 \newcommand{\klicova}{Paraleln\'i s\v c\'it\'an\'i, nestandardn\'i numera\v cn\'i syst\'emy, extending window method.}  % max. 5 klíčových slov
 \newcommand{\keyword}{Parallel addition, non-standard numeration systems, extending window method.}
 \newcommand{\abstrCZ}%{\begin{minipage}{0.7\textwidth}
-{Práce se zabývá konstrukcí algoritmů pro paralelní sčítání v soustavách se základem $\beta\in\Zomega$, $|\beta|>1$, a abecedou $\A\subset\Zomega$, kde $\omega$ je algebraické celé číslo. Popisujeme takzvanou \emph{extending window method} s přepisovacím pravidlem $x-\beta$, která ve dvou fázích zkouší najít algoritmus paralelního sčítání pro danou číselnou soustavu. Ukazujeme, že pro konvergenci celé metody musí být $\beta$ expandující, což je zároveň postačující podmínka konvergence první fáze. Také představujeme grafové kritérium, pomocí kterého je možné odhalit nekonvergenci v průběhu druhé fáze. Dále uvádíme různé varianty obou fází. Veškeré navržené algoritmy jsou implementovány v jazyce SageMath. Porovnáváme uvedené varianty a diskutujeme výsledky testování.
+{Práce se zabývá konstrukcí algoritmů pro paralelní sčítání v soustavách se základem $\beta\in\Zomega$, $|\beta|>1$, a abecedou $\A\subset\Zomega$, kde $\omega$ je algebraické celé číslo. Popisujeme takzvanou \emph{extending window method} s přepisovacím pravidlem $x-\beta$, která ve dvou fázích zkouší najít algoritmus paralelního sčítání pro danou číselnou soustavu. Ukazujeme, že pro konvergenci celé metody musí být $\beta$ expandující, což je zároveň postačující podmínka konvergence první fáze. Také představujeme grafové kritérium, pomocí kterého je možné odhalit nekonvergenci v průběhu druhé fáze. Dále uvádíme různé varianty obou fází. Veškeré navržené algoritmy jsou implementovány v systému SageMath. Porovnáváme uvedené varianty a diskutujeme výsledky testování.
 } 
 % \end{minipage}}
 \newcommand{\abstrEN}{
-We focus on  construction of algorithms for parallel addition in numeration systems with a base $\beta\in\Zomega$, $|\beta|>1$, and an alphabet $\A\subset\Zomega$, where  $\omega$ is an algebraic integer. We describe a so-called \emph{extending window method} with the  rewriting rule $x-\beta$. In two phases, the method attempts to construct a parallel addition algorithm for a given numeration system. We prove that $\beta$ must be expanding for convergence of the method. At the same time, this is a sufficient condition of convergence of Phase~1. We also propose a graph condition which may reveal non-convergence of Phase~2.  Several variants of both phases are introduced. We implement all algorithms in SageMath. We compare the proposed variants and we discuss the results of testing.
+We focus on  construction of algorithms for parallel addition in numeration systems with a base $\beta\in\Zomega$, $|\beta|>1$, and an alphabet $\A\subset\Zomega$, where  $\omega$ is an algebraic integer. We describe a so-called \emph{extending window method} with the  rewriting rule $x-\beta$. In two phases, the method attempts to construct a parallel addition algorithm for the given numeration system. We prove that $\beta$ must be expanding for convergence of the method. At the same time, this is a sufficient condition of convergence of Phase~1. We also propose a graph condition which may reveal non-convergence of Phase~2.  Several variants of both phases are introduced. We implement all algorithms in SageMath. We compare the proposed variants and we discuss the results of testing.
 }
 %%% k vyplnění KONEC ---------------------------------------------------
 
@@ -116,9 +116,9 @@ We focus on  construction of algorithms for parallel addition in numeration syst
 	{\Large \cvut \\[10pt] \fjfi \\[10pt] \km\\}
 	\vspace{45pt} %120
 	\includegraphics[height=100pt]{img/logoCVUT.pdf}\\
-	\vspace{90pt}
+	\vspace{70pt}
 	{\Large DIPLOMOV\'A PR\'ACE}
-	\vspace{90pt}
+	\vspace{70pt}
 	
 	{\Large\bf \nazevczBreaked}
 	\vspace{30pt}
@@ -192,9 +192,9 @@ Děkuji Ing. Štěpánu Starostovi, Ph.D., za vedení mé diplomové práce. Dá
 %  {\em Zam\v e\v ren\'i:} & \zamereni \\[4mm]
   {\em Druh pr\'ace:} & Diplomová práce \\[4mm]
   {\em Vedoucí práce:} & \vedouci, \pracovisteVed \\[4mm]
-  {\em Konzultant:} & \konzultant \\[4mm]
+%  {\em Konzultant:} & \konzultant \\[4mm]
   {\em Abstrakt:} & \abstrCZ \\[4mm]
-  {\em Kl\'i\v cov\'a slova:} & \klicova \\[20mm]
+  {\em Kl\'i\v cov\'a slova:} & \klicova \\[8mm]
 
   {\em Title:} & \bf \nazeven \\[4mm]
   {\em Author:} & \autor \\[4mm]
@@ -228,7 +228,8 @@ Děkuji Ing. Štěpánu Starostovi, Ph.D., za vedení mé diplomové práce. Dá
 \input{DP_body.tex}
 
 \newpage
-\renewcommand\bibname{References}
+
+\renewcommand\bibname{\vspace{-30pt}References}
 \bibliography{literatura}
 \addcontentsline{toc}{chapter}{References}
 \bibliographystyle{amsplain}
@@ -239,7 +240,7 @@ Děkuji Ing. Štěpánu Starostovi, Ph.D., za vedení mé diplomové práce. Dá
 \markboth{\MakeUppercase{Appendices}}{}
 %\pagenumbering{Roman}
 \addcontentsline{toc}{chapter}{Appendices}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+%\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 \renewcommand{\thesection}{\Alph{section}}
 \counterwithin{exmp}{section}
 \input{appendix.tex}

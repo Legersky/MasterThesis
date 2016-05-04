@@ -19,9 +19,11 @@ In Section~\ref{sec:gspreadsheet}, we describe Google spreadsheet \href{https://
 \clearpage   % To flush out all floats, might not be what you want
 \begin{landscape}
 	\begin{table}[htbp]
-		\begin{adjustwidth}{-2cm}{}
-		\input{resultsPhaseOne.tex}
-		\end{adjustwidth}
+		%\begin{adjustwidth}{-2cm}{}
+		\begin{center}
+		\input{resultsPhaseOne.tex}		
+		\end{center}		
+		%\end{adjustwidth}
 	\caption{Comparing methods in Phase 1}
 	\label{tab:resultsPhaseOne}
 	\end{table}
@@ -33,11 +35,13 @@ In Section~\ref{sec:gspreadsheet}, we describe Google spreadsheet \href{https://
 \begin{landscape}
 	\begin{table}[h]
 	\vspace{-0.5cm}
-	\begin{adjustwidth}{-3cm}{}
+%	\begin{adjustwidth}{-3cm}{}
+\begin{center}
 		\input{resultsPhaseTwo.tex}
 	\caption{Comparing methods in Phase 2}
 	\label{tab:resultsPhaseTwo}
-	\end{adjustwidth}
+	\end{center}
+%	\end{adjustwidth}
 	\thispagestyle{empty}
 	\end{table}
 \end{landscape}

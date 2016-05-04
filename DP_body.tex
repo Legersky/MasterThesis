@@ -3,22 +3,22 @@
 \chapter*{Introduction}
 \markboth{\MakeUppercase{Introduction}}{}
 
-Parallel addition  is an important part of algorithms for multiplication and division \cite{division}. 
-While carry propagation in standard algorithms requires to compute digits of the sum of $x_n x_{n-1}\cdots x_1 x_0 \bullet$ and $y_n y_{n-1}\cdots y_1 y_0 \bullet$  one by one, a parallel algorithm determines the $j$-th digit of the sum just from a fixed number of digits around $x_j$ and $y_j$. Thus it avoids the carry propagation  and all digits digits of the result can be outputted at the same time. Besides theoretical reasons, parallel addition is used for instance in floating point division algorithm in Pentium processors. The  base used is 4 and the digit set is $\{-2,-1,0,1,2\}$.
+Parallel addition  is an important part of algorithms for multiplication and division. 
+While carry propagation in standard algorithms requires to compute digits of the sum of $x_n x_{n-1}\cdots x_1 x_0 \bullet$ and $y_n y_{n-1}\cdots y_1 y_0 \bullet$  one by one, a parallel algorithm determines the $j$-th digit of the sum just from a fixed number of digits around $x_j$ and $y_j$. Thus it avoids the carry propagation  and all digits digits of the result can be outputted at the same time. Besides theoretical reasons, parallel addition is used for instance in floating point division algorithm \cite{division}. The  base used is 4 and the digit set is $\{-2,-1,0,1,2\}$.
 
 A parallel addition algorithm  was introduced by A. Avizienis in 1961 \cite{avizienis}. The algorithm works with an integer base $\beta\geq3$ and an alphabet $\{-a, \dots, 0, \dots a\}$ where $a\in\NN$ is such that $\beta/2 <a \leq \beta-1$. Later, C. Y. Chow and J. E. Robertson presented a parallel addition algorithm for  base 2 and alphabet $\{-1,0,1\}$ \cite{chow}.
 
 So-called non-standard numeration systems are extensively studied. Non-standard means that a base is not a positive integer. An example of such system is the Penney numeration system with the base $\imath-1$ and the alphabet is $\{0,1\}$. Complex numbers can be represented by this system without separating real and imaginary part. As division algorithms are also developed for non-standard numeration systems, we focus on construction of a parallel addition algorithm for these systems.
 
 The numeration systems which allow parallel addition must be redundant, i.e, some numbers have more than one representation. 
-C. Frougny, E. Pelantov\'a and M. Svobodov\'a provided parallel addition algorithms with an integer alphabet for all bases $\beta$ such that $|\beta|>1$ and no conjugate of $\beta$ equals 1 in modulus \cite{parAddNS}. Nevertheless, the alphabet is not minimal in general.
+C. Frougny, E. Pelantov\'a and M. Svobodov\'a provided parallel addition algorithms with an integer alphabet for all bases $\beta$ such that $|\beta|\,>\!1$ and no conjugate of $\beta$ equals 1 in modulus \cite{parAddNS}. Nevertheless, the alphabet is not minimal in general.
  The parallel addition algorithms for several bases (negative integers, complex numbers $\imath-1, 2\imath$ and $\sqrt{2}\imath$, quadratic Pisot unit and  non-integer rationals) with minimal integer alphabet are presented \cite{minAlph}.
  
-Let $\omega$ be an algebraic integer. We are interested in construction of parallel addition algorithm for a given base $\beta\in\Zomega$ which is an algebraic integer such that $|\beta|>1$ and generally non-integer alphabet $\A\subset\Zomega$. Our aim is to implement a method which attempts to construct an algorithm automatically for the numeration system $(\beta,\A)$. The implementation is used to find as many numeration systems allowing parallel addition as possible. 
+Let $\omega$ be an algebraic integer. We are interested in construction of parallel addition algorithm for a given base $\beta\in\Zomega$ which is an algebraic integer such that $|\beta|\,>\!1$ and generally non-integer alphabet $\A\subset\Zomega$. Our aim is to implement a method which attempts to construct an algorithm automatically for the numeration system $(\beta,\A)$. The implementation is used to find as many numeration systems allowing parallel addition as possible. 
 
 The structure of the thesis is the following: we review terminology and known results on numeration systems and parallel addition in Chapter~\ref{chap:preliminaries}. In Chapter~\ref{chap:ewm}, a general concept of addition is recalled and so-called extending window method for construction of parallel addition algorithm is outlined. This method, which consists of two phases, was proposed by M. Svobodov\'a \cite{milena}. 
 
-Some useful tools related to the ring $\Zomega$ from which  are developed in Chapter~\ref{chap:Zomega}, including a norm derived from a companion matrix. Using these results, a necessary condition of convergence the extending window method is proved in Chapter~\ref{chap:convergence}. We show that it is also a sufficient condition of convergence of Phase~1. We establish check of non-convergence of Phase~2 in Theorem~\ref{thm:infinitePathInRauzyGraph}. Moreover, a lower bound on the size of an alphabet which allows parallel addition is stated. We also indicate a way how an alphabet with necessary properties can be generated.
+Some useful tools related to the ring $\Zomega$ are developed in Chapter~\ref{chap:Zomega}, including a norm derived from a companion matrix. Using these results, a necessary condition of convergence the extending window method is proved in Chapter~\ref{chap:convergence}. We show that it is also a sufficient condition of convergence of Phase~1. We establish control of non-convergence of Phase~2 in Theorem~\ref{thm:infinitePathInRauzyGraph}. Moreover, a lower bound on the size of an alphabet which allows parallel addition is stated. We also indicate a way how an alphabet with necessary properties can be generated.
 
 Different variants of both phases of the extending window method are proposed in Chapter~\ref{chap:diffChoices}. In Chapter~\ref{chap:design}, we present algorithms based on the theorems from Chapter~\ref{chap:convergence} and we describe their implementation in SageMath.
 
@@ -88,7 +88,7 @@ In the first section of this chapter, we propose algorithms which may reveal non
 
 \cleardoublepage\phantomsection
 \addcontentsline{toc}{chapter}{Summary}
-\chapter*{Summary}
+\chapter*{\vspace{-30pt}Summary}
 \markboth{\MakeUppercase{Summary}}{}
 The main goal of this thesis was to improve the extending window method with rewriting rule $x-\beta$ which attempts to construct a parallel addition algorithm for a given base $\beta$ and alphabet $\A$ and discuss its convergence.
 
@@ -107,14 +107,13 @@ The shell interfaces are provided for running the implementation. All results ar
 We have tested large number of numeration systems with different methods for both phases. The controls of non-convergence reveal failure of Phase~2 very efficiently. Thus, many inputs may be processed. We compared various methods for Phase~1 and 2 for selected numeration systems including those for which a parallel addition algorithm was found manually.
 
  To conclude, there is about 140 numeration systems for which the implemented extending window method successfully found a parallel addition algorithm. The numeration systems have integer or non-integer alphabet, often of the minimal size.
-
+ 
 The tasks for future work are for example:
+
 \begin{itemize}
 	\item The question of sufficient condition of convergence of Phase~2 remains open.
 	\item Generalization and implementation of the extending window method with an arbitrary rewriting rule.
 	\item Testing on a  computer with higher performance or faster implementation.
 	\item Development of theoretical analysis of Phase~2 in order to improve convergence and speed.
 \end{itemize}
-
-
 
