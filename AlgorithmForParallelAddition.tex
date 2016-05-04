@@ -26,7 +26,9 @@ Example:
 \verb| '[0,1,-1,omega,-omega,-omega-1,omega+1]','omega-1','Eisenstein')|
 \end{method}
 
-Methods for the construction of a weight function for a digit set conversion from $\B$ to $\A$:
+Methods for the construction of a weight function for a digit set conversion from $\B$ to $\A$ are the following.
+
+\newpage
 \begin{method}{checkAlphabet}{}
 It is verified that the alphabet $\A$ contains all representatives mod $\beta$ in  and that all elements of the input alphabet $\B$ have their representatives mod $\beta-1$ in the alphabet $\A$ according to Theorem~\ref{thm:lowerBoundAlphabet}, including the case when the base $\beta$ has a real conjugate greater than one.
 \end{method}
@@ -51,7 +53,7 @@ The method calls \fun{checkAlphabet}{} and returns the weight function $q$ obtai
 %\end{method}
 
 
-Methods for the addition and the digit set conversion computable in parallel are following:
+Methods for the addition and the digit set conversion computable in parallel are the following:
 
 \begin{method}{addParallel}{a,b}
 Numbers represented by the lists of digits \var{a} and \var{b} are summed up digitwise and the result is converted by \fun{parallelConversion}{}. If $\B\neq\A+\A$ and a digitwise sum is not in $\B$, then an exception is raised.
