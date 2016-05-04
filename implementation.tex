@@ -5,6 +5,8 @@ Our implementation of the design is based on the program attached to \cite{vu}. 
 
 The implementation is object-oriented. It consists of five classes. Class \emph{AlgorithmForParallelAddition} contains structures for computations in $\Zomega$. The build-in classes \emph{PolynomialQuotientRing} and \emph{NumberField} are used to represent elements of $\Zomega$ as an algebraic and complex numbers. The class also links together all functions and instances of other classes which are necessary to construct an algorithm for digit set conversion from $\B$ to $\A$ by the extending window method. The input parameters are an algebraic integer $\omega$ given by its minimal polynomial $m_\omega$ and an approximate complex value, a base $\beta\in\Zomega$, an alphabet $\A\subset\Zomega$ and input alphabet $\B\subset\Zomega$. 
 
+We remark that it must be manually verified whether the input alphabet $\B$ such that $\B\neq\A+\A$ is sufficient for construction of a parallel addition algorithm, see remark at the end of Section~\ref{sec:addition}.
+
 Phase 1 of the extending window method is implemented in class \emph{WeightCoefficientsSetSearch} and Phase 2 in \emph{WeightFunctionSearch}. Class \emph{WeightFunction} serves to save a function $q$ computed in Phase 2. The last class \emph{ExceptionParAdd} is inherited from build-in class \emph{Exception} to distinguish between errors which are raised by the algorithm  of the extending window method and other ones.
 
 We use notation from previous chapters in descriptions of the classes. We list only the most important methods of each class, see commented source code for all of them.  
