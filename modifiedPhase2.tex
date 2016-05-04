@@ -107,7 +107,7 @@ Note that saving of the traversed path requires only the label of the first vert
 \end{algorithm}
 
 
-\subsection*{Phase 2 with non-convergence control}
+\subsection*{Phase 2 with control of non-convergence}
 Algorithm~\ref{alg:weightFunction_modified} modifies the basic proposal of Phase~2 to reveal its possible non-convergence. First, the necessary condition given by Theorem~\ref{thm:bbbCondition} is checked, i.e., the convergence of Phase~2 for inputs $bb\dots b$ is verified by Algorithm~\ref{alg:oneletterSets} for all $b\in\B$. 
 
 \begin{algorithm}
@@ -158,7 +158,7 @@ Algorithm~\ref{alg:weightFunction_modified} modifies the basic proposal of Phase
 
 Then we proceed in the same way as in Algorithm~\ref{alg:weightFunction} with the following modifications: it is sufficient to process only $\tupleo{k} \in \B^{k+1}$ such that $\#\Qwo{(k-1)}>1$ since if $\#\Qwo{(k-1)}=1$, then $\Qwo{k'}=\Qwo{(k-1)}$ for all $k'>k$. 
 
-Moreover, we check possible non-convergence according to Theorem~\ref{thm:infinitePathInRauzyGraph}. If $\Qwo{k} = \Qwo{(k-1)}$, then the vertex $\Qwo{k}$ is added into the Rauzy graph $G_{k+1}$ and the Rauzy graph $G_k$ is examined by Algorithm~\ref{alg:checkCycles} whether it contains an infinite walk starting in $\tuple{1}{k}$. Note that $\Qwo{k} = \Qwo{(k-1)}$ is a necessary condition for $\tuple{1}{k}$ be a vertex of $G_k$. It also implies that $\#\Qwo{k}>1$.
+Moreover, we check possible non-convergence according to Theorem~\ref{thm:infinitePathInRauzyGraph}. If $\Qwo{k}$ equals $\Qwo{(k-1)}$, then the vertex $\Qwo{k}$ is added into the Rauzy graph $G_{k+1}$ and the Rauzy graph $G_k$ is examined by Algorithm~\ref{alg:checkCycles} whether it contains an infinite walk starting in $\tuple{1}{k}$. Note that $\Qwo{k} = \Qwo{(k-1)}$ is a necessary condition for $\tuple{1}{k}$ be a vertex of $G_k$. It also implies that $\#\Qwo{k}>1$.
 
 We remark that  non-convergence caused by an input $bb\dots b$ for some $b\in\B$ would be revealed also as a cycle in a Rauzy graph. Nevertheless, the number of calls of Algorithm~\ref{alg:minimalSet} during Algorithm~\ref{alg:oneletterSets} is at most $\#Q$ for each $b\in\B$, while it grows exponentially with the length of window in search for a weight function. Thus, we save a lot of computational time in cases which fail already on $bb\dots b$ inputs. At the same time, the cost of this check is low in other cases.
 
